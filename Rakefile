@@ -19,7 +19,7 @@ Spec::Rake::SpecTask.new('cov') do |t|
   t.rcov_opts = ['-T --no-html --exclude', 'spec\/,gems\/']
 end
 
-spec = eval(File.read("bolverk.gemspec"))
+spec = eval(File.read("discogs.gemspec"))
  
 Rake::GemPackageTask.new(spec) do |pkg|
   # pkg.need_zip = true

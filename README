@@ -1,0 +1,4 @@
+Discogs::Wrapper
+--------------------------
+
+A 100% Ruby wrapper of the http://www.discogs.com API.
