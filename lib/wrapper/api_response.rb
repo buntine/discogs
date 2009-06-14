@@ -18,7 +18,7 @@ class Discogs::APIResponse < REXML::Document
 
   # Number of requests in the last 24 hour period (for this IP).
   def requests
-    @requests ||= self.root.attributes['requests']
+    @requests ||= self.root.attributes['requests'].to_i
   end
 
 end

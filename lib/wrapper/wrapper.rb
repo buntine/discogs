@@ -2,7 +2,9 @@
 
 require 'uri'
 require 'net/http'
+
 require File.dirname(__FILE__) + "/api_response"
+#require File.dirname(__FILE__) + "/release"
 
 class Discogs::Wrapper
 
