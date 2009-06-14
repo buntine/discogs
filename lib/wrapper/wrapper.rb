@@ -4,7 +4,7 @@ require 'uri'
 require 'net/http'
 
 require File.dirname(__FILE__) + "/api_response"
-#require File.dirname(__FILE__) + "/release"
+require File.dirname(__FILE__) + "/resource"
 
 class Discogs::Wrapper
 
@@ -20,8 +20,8 @@ class Discogs::Wrapper
     release_data = query_api("release/#{id}")
     release_data.valid? or raise_invalid_api_key
       
-    release = Discogs::Release.new
-    release.build!(release_data)
+    release = Discogs::Release.new(release_data)
+    release.build!
   end
 
  private
