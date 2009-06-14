@@ -25,11 +25,11 @@ describe Discogs::Wrapper do
     end
 
     it "should raise an exception if an invalid API Key is supplied" do
-      @invalid_wrapper.get_release(@valid_release_id).should raise_error(Discogs::InvalidAPIKey)
+      lambda { @invalid_wrapper.get_release(@valid_release_id) }.should raise_error(Discogs::InvalidAPIKey)
     end
 
     it "should raise an exception if the release does not exist" do
-      @wrapper.get_release(@invalid_release_id).should raise_error(Discogs::UnknownResource)
+      lambda { @wrapper.get_release(@invalid_release_id) }.should raise_error(Discogs::UnknownResource)
     end
 
     describe "when calling simple release attributes" do
