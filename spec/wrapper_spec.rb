@@ -38,8 +38,8 @@ describe Discogs::Wrapper do
         @release = @wrapper.get_release(@valid_release_id)
       end
 
-      it "should have a name attribute" do
-        @release.name.should == "Into the Abyss"
+      it "should have a title attribute" do
+        @release.title.should == "Into the Abyss"
       end
 
       it "should have an ID attribute" do

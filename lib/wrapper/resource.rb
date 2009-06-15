@@ -33,8 +33,30 @@ class Discogs::Resource
   end
 
   def build!
-    @api_response.root.each_element do |element|
-      
+    # Traverse node attributes.
+    @api_response.root[0].attributes.each_attribute do |attribute|
+      setter = (attribute.expanded_name + "=").to_sym
+
+      if self.respond_to? setter
+        self.send(setter, attribute.value)
+      end
+    end
+
+    # Traverse node children.
+    @api_response.root[0].each_element do |element|
+      name = element.expanded_name
+      setter = (name + "=").to_sym
+
+      singular = find_resource_for_name(name)
+      plural = singular ? nil : find_resource_for_plural_name(name)
+
+      if !singular.nil?
+        false
+      elsif !plural.nil?
+        false
+      elsif self.respond_to? setter
+        self.send(setter, element.text)
+      end
     end
 
   # Strip <resp> element.
@@ -45,6 +67,17 @@ class Discogs::Resource
     # Known Element classes should have an optional "map_to" class method that marries an xml element name to the object (Discog::Artist::MemberList will map to "members"). It will default to self.class.downcase.
     # Any class can overload "build!" method and return something useful. This will be handy if the markup should be parsed into something war (e.g: artist -> memberlist -> [name, name, name])
  
+    self
+  end
+
+ private
+
+  def find_resource_for_name(name)
+    nil
+  end
+
+  def find_resource_for_plural_name(name)
+    nil
   end
 
 end

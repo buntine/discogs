@@ -2,17 +2,17 @@
 
 class Discogs::Release < Discogs::Resource
 
-  attr_reader :id,
-              :status,
-              :title,
-              :country,
-              :released,
-              :notes,
-              :images,
-              :artists,
-              :labels,
-              :formats,
-              :styles,
-              :genres
+  attr_accessor :id,
+                :status,
+                :title,
+                :country,
+                :released,
+                :notes,
+                :images,
+                :artists,
+                :labels,
+                :formats,
+                :styles,
+                :genres
 
 end
