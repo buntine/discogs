@@ -10,7 +10,7 @@ class Discogs::Resource
   def self.map_to(element)
     self.class_eval <<-EOF
       def self.element_name
-        "#{element}"
+        "#{element.to_s}"
       end
     EOF
   end
@@ -19,7 +19,7 @@ class Discogs::Resource
   def self.map_to_plural(element)
     self.class_eval <<-EOF
       def self.plural_element_name
-        "#{element}"
+        "#{element.to_s}"
       end
     EOF
   end
@@ -33,8 +33,10 @@ class Discogs::Resource
   end
 
   def build!
+    root_node = (@api_response.root.expanded_name == "resp") ? @api_response.root[0] : @api_response.root
+
     # Traverse node attributes.
-    @api_response.root[0].attributes.each_attribute do |attribute|
+    root_node.attributes.each_attribute do |attribute|
       setter = (attribute.expanded_name + "=").to_sym
 
       if self.respond_to? setter
@@ -43,7 +45,7 @@ class Discogs::Resource
     end
 
     # Traverse node children.
-    @api_response.root[0].each_element do |element|
+    root_node.each_element do |element|
       name = element.expanded_name
       setter = (name + "=").to_sym
 
@@ -51,9 +53,16 @@ class Discogs::Resource
       plural = singular ? nil : find_resource_for_plural_name(name)
 
       if !singular.nil?
-        false
+        nested_object = singular.send(:new, Discogs::APIResponse.new(element.to_s))
+        nested_object.build!
+        self.send(setter, nested_object)
       elsif !plural.nil?
-        false
+        self.send(setter, [])
+        element.each_element do |sub_element|
+          nested_object = plural.send(:new, Discogs::APIResponse.new(sub_element.to_s))
+          nested_object.build!
+          self.send(name.to_sym) << nested_object
+        end
       elsif self.respond_to? setter
         self.send(setter, element.text)
       end
@@ -73,13 +82,28 @@ class Discogs::Resource
  private
 
   def find_resource_for_name(name)
+    find_match = lambda { |klass| klass.constants.find { |const| klass.const_get(const).respond_to? :element_name and klass.const_get(const).element_name == name } }
+    match = find_match.call(self.class)
+    return self.class.const_get(match) if match
+
+    match = find_match.call(Discogs)
+    return Discogs.const_get(match) if match
+
     nil
   end
 
   def find_resource_for_plural_name(name)
+    find_match = lambda { |klass| klass.constants.find { |const| klass.const_get(const).respond_to? :plural_element_name and klass.const_get(const).plural_element_name == name } }
+    match = find_match.call(self.class)
+    return self.class.const_get(match) if match
+
+    match = find_match.call(Discogs)
+    return Discogs.const_get(match) if match
+
     nil
   end
 
 end
 
 require File.dirname(__FILE__) + "/release"
+require File.dirname(__FILE__) + "/track"

@@ -13,6 +13,7 @@ class Discogs::Release < Discogs::Resource
                 :labels,
                 :formats,
                 :styles,
-                :genres
+                :genres,
+                :tracklist
 
 end
