@@ -55,27 +55,17 @@ class Discogs::Resource
 
       if !singular.nil?
         nested_object = singular.send(:new, element.to_s)
-        nested_object.build!
-        self.send(setter, nested_object)
+        self.send(setter, nested_object.build!)
       elsif !plural.nil?
         self.send(setter, [])
         element.each_element do |sub_element|
           nested_object = plural.send(:new, sub_element.to_s)
-          nested_object.build!
-          self.send(name.to_sym) << nested_object
+          self.send(name.to_sym) << nested_object.build!
         end
       elsif self.respond_to? setter
         self.send(setter, element.text)
       end
     end
-
-  # Strip <resp> element.
-    # The build! method should (hopefully!) traverse the XML data and recursively build the object (and sub objects).
-    # Known ttributes should be defined as assessors, and method_missing should catch all unknowns...
-    # Elements which exist as objects (<label> == Discogs::Label) should be initialized and then built with said markup.
-    # Pluralisations (+s, +list) of known objects should be set as arrays and then all children should be built into objects and have "build!" called with their respective markup.
-    # Known Element classes should have an optional "map_to" class method that marries an xml element name to the object (Discog::Artist::MemberList will map to "members"). It will default to self.class.downcase.
-    # Any class can overload "build!" method and return something useful. This will be handy if the markup should be parsed into something war (e.g: artist -> memberlist -> [name, name, name])
  
     self
   end
@@ -106,5 +96,4 @@ class Discogs::Resource
 
 end
 
-require File.dirname(__FILE__) + "/release"
-require File.dirname(__FILE__) + "/track"
+Dir[File.join(File.dirname(__FILE__), "resources", "*.rb")].each { |file| require file }

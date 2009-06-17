@@ -16,7 +16,7 @@ describe Discogs::Wrapper do
   describe "when requesting a release" do
  
     before do
-      @valid_release_id = "999"
+      @valid_release_id = "666666"
       @invalid_release_id = "krematorr"
     end
 
@@ -64,7 +64,7 @@ describe Discogs::Wrapper do
       end
 
       it "should have a traversible list of styles" do
-        @release.styles.should be_instance_of(Discogs::StyleList)
+        @release.styles.should be_instance_of(Array)
         @release.styles[0].should == "Black Metal"
         @release.styles[1].should == "Thrash"
       end
