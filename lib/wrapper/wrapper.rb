@@ -2,8 +2,10 @@
 
 require 'uri'
 require 'net/http'
+require 'rexml/document'
+require 'zlib'
+require 'stringio'
 
-require File.dirname(__FILE__) + "/api_response"
 require File.dirname(__FILE__) + "/resource"
 
 class Discogs::Wrapper
@@ -30,7 +32,9 @@ class Discogs::Wrapper
     raise_unknown_resource(path) if response.code == "404"
     raise_invalid_api_key if response.code == "400"
 
-    Discogs::APIResponse.prepare(response.body)
+    # Unzip the response data.
+    inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
+    inflated_data.read
   end
 
   def make_request(path, params={})

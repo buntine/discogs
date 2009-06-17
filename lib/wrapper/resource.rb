@@ -2,8 +2,8 @@
 
 class Discogs::Resource
 
-  def initialize(api_response)
-    @api_response = api_response
+  def initialize(content)
+    @content = content
   end
 
   # Helper method to map resource to element in API response.
@@ -33,7 +33,8 @@ class Discogs::Resource
   end
 
   def build!
-    root_node = (@api_response.root.expanded_name == "resp") ? @api_response.root[0] : @api_response.root
+    document = REXML::Document.new(@content)
+    root_node = (document.root.expanded_name == "resp") ? document.root[0] : document.root
 
     # Traverse node attributes.
     root_node.attributes.each_attribute do |attribute|
@@ -53,13 +54,13 @@ class Discogs::Resource
       plural = singular ? nil : find_resource_for_plural_name(name)
 
       if !singular.nil?
-        nested_object = singular.send(:new, Discogs::APIResponse.new(element.to_s))
+        nested_object = singular.send(:new, element.to_s)
         nested_object.build!
         self.send(setter, nested_object)
       elsif !plural.nil?
         self.send(setter, [])
         element.each_element do |sub_element|
-          nested_object = plural.send(:new, Discogs::APIResponse.new(sub_element.to_s))
+          nested_object = plural.send(:new, sub_element.to_s)
           nested_object.build!
           self.send(name.to_sym) << nested_object
         end
