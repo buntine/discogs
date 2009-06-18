@@ -1,37 +1,16 @@
 # Represents a generic resource in the Discogs API.
 
+require File.dirname(__FILE__) + "/resource_mappings"
+
 class Discogs::Resource
+
+  include Discogs::ResourceMappings
 
   def initialize(content)
     @content = content
   end
 
-  # Helper method to map resource to element in API response.
-  def self.map_to(element)
-    self.class_eval <<-EOF
-      def self.element_name
-        "#{element.to_s}"
-      end
-    EOF
-  end
-
-  # Helper method to map pluralised resource to element in API response.
-  def self.map_to_plural(element)
-    self.class_eval <<-EOF
-      def self.plural_element_name
-        "#{element.to_s}"
-      end
-    EOF
-  end
-
-  # Element defaults to prevent excess boilerplate code.
-  def self.element_name
-    self.to_s.split("::")[-1].downcase
-  end
-  def self.plural_element_name
-    self.element_name + "s"
-  end
-
+  # Builds the resource with it's content.
   def build!
     document = REXML::Document.new(@content)
     root_node = (document.root.expanded_name == "resp") ? document.root[0] : document.root
@@ -68,30 +47,6 @@ class Discogs::Resource
     end
  
     self
-  end
-
- private
-
-  def find_resource_for_name(name)
-    find_match = lambda { |klass| klass.constants.find { |const| klass.const_get(const).respond_to? :element_name and klass.const_get(const).element_name == name } }
-    match = find_match.call(self.class)
-    return self.class.const_get(match) if match
-
-    match = find_match.call(Discogs)
-    return Discogs.const_get(match) if match
-
-    nil
-  end
-
-  def find_resource_for_plural_name(name)
-    find_match = lambda { |klass| klass.constants.find { |const| klass.const_get(const).respond_to? :plural_element_name and klass.const_get(const).plural_element_name == name } }
-    match = find_match.call(self.class)
-    return self.class.const_get(match) if match
-
-    match = find_match.call(Discogs)
-    return Discogs.const_get(match) if match
-
-    nil
   end
 
 end
