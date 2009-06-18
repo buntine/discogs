@@ -14,4 +14,8 @@ describe Discogs::Resource do
     Discogs::Resource.plural_element_name.should == "resources"
   end
 
+  it "should have an original_content method" do
+    @resource.original_content.should == sample_valid_binary
+  end
+
 end

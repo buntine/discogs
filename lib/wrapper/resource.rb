@@ -10,6 +10,10 @@ class Discogs::Resource
     @content = content
   end
 
+  def original_content
+    @content
+  end
+
   # Builds the resource with it's content.
   def build!
     document = REXML::Document.new(@content)
