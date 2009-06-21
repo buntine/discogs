@@ -39,30 +39,39 @@ module Discogs::ResourceMappings
  private
 
   def find_resource_for_name(name)
-    find_match = lambda { |klass| klass.constants.find { |const| klass.const_get(const).respond_to? :element_name and klass.const_get(const).element_name == name } }
-    match = find_match.call(self.class)
-    return self.class.const_get(match) if match
-
-    match = find_match.call(Discogs)
-    return Discogs.const_get(match) if match
-
-    nil
-  end
-
-  def find_resource_for_plural_name(name)
-    find_match = lambda do |klass|
+    find_resource do |klass|
       klass.constants.find do |const|
-        klass.const_get(const).respond_to? :plural_element_names and klass.const_get(const).plural_element_names.any? { |plural_name| plural_name.eql?(name) }
+        if klass.const_get(const).respond_to? :element_name
+          klass.const_get(const).element_name == name
+        end
       end
     end
+  end
 
-    match = find_match.call(self.class)
-    return self.class.const_get(match) if match
+  # Searches through resource classes looking for a plural match for _name_.
+  def find_resource_for_plural_name(name)
+    find_resource do |klass|
+      klass.constants.find do |const|
+        if klass.const_get(const).respond_to? :plural_element_names
+          klass.const_get(const).plural_element_names.any? { |plural_name| plural_name.eql?(name) }
+        end
+      end
+    end
+  end
 
-    match = find_match.call(Discogs)
-    return Discogs.const_get(match) if match
+  # Find a resouce class
+  # First looks in the children of _self_ namespace, and then looks more 
+  # generally. Returns nil if nothing is found.
+  def find_resource(namespace=self.class, &matcher)
+    match = matcher.call(namespace)
 
-    nil
+    if match
+      match = namespace.const_get(match)
+    elsif namespace == self.class
+      match = find_resource(Discogs, &matcher)
+    end
+
+    return match
   end
 
 end
