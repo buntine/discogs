@@ -104,6 +104,10 @@ describe Discogs::Wrapper do
         @release.tracklist[1].artists[0].name.should == "Arakain"
       end
 
+      it "should have a role associated to the first extra artist" do
+        @release.extraartists[0].role.should == "Lyrics by"
+      end
+
       it "should have no artist associated to the third track" do
         @release.tracklist[2].artists.should be_nil
       end
