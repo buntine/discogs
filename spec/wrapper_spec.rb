@@ -75,6 +75,11 @@ describe Discogs::Wrapper do
         @release.id.should == "666666"
       end
 
+      it "should have one or more extra artists" do
+        @release.extraartists.should be_instance_of(Array)
+        @release.extraartists[0].should be_instance_of(Discogs::Artist)
+      end
+
       it "should have one or more tracks" do
         @release.tracklist.should be_instance_of(Array)
         @release.tracklist[0].should be_instance_of(Discogs::Release::Track)
@@ -97,6 +102,10 @@ describe Discogs::Wrapper do
       it "should have an artist associated to the second track" do
         @release.tracklist[1].artists[0].should be_instance_of(Discogs::Artist)
         @release.tracklist[1].artists[0].name.should == "Arakain"
+      end
+
+      it "should have no artist associated to the third track" do
+        @release.tracklist[2].artists.should be_nil
       end
 
     end

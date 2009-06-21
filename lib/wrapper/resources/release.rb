@@ -14,6 +14,7 @@ class Discogs::Release < Discogs::Resource
                 :formats,
                 :styles,
                 :genres,
-                :tracklist
+                :tracklist,
+                :extraartists
 
 end

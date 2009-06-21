@@ -30,8 +30,8 @@ class Discogs::Resource
 
     # Traverse node children.
     root_node.each_element do |element|
-      name = element.expanded_name
-      setter = (name + "=").to_sym
+      name = element.expanded_name.to_sym
+      setter = (name.to_s + "=").to_sym
 
       singular = find_resource_for_name(name)
       plural = singular ? nil : find_resource_for_plural_name(name)
@@ -43,7 +43,7 @@ class Discogs::Resource
         self.send(setter, [])
         element.each_element do |sub_element|
           nested_object = plural.send(:new, sub_element.to_s)
-          self.send(name.to_sym) << nested_object.build!
+          self.send(name) << nested_object.build!
         end
       elsif self.respond_to? setter
         self.send(setter, element.text)

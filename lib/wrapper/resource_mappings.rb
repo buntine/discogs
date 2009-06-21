@@ -12,26 +12,26 @@ module Discogs::ResourceMappings
     def map_to(element)
       self.class_eval <<-EOF
         def self.element_name
-          "#{element.to_s}"
+          #{element.to_sym.inspect}
         end
       EOF
     end
 
     # Helper method to map pluralised resource to element in API response.
-    def map_to_plural(element)
+    def map_to_plural(*elements)
       self.class_eval <<-EOF
-        def self.plural_element_name
-          "#{element.to_s}"
+        def self.plural_element_names
+          #{elements.inspect}
         end
       EOF
     end
 
     # Element defaults to prevent excess boilerplate code.
-    def element_name;
-      self.to_s.split("::")[-1].downcase
+    def element_name
+      self.to_s.split("::")[-1].downcase.to_sym
     end
-    def plural_element_name
-      self.element_name + "s"
+    def plural_element_names
+      [ (self.element_name.to_s + "s").to_sym ]
     end
 
   end
@@ -50,7 +50,12 @@ module Discogs::ResourceMappings
   end
 
   def find_resource_for_plural_name(name)
-    find_match = lambda { |klass| klass.constants.find { |const| klass.const_get(const).respond_to? :plural_element_name and klass.const_get(const).plural_element_name == name } }
+    find_match = lambda do |klass|
+      klass.constants.find do |const|
+        klass.const_get(const).respond_to? :plural_element_names and klass.const_get(const).plural_element_names.any? { |plural_name| plural_name.eql?(name) }
+      end
+    end
+
     match = find_match.call(self.class)
     return self.class.const_get(match) if match
 
