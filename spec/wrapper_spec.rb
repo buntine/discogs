@@ -85,6 +85,11 @@ describe Discogs::Wrapper do
         @release.tracklist[0].should be_instance_of(Discogs::Release::Track)
       end
  
+      it "should have one or more genres" do
+        @release.genres.should be_instance_of(Array)
+        @release.genres[0].should == "Heavy Metal"
+      end
+
     end
 
     describe "when calling complex release attributes" do

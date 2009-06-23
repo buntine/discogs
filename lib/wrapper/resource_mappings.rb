@@ -48,7 +48,6 @@ module Discogs::ResourceMappings
     end
   end
 
-  # Searches through resource classes looking for a plural match for _name_.
   def find_resource_for_plural_name(name)
     find_resource do |klass|
       klass.constants.find do |const|
@@ -59,7 +58,7 @@ module Discogs::ResourceMappings
     end
   end
 
-  # Find a resouce class
+  # Look in _namespace_ for a matching resource class.
   # First looks in the children of _self_ namespace, and then looks more 
   # generally. Returns nil if nothing is found.
   def find_resource(namespace=self.class, &matcher)
