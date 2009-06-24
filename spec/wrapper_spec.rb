@@ -95,12 +95,26 @@ describe Discogs::Wrapper do
         @release.formats[0].should be_instance_of(Discogs::Release::Format)
       end
 
+      it "should have one or more images" do
+        @release.images.should be_instance_of(Array)
+        @release.images[0].should be_instance_of(Discogs::Image)
+      end
+
     end
 
     describe "when calling complex release attributes" do
 
       it "should have a duration for the first track" do
         @release.tracklist[0].duration.should == "8:11"
+      end
+
+      it "should have a type for each image" do
+        specs = [ [ '600', '595', 'primary' ], [ '600', '593', 'secondary' ], [ '600', '539', 'secondary' ], [ '600', '452', 'secondary' ], [ '600', '567', 'secondary' ] ]
+        @release.images.each_with_index do |image, index|
+          image.width.should == specs[index][0]
+          image.height.should == specs[index][1]
+          image.type.should == specs[index][2]
+        end
       end
 
       it "should have a traversible list of styles" do
