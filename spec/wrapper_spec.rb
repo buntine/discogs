@@ -90,6 +90,11 @@ describe Discogs::Wrapper do
         @release.genres[0].should == "Heavy Metal"
       end
 
+      it "should have one or more formats" do
+        @release.formats.should be_instance_of(Array)
+        @release.formats[0].should be_instance_of(Discogs::Release::Format)
+      end
+
     end
 
     describe "when calling complex release attributes" do
@@ -102,6 +107,23 @@ describe Discogs::Wrapper do
         @release.styles.should be_instance_of(Array)
         @release.styles[0].should == "Black Metal"
         @release.styles[1].should == "Thrash"
+      end
+
+      it "should have a traversible list of labels" do
+        @release.styles.should be_instance_of(Array)
+        @release.labels[0].should be_instance_of(Discogs::Release::Label)
+        @release.labels[0].catno.should == "Death9"
+        @release.labels[0].name.should == "Culted"
+      end
+
+      it "should have a name and quantity for the first format" do
+        @release.formats[0].name.should == "CD"
+        @release.formats[0].qty.should == "1"
+      end
+
+      it "should have an array of descriptions for the first format" do
+        @release.formats[0].descriptions.should be_instance_of(Array)
+        @release.formats[0].descriptions[0].should == "Album"
       end
 
       it "should have an artist associated to the second track" do

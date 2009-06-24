@@ -10,11 +10,11 @@ class Discogs::Release < Discogs::Resource
                 :notes,
                 :images,
                 :artists,
+                :extraartists,
                 :labels,
                 :formats,
                 :styles,
                 :genres,
-                :tracklist,
-                :extraartists
+                :tracklist
 
 end
