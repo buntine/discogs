@@ -43,7 +43,7 @@ describe Discogs::Release do
 
       it "should have one or more extra artists" do
         @release.extraartists.should be_instance_of(Array)
-        @release.extraartists[0].should be_instance_of(Discogs::Artist)
+        @release.extraartists[0].should be_instance_of(Discogs::Release::Artist)
       end
 
       it "should have one or more tracks" do
@@ -107,8 +107,16 @@ describe Discogs::Release do
       end
 
       it "should have an artist associated to the second track" do
-        @release.tracklist[1].artists[0].should be_instance_of(Discogs::Artist)
+        @release.tracklist[1].artists.should be_instance_of(Array)
+        @release.tracklist[1].artists[0].should be_instance_of(Discogs::Release::Track::Artist)
         @release.tracklist[1].artists[0].name.should == "Arakain"
+      end
+
+      it "should have an extra artist associated to the second track" do
+        @release.tracklist[1].extraartists.should be_instance_of(Array)
+        @release.tracklist[1].extraartists[0].should be_instance_of(Discogs::Release::Track::Artist)
+        @release.tracklist[1].extraartists[0].name.should == "Debustrol"
+        @release.tracklist[1].extraartists[0].role.should == "Sadism"
       end
 
       it "should have a role associated to the first extra artist" do

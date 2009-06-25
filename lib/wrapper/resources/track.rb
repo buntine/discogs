@@ -9,6 +9,7 @@ class Discogs::Release::Track < Discogs::Resource
   attr_accessor :position,
                 :title,
                 :duration,
-                :artists
+                :artists,
+                :extraartists
 
 end
