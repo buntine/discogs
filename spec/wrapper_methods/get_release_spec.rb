@@ -1,19 +1,11 @@
-require File.dirname(__FILE__) + "/spec_helper"
+require File.dirname(__FILE__) + "/../spec_helper"
 
-describe Discogs::Release do
+describe Discogs::Wrapper do
 
   before do
     @api_key = "f20d709d54"
     @wrapper = Discogs::Wrapper.new(@api_key)
     @release_id = "666666"
-  end
-
-  it "should map to release" do
-    Discogs::Release.element_name.should == :release
-  end
-
-  it "should map to plural releases" do
-    Discogs::Release.plural_element_names.should == [ :releases ]
   end
 
   describe "when asking for release information" do
