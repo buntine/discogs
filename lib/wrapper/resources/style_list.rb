@@ -8,5 +8,6 @@ class Discogs::Release::StyleList < Discogs::Resource
   include Discogs::AbstractList
 
   map_to :styles
+  map_to_plural :styles
 
 end
