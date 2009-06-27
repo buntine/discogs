@@ -40,5 +40,4 @@ describe Discogs::Release::Artist do
  
   end
 
-
 end
