@@ -7,5 +7,6 @@ class Discogs::DescriptionList < Discogs::Resource
   include Discogs::AbstractList
 
   map_to :descriptions
+  map_to_plural :descriptions
 
 end
