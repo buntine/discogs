@@ -16,7 +16,7 @@ class Discogs::Resource
 
   # Builds the resource with it's content.
   def build!
-    document = REXML::Document.new(@content)
+    document = REXML::Document.new(@content, :ignore_whitespace_nodes => :all)
     root_node = (document.root.expanded_name == "resp") ? document.root[0] : document.root
 
     # Traverse node attributes.

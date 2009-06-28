@@ -1,62 +1,62 @@
 <resp stat="ok" version="1.0" requests="3">
-<artist>
-<images>
-<image height="240" type="secondary" uri="http://www.discogs.com/image/A-45-005.jpg" uri150="http://www.discogs.com/image/A-150-45-005.jpg" width="350"/>
-<image height="226" type="secondary" uri="http://www.discogs.com/image/A-45-1094774583.jpg" uri150="http://www.discogs.com/image/A-150-45-1094774583.jpg" width="222"/>
-<image height="600" type="primary" uri="http://www.discogs.com/image/A-45-1122852930.jpg" uri150="http://www.discogs.com/image/A-150-45-1122852930.jpg" width="600"/>
-</images>
-<name>Root</name>
-<realname>Rootan</realname>
-<urls>
-<url>http://www.drukqs.net</url>
-<url>http://en.wikipedia.org/wiki/Aphex_twin</url>
-<url/>
-</urls>
-<namevariations>
-<name>A-F-X Twin</name>
-<name>A.F.X.</name>
-<name>AFX</name>
-<name>Aphex Twin, The</name>
-<name>Aphex Twins</name>
-</namevariations>
-<aliases>
-<name>Blue Calx (2)</name>
-<name>Bradley Strider</name>
-<name>Brian Tregaskin</name>
-<name>Caustic Window</name>
-<name>Dice Man, The</name>
-<name>GAK</name>
-<name>Karen Tregaskin</name>
-<name>Polygon Window</name>
-<name>Power-Pill</name>
-<name>Q-Chastic</name>
-<name>Richard D. James</name>
-<name>Smojphace</name>
-<name>Soit-P.P.</name>
-<name>Tuss, The</name>
-</aliases>
-<releases>
-<release id="1805661" status="Accepted" type="Main">
-<title>Classics</title>
-<format>2xLP, RP, Comp</format>
-<label>R &amp; S Records</label>
-<year>1991</year>
-</release>
-<release id="1138729" status="Accepted" type="Main">
-<title>Selected Ambient Works 85-92</title>
-<format>2xLP, RP</format>
-<label>Apollo, Apollo, Apollo</label>
-</release>
-<release id="1790544" status="Accepted" type="Main">
-<title>Selected Ambient Works 85-92</title>
-<format>2xVinyl, Album</format>
-<label>Apollo</label>
-</release>
-<release id="1231023" status="Accepted" type="Main">
-<title>Windowlicker</title>
-<format>12", RP</format>
-<label>Warp Records</label>
-</release>
-</releases>
-</artist>
+  <artist>
+    <images>
+      <image height="240" type="secondary" uri="http://www.discogs.com/image/A-45-005.jpg" uri150="http://www.discogs.com/image/A-150-45-005.jpg" width="350"/>
+      <image height="226" type="secondary" uri="http://www.discogs.com/image/A-45-1094774583.jpg" uri150="http://www.discogs.com/image/A-150-45-1094774583.jpg" width="222"/>
+      <image height="600" type="primary" uri="http://www.discogs.com/image/A-45-1122852930.jpg" uri150="http://www.discogs.com/image/A-150-45-1122852930.jpg" width="600"/>
+    </images>
+    <name>Root</name>
+    <realname>Rootan</realname>
+    <urls>
+      <url>http://www.drukqs.net</url>
+      <url>http://en.wikipedia.org/wiki/Aphex_twin</url>
+      <url/>
+    </urls>
+    <namevariations>
+      <name>A-F-X Twin</name>
+      <name>A.F.X.</name>
+      <name>AFX</name>
+      <name>Aphex Twin, The</name>
+      <name>Aphex Twins</name>
+    </namevariations>
+    <aliases>
+      <name>Blue Calx (2)</name>
+      <name>Bradley Strider</name>
+      <name>Brian Tregaskin</name>
+      <name>Caustic Window</name>
+      <name>Dice Man, The</name>
+      <name>GAK</name>
+      <name>Karen Tregaskin</name>
+      <name>Polygon Window</name>
+      <name>Power-Pill</name>
+      <name>Q-Chastic</name>
+      <name>Richard D. James</name>
+      <name>Smojphace</name>
+      <name>Soit-P.P.</name>
+      <name>Tuss, The</name>
+    </aliases>
+    <releases>
+      <release id="1805661" status="Accepted" type="Main">
+        <title>Classics</title>
+        <format>2xLP, RP, Comp</format>
+        <label>R &amp; S Records</label>
+        <year>1991</year>
+      </release>
+      <release id="1138729" status="Accepted" type="Main">
+        <title>Selected Ambient Works 85-92</title>
+        <format>2xLP, RP</format>
+        <label>Apollo, Apollo, Apollo</label>
+      </release>
+      <release id="1790544" status="Accepted" type="Main">
+        <title>Selected Ambient Works 85-92</title>
+        <format>2xVinyl, Album</format>
+        <label>Apollo</label>
+      </release>
+      <release id="1231023" status="Accepted" type="Main">
+        <title>Windowlicker</title>
+        <format>12", RP</format>
+        <label>Warp Records</label>
+      </release>
+    </releases>
+  </artist>
 </resp>
