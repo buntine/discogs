@@ -66,7 +66,7 @@ describe Discogs::Wrapper do
         @release.tracklist[0].duration.should == "8:11"
       end
 
-      it "should have a type for each image" do
+      it "should have specifications for each image" do
         specs = [ [ '600', '595', 'primary' ], [ '600', '593', 'secondary' ], [ '600', '539', 'secondary' ], [ '600', '452', 'secondary' ], [ '600', '567', 'secondary' ] ]
         @release.images.each_with_index do |image, index|
           image.width.should == specs[index][0]

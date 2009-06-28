@@ -33,6 +33,57 @@ describe Discogs::Wrapper do
         @artist.realname.should == "Rootan"
       end
 
+      it "should have one or more aliases" do
+        @artist.aliases.should be_instance_of(Array)
+        @artist.aliases[0].should == "Roooot"
+      end
+
+      it "should have one or more name variations" do
+        @artist.namevariations.should be_instance_of(Array)
+        @artist.namevariations[0].should == "Rootan"
+      end
+
+    end
+
+    describe "when calling complex artist attributes" do
+
+      it "should have a traversible list of URLs" do
+        @artist.urls.should be_instance_of(Array)
+        @artist.urls[0].should == ""
+        @artist.urls[1].should == ""
+      end
+
+      it "should have a traversible list of images" do
+        @artist.images.should be_instance_of(Array)
+        @artist.images[0].should be_instance_of(Discogs::Image)
+      end
+
+      it "should have specifications for each image" do
+        specs = [ [ '350', '240', 'secondary' ], [ '222', '226', 'secondary' ], [ '600', '600', 'primary' ] ]
+        @artist.images.each_with_index do |image, index|
+          image.width.should == specs[index][0]
+          image.height.should == specs[index][1]
+          image.type.should == specs[index][2]
+        end
+      end
+
+      it "should have a traversible list of releases" do
+        @artist.releases.should be_instance_of(Array)
+        @artist.releases[0].should be_instance_of(Discogs::Artist::Release)
+      end
+
+      it "should have an ID for the first release" do
+        @artist.releases[0].id.should == "1805661"
+      end
+
+      it "should have a year for the first release" do
+        @artist.releases[0].year.should == "1991"
+      end
+
+      it "should have a label for the third release" do
+        @artist.releases[2].label.should == "Apollo"
+      end
+
     end
 
   end
