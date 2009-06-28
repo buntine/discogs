@@ -2,6 +2,13 @@
 
 class Discogs::Artist < Discogs::Resource
 
-  attr_accessor :name
+  attr_accessor :name,
+                :realname,
+                :images,
+                :urls,
+                :namevariations,
+                :aliases,
+                :members,
+                :releases
 
 end

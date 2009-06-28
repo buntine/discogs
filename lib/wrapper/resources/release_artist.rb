@@ -1,4 +1,4 @@
-# Represents an artist for a release in the Discogs API.
+# Represents an release's artist in the Discogs API.
 
 require File.dirname(__FILE__) + "/track"
 

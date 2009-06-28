@@ -24,6 +24,12 @@ class Discogs::Wrapper
     release.build!
   end
 
+  def get_artist(name)
+    artist_data = query_api("artist/#{name}")
+    artist = Discogs::Artist.new(artist_data)
+    artist.build!
+  end
+
  private
 
   def query_api(path, params={})
