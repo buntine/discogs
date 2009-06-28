@@ -8,5 +8,6 @@ class Discogs::Release::GenreList < Discogs::Resource
   include Discogs::AbstractList
 
   map_to :genres
+  map_to_plural :genres
 
 end
