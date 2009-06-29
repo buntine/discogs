@@ -49,8 +49,8 @@ describe Discogs::Wrapper do
 
       it "should have a traversible list of URLs" do
         @artist.urls.should be_instance_of(Array)
-        @artist.urls[0].should == ""
-        @artist.urls[1].should == ""
+        @artist.urls[0].should == "http://www.root.net"
+        @artist.urls[1].should == "http://www.rootan.com"
       end
 
       it "should have a traversible list of images" do
