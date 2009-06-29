@@ -43,6 +43,11 @@ describe Discogs::Wrapper do
         @artist.namevariations[0].should == "Rootan"
       end
 
+      it "should have one or more members" do
+        @artist.members.should be_instance_of(Array)
+        @artist.members[0].should == "Big Boss"
+      end
+
     end
 
     describe "when calling complex artist attributes" do

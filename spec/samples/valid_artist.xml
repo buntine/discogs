@@ -12,6 +12,10 @@
       <url>http://www.rootan.com</url>
       <url/>
     </urls>
+    <members>
+      <name>Big Boss</name>
+      <name>John</name>
+    </members>
     <namevariations>
       <name>Rootan</name>
       <name>A.F.X.</name>
