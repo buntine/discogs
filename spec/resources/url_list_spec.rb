@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::URLList do
 
   it "should map to urls" do
-    Discogs::URLList.element_name.should == :urls
+    Discogs::URLList.element_names.should == [ :urls ]
   end
 
   it "should map to plural urls" do

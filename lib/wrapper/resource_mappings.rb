@@ -9,10 +9,10 @@ module Discogs::ResourceMappings
   module ClassMethods
 
     # Helper method to map resource to element in API response.
-    def map_to(element)
+    def map_to(*elements)
       self.class_eval <<-EOF
-        def self.element_name
-          #{element.to_sym.inspect}
+        def self.element_names
+          #{elements.inspect}
         end
       EOF
     end
@@ -27,11 +27,11 @@ module Discogs::ResourceMappings
     end
 
     # Element defaults to prevent excess boilerplate code.
-    def element_name
-      self.to_s.split("::")[-1].downcase.to_sym
+    def element_names
+      [ self.to_s.split("::")[-1].downcase.to_sym ]
     end
     def plural_element_names
-      [ (self.element_name.to_s + "s").to_sym ]
+      [ (self.element_names[0].to_s + "s").to_sym ]
     end
 
   end
@@ -41,8 +41,8 @@ module Discogs::ResourceMappings
   def find_resource_for_name(name)
     find_resource do |klass|
       klass.constants.find do |const|
-        if klass.const_get(const).respond_to? :element_name
-          klass.const_get(const).element_name == name
+        if klass.const_get(const).respond_to? :element_names
+          klass.const_get(const).element_names.any? { |element| element.eql?(name) }
         end
       end
     end

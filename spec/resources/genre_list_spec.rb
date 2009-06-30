@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Release::GenreList do
 
   it "should map to genres" do
-    Discogs::Release::GenreList.element_name.should == :genres
+    Discogs::Release::GenreList.element_names.should == [ :genres ]
   end
 
   it "should map to plural genres" do

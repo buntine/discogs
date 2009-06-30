@@ -7,7 +7,7 @@ describe Discogs::Resource do
   end
 
   it "should have a default element name" do
-    Discogs::Resource.element_name.should == :resource
+    Discogs::Resource.element_names.should == [ :resource ]
   end
 
   it "should have a default plural element name" do

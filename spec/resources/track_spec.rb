@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Release::Track do
 
   it "should map to track" do
-    Discogs::Release::Track.element_name.should == :track
+    Discogs::Release::Track.element_names.should == [ :track ]
   end
 
   it "should map to plural tracklist" do

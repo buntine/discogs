@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Release::Label do
 
   it "should map to label" do
-    Discogs::Release::Label.element_name.should == :label
+    Discogs::Release::Label.element_names.should == [ :label ]
   end
 
   it "should map to plural labels" do

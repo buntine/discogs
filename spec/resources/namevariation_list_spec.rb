@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Artist::NameVariationList do
 
   it "should map to namevariations" do
-    Discogs::Artist::NameVariationList.element_name.should == :namevariations
+    Discogs::Artist::NameVariationList.element_names.should == [ :namevariations ]
   end
 
   it "should map to plural namevariations" do

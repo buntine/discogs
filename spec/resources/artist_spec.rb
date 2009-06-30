@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Artist do
 
   it "should map to artist" do
-    Discogs::Artist.element_name.should == :artist
+    Discogs::Artist.element_names.should == [ :artist ]
   end
 
   it "should map to plural artists" do

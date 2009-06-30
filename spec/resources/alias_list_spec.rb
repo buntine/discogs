@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Artist::AliasList do
 
   it "should map to aliases" do
-    Discogs::Artist::AliasList.element_name.should == :aliases
+    Discogs::Artist::AliasList.element_names.should == [ :aliases ]
   end
 
   it "should map to plural aliases" do

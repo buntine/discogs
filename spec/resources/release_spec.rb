@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Release do
 
   it "should map to release" do
-    Discogs::Release.element_name.should == :release
+    Discogs::Release.element_names.should == [ :release ]
   end
 
   it "should map to plural releases" do

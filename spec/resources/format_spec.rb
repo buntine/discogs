@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Release::Format do
 
   it "should map to format" do
-    Discogs::Release::Format.element_name.should == :format
+    Discogs::Release::Format.element_names.should == [ :format ]
   end
 
   it "should map to plural formats" do

@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Release::StyleList do
 
   it "should map to styles" do
-    Discogs::Release::StyleList.element_name.should == :styles
+    Discogs::Release::StyleList.element_names.should == [ :styles ]
   end
 
   it "should map to plural styles" do

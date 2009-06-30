@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::DescriptionList do
 
   it "should map to descriptions" do
-    Discogs::DescriptionList.element_name.should == :descriptions
+    Discogs::DescriptionList.element_names.should == [ :descriptions ]
   end
 
   it "should map to plural descriptions" do

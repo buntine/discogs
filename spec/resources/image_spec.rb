@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Image do
 
   it "should map to image" do
-    Discogs::Image.element_name.should == :image
+    Discogs::Image.element_names.should == [ :image ]
   end
 
   it "should map to plural images" do
