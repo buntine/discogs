@@ -1,6 +1,5 @@
 <genres>
-<genre>Heavy Metal</genre>
-<genre>Neofolk</genre>
-<genre>Medieval folk</genre>
+  <name>Heavy Metal</name>
+  <name>Neofolk</name>
+  <name>Medieval folk</name>
 </genres>
-

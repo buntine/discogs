@@ -1,6 +1,10 @@
-# Represents a list of an unmanaged resource in the Discogs API.
+# Represents a generic list of items in the Discogs API.
 
-module Discogs::AbstractList
+class Discogs::GenericList < Discogs::Resource
+
+  map_to :descriptions, :genres, :aliases, :namevariations, :styles, :urls, :members
+
+  map_to_plural :lists
 
   # Overload build method to provide custom process for
   # converting contents into something useful.

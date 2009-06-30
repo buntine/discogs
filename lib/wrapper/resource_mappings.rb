@@ -38,21 +38,17 @@ module Discogs::ResourceMappings
 
  private
 
-  def find_resource_for_name(name)
-    find_resource do |klass|
-      klass.constants.find do |const|
-        if klass.const_get(const).respond_to? :element_names
-          klass.const_get(const).element_names.any? { |element| element.eql?(name) }
-        end
-      end
+  def find_resource_for_name(name, type=:singular)
+    method = if type == :singular
+      :element_names
+    else
+      :plural_element_names
     end
-  end
 
-  def find_resource_for_plural_name(name)
     find_resource do |klass|
       klass.constants.find do |const|
-        if klass.const_get(const).respond_to? :plural_element_names
-          klass.const_get(const).plural_element_names.any? { |plural_name| plural_name.eql?(name) }
+        if klass.const_get(const).respond_to? method
+          klass.const_get(const).send(method).any? { |element| element.eql?(name) }
         end
       end
     end

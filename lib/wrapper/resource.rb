@@ -33,8 +33,8 @@ class Discogs::Resource
       name = element.expanded_name.to_sym
       setter = (name.to_s + "=").to_sym
 
-      singular = find_resource_for_name(name)
-      plural = singular ? nil : find_resource_for_plural_name(name)
+      singular = find_resource_for_name(name, :singular)
+      plural = singular ? nil : find_resource_for_name(name, :plural)
 
       if !singular.nil?
         nested_object = singular.send(:new, element.to_s)
