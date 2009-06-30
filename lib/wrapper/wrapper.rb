@@ -10,7 +10,7 @@ require File.dirname(__FILE__) + "/resource"
 
 class Discogs::Wrapper
 
-  ROOT_HOST = "http://www.discogs.com"
+  @@root_host = "http://www.discogs.com"
 
   attr_reader :api_key, :requests
 
@@ -58,7 +58,7 @@ class Discogs::Wrapper
     parameters = { :f => "xml", :api_key => @api_key }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.join("&")
 
-    URI.parse(File.join(ROOT_HOST, path + querystring))
+    URI.parse(File.join(@@root_host, path + querystring))
   end
 
   def raise_invalid_api_key
