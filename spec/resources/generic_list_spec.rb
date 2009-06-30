@@ -3,7 +3,10 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::GenericList do
 
   it "should map to all generic lists" do
-    Discogs::GenericList.element_names.should == [ :descriptions, :genres, :aliases, :namevariations, :styles, :urls, :members ]
+    Discogs::GenericList.element_names.should be_instance_of(Array)
+
+    Discogs::GenericList.element_names.include?(:aliases).should be_true
+    Discogs::GenericList.element_names.include?(:urls).should be_true
   end
 
   it "should map to plural lists" do
