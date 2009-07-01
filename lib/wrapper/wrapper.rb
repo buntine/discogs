@@ -30,6 +30,12 @@ class Discogs::Wrapper
     artist.build!
   end
 
+  def get_label(name)
+    label_data = query_api("label/#{name}")
+    label = Discogs::Label.new(label_data)
+    label.build!
+  end
+
  private
 
   def query_api(path, params={})
