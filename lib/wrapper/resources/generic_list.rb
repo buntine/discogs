@@ -2,7 +2,7 @@
 
 class Discogs::GenericList < Discogs::Resource
 
-  map_to :descriptions, :genres, :aliases, :namevariations, :styles, :urls, :members
+  map_to :descriptions, :genres, :aliases, :namevariations, :styles, :urls, :members, :sublabels
 
   map_to_plural :lists
 

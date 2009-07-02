@@ -26,6 +26,14 @@ module Discogs::ResourceMappings
       EOF
     end
 
+    # Used by root classes (Discogs::Artist, etc) that should be built internally.
+    def no_mapping
+      self.class_eval <<-EOF
+        def self.element_names; []; end
+        def self.plural_element_names; []; end
+      EOF
+    end
+
     # Element defaults to prevent excess boilerplate code.
     def element_names
       [ self.to_s.split("::")[-1].downcase.to_sym ]

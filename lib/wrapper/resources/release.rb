@@ -2,6 +2,8 @@
 
 class Discogs::Release < Discogs::Resource
 
+  no_mapping
+
   attr_accessor :id,
                 :status,
                 :title,

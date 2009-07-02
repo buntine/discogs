@@ -14,5 +14,3 @@ class Discogs::Artist::Release < Discogs::Resource
                 :trackinfo
 
 end
-
-

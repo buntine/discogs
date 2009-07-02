@@ -2,6 +2,8 @@
 
 class Discogs::Artist < Discogs::Resource
 
+  no_mapping
+
   attr_accessor :name,
                 :realname,
                 :images,
