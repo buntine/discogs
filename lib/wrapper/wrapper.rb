@@ -12,32 +12,33 @@ class Discogs::Wrapper
 
   @@root_host = "http://www.discogs.com"
 
-  attr_reader :api_key, :requests
+  attr_reader :api_key
 
   def initialize(api_key=nil)
     @api_key = api_key
   end
 
   def get_release(id)
-    release_data = query_api("release/#{id}")
-    release = Discogs::Release.new(release_data)
-    release.build!
+    query_and_build "release/#{id}", Discogs::Release
   end
 
   def get_artist(name)
-    artist_data = query_api("artist/#{name}")
-    artist = Discogs::Artist.new(artist_data)
-    artist.build!
+    query_and_build "artist/#{name}", Discogs::Artist
   end
 
   def get_label(name)
-    label_data = query_api("label/#{name}")
-    label = Discogs::Label.new(label_data)
-    label.build!
+    query_and_build "label/#{name}", Discogs::Label
   end
 
  private
 
+  def query_and_build(path, klass)
+    data = query_api(path)
+    resource = klass.send(:new, data)
+    resource.build!
+  end
+
+  # Queries the API and handles the response.
   def query_api(path, params={})
     response = make_request(path, params)
 
@@ -49,6 +50,7 @@ class Discogs::Wrapper
     inflated_data.read
   end
 
+  # Generates a HTTP request and returns the response.
   def make_request(path, params={})
     uri = build_uri(path, params)
 
