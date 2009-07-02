@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/spec_helper"
 describe Discogs::Wrapper do
 
   before do
-    @api_key = "f20d709d54"
+    @api_key = "some_key"
     @wrapper = Discogs::Wrapper.new(@api_key)
     @release_id = "666666"
   end
