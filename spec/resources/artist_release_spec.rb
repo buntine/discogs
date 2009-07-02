@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 
 describe Discogs::Artist::Release do
 
-  it "should map to artist" do
+  it "should map to release" do
     Discogs::Artist::Release.element_names.should == [ :release ]
   end
 
