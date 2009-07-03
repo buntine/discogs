@@ -11,8 +11,8 @@ describe Discogs::Wrapper do
 
     before do
       @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_artist_xml)
-      @http_response_as_file = mock(StringIO, :read => valid_artist_xml)
+      @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_search_xml)
+      @http_response_as_file = mock(StringIO, :read => valid_search_xml)
       Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
       @http_session = mock("HTTP Session")
       @http_session.should_receive(:request).and_return(@http_response)
@@ -35,8 +35,8 @@ describe Discogs::Wrapper do
       end
 
       it "should have a incrementing num for each exact result" do
-        @search.exactresults.each do |result, index|
-          result.num.should == index+1
+        @search.exactresults.each_with_index do |result, index|
+          result.num.should == (index + 1).to_s
         end
       end
 
@@ -53,15 +53,15 @@ describe Discogs::Wrapper do
     describe "when handling search results" do
 
       it "should have a start attribute" do
-        @search.searchresults.start.should == "1"
+        @search.start.should == "1"
       end
 
       it "should have an end attribute" do
-        @search.searchresults.end.should == "20"
+        @search.end.should == "20"
       end
 
       it "should have number of results attribute" do
-        @search.searchresults.numresults.should == "1767"
+        @search.total_results.should == "1846"
       end
 
       it "should have the search results stored as an array" do
@@ -75,8 +75,8 @@ describe Discogs::Wrapper do
       end
 
       it "should have a incrementing num for each search result" do
-        @search.searchresults.each do |result, index|
-          result.num.should == index+1
+        @search.searchresults.each_with_index do |result, index|
+          result.num.should == (index + 1).to_s
         end
       end
 
@@ -85,11 +85,11 @@ describe Discogs::Wrapper do
       end
 
       it "should have a title for the fourth result" do
-        @search.searchresults[3].type.should == "Satanic Slaughter"
+        @search.searchresults[3].title.should == "Satanic Slaughter"
       end
 
       it "should have a summary for the sixth result" do
-        @search.searchresults[5].summary.should == "Gary Slaughter "
+        @search.searchresults[5].summary.should == "Gary Slaughter"
       end
 
     end

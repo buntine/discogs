@@ -24,14 +24,7 @@ class Discogs::Resource
       root_node = root_node[0]
     end
 
-    # Traverse node attributes.
-    root_node.attributes.each_attribute do |attribute|
-      setter = (attribute.expanded_name + "=").to_sym
-
-      if self.respond_to? setter
-        self.send(setter, attribute.value)
-      end
-    end
+    set_accessors_from_attributes(root_node)
 
     # Traverse node children.
     root_node.each_element do |element|
@@ -45,6 +38,8 @@ class Discogs::Resource
         nested_object = singular.send(:new, element.to_s)
         self.send(setter, nested_object.build!)
       elsif !plural.nil?
+        set_accessors_from_attributes(element)
+
         self.send(setter, [])
         element.each_element do |sub_element|
           nested_object = plural.send(:new, sub_element.to_s)
@@ -60,6 +55,19 @@ class Discogs::Resource
 
   def build_with_resp!
     build!(false)
+  end
+
+ private
+
+  # Sets accessors on _self_ from the attributes of the given element.
+  def set_accessors_from_attributes(element)
+    element.attributes.each_attribute do |attribute|
+      setter = (attribute.expanded_name + "=").to_sym
+
+      if self.respond_to? setter
+        self.send(setter, attribute.value)
+      end
+    end
   end
 
 end
