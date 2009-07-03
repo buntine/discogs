@@ -1,0 +1,132 @@
+<resp requests="16" stat="ok" version="1.0">
+  <exactresults>
+    <result num="1" type="artist">
+    <title>Slaughter</title>
+    <uri>http://www.discogs.com/artist/Slaughter</uri>
+    </result>
+    <result num="2" type="artist">
+    <title>Slaughter (2)</title>
+    <uri>http://www.discogs.com/artist/Slaughter+(2)</uri>
+    </result>
+    <result num="3" type="artist">
+    <title>Slaughter (3)</title>
+    <uri>http://www.discogs.com/artist/Slaughter+(3)</uri>
+    </result>
+    <result num="4" type="artist">
+    <title>Slaughter (4)</title>
+    <uri>http://www.discogs.com/artist/Slaughter+(4)</uri>
+    </result>
+    <result num="5" type="artist">
+    <title>Slaughter</title>
+    <anv>Slaughter</anv>
+    <uri>http://www.discogs.com/artist/Slaughter+Joe?anv=Slaughter</uri>
+    </result>
+    <result num="6" type="artist">
+    <title>Slaughter</title>
+    <anv>Slaughter</anv>
+    <uri>http://www.discogs.com/artist/Gary+Slaughter?anv=Slaughter</uri>
+    </result>
+  </exactresults>
+  <searchresults end="20" numResults="1846" start="1">
+    <result num="1" type="artist">
+    <title>Slaughter</title>
+    <uri>http://www.discogs.com/artist/Slaughter</uri>
+    <summary>Slaughter Mark Slaughter, Jeff Blando, Blas Elias, Dana Strum US hard rock band, founded in 1989 by ...  former Vinnie Vincent Invasion members Mark Slaughter and Dana Strum. Current line-up: Mark Slaughter</summary>
+    </result>
+    <result num="2" type="artist">
+    <title>Karin Slaughter</title>
+    <uri>http://www.discogs.com/artist/Karin+Slaughter</uri>
+    <summary>Karin Slaughter Karin Slaughter </summary>
+    </result>
+    <result num="3" type="label">
+    <title>Slaughter Beatz</title>
+    <uri>http://www.discogs.com/label/Slaughter+Beatz</uri>
+    <summary>Slaughter Beatz </summary>
+    </result>
+    <result num="4" type="artist">
+    <title>Satanic Slaughter</title>
+    <uri>http://www.discogs.com/artist/Satanic+Slaughter</uri>
+    <summary>Satanic Slaughter  </summary>
+    </result>
+    <result num="5" type="artist">
+    <title>Don Slaughter</title>
+    <uri>http://www.discogs.com/artist/Don+Slaughter</uri>
+    <summary>Don Slaughter  </summary>
+    </result>
+    <result num="6" type="artist">
+    <title>Gary Slaughter</title>
+    <uri>http://www.discogs.com/artist/Gary+Slaughter</uri>
+    <summary>Gary Slaughter  </summary>
+    </result>
+    <result num="7" type="artist">
+    <title>Willie Slaughter</title>
+    <uri>http://www.discogs.com/artist/Willie+Slaughter</uri>
+    <summary>Willie Slaughter  </summary>
+    </result>
+    <result num="8" type="artist">
+    <title>Sean Slaughter</title>
+    <uri>http://www.discogs.com/artist/Sean+Slaughter</uri>
+    <summary>Sean Slaughter  </summary>
+    </result>
+    <result num="9" type="release">
+    <title>Man Slaughter - Man Slaughter</title>
+    <uri>http://www.discogs.com/Man-Slaughter-Man-Slaughter/release/1338465</uri>
+    <summary>Man Slaughter Man Slaughter American Tapes AM712 CDr Limited Edition US 13 Mar 2008 Electronic</summary>
+    </result>
+    <result num="10" type="artist">
+    <title>Puke Slaughter</title>
+    <uri>http://www.discogs.com/artist/Puke+Slaughter</uri>
+    <summary>Puke Slaughter Sebastian Becky </summary>
+    </result>
+    <result num="11" type="artist">
+    <title>Jimmy Slaughter</title>
+    <uri>http://www.discogs.com/artist/Jimmy+Slaughter</uri>
+    <summary>Jimmy Slaughter Stefan Sommerhalder </summary>
+    </result>
+    <result num="12" type="artist">
+    <title>Rick Slaughter</title>
+    <uri>http://www.discogs.com/artist/Rick+Slaughter</uri>
+    <summary>Rick Slaughter Ricky Wernham </summary>
+    </result>
+    <result num="13" type="release">
+    <title>Sgt. Slaughter - Sgt. Slaughter</title>
+    <uri>http://www.discogs.com/Sgt-Slaughter-Sgt-Slaughter/release/1833241</uri>
+    <summary>Sgt. Slaughter Sgt. Slaughter Not On Label (Sgt. Slaughter Self-release) none Cassette Single Sided ...  US  Electronic Non-Music Rock Experimental  Constrictions Exploding Lowrider Slaughter's Marauders</summary>
+    </result>
+    <result num="14" type="release">
+    <title>Satanic Slaughter - Satanic Slaughter</title>
+    <uri>http://www.discogs.com/Satanic-Slaughter-Satanic-Slaughter/release/671793</uri>
+    <summary>Satanic Slaughter Satanic Slaughter Necropolis Records NR 004 CD US 1995 Rock Thrash Black Metal</summary>
+    </result>
+    <result num="15" type="artist">
+    <title>Mark Slaughter</title>
+    <uri>http://www.discogs.com/artist/Mark+Slaughter</uri>
+    <summary>Mark Slaughter Mark Allen Slaughter Born July 4, 1964 in Las Vegas, Nevada</summary>
+    </result>
+    <result num="16" type="release">
+    <title>Enos Slaughter - Enos Slaughter</title>
+    <uri>http://www.discogs.com/Enos-Slaughter-Enos-Slaughter/release/1536070</uri>
+    <summary>Enos Slaughter Enos Slaughter Tequila Sunrise Records SUN 006 CDr Limited Edition EP US 2003 Jazz</summary>
+    </result>
+    <result num="17" type="artist">
+    <title>Slaughter (2)</title>
+    <uri>http://www.discogs.com/artist/Slaughter+(2)</uri>
+    <summary>Slaughter (2)  early 80s killer hybrid of death thrash metal and hardcore punk.</summary>
+    </result>
+    <result num="18" type="label">
+    <title>Slaughter Productions</title>
+    <uri>http://www.discogs.com/label/Slaughter+Productions</uri>
+    <summary>Slaughter Productions Italian industrial/noise label and mailorder run by [a=Marco Corbelli].</summary>
+    </result>
+    <result num="19" type="release">
+    <title>Slaughter - Mass Slaughter: The Best Of Slaughter</title>
+    <uri>http://www.discogs.com/Slaughter-Mass-Slaughter-The-Best-Of-Slaughter/release/721597</uri>
+    <summary>Slaughter Mass Slaughter: The Best Of Slaughter Chrysalis F2 32696 EMI Records 7243 8 32696 2 4 CD ...  [Lead], Vocals  Mark Slaughter Producer, Arranged By, Bass, Vocals, Written-By  Dana Strum Producer</summary>
+    </result>
+    <result num="20" type="release">
+    <title>Slaughter - Mass Slaughter: The Best Of Slaughter</title>
+    <uri>http://www.discogs.com/Slaughter-Mass-Slaughter-The-Best-Of-Slaughter/release/1578800</uri>
+    <summary>Slaughter Mass Slaughter: The Best Of Slaughter EMI Records 7243 8 32696 2 4 CD Compilation ...   Mark Slaughter Producer, Arranged By, Bass, Vocals, Written-By  Dana Strum Producer, Arranged By</summary>
+    </result>
+  </searchresults>
+</resp>

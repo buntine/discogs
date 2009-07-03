@@ -15,9 +15,14 @@ class Discogs::Resource
   end
 
   # Builds the resource with it's content.
-  def build!
+  def build!(remove_resp=true)
     document = REXML::Document.new(@content, :ignore_whitespace_nodes => :all)
-    root_node = (document.root.expanded_name == "resp") ? document.root[0] : document.root
+    root_node = document.root
+
+    # Ignore the <resp> element if necessary.
+    if remove_resp and document.root.expanded_name == "resp"
+      root_node = root_node[0]
+    end
 
     # Traverse node attributes.
     root_node.attributes.each_attribute do |attribute|
@@ -51,6 +56,10 @@ class Discogs::Resource
     end
  
     self
+  end
+
+  def build_with_resp!
+    build!(false)
   end
 
 end

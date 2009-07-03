@@ -18,4 +18,10 @@ describe Discogs::Resource do
     @resource.original_content.should == sample_valid_binary
   end
 
+  it "should be able to build the content"
+
+  it "should remove the <resp> element by default"
+
+  it "should leave the <resp> element if told to"
+
 end
