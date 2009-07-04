@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   
   s.name = "discogs"
-  s.version = "0.3"
+  s.version = "0.3.1"
   s.date = "2009-07-04"
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API"
   s.homepage = "http://www.github.com/buntine/discogs"

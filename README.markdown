@@ -14,7 +14,7 @@ ABOUT
   * Labels
   * Searching
 
-  The API is [documented here](http://www.discogs.com/help/api)
+  The API is [documented here](http://www.discogs.com/help/api).
 
 INSTALLATION
 ------------
