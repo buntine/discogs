@@ -38,24 +38,24 @@ USAGE
     label = wrapper.get_label("Monitor Records")
     search_results = wrapper.search("Necrovore")
 
-    puts artist.name                      # => Master's Hammer
-    puts artist.releases[0].title         # => Finished
-    puts artist.releases[1].year          # => 1989
-    puts artist.releases[4].extraartists  # => [ "Arakain", "Debustrol" ]
+    artist.name                         # => Master's Hammer
+    artist.releases[0].title            # => Finished
+    artist.releases[1].year             # => 1989
+    artist.releases[4].extraartists     # => [ "Arakain", "Debustrol" ]
 
-    puts release.title                       # => "Ritual"
-    puts release.labels[0].name              # => "Osmose Productions"
-    puts release.formats[0].descriptions[0]  # => "LP"
-    puts release.styles                      # => [ "Black Metal", "Death Metal" ]
-    puts release.tracklist[1].title          # => "Pad modly"
+    release.title                       # => "Ritual"
+    release.labels[0].name              # => "Osmose Productions"
+    release.formats[0].descriptions[0]  # => "LP"
+    release.styles                      # => [ "Black Metal", "Death Metal" ]
+    release.tracklist[1].title          # => "Pad modly"
 
-    puts label.images[0].width     # => "220"
-    puts label.releases.length     # => 22
-    puts label.releases[3].artist  # => "Root"
-    puts label.releases[7].catno   # => "MON007"
+    label.images[0].width               # => "220"
+    label.releases.length               # => 22
+    label.releases[3].artist            # => "Root"
+    label.releases[7].catno             # => "MON007"
 
-    puts search.total_results             # => "124"
-    puts search.exactresults[0].type      # => "artist"
-    puts search.exactresults[0].title     # => "Necrovore"
-    puts search.searchresults[3].title    # => "Necrovore - Demo '87"
-    puts search.searchresults[3].summary  # => "First and only demo tape"
+    search.total_results                # => "124"
+    search.exactresults[0].type         # => "artist"
+    search.exactresults[0].title        # => "Necrovore"
+    search.searchresults[3].title       # => "Necrovore - Demo '87"
+    search.searchresults[3].summary     # => "First and only demo tape"
