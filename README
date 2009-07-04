@@ -55,7 +55,7 @@ USAGE
     puts label.releases[7].catno   # => "MON007"
 
     puts search.total_results             # => "124"
-    puts search.exactresults[0].typ e     # => "artist"
+    puts search.exactresults[0].type      # => "artist"
     puts search.exactresults[0].title     # => "Necrovore"
     puts search.searchresults[3].title    # => "Necrovore - Demo '87"
     puts search.searchresults[3].summary  # => "First and only demo tape"

@@ -8,10 +8,10 @@ class Discogs::Label::Release < Discogs::Resource
                 :status,
                 :type,
                 :catno,
-		:artist,
+                :artist,
                 :title,
                 :format,
-		:year,
+                :year,
                 :trackinfo
 
 end
