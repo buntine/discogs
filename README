@@ -20,7 +20,8 @@ INSTALLATION
 
   You can install the library via Rubygems:
   [code]
-    sudo gem install not_sure
+    $ gem sources -a http://gems.github.com
+    $ sudo gem install buntine-discogs
   [/code]
 
 USAGE
@@ -59,4 +60,3 @@ USAGE
     puts search.searchresults[3].title    # => "Necrovore - Demo '87"
     puts search.searchresults[3].summary  # => "First and only demo tape"
   [/code]
-
