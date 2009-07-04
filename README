@@ -1,4 +1,62 @@
 Discogs::Wrapper
 --------------------------
 
-A 100% Ruby wrapper of the http://www.discogs.com API.
+ABOUT
+
+  A 100% Ruby wrapper of the http://www.discogs.com API. No dependencies, no extra gems. :)
+
+  Discogs::Wrapper abstracts all the nasty boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need.
+
+  Full support for everything in version 1.0 of the API:
+
+    - Artists
+    - Releases
+    - Labels
+    - Searching
+
+  The API is documented here: http://www.discogs.com/help/api
+
+INSTALLATION
+
+  You can install the library via Rubygems:
+  [code]
+    sudo gem install not_sure
+  [/code]
+
+USAGE
+
+  To use this library, you must supply a valid Discogs API key.
+  [code]
+    wrapper = Discogs::Wrapper.new("my_api_key")
+  [/code]
+
+  Accessing information is easy:
+  [code]
+    artist = wrapper.get_artist("Master's Hammer")
+    release = wrapper.get_release("611973") # Supply an ID.
+    label = wrapper.get_label("Monitor Records")
+    search_results = wrapper.search("Necrovore")
+
+    puts artist.name                      # => Master's Hammer
+    puts artist.releases[0].title         # => Finished
+    puts artist.releases[1].year          # => 1989
+    puts artist.releases[4].extraartists  # => [ "Arakain", "Debustrol" ]
+
+    puts release.title                       # => "Ritual"
+    puts release.labels[0].name              # => "Osmose Productions"
+    puts release.formats[0].descriptions[0]  # => "LP"
+    puts release.styles                      # => [ "Black Metal", "Death Metal" ]
+    puts release.tracklist[1].title          # => "Pad modly"
+
+    puts label.images[0].width     # => "220"
+    puts label.releases.length     # => 22
+    puts label.releases[3].artist  # => "Root"
+    puts label.releases[7].catno   # => "MON007"
+
+    puts search.total_results             # => "124"
+    puts search.exactresults[0].typ e     # => "artist"
+    puts search.exactresults[0].title     # => "Necrovore"
+    puts search.searchresults[3].title    # => "Necrovore - Demo '87"
+    puts search.searchresults[3].summary  # => "First and only demo tape"
+  [/code]
+
