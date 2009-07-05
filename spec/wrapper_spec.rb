@@ -23,6 +23,12 @@ describe Discogs::Wrapper do
     @wrapper.api_key.should == @api_key
   end
 
+  describe "requested URIs" do
+
+    it "should sanitize the path correctly"
+
+  end
+
   ## NOTE: See ./spec/wrapper_methods/*.rb for indepth tests on valid API requests.
 
   describe "when requesting a release" do

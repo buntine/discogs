@@ -25,6 +25,8 @@ INSTALLATION
 USAGE
 -----
   To use this library, you must supply a valid Discogs API key.
+    require 'discogs'
+
     wrapper = Discogs::Wrapper.new("my_api_key")
 
   Accessing information is easy:

@@ -74,7 +74,13 @@ class Discogs::Wrapper
     parameters = { :f => "xml", :api_key => @api_key }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.join("&")
 
-    URI.parse(File.join(@@root_host, path + querystring))
+    URI.parse(File.join(@@root_host, sanitize_path(path, querystring)))
+  end
+
+  def sanitize_path(*path_parts)
+    clean_path = path_parts.map { |part| part.gsub(/\s/, '+') }
+
+    clean_path.join
   end
 
   def raise_invalid_api_key
