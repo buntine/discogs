@@ -72,7 +72,7 @@ class Discogs::Wrapper
 
   def build_uri(path, params={})
     parameters = { :f => "xml", :api_key => @api_key }.merge(params)
-    querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.join("&")
+    querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
 
     URI.parse(File.join(@@root_host, sanitize_path(path, querystring)))
   end

@@ -2,9 +2,15 @@ require File.dirname(__FILE__) + "/spec_helper"
 
 describe Discogs::Wrapper do
 
-  def mock_http_with_response(code="200")
+  def mock_http_with_response(code="200", response=nil)
     @http_request = mock(Net::HTTP)
     @http_response = mock(Net::HTTPResponse, :code => code, :body => "")
+
+    unless response.nil?
+      @http_response_as_file = mock(StringIO, :read => response)
+      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
+    end
+
     @http_session = mock("HTTP Session")
     @http_session.should_receive(:request).and_return(@http_response)
     @http_request.should_receive(:start).and_yield(@http_session)
@@ -17,6 +23,7 @@ describe Discogs::Wrapper do
     @release_id = "666666"
     @artist_name = "Dark"
     @label_name = "Monitor"
+    @search_term = "barry"
   end
 
   it "should have an api key" do
@@ -24,8 +31,44 @@ describe Discogs::Wrapper do
   end
 
   describe "requested URIs" do
+    before do
+      @uri = mock("uri", :host => "", :query => "", :path => "")
+    end
 
-    it "should sanitize the path correctly"
+    it "should generate the correct release URL to parse" do
+      mock_http_with_response "200", valid_release_xml
+      URI.should_receive(:parse).with("http://www.discogs.com/release/666666?api_key=some_key&f=xml").and_return(@uri)
+
+      @wrapper.get_release(@release_id)
+    end
+
+    it "should generate the correct artist URL to parse" do
+      mock_http_with_response "200", valid_artist_xml
+      URI.should_receive(:parse).with("http://www.discogs.com/artist/Dark?api_key=some_key&f=xml").and_return(@uri)
+
+      @wrapper.get_artist(@artist_name)
+    end
+
+    it "should generate the correct label URL to parse" do
+      mock_http_with_response "200", valid_label_xml
+      URI.should_receive(:parse).with("http://www.discogs.com/label/Monitor?api_key=some_key&f=xml").and_return(@uri)
+
+      @wrapper.get_label(@label_name)
+    end
+
+    it "should generate the correct search URL to parse" do
+      mock_http_with_response "200", valid_search_xml
+      URI.should_receive(:parse).with("http://www.discogs.com/search?api_key=some_key&f=xml&q=barry&type=all").and_return(@uri)
+
+      @wrapper.search(@search_term)
+    end
+
+    it "should sanitize the path correctly" do
+      mock_http_with_response "200", valid_artist_xml
+      URI.should_receive(:parse).with("http://www.discogs.com/artist/A+very+long+band+name?api_key=some_key&f=xml").and_return(@uri)
+
+      @wrapper.get_artist("A very long band name")
+    end 
 
   end
 
@@ -34,9 +77,7 @@ describe Discogs::Wrapper do
   describe "when requesting a release" do
 
     it "should successfully return a Discogs::Release object" do
-      @http_response_as_file = mock(StringIO, :read => valid_release_xml)
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      mock_http_with_response "200"
+      mock_http_with_response "200", valid_release_xml
  
       @wrapper.get_release(@release_id).should be_instance_of(Discogs::Release)
     end
@@ -58,9 +99,7 @@ describe Discogs::Wrapper do
   describe "when requesting an artist" do
 
     it "should successfully return a Discogs::Artist object" do
-      @http_response_as_file = mock(StringIO, :read => valid_artist_xml)
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      mock_http_with_response "200"
+      mock_http_with_response "200", valid_artist_xml
  
       @wrapper.get_artist(@artist_name).should be_instance_of(Discogs::Artist)
     end
@@ -82,9 +121,7 @@ describe Discogs::Wrapper do
   describe "when requesting a label" do
 
     it "should successfully return a Discogs::Label object" do
-      @http_response_as_file = mock(StringIO, :read => valid_label_xml)
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      mock_http_with_response "200"
+      mock_http_with_response "200", valid_label_xml
  
       @wrapper.get_label(@label_name).should be_instance_of(Discogs::Label)
     end

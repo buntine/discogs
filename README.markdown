@@ -35,9 +35,9 @@ USAGE
     label = wrapper.get_label("Monitor Records")
     search_results = wrapper.search("Necrovore")
 
-    artist.name                         # => Master's Hammer
-    artist.releases[0].title            # => Finished
-    artist.releases[1].year             # => 1989
+    artist.name                         # => "Master's Hammer"
+    artist.releases[0].title            # => "Finished"
+    artist.releases[1].year             # => "1989"
     artist.releases[4].extraartists     # => [ "Arakain", "Debustrol" ]
 
     release.title                       # => "Ritual"
