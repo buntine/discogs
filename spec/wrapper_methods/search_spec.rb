@@ -61,7 +61,7 @@ describe Discogs::Wrapper do
       end
 
       it "should have number of results attribute" do
-        @search.total_results.should == "1846"
+        @search.total_results.should == 1846
       end
 
       it "should have the search results stored as an array" do

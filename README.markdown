@@ -51,7 +51,7 @@ USAGE
     label.releases[3].artist            # => "Root"
     label.releases[7].catno             # => "MON007"
 
-    search.total_results                # => "124"
+    search.total_results                # => 124
     search.exactresults[0].type         # => "artist"
     search.exactresults[0].title        # => "Necrovore"
     search.searchresults[3].title       # => "Necrovore - Demo '87"

@@ -11,7 +11,7 @@ class Discogs::Search < Discogs::Resource
                 :numResults
 
   def total_results
-    self.numResults
+    self.numResults.to_i
   end
 
 end
