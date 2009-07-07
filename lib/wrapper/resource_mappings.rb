@@ -1,4 +1,8 @@
 # Abstracts the resource-mapping class methods. 
+#
+# Each "resource" in the wrapper maps to one or more elements 
+# in the API response. This way they can be recursively built
+# without having to manually specify it in each class.
 
 module Discogs::ResourceMappings
 

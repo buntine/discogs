@@ -34,9 +34,12 @@ class Discogs::Resource
       singular = find_resource_for_name(name, :singular)
       plural = singular ? nil : find_resource_for_name(name, :plural)
 
+      # Create an instance of the named resource and build it.
       if !singular.nil?
         nested_object = singular.send(:new, element.to_s)
         self.send(setter, nested_object.build!)
+
+      # Setup an array and build each child.
       elsif !plural.nil?
         set_accessors_from_attributes(element)
 
@@ -45,6 +48,7 @@ class Discogs::Resource
           nested_object = plural.send(:new, sub_element.to_s)
           self.send(name) << nested_object.build!
         end
+
       elsif self.respond_to? setter
         self.send(setter, element.text)
       end
