@@ -13,4 +13,25 @@ class Discogs::Artist < Discogs::Resource
                 :members,
                 :releases
 
+  def main_releases
+    filter_releases("Main")
+  end
+
+  def bootlegs
+    filter_releases("UnofficialRelease")
+  end
+
+  def appearances
+    filter_releases("Appearance")
+  end
+
+ private
+
+  # Simple helper for filtering a particular type of release.
+  def filter_releases(type)
+    self.releases.find_all do |release|
+      release.type == type
+    end
+  end
+
 end

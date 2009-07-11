@@ -61,6 +61,16 @@
         <format>12", RP</format>
         <label>Warp Records</label>
       </release>
+      <release id="1231066" status="Accepted" type="Appearance">
+        <title>Windowlicker</title>
+        <format>12", RP</format>
+        <label>Warp Records</label>
+      </release>
+      <release id="1335044" status="Accepted" type="UnofficialRelease">
+        <title>Windowlicker</title>
+        <format>12", RP</format>
+        <label>Warp Records</label>
+      </release>
     </releases>
   </artist>
 </resp>

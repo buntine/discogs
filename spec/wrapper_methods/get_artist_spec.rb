@@ -47,6 +47,21 @@ describe Discogs::Wrapper do
         @artist.members[0].should == "Big Boss"
       end
 
+      it "should be able to filter non-main releases" do
+        @artist.main_releases.should be_instance_of(Array)
+        @artist.main_releases.length.should == 4
+      end
+
+      it "should be able to filter non-bootleg releases" do
+        @artist.bootlegs.should be_instance_of(Array)
+        @artist.bootlegs.length.should == 1
+      end
+
+      it "should be able to filter non-main releases" do
+        @artist.appearances.should be_instance_of(Array)
+        @artist.appearances.length.should == 1
+      end
+
     end
 
     describe "when calling complex artist attributes" do
@@ -73,6 +88,7 @@ describe Discogs::Wrapper do
 
       it "should have a traversible list of releases" do
         @artist.releases.should be_instance_of(Array)
+        @artist.releases.length.should == 6
         @artist.releases[0].should be_instance_of(Discogs::Artist::Release)
       end
 
