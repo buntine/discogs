@@ -48,7 +48,27 @@ describe Discogs::Wrapper do
         @search.exactresults[5].anv.should == "Slaughter"
       end
 
-    end
+      it "should be able to filter all non-artists from exact results" do
+        @search.exact(:artist).should be_instance_of(Array)
+        @search.exact(:artist).length.should == 6
+      end
+
+      it "should be able to filter all non-releases from exact results" do
+        @search.exact(:release).should be_instance_of(Array)
+        @search.exact(:release).length.should == 1
+      end
+
+      it "should be able to filter all non-labels from exact results" do
+        @search.exact(:label).should be_instance_of(Array)
+        @search.exact(:label).length.should == 1
+      end
+
+      it "should be simply return all exact results without a filter" do
+        @search.exact.should be_instance_of(Array)
+        @search.exact.length.should == 8
+      end
+
+   end
 
     describe "when handling search results" do
 
@@ -90,6 +110,26 @@ describe Discogs::Wrapper do
 
       it "should have a summary for the sixth result" do
         @search.searchresults[5].summary.should == "Gary Slaughter"
+      end
+
+      it "should be able to filter all non-artists from extended results" do
+        @search.results(:artist).should be_instance_of(Array)
+        @search.results(:artist).length.should == 12
+      end
+
+      it "should be able to filter all non-releases from extended results" do
+        @search.results(:release).should be_instance_of(Array)
+        @search.results(:release).length.should == 6
+      end
+
+      it "should be able to filter all non-labels from extended results" do
+        @search.results(:label).should be_instance_of(Array)
+        @search.results(:label).length.should == 2
+      end
+
+      it "should be simply return all extended results without a filter" do
+        @search.results.should be_instance_of(Array)
+        @search.results.length.should == 20
       end
 
     end

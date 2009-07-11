@@ -26,6 +26,16 @@
     <anv>Slaughter</anv>
     <uri>http://www.discogs.com/artist/Gary+Slaughter?anv=Slaughter</uri>
     </result>
+    <result num="7" type="release">
+    <title>Barry Slaughter</title>
+    <anv>Slaughter</anv>
+    <uri>http://www.discogs.com/release/Barry+Slaughter?anv=Slaughter</uri>
+    </result>
+    <result num="8" type="label">
+    <title>Slaughter Records</title>
+    <anv>Slaughter</anv>
+    <uri>http://www.discogs.com/label/Slaughter+Records?anv=Slaughter</uri>
+    </result>
   </exactresults>
   <searchresults end="20" numResults="1846" start="1">
     <result num="1" type="artist">
