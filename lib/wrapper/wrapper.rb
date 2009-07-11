@@ -52,6 +52,7 @@ class Discogs::Wrapper
 
     raise_unknown_resource(path) if response.code == "404"
     raise_invalid_api_key if response.code == "400"
+    raise_internal_server_error if response.code == "500"
 
     # Unzip the response data.
     inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
@@ -89,6 +90,10 @@ class Discogs::Wrapper
 
   def raise_unknown_resource(path='')
     raise Discogs::UnknownResource, "Unknown Discogs resource: #{path}"
+  end
+
+  def raise_internal_server_error
+    raise Discogs::InternalServerError, "The remote server cannot complete the request"
   end
 
 end

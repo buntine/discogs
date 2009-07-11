@@ -94,6 +94,12 @@ describe Discogs::Wrapper do
       lambda { @wrapper.get_release(@release_id) }.should raise_error(Discogs::UnknownResource)
     end
 
+    it "should raise an exception if the server dies a horrible death" do
+      mock_http_with_response "500"
+
+      lambda { @wrapper.get_release(@release_id) }.should raise_error(Discogs::InternalServerError)
+    end
+
   end
 
   describe "when requesting an artist" do
@@ -116,6 +122,12 @@ describe Discogs::Wrapper do
       lambda { @wrapper.get_artist(@artist_name) }.should raise_error(Discogs::UnknownResource)
     end
 
+    it "should raise an exception if the server dies a horrible death" do
+      mock_http_with_response "500"
+
+      lambda { @wrapper.get_artist(@artist_name) }.should raise_error(Discogs::InternalServerError)
+    end
+
   end
 
   describe "when requesting a label" do
@@ -136,6 +148,12 @@ describe Discogs::Wrapper do
       mock_http_with_response "404"
 
       lambda { @wrapper.get_label(@label_name) }.should raise_error(Discogs::UnknownResource)
+    end
+
+    it "should raise an exception if the server dies a horrible death" do
+      mock_http_with_response "500"
+
+      lambda { @wrapper.get_label(@label_name) }.should raise_error(Discogs::InternalServerError)
     end
 
   end
