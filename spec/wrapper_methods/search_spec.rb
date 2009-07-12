@@ -163,7 +163,7 @@ describe Discogs::Wrapper do
     before do
       mock_search(2)
 
-      @search = @wrapper.search(@search_term, 2)
+      @search = @wrapper.search(@search_term, :page => 2)
     end
 
     describe "when dealing with page information" do

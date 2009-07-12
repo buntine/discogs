@@ -30,8 +30,10 @@ class Discogs::Wrapper
     query_and_build "label/#{name}", Discogs::Label
   end
 
-  def search(term, type=:all)
-    params = { :q => term, :type => type }
+  def search(term, options={})
+    opts = { :type => :all, :page => 1 }.merge(options)
+    params = { :q => term, :type => opts[:type], :page => opts[:page] }
+
     data = query_api("search", params)
     resource = Discogs::Search.new(data)
 
