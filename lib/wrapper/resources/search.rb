@@ -14,6 +14,10 @@ class Discogs::Search < Discogs::Resource
     self.numResults.to_i
   end
 
+  def current_page
+    (start.to_i / page_size) + 1
+  end
+
   def exact(filter=nil)
     filter_results(filter, self.exactresults)
   end
@@ -33,6 +37,10 @@ class Discogs::Search < Discogs::Resource
         result.type == filter.to_s
       end
     end
+  end
+
+  def page_size
+    self.end.to_i - (self.start.to_i - 1)
   end
 
 end

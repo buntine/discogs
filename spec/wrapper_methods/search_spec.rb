@@ -22,6 +22,14 @@ describe Discogs::Wrapper do
       @search = @wrapper.search(@search_term)
     end
 
+    describe "when dealing with page information" do
+
+      it "should have a current_page method" do
+        @search.current_page.should == 1
+      end
+
+    end
+
     describe "when handling exact results" do
 
       it "should have the exact results stored as an array" do
