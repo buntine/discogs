@@ -7,17 +7,21 @@ describe Discogs::Wrapper do
     @search_term = "slaughter"
   end
 
+  def mock_search(page)
+    @http_request = mock(Net::HTTP)
+    @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_search_xml(page))
+    @http_response_as_file = mock(StringIO, :read => valid_search_xml(page))
+    Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
+    @http_session = mock("HTTP Session")
+    @http_session.should_receive(:request).and_return(@http_response)
+    @http_request.should_receive(:start).and_yield(@http_session)
+    Net::HTTP.should_receive(:new).and_return(@http_request)
+  end
+
   describe "when asking for search result information" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_search_xml)
-      @http_response_as_file = mock(StringIO, :read => valid_search_xml)
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_session = mock("HTTP Session")
-      @http_session.should_receive(:request).and_return(@http_response)
-      @http_request.should_receive(:start).and_yield(@http_session)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      mock_search(1)
 
       @search = @wrapper.search(@search_term)
     end
@@ -71,7 +75,12 @@ describe Discogs::Wrapper do
         @search.exact(:label).length.should == 1
       end
 
-      it "should be simply return all exact results without a filter" do
+      it "should return an empty array on a junk filter" do
+        @search.exact(:cheesecake).should be_instance_of(Array)
+        @search.exact(:cheesecake).should be_empty
+      end
+
+      it "should simply return all exact results without a filter" do
         @search.exact.should be_instance_of(Array)
         @search.exact.length.should == 8
       end
@@ -135,13 +144,84 @@ describe Discogs::Wrapper do
         @search.results(:label).length.should == 2
       end
 
-      it "should be simply return all extended results without a filter" do
+      it "should return an empty array on a junk filter" do
+        @search.results(:cheesecake).should be_instance_of(Array)
+        @search.results(:cheesecake).should be_empty
+      end
+
+      it "should simply return all extended results without a filter" do
         @search.results.should be_instance_of(Array)
         @search.results.length.should == 20
       end
 
     end
  
+  end
+
+  describe "when getting the next page" do
+
+    before do
+      mock_search(2)
+
+      @search = @wrapper.search(@search_term, 2)
+    end
+
+    describe "when dealing with page information" do
+
+      it "should have a current_page method" do
+        @search.current_page.should == 2
+      end
+
+    end
+
+    describe "when handling exact results" do
+
+      it "should not have any exact results" do
+        @search.exactresults.should be_nil
+      end
+
+      it "should return empty array for exact filtering" do
+        @search.exact.should == []
+      end
+
+      it "should still allow filtering and return an empty array" do
+        @search.exact(:artist).should == []
+      end
+
+    end
+
+    describe "when handling search results" do
+
+      it "should have a start attribute" do
+        @search.start.should == "21"
+      end
+
+      it "should have an end attribute" do
+        @search.end.should == "40"
+      end
+
+      it "should have number of results attribute" do
+        @search.total_results.should == 1846
+      end
+
+      it "should have the search results stored as an array" do
+        @search.searchresults.should be_instance_of(Array)
+      end
+
+      it "should be stored as result objects" do
+        @search.searchresults.each do |result|
+          result.should be_instance_of(Discogs::Search::Result)
+        end
+      end
+
+      it "should have a incrementing num for each search result" do
+        @search.searchresults.each_with_index do |result, index|
+          result.num.should == (index + 21).to_s
+        end
+      end
+
+    end
+
   end
 
 end

@@ -3,22 +3,23 @@ require 'spec'
 require File.dirname(__FILE__) + '/../lib/discogs'
 
 def valid_release_xml
-  data = File.read(File.join(File.dirname(__FILE__), "samples", "valid_release.xml"))
-  data.gsub /\n/, ''
+  read_sample "valid_release.xml"
 end
 
 def valid_artist_xml
-  data = File.read(File.join(File.dirname(__FILE__), "samples", "valid_artist.xml"))
-  data.gsub /\n/, ''
+  read_sample "valid_artist.xml"
 end
 
 def valid_label_xml
-  data = File.read(File.join(File.dirname(__FILE__), "samples", "valid_label.xml"))
-  data.gsub /\n/, ''
+  read_sample "valid_label.xml"
 end
 
-def valid_search_xml
-  data = File.read(File.join(File.dirname(__FILE__), "samples", "valid_search_results.xml"))
+def valid_search_xml(page=1)
+  read_sample "valid_search_results_#{page}.xml"
+end
+
+def read_sample(filename)
+  data = File.read(File.join(File.dirname(__FILE__), "samples", filename))
   data.gsub /\n/, ''
 end
 

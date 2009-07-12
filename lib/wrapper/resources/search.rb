@@ -30,6 +30,8 @@ class Discogs::Search < Discogs::Resource
 
   # An easy way for filtering a particular "type" of result (Artist, Release, etc)
   def filter_results(filter, results)
+    results ||= []
+
     if filter.nil?
       results
     else
