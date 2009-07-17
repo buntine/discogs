@@ -34,6 +34,11 @@ class Discogs::Search < Discogs::Resource
     filter_results(filter, self.searchresults)
   end
 
+  # Returns the closest exact result for _filter_, or nil.
+  def closest(filter)
+    exact(filter)[0] rescue nil
+  end
+
  private
 
   # An easy way for filtering a particular "type" of result (Artist, Release, etc)

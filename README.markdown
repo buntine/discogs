@@ -12,7 +12,7 @@ ABOUT
   * Artists
   * Releases
   * Labels
-  * Searching
+  * Searching (all of the above)
 
   The API is [documented here](http://www.discogs.com/help/api).
 
@@ -52,7 +52,16 @@ USAGE
     label.releases[7].catno             # => "MON007"
 
     search.total_results                # => 124
-    search.exactresults[0].type         # => "artist"
-    search.exactresults[0].title        # => "Necrovore"
-    search.searchresults[3].title       # => "Necrovore - Demo '87"
-    search.searchresults[3].summary     # => "First and only demo tape"
+    search.total_pages                  # => 7
+    search.current_page                 # => 1
+
+    # Exact results
+    search.exact[0].type                # => "artist"
+    search.exact[0].title               # => "Necrovore"
+    search.exact(:label)[1].title       # => "Necrovores Records"
+    search.closest(:artist)             # => &lt;Discogs::Search::Result:0x324ad3e2&gt;
+
+    # All results
+    search.results[3].title             # => "Necrovore - Demo '87"
+    search.results[3].summary           # => "First and only demo tape"
+    search.results(:release)[0]         # => &lt;Discogs::Search::Result:0x343de34a&gt;

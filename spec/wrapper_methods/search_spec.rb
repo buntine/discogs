@@ -89,6 +89,85 @@ describe Discogs::Wrapper do
         @search.exact.length.should == 8
       end
 
+      it "should have a shortcut for accessing the first exact artist" do
+        @search.closest(:artist).should be_instance_of(Discogs::Search::Result)
+        @search.closest(:artist).should == @search.exact(:artist)[0]
+      end
+
+      it "should have a shortcut for accessing the first exact release" do
+        @search.closest(:release).should be_instance_of(Discogs::Search::Result)
+        @search.closest(:release).should == @search.exact(:release)[0]
+      end
+
+      it "should have a shortcut for accessing the first exact label" do
+        @search.closest(:label).should be_instance_of(Discogs::Search::Result)
+        @search.closest(:label).should == @search.exact(:label)[0]
+      end
+
+      it "should return nil on junk filter for closest match" do
+        @search.closest(:alcoholic).should be_nil
+      end
+
+   end
+
+    describe "when handling search results" do
+
+      it "should have a start attribute" do
+        @search.start.should == "1"
+      end
+
+      it "should have an end attribute" do
+        @search.end.should == "20"
+      end
+
+      it "should have number of results attribute" do
+        @search.total_results.should == 1846
+      end
+
+      it "should have number of pages attribute" do
+        @search.total_pages.should == 93
+      end
+
+      it "should have the search results stored as an array" do
+        @search.searchresults.should be_instance_of(Array)
+      end
+
+      it "should be stored as result objects" do
+        @search.searchresults.each do |result|
+          result.should be_instance_of(Discogs::Search::Result)
+        end
+      end
+
+   end
+
+    describe "when handling search results" do
+
+      it "should have a start attribute" do
+        @search.start.should == "1"
+      end
+
+      it "should have an end attribute" do
+        @search.end.should == "20"
+      end
+
+      it "should have number of results attribute" do
+        @search.total_results.should == 1846
+      end
+
+      it "should have number of pages attribute" do
+        @search.total_pages.should == 93
+      end
+
+      it "should have the search results stored as an array" do
+        @search.searchresults.should be_instance_of(Array)
+      end
+
+      it "should be stored as result objects" do
+        @search.searchresults.each do |result|
+          result.should be_instance_of(Discogs::Search::Result)
+        end
+      end
+
    end
 
     describe "when handling search results" do
@@ -198,6 +277,16 @@ describe Discogs::Wrapper do
 
       it "should still allow filtering and return an empty array" do
         @search.exact(:artist).should == []
+      end
+
+      it "should return nil for closest matches when no exact results are available" do
+        @search.closest(:artist).should be_nil
+        @search.closest(:release).should be_nil
+        @search.closest(:label).should be_nil
+      end
+
+      it "should return nil on junk filter for closest match" do
+        @search.closest(:alcoholic).should be_nil
       end
 
     end
