@@ -18,6 +18,14 @@ class Discogs::Search < Discogs::Resource
     (start.to_i / page_size) + 1
   end
 
+  def total_pages
+    (total_results.to_f / page_size).ceil
+  end
+
+  def last_page?
+    current_page == total_pages
+  end
+
   def exact(filter=nil)
     filter_results(filter, self.exactresults)
   end

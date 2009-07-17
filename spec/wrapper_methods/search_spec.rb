@@ -32,6 +32,10 @@ describe Discogs::Wrapper do
         @search.current_page.should == 1
       end
 
+      it "should be able to report if this is the last page" do
+        @search.last_page?.should be_false
+      end
+
     end
 
     describe "when handling exact results" do
@@ -99,6 +103,10 @@ describe Discogs::Wrapper do
 
       it "should have number of results attribute" do
         @search.total_results.should == 1846
+      end
+
+      it "should have number of pages attribute" do
+        @search.total_pages.should == 93
       end
 
       it "should have the search results stored as an array" do
@@ -172,6 +180,10 @@ describe Discogs::Wrapper do
         @search.current_page.should == 2
       end
 
+      it "should be able to report if this is the last page" do
+        @search.last_page?.should be_false
+      end
+
     end
 
     describe "when handling exact results" do
@@ -202,6 +214,10 @@ describe Discogs::Wrapper do
 
       it "should have number of results attribute" do
         @search.total_results.should == 1846
+      end
+
+      it "should have number of pages attribute (still)" do
+        @search.total_pages.should == 93
       end
 
       it "should have the search results stored as an array" do
