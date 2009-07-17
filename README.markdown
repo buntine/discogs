@@ -58,10 +58,10 @@ USAGE
     # Exact results
     search.exact[0].type                # => "artist"
     search.exact[0].title               # => "Necrovore"
-    search.exact(:label)[1].title       # => "Necrovores Records"
-    search.closest(:artist)             # => &lt;Discogs::Search::Result:0x324ad3e2&gt;
+    search.exact(:label)[0].title       # => "Necrovores Records"
+    search.closest(:artist)             # => <Discogs::Search::Result:0x324ad3e2>
 
     # All results
     search.results[3].title             # => "Necrovore - Demo '87"
     search.results[3].summary           # => "First and only demo tape"
-    search.results(:release)[0]         # => &lt;Discogs::Search::Result:0x343de34a&gt;
+    search.results(:release)[0]         # => <Discogs::Search::Result:0x343de34a>
