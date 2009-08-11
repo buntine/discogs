@@ -9,7 +9,7 @@ class Discogs::Artist::Release < Discogs::Resource
                 :type,
                 :title,
                 :format,
-		:year,
+                :year,
                 :label,
                 :trackinfo
 
