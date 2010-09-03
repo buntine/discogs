@@ -57,8 +57,15 @@ class Discogs::Wrapper
     raise_internal_server_error if response.code == "500"
 
     # Unzip the response data.
-    inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
-    inflated_data.read
+    response_body = nil
+    begin
+        inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
+        response_body = inflated_data.read
+    rescue Zlib::GzipFile::Error
+        response_body = response.body
+    end
+    
+    return response_body
   end
 
   # Generates a HTTP request and returns the response.
