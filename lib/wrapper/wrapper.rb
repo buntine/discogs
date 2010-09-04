@@ -56,7 +56,8 @@ class Discogs::Wrapper
     raise_invalid_api_key if response.code == "400"
     raise_internal_server_error if response.code == "500"
 
-    # Unzip the response data.
+    # Unzip the response data, or just read it in directly
+    # if the API responds without gzipping.
     response_body = nil
     begin
         inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
@@ -65,7 +66,7 @@ class Discogs::Wrapper
         response_body = response.body
     end
     
-    return response_body
+    response_body
   end
 
   # Generates a HTTP request and returns the response.
