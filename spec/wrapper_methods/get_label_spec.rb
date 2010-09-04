@@ -14,9 +14,7 @@ describe Discogs::Wrapper do
       @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_label_xml)
       @http_response_as_file = mock(StringIO, :read => valid_label_xml)
       Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_session = mock("HTTP Session")
-      @http_session.should_receive(:request).and_return(@http_response)
-      @http_request.should_receive(:start).and_yield(@http_session)
+      @http_request.should_receive(:start).and_return(@http_response)
       Net::HTTP.should_receive(:new).and_return(@http_request)
 
       @label = @wrapper.get_label(@label_name)

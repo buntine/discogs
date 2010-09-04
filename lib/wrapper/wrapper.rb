@@ -76,7 +76,7 @@ class Discogs::Wrapper
     request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
     request.add_field("Accept-Encoding", "gzip,deflate")
 
-    response = Net::HTTP.new(uri.host).start do |http|
+    Net::HTTP.new(uri.host).start do |http|
       http.request(request)
     end
   end
