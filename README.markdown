@@ -14,6 +14,8 @@ ABOUT
   * Labels
   * Searching (all of the above)
 
+  Please, [see the Wiki](http://github.com/buntine/discogs/wiki) for helpful documentation.
+
   The API is [documented here](http://www.discogs.com/help/api).
 
 INSTALLATION
