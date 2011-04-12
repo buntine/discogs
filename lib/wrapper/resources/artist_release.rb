@@ -8,6 +8,7 @@ class Discogs::Artist::Release < Discogs::Resource
                 :status,
                 :type,
                 :title,
+                :artist,
                 :format,
                 :year,
                 :label,

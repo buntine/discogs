@@ -49,6 +49,10 @@ describe Discogs::Artist::Release do
     it "should have a trackinfo attribute" do
       @artist_release.trackinfo.should be_nil
     end
+
+    it "should have an artist attribute" do
+      @artist_release.artist.should == "ArtIst"
+    end
  
   end
 
