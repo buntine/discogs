@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   
-  s.name = "bassnode-discogs"
+  s.name = "buntine-discogs"
   s.version = "0.3.2"
-  s.date = "2011-04-12"
+  s.date = "2011-04-23"
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API"
-  s.homepage = "http://www.github.com/bassnode/discogs"
+  s.homepage = "http://www.github.com/buntine/discogs"
   s.email = "info@andrewbuntine.com"
   s.authors = ["Andrew Buntine", "Ed Hickey"]
   
