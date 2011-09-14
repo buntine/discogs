@@ -12,7 +12,7 @@ class Discogs::Wrapper
 
   @@root_host = "http://www.discogs.com"
 
-  attr_reader :api_key
+  attr_reader :api_key, :applicaiton_name
 
   def initialize(api_key=nil, application_name=nil)
     @api_key = api_key

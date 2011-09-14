@@ -24,7 +24,8 @@ describe Discogs::Wrapper do
 
   before do
     @api_key = "some_key"
-    @wrapper = Discogs::Wrapper.new(@api_key)
+    @application_name = "some_app"
+    @wrapper = Discogs::Wrapper.new(@api_key, @application_name)
     @release_id = "666666"
     @artist_name = "Dark"
     @label_name = "Monitor"
@@ -34,6 +35,11 @@ describe Discogs::Wrapper do
   it "should have an api key" do
     @wrapper.api_key.should == @api_key
   end
+
+  it "should have an application name" do
+    @wrapper.api_key.should == @api_key
+  end
+
 
   describe "requested URIs" do
     before do
