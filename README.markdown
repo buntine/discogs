@@ -24,8 +24,7 @@ INSTALLATION
 ------------
   You can install the library via Rubygems:
 
-    $ gem sources -a http://gems.github.com
-    $ sudo gem install buntine-discogs
+    $ sudo gem install discogs-wrapper
 
 USAGE
 -----
