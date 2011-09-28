@@ -7,7 +7,7 @@ ABOUT
 
   Discogs::Wrapper abstracts all the nasty boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need.
 
-  Full support for everything in version 1.0 of the API:
+  The master branch aims to give full support for version 2.0 of the API. If you need support for everything in version 1.0, see the api-v1 branch.
 
   * Artists
   * Releases
@@ -16,7 +16,7 @@ ABOUT
 
   Please, [see the Wiki](http://github.com/buntine/discogs/wiki) for helpful documentation.
 
-  The API is [documented here](http://www.discogs.com/help/api).
+  The Discogs API is [documented here](http://www.discogs.com/help/api).
 
 INSTALLATION
 ------------
