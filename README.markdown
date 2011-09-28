@@ -21,6 +21,7 @@ ABOUT
 INSTALLATION
 ------------
   You can install the library via Rubygems:
+
     $ gem sources -a http://gems.github.com
     $ sudo gem install buntine-discogs
 
@@ -28,7 +29,6 @@ USAGE
 -----
   To use this library, you must supply a valid Discogs API key.
     require 'discogs'
-
     wrapper = Discogs::Wrapper.new("my_api_key")
 
   Accessing information is easy:
