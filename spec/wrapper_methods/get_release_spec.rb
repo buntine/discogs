@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 describe Discogs::Wrapper do
 
   before do
-    @wrapper = Discogs::Wrapper.new("some_key")
+    @wrapper = Discogs::Wrapper.new("some_user_agent")
     @release_id = "666666"
   end
 

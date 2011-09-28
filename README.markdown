@@ -29,10 +29,12 @@ INSTALLATION
 
 USAGE
 -----
-  To use this library, you must supply a valid Discogs API key.
+  To use this library, you must supply a valid User-agent value. For example:
 
     require 'discogs'
-    wrapper = Discogs::Wrapper.new("my_api_key")
+    wrapper = Discogs::Wrapper.new("Mozilla/5.0 (X11; Linux i686; rv:6.0.2) Gecko/20100101 Firefox/6.0.2")
+
+  I suggest passing on your users User-agent.
 
   Accessing information is easy:
 

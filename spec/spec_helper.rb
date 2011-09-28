@@ -30,7 +30,7 @@ end
 def sample_invalid_data
   <<-EOF
     <resp requests="2" stat="fail">
-      <error>Missing or invalid API Key</error>
+      <error>Missing or invalid User agent</error>
     </resp> 
   EOF
 end

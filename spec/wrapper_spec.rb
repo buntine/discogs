@@ -23,17 +23,12 @@ describe Discogs::Wrapper do
   end
 
   before do
-    @api_key = "some_key"
     @user_agent = "some_app"
-    @wrapper = Discogs::Wrapper.new(@api_key, @user_agent)
+    @wrapper = Discogs::Wrapper.new(@user_agent)
     @release_id = "666666"
     @artist_name = "Dark"
     @label_name = "Monitor"
     @search_term = "barry"
-  end
-
-  it "should have an api key" do
-    @wrapper.api_key.should == @api_key
   end
 
   it "should have an user agent" do
@@ -47,49 +42,49 @@ describe Discogs::Wrapper do
 
     it "should generate the correct release URL to parse" do
       mock_http_with_response "200", valid_release_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/release/666666?api_key=some_key&f=xml").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/release/666666?f=xml").and_return(@uri)
 
       @wrapper.get_release(@release_id)
     end
 
     it "should generate the correct artist URL to parse" do
       mock_http_with_response "200", valid_artist_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/artist/Dark?api_key=some_key&f=xml").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/artist/Dark?f=xml").and_return(@uri)
 
       @wrapper.get_artist(@artist_name)
     end
 
     it "should generate the correct label URL to parse" do
       mock_http_with_response "200", valid_label_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/label/Monitor?api_key=some_key&f=xml").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/label/Monitor?f=xml").and_return(@uri)
 
       @wrapper.get_label(@label_name)
     end
 
     it "should generate the correct default search URL to parse" do
       mock_http_with_response "200", valid_search_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/search?api_key=some_key&f=xml&page=1&q=barry&type=all").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/search?f=xml&page=1&q=barry&type=all").and_return(@uri)
 
       @wrapper.search(@search_term)
     end
 
     it "should generate the correct second-page search URL to parse" do
       mock_http_with_response "200", valid_search_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/search?api_key=some_key&f=xml&page=2&q=barry&type=all").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/search?f=xml&page=2&q=barry&type=all").and_return(@uri)
 
       @wrapper.search(@search_term, :page => 2)
     end
 
     it "should generate the correct second-page artist search URL to parse" do
       mock_http_with_response "200", valid_search_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/search?api_key=some_key&f=xml&page=2&q=barry&type=artist").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/search?f=xml&page=2&q=barry&type=artist").and_return(@uri)
 
       @wrapper.search(@search_term, :page => 2, :type => :artist)
     end
 
     it "should sanitize the path correctly" do
       mock_http_with_response "200", valid_artist_xml
-      URI.should_receive(:parse).with("http://www.discogs.com/artist/A+very+long+band+name?api_key=some_key&f=xml").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/artist/A+very+long+band+name?f=xml").and_return(@uri)
 
       @wrapper.get_artist("A very long band name")
     end 
@@ -104,12 +99,6 @@ describe Discogs::Wrapper do
       mock_http_with_response "200", valid_release_xml
  
       @wrapper.get_release(@release_id).should be_instance_of(Discogs::Release)
-    end
-
-    it "should raise an exception if an invalid API Key is supplied" do
-      mock_http_with_response "400"
-
-      lambda { @wrapper.get_release(@release_id) }.should raise_error(Discogs::InvalidAPIKey)
     end
 
     it "should raise an exception if the release does not exist" do
@@ -134,12 +123,6 @@ describe Discogs::Wrapper do
       @wrapper.get_artist(@artist_name).should be_instance_of(Discogs::Artist)
     end
 
-    it "should raise an exception if an invalid API Key is supplied" do
-      mock_http_with_response "400"
-
-      lambda { @wrapper.get_artist(@artist_name) }.should raise_error(Discogs::InvalidAPIKey)
-    end
-
     it "should raise an exception if the artist does not exist" do
       mock_http_with_response "404"
 
@@ -160,12 +143,6 @@ describe Discogs::Wrapper do
       mock_http_with_response "200", valid_label_xml
  
       @wrapper.get_label(@label_name).should be_instance_of(Discogs::Label)
-    end
-
-    it "should raise an exception if an invalid API Key is supplied" do
-      mock_http_with_response "400"
-
-      lambda { @wrapper.get_label(@label_name) }.should raise_error(Discogs::InvalidAPIKey)
     end
 
     it "should raise an exception if the label does not exist" do

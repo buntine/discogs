@@ -13,7 +13,6 @@
 module Discogs; end
 
 # Custom exceptions.
-class Discogs::InvalidAPIKey < Exception; end
 class Discogs::UnknownResource < Exception; end
 class Discogs::InternalServerError < Exception; end
 
