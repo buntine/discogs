@@ -28,10 +28,12 @@ INSTALLATION
 USAGE
 -----
   To use this library, you must supply a valid Discogs API key.
+
     require 'discogs'
     wrapper = Discogs::Wrapper.new("my_api_key")
 
   Accessing information is easy:
+
     artist = wrapper.get_artist("Master's Hammer")
     release = wrapper.get_release("611973") # Supply an ID.
     label = wrapper.get_label("Monitor Records")
