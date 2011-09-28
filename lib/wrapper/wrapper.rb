@@ -10,7 +10,7 @@ require File.dirname(__FILE__) + "/resource"
 
 class Discogs::Wrapper
 
-  @@root_host = "http://www.discogs.com"
+  @@root_host = "http://api.discogs.com"
 
   attr_reader :api_key, :applicaiton_name
 
