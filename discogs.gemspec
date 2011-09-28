@@ -2,13 +2,13 @@ Gem::Specification.new do |s|
   
   s.name = "buntine-discogs"
   s.version = "0.3.2"
-  s.date = "2011-04-23"
-  s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API"
+  s.date = "2011-09-27"
+  s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
   s.homepage = "http://www.github.com/buntine/discogs"
   s.email = "info@andrewbuntine.com"
   s.authors = ["Andrew Buntine", "Ed Hickey"]
   
-  s.description = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API"
+  s.description = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
   
   s.files = ["lib/wrapper", "lib/wrapper/resource_mappings.rb", "lib/wrapper/wrapper.rb", "lib/wrapper/resource.rb", "lib/wrapper/resources", "lib/wrapper/resources/format.rb", "lib/wrapper/resources/search.rb", "lib/wrapper/resources/label_release.rb", "lib/wrapper/resources/artist.rb", "lib/wrapper/resources/release_artist.rb", "lib/wrapper/resources/artist_release.rb", "lib/wrapper/resources/release_label.rb", "lib/wrapper/resources/generic_list.rb", "lib/wrapper/resources/search_result.rb", "lib/wrapper/resources/label.rb", "lib/wrapper/resources/image.rb", "lib/wrapper/resources/track.rb", "lib/wrapper/resources/release.rb", "lib/discogs.rb", "Rakefile", "README.markdown", "discogs.gemspec"]
 
