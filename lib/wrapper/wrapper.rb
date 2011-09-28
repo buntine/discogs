@@ -12,10 +12,9 @@ class Discogs::Wrapper
 
   @@root_host = "http://api.discogs.com"
 
-  attr_reader :api_key, :user_agent
+  attr_reader :user_agent
 
-  def initialize(api_key=nil, user_agent=nil)
-    @api_key = api_key
+  def initialize(user_agent=nil)
     @user_agent = user_agent
   end
 
@@ -54,7 +53,6 @@ class Discogs::Wrapper
     response = make_request(path, params)
 
     raise_unknown_resource(path) if response.code == "404"
-    raise_invalid_api_key if response.code == "400"
     raise_internal_server_error if response.code == "500"
 
     # Unzip the response data, or just read it in directly
@@ -84,7 +82,7 @@ class Discogs::Wrapper
   end
 
   def build_uri(path, params={})
-    parameters = { :f => "xml", :api_key => @api_key }.merge(params)
+    parameters = { :f => "xml" }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
 
     URI.parse(File.join(@@root_host, sanitize_path(path, querystring)))
@@ -94,10 +92,6 @@ class Discogs::Wrapper
     clean_path = path_parts.map { |part| part.gsub(/\s/, '+') }
 
     clean_path.join
-  end
-
-  def raise_invalid_api_key
-    raise Discogs::InvalidAPIKey, "Invalid API key: #{@api_key}"
   end
 
   def raise_unknown_resource(path='')

@@ -9,6 +9,8 @@ ABOUT
 
   The master branch aims to give full support for version 2.0 of the API. If you need support for everything in version 1.0, see the api-v1 branch.
 
+  Specifically:
+
   * Artists
   * Releases
   * Labels
