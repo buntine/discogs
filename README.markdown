@@ -28,12 +28,10 @@ INSTALLATION
 
 USAGE
 -----
-  To use this library, you must supply a valid User-agent value. For example:
+  To use this library, you must supply the name of your application. For example:
 
     require 'discogs'
-    wrapper = Discogs::Wrapper.new("Mozilla/5.0 (X11; Linux i686; rv:6.0.2) Gecko/20100101 Firefox/6.0.2")
-
-  I suggest passing on your users User-agent.
+    wrapper = Discogs::Wrapper.new("My awesome web app")
 
   Accessing information is easy:
 

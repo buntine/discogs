@@ -23,8 +23,8 @@ describe Discogs::Wrapper do
   end
 
   before do
-    @user_agent = "some_app"
-    @wrapper = Discogs::Wrapper.new(@user_agent)
+    @app_name = "some_app"
+    @wrapper = Discogs::Wrapper.new(@app_name)
     @release_id = "666666"
     @artist_name = "Dark"
     @label_name = "Monitor"
@@ -32,7 +32,7 @@ describe Discogs::Wrapper do
   end
 
   it "should have an user agent" do
-    @wrapper.user_agent.should == @user_agent
+    @wrapper.app_name.should == @app_name
   end
 
   describe "requested URIs" do

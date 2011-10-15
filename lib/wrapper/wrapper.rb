@@ -12,10 +12,10 @@ class Discogs::Wrapper
 
   @@root_host = "http://api.discogs.com"
 
-  attr_reader :user_agent
+  attr_reader :app_name
 
-  def initialize(user_agent=nil)
-    @user_agent = user_agent
+  def initialize(app_name=nil)
+    @app_name = app_name
   end
 
   def get_release(id)
@@ -74,7 +74,7 @@ class Discogs::Wrapper
 
     request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
     request.add_field("Accept-Encoding", "gzip,deflate")
-    request.add_field("User-Agent", @user_agent)
+    request.add_field("User-Agent", @app_name)
 
     Net::HTTP.new(uri.host).start do |http|
       http.request(request)
