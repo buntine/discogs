@@ -23,7 +23,7 @@ class Discogs::Wrapper
   end
 
   def get_artist(name)
-    query_and_build "artist/#{name}", Discogs::Artist
+    query_and_build "artist/#{name}?releases=1", Discogs::Artist
   end
 
   def get_label(name)
@@ -73,6 +73,7 @@ class Discogs::Wrapper
     uri = build_uri(path, params)
 
     request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
+    request.add_field("Accept", "application/xml")
     request.add_field("Accept-Encoding", "gzip,deflate")
     request.add_field("User-Agent", @app_name)
 
