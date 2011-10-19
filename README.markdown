@@ -13,6 +13,7 @@ ABOUT
 
   * Artists
   * Releases
+  * MasterReleases
   * Labels
   * Searching (all of the above)
 

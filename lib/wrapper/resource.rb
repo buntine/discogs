@@ -76,4 +76,5 @@ class Discogs::Resource
 
 end
 
+# Load in all of the resource definitions.
 Dir[File.join(File.dirname(__FILE__), "resources", "*.rb")].each { |file| require file }

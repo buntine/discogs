@@ -22,6 +22,10 @@ class Discogs::Wrapper
     query_and_build "release/#{id}", Discogs::Release
   end
 
+  def get_master_release(id)
+    query_and_build "master/#{id}", Discogs::MasterRelease
+  end
+
   def get_artist(name)
     query_and_build "artist/#{name}", Discogs::Artist, {:releases => 1}
   end

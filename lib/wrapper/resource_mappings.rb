@@ -12,7 +12,7 @@ module Discogs::ResourceMappings
 
   module ClassMethods
 
-    # Helper method to map resource to element in API response.
+    # Helper method to map resource to and element in the API response.
     def map_to(*elements)
       self.class_eval <<-EOF
         def self.element_names
