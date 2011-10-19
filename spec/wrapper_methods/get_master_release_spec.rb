@@ -26,6 +26,10 @@ describe Discogs::Wrapper do
         @master_release.id.should == "6119"
       end
 
+      it "should have a main_release attribute" do
+        @master_release.main_release.should == "1025"
+      end
+
       it "should have one or more tracks" do
         @master_release.tracklist.should be_instance_of(Array)
         @master_release.tracklist[0].should be_instance_of(Discogs::MasterRelease::Track)
