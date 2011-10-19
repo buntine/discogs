@@ -1,4 +1,4 @@
-# Represents a release in the Discogs API.
+# Represents a master release in the Discogs API.
 
 class Discogs::MasterRelease < Discogs::Resource
 
