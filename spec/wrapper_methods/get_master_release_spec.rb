@@ -22,12 +22,8 @@ describe Discogs::Wrapper do
 
     describe "when calling simple master_release attributes" do
 
-      it "should have a title attribute" do
-        @master_release.title.should == "Into the Abyss"
-      end
-  
       it "should have an ID attribute" do
-        @master_release.id.should == "666666"
+        @master_release.id.should == "6119"
       end
 
       it "should have one or more tracks" do
@@ -37,12 +33,12 @@ describe Discogs::Wrapper do
  
       it "should have one or more genres" do
         @master_release.genres.should be_instance_of(Array)
-        @master_release.genres[0].should == "Heavy Metal"
+        @master_release.genres[0].should == "Electronic"
       end
 
       it "should have one or more images" do
         @master_release.images.should be_instance_of(Array)
-        @rmaster_elease.images[0].should be_instance_of(Discogs::Image)
+        @master_release.images[0].should be_instance_of(Discogs::Image)
       end
 
     end
@@ -50,11 +46,11 @@ describe Discogs::Wrapper do
     describe "when calling complex master_release attributes" do
 
       it "should have a duration for the first track" do
-        @master_release.tracklist[0].duration.should == "8:11"
+        @master_release.tracklist[0].duration.should == "4:42"
       end
 
       it "should have specifications for each image" do
-        specs = [ [ '600', '595', 'primary' ], [ '600', '593', 'secondary' ], [ '600', '539', 'secondary' ], [ '600', '452', 'secondary' ], [ '600', '567', 'secondary' ] ]
+        specs = [ [ '600', '590', 'primary' ], [ '600', '594', 'secondary' ], [ '600', '297', 'secondary' ], [ '600', '601', 'secondary' ], [ '600', '600', 'secondary' ] ]
         @master_release.images.each_with_index do |image, index|
           image.width.should == specs[index][0]
           image.height.should == specs[index][1]
@@ -64,8 +60,7 @@ describe Discogs::Wrapper do
 
       it "should have a traversible list of styles" do
         @master_release.styles.should be_instance_of(Array)
-        @master_release.styles[0].should == "Black Metal"
-        @master_release.styles[1].should == "Thrash"
+        @master_release.styles[0].should == "Deep House"
       end
 
       it "should have an artist associated to the second track" do
