@@ -75,13 +75,13 @@ describe Discogs::Wrapper do
 
       it "should have an extra artist associated to the second track" do
         @master_release.tracklist[1].extraartists.should be_instance_of(Array)
-        @master_release.tracklist[1].extraartists[0].should be_instance_of(Discogs::Release::Track::Artist)
+        @master_release.tracklist[1].extraartists[0].should be_instance_of(Discogs::MasterRelease::Track::Artist)
         @master_release.tracklist[1].extraartists[0].name.should == "Debustrol"
         @master_release.tracklist[1].extraartists[0].role.should == "Sadism"
       end
 
       it "should have no artist associated to the third track" do
-        @release.tracklist[2].artists.should be_nil
+        @master_release.tracklist[2].artists.should be_nil
       end
 
     end
