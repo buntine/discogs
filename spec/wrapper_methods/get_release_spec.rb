@@ -30,6 +30,10 @@ describe Discogs::Wrapper do
         @release.id.should == "666666"
       end
 
+      it "should have a master_id attribute" do
+        @release.master_id.should == "6111"
+      end
+
       it "should have one or more extra artists" do
         @release.extraartists.should be_instance_of(Array)
         @release.extraartists[0].should be_instance_of(Discogs::Release::Artist)

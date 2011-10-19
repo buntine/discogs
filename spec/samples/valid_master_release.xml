@@ -1,0 +1,131 @@
+<resp stat="ok" version="2.0">
+<master id="6119">
+<main_release>1025</main_release>
+<images>
+<image height="590" type="primary" uri="http://api.discogs.com/image/R-1025-1316440394.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440394.jpeg" width="600"/>
+<image height="594" type="secondary" uri="http://api.discogs.com/image/R-1025-1316440404.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440404.jpeg" width="600"/>
+<image height="297" type="secondary" uri="http://api.discogs.com/image/R-1025-1316440423.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440423.jpeg" width="600"/>
+<image height="601" type="secondary" uri="http://api.discogs.com/image/R-1025-1316440434.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440434.jpeg" width="600"/>
+<image height="600" type="secondary" uri="http://api.discogs.com/image/R-1025-1316440439.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440439.jpeg" width="600"/>
+<image height="603" type="secondary" uri="http://api.discogs.com/image/R-1025-1316440444.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440444.jpeg" width="600"/>
+<image height="604" type="secondary" uri="http://api.discogs.com/image/R-1025-1316440450.jpeg" uri150="http://api.discogs.com/image/R-150-1025-1316440450.jpeg" width="600"/>
+</images>
+<artists>
+<artist>
+<name>Moodymann</name>
+<anv/>
+<join/>
+<role/>
+<tracks/>
+</artist>
+</artists>
+<genres>
+<genre>Electronic</genre>
+</genres>
+<styles>
+<style>Deep House</style>
+</styles>
+<tracklist>
+<track>
+<position>A1</position>
+<title>Misled</title>
+<duration>4:42</duration>
+</track>
+<track>
+<position>A2</position>
+<title>I Can't Kick This Feeling When It Hits</title>
+<duration>8:00</duration>
+</track>
+<track>
+<position>B1</position>
+<title>The Third Track</title>
+<duration>5:05</duration>
+</track>
+<track>
+<position>B2</position>
+<title>Oceans</title>
+<duration>2:58</duration>
+</track>
+<track>
+<position>B3</position>
+<title>Answer Machine</title>
+<duration>5:20</duration>
+</track>
+<track>
+<position>C1</position>
+<title>M Traxx</title>
+<duration>5:07</duration>
+</track>
+<track>
+<position>C2</position>
+<title>Music People</title>
+<duration>6:37</duration>
+</track>
+<track>
+<position>C3</position>
+<title>Untitled</title>
+<duration>3:07</duration>
+</track>
+<track>
+<position>D1</position>
+<title>Sunday Morning</title>
+<duration>10:52</duration>
+</track>
+<track>
+<position>D2</position>
+<title>In Loving Memory</title>
+<duration>6:29</duration>
+</track>
+</tracklist>
+<videos>
+<video duration="565" embed="true" src="http://www.youtube.com/watch?v=jslkfSzi2Mc">
+<title>Moodymann - I Can't Kick This Feeling When It Hits</title>
+<description>Moodymann - I Can't Kick This Feeling When It Hits</description>
+</video>
+<video duration="350" embed="true" src="http://www.youtube.com/watch?v=IlByW9x3YhA">
+<title>Moodymann: Misled ('96 deep house)</title>
+<description>Moodymann: Misled ('96 deep house)</description>
+</video>
+<video duration="483" embed="true" src="http://www.youtube.com/watch?v=85X4bj37DZw">
+<title>Moodymann - The Third Track (KDJ)</title>
+<description>Moodymann - The Third Track (KDJ)</description>
+</video>
+<video duration="385" embed="true" src="http://www.youtube.com/watch?v=E4oSn96OQsY">
+<title>Moodymann - Dem Young Sconies</title>
+<description>Moodymann - Dem Young Sconies</description>
+</video>
+<video duration="447" embed="true" src="http://www.youtube.com/watch?v=GjY5GZ-Cfek">
+<title>Moodymann - A1 (Untitled )</title>
+<description>Moodymann - A1 (Untitled )</description>
+</video>
+</videos>
+<versions>
+<release id="1025" status="Accepted">
+<title>Silentintroduction</title>
+<format>2x12", Album</format>
+<label>Planet E</label>
+<catno>PE65234</catno>
+<country>US</country>
+<released>1997-11-00</released>
+<thumb>http://api.discogs.com/image/R-150-1025-1316440394.jpeg</thumb>
+</release>
+<release id="4179" status="Accepted">
+<title>Silentintroduction</title>
+<format>CD, Album</format>
+<label>Planet E</label>
+<catno>pe65234</catno>
+<country>US</country>
+<released>1997</released>
+<thumb>http://api.discogs.com/image/R-150-4179-1174850087.jpeg</thumb>
+</release>
+<release id="416774" status="Accepted">
+<title>Silentintroduction</title>
+<format>12"</format>
+<label>Planet E</label>
+<catno>PE 65234</catno>
+<country>US</country>
+<released>1997</released>
+</release>
+</versions>
+</master>
+</resp>

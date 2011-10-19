@@ -18,3 +18,4 @@ end
 # Define other classes that also replicate this structure.
 class Discogs::Release::Track::Artist < Discogs::Release::Artist; end
 class Discogs::MasterRelease::Artist < Discogs::Release::Artist; end
+class Discogs::MasterRelease::Track::Artist < Discogs::Release::Artist; end

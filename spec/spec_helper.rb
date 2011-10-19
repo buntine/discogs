@@ -6,6 +6,10 @@ def valid_release_xml
   read_sample "valid_release.xml"
 end
 
+def valid_master_release_xml
+  read_sample "valid_master_release.xml"
+end
+
 def valid_artist_xml
   read_sample "valid_artist.xml"
 end
