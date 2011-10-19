@@ -27,7 +27,7 @@ class Discogs::Wrapper
   end
 
   def get_label(name)
-    query_and_build "label/#{name}", Discogs::Label
+    query_and_build "label/#{name}", Discogs::Label, {:releases => 1}
   end
 
   def search(term, options={})
