@@ -26,8 +26,8 @@ describe Discogs::Artist::Release do
       @artist_release.status.should == "Accepted"
     end
 
-    it "should have a type attribute" do
-      @artist_release.type.should == "Main"
+    it "should have a role attribute" do
+      @artist_release.role.should == "Main"
     end
 
     it "should have a title attribute" do

@@ -27,10 +27,10 @@ class Discogs::Artist < Discogs::Resource
 
  private
 
-  # Simple helper for filtering a particular type of release.
-  def filter_releases(type)
+  # Simple helper for filtering a particular role of release.
+  def filter_releases(role)
     self.releases.find_all do |release|
-      release.type == type
+      release.role == role
     end
   end
 

@@ -6,7 +6,7 @@ class Discogs::Artist::Release < Discogs::Resource
 
   attr_accessor :id,
                 :status,
-                :type,
+                :role,
                 :title,
                 :artist,
                 :format,
