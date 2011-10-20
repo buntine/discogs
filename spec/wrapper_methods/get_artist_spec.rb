@@ -94,6 +94,22 @@ describe Discogs::Wrapper do
         @artist.releases[0].id.should == "1805661"
       end
 
+      it "should have a type for the first release" do
+        @artist.releases[0].release_type.should == "release"
+      end
+
+      it "should have a type for the second release" do
+        @artist.releases[1].release_type.should == "master"
+      end
+
+      it "should have a main release for the second release" do
+        @artist.releases[1].main_release.should == "12345"
+      end
+
+      it "should have a thumb for the second release" do
+        @artist.releases[1].thumb.should == "http://images"
+      end
+
       it "should have a year for the first release" do
         @artist.releases[0].year.should == "1991"
       end

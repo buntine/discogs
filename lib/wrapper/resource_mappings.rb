@@ -51,11 +51,7 @@ module Discogs::ResourceMappings
  private
 
   def find_resource_for_name(name, type=:singular)
-    method = if type == :singular
-      :element_names
-    else
-      :plural_element_names
-    end
+    method = (type == :singular) ? :element_names : :plural_element_names
 
     find_resource do |klass|
       klass.constants.find do |const|

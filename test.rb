@@ -11,6 +11,7 @@ master_release = wrapper.get_master_release("6119") # Supply an ID.
 puts release.title
 puts artist.name
 puts artist.releases[0].title
+puts artist.releases[0].release_type
 puts release.styles.inspect
 puts artist.releases[0].year
 puts artist.releases[1].title

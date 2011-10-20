@@ -12,6 +12,17 @@ class Discogs::Artist::Release < Discogs::Resource
                 :format,
                 :year,
                 :label,
-                :trackinfo
+                :thumb,
+                :trackinfo,
+                :main_release
+
+  # Will return either "master" or "release".
+  def release_type
+    if original_content =~ /^\<(\w+)\s/
+      $1
+    else
+      "release"
+    end
+  end
 
 end

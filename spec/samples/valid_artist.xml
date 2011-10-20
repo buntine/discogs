@@ -46,11 +46,12 @@
         <label>R &amp; S Records</label>
         <year>1991</year>
       </release>
-      <release id="1138729" status="Accepted" role="Main">
+      <master id="1138729" main_release="12345" status="Accepted" role="Main">
         <title>Selected Ambient Works 85-92</title>
         <format>2xLP, RP</format>
         <label>Apollo, Apollo, Apollo</label>
-      </release>
+        <thumb>http://images</thumb>
+      </master>
       <release id="1790544" status="Accepted" role="Main">
         <title>Selected Ambient Works 85-92</title>
         <format>2xVinyl, Album</format>
