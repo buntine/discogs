@@ -11,6 +11,7 @@ class Discogs::MasterRelease < Discogs::Resource
                 :notes,
                 :year,
                 :images,
+                :videos,
                 :tracklist,
                 :artists
                 #:versions,

@@ -59,6 +59,12 @@ describe Discogs::Wrapper do
         @release.images[0].should be_instance_of(Discogs::Image)
       end
 
+      it "should have one or more videos" do
+        @release.videos.should be_instance_of(Array)
+        @release.videos[0].should be_instance_of(Discogs::Video)
+      end
+
+
     end
 
     describe "when calling complex release attributes" do
@@ -73,6 +79,15 @@ describe Discogs::Wrapper do
           image.width.should == specs[index][0]
           image.height.should == specs[index][1]
           image.type.should == specs[index][2]
+        end
+      end
+
+      it "should have specifications for each video" do
+        specs = [ [ '334', 'true', 'http://www.youtube.com/watch?v=QVdDhOnoR8k' ], [ '350', 'true', 'http://www.youtube.com/watch?v=QVdDhOnoR7k' ] ]
+        @release.videos.each_with_index do |video, index|
+          video.duration.should == specs[index][0]
+          video.embed.should == specs[index][1]
+          video.uri.should == specs[index][2]
         end
       end
 

@@ -7,6 +7,10 @@
 <image height="452" type="secondary" uri="http://www.discogs.com/image/R-666-1223494419.jpeg" uri150="http://www.discogs.com/image/R-150-666-1223494419.jpeg" width="600"/>
 <image height="567" type="secondary" uri="http://www.discogs.com/image/R-666-1223494790.jpeg" uri150="http://www.discogs.com/image/R-150-666-1223494790.jpeg" width="600"/>
 </images>
+<videos>
+<video uri="http://www.youtube.com/watch?v=QVdDhOnoR8k" duration="334" embed="true" description="The Persuader-Stockholm-Sodermalm" title="The Persuader" />
+<video uri="http://www.youtube.com/watch?v=QVdDhOnoR7k" duration="350" embed="true" description="The Persuader-Stockholm-Sodermalm again" title="The Persuader" />
+</videos>
 <master_id>6111</master_id>
 <artists>
 <artist>

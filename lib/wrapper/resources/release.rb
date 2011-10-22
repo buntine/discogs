@@ -12,6 +12,7 @@ class Discogs::Release < Discogs::Resource
                 :released,
                 :notes,
                 :images,
+                :videos,
                 :artists,
                 :extraartists,
                 :labels,
