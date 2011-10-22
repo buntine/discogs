@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   
   s.name = "discogs-wrapper"
-  s.version = "1.0.0"
-  s.date = "2011-09-27"
+  s.version = "1.1.0"
+  s.date = "2011-10-22"
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
   s.homepage = "http://www.github.com/buntine/discogs"
   s.email = "info@andrewbuntine.com"
