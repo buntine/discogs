@@ -39,7 +39,7 @@ USAGE
     artist = wrapper.get_artist("Master's Hammer")
     release = wrapper.get_release("611973") # Supply an ID.
     label = wrapper.get_label("Monitor Records")
-    search_results = wrapper.search("Necrovore")
+    search = wrapper.search("Necrovore")
 
     artist.name                         # => "Master's Hammer"
     artist.releases[0].title            # => "Finished"
@@ -72,8 +72,7 @@ USAGE
     search.results[3].summary           # => "First and only demo tape"
     search.results(:release)[0]         # => <Discogs::Search::Result:0x343de34a>
 
-
 LICENSE
--------
+-----
 
-<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Discogs::Wrapper</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/buntine/discogs" property="cc:attributionName" rel="cc:attributionURL">Andrew Buntine</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="http://www.discogs.com/help/api" rel="dct:source">www.discogs.com</a>.
+See the LICENCE file. Copyright (c) Andrew Buntine 2011
