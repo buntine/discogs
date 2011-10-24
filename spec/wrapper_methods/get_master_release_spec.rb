@@ -40,6 +40,11 @@ describe Discogs::Wrapper do
         @master_release.genres[0].should == "Electronic"
       end
 
+      it "should have one or more versions" do
+        @master_release.versions.should be_instance_of(Array)
+        @master_release.versions[0].should be_instance_of(Discogs::MasterRelease::Version)
+      end
+
       it "should have one or more images" do
         @master_release.images.should be_instance_of(Array)
         @master_release.images[0].should be_instance_of(Discogs::Image)
@@ -59,6 +64,15 @@ describe Discogs::Wrapper do
           image.width.should == specs[index][0]
           image.height.should == specs[index][1]
           image.type.should == specs[index][2]
+        end
+      end
+
+      it "should have attributes for each version" do
+        specs = [ [ '1025', 'US', '2x12", Album' ], [ '4179', 'US', 'CD, Album' ], [ '416774', 'US', '12"' ] ]
+        @master_release.versions.each_with_index do |version, index|
+          version.id.should == specs[index][0]
+          version.country.should == specs[index][1]
+          version.format.should == specs[index][2]
         end
       end
 

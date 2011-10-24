@@ -5,8 +5,8 @@ require 'lib/discogs'
 wrapper = Discogs::Wrapper.new("buntine-test-app")
 
 artist = wrapper.get_artist("Master's Hammer")
-release = wrapper.get_release("611973") # Supply an ID.
-master_release = wrapper.get_master_release("6119") # Supply an ID.
+release = wrapper.get_release("611973")
+master_release = wrapper.get_master_release("6119")
 search_results = wrapper.search("Necrovore")
 
 puts release.title

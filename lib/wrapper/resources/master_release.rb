@@ -13,7 +13,7 @@ class Discogs::MasterRelease < Discogs::Resource
                 :images,
                 :videos,
                 :tracklist,
-                :artists
-                #:versions,
-                #:videos
+                :artists,
+                :versions
+
 end
