@@ -11,6 +11,7 @@ class Discogs::Search::Result < Discogs::Resource
                 :title,
                 :uri,
                 :anv,
-                :summary
+                :summary,
+                :thumb
 
 end
