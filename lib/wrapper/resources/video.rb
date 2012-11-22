@@ -6,6 +6,7 @@ class Discogs::Video < Discogs::Resource
                 :duration,
                 :embed,
                 :description,
-                :title
+                :title,
+                :src
 
 end
