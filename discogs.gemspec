@@ -15,5 +15,7 @@ Gem::Specification.new do |s|
   s.test_files = ["spec/wrapper_methods/get_release_spec.rb", "spec/wrapper_methods/get_master_release_spec.rb", "spec/wrapper_methods/search_spec.rb", "spec/wrapper_methods/get_artist_spec.rb", "spec/wrapper_methods/get_label_spec.rb", "spec/resource_spec.rb", "spec/resources/label_spec.rb", "spec/resources/generic_list_spec.rb", "spec/resources/artist_release_spec.rb", "spec/resources/artist_spec.rb", "spec/resources/release_artist_spec.rb", "spec/resources/search_spec.rb", "spec/resources/label_release_spec.rb", "spec/resources/release_label_spec.rb", "spec/resources/release_spec.rb", "spec/resources/master_release_spec.rb", "spec/resources/master_release_version_spec.rb", "spec/resources/video_spec.rb", "spec/resources/search_result_spec.rb", "spec/resources/image_spec.rb", "spec/resources/track_spec.rb", "spec/resources/format_spec.rb", "spec/wrapper_spec.rb", "spec/spec_helper.rb"]
 
   s.platform = Gem::Platform::RUBY
+  
+  s.add_development_dependency "rspec", "= 2.12.0"
 
 end

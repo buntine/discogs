@@ -1,20 +1,20 @@
 require 'rake'
-require 'spec'
-require 'spec/rake/spectask'
+require 'rspec'
+require 'rspec/core/rake_task'
 require 'rake/gempackagetask'
 
 task :default => :spec
 
 desc "Run all specs in spec directory"
-Spec::Rake::SpecTask.new(:spec) do |t|
-  t.spec_opts = ["--colour", "--format progress", "--loadby mtime", "--reverse"]
-  t.spec_files = FileList[ 'spec/**/*_spec.rb' ]
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_opts = ["--colour"]
+  t.pattern = 'spec/**/*_spec.rb'
 end
 
 desc "Run all specs and generate RCov report"
-Spec::Rake::SpecTask.new('cov') do |t|
-  t.spec_files = FileList['spec/**/*.rb']
-  t.spec_opts = ["--colour"]
+RSpec::Core::RakeTask.new('cov') do |t|
+  t.pattern = 'spec/**/*.rb'
+  t.rspec_opts = ["--colour"]
   t.rcov = true
   t.rcov_opts = ['-T --no-html --exclude', 'spec\/,gems\/']
 end

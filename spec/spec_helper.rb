@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'spec'
+require 'rspec'
 require File.dirname(__FILE__) + '/../lib/discogs'
 
 def valid_release_xml
