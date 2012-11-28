@@ -1,7 +1,7 @@
 require 'rake'
 require 'rspec'
 require 'rspec/core/rake_task'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 
 task :default => :spec
 
@@ -21,7 +21,7 @@ end
 
 spec = eval(File.read("discogs.gemspec"))
  
-Rake::GemPackageTask.new(spec) do |pkg|
+Gem::PackageTask.new(spec) do |pkg|
   # pkg.need_zip = true
   # pkg.need_tar = true
 end
