@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   
   s.add_development_dependency "rspec", "= 2.12.0"
+  s.add_development_dependency "simplecov", "= 0.7.1"
 
 end

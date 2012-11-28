@@ -3,7 +3,7 @@ require 'rspec'
 require 'rspec/core/rake_task'
 require 'rubygems/package_task'
 
-task :default => :spec
+
 
 desc "Run all specs in spec directory"
 RSpec::Core::RakeTask.new(:spec) do |t|
@@ -11,12 +11,11 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = 'spec/**/*_spec.rb'
 end
 
-desc "Run all specs and generate RCov report"
-RSpec::Core::RakeTask.new('cov') do |t|
-  t.pattern = 'spec/**/*.rb'
-  t.rspec_opts = ["--colour"]
-  t.rcov = true
-  t.rcov_opts = ['-T --no-html --exclude', 'spec\/,gems\/']
+desc "Run all specs and generate simplecov report"
+task :cov do |t|
+  ENV['COVERAGE'] = 'true'
+  Rake::Task["spec"].execute
+  `open coverage/index.html`
 end
 
 spec = eval(File.read("discogs.gemspec"))
