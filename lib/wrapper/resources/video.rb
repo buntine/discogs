@@ -2,10 +2,10 @@
 
 class Discogs::Video < Discogs::Resource
 
-  attr_accessor :uri,
-                :duration,
+  attr_accessor :duration,
                 :embed,
                 :description,
-                :title
+                :title,
+                :src
 
 end
