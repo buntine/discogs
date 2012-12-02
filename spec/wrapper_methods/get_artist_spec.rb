@@ -30,6 +30,14 @@ describe Discogs::Wrapper do
         @artist.realname.should == "Rootan"
       end
 
+      it "should have a profile attribute" do
+        @artist.profile.should == "Richard David James was born to Welsh parents"
+      end
+
+      it "should have a data_quality attribute" do
+        @artist.data_quality.should == "Needs Vote"
+      end
+
       it "should have one or more aliases" do
         @artist.aliases.should be_instance_of(Array)
         @artist.aliases[0].should == "Roooot"
