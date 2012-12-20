@@ -34,6 +34,10 @@ class Discogs::Wrapper
     query_and_build "label/#{name}", Discogs::Label, {:releases => 1}
   end
 
+  def get_user(username)
+    query_and_build "users/#{name}", Discogs::User
+  end
+
   def search(term, options={})
     opts = { :type => :all, :page => 1 }.merge(options)
     params = { :q => term, :type => opts[:type], :page => opts[:page] }
