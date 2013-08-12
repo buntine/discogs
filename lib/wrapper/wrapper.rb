@@ -90,7 +90,7 @@ class Discogs::Wrapper
     parameters = { :f => "xml" }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
 
-    URI.parse(File.join(@@root_host, sanitize_path(path, URI.escape(querystring))))
+    URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
   end
 
   def sanitize_path(*path_parts)
