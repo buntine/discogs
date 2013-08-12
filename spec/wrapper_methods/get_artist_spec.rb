@@ -25,6 +25,10 @@ describe Discogs::Wrapper do
       it "should have a name attribute" do
         @artist.name.should == "Root"
       end
+
+      it "should have an id attribute" do
+        @artist.id.should == "123"
+      end
   
       it "should have a realname attribute" do
         @artist.realname.should == "Rootan"
