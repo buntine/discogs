@@ -35,7 +35,7 @@ class Discogs::Wrapper
   end
 
   def get_user(username)
-    query_and_build "users/#{name}", Discogs::User
+    query_and_build "users/#{username}", Discogs::User
   end
 
   def search(term, options={})

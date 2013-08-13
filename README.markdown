@@ -75,4 +75,4 @@ USAGE
 LICENSE
 -----
 
-See the LICENCE file. Copyright (c) Andrew Buntine 2011
+See the LICENCE file. Copyright (c) Andrew Buntine
