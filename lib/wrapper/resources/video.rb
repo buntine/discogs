@@ -6,7 +6,6 @@ class Discogs::Video < Discogs::Resource
                 :embed,
                 :description,
                 :title,
-                :src,
-                :uri
+                :src
 
 end

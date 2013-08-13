@@ -5,6 +5,7 @@
       <image height="226" type="secondary" uri="http://www.discogs.com/image/A-45-1094774583.jpg" uri150="http://www.discogs.com/image/A-150-45-1094774583.jpg" width="222"/>
       <image height="600" type="primary" uri="http://www.discogs.com/image/A-45-1122852930.jpg" uri150="http://www.discogs.com/image/A-150-45-1122852930.jpg" width="600"/>
     </images>
+    <id>123</id>
     <name>Root</name>
     <realname>Rootan</realname>
     <profile>Richard David James was born to Welsh parents</profile>

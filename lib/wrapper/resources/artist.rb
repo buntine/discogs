@@ -4,7 +4,8 @@ class Discogs::Artist < Discogs::Resource
 
   no_mapping
 
-  attr_accessor :name,
+  attr_accessor :id,
+                :name,
                 :realname,
                 :images,
                 :urls,

@@ -72,7 +72,7 @@ class Discogs::Wrapper
     rescue Zlib::GzipFile::Error
         response_body = response.body
     end
-    
+
     response_body
   end
 
@@ -94,7 +94,7 @@ class Discogs::Wrapper
     parameters = { :f => "xml" }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
 
-    URI.parse(File.join(@@root_host, sanitize_path(path, querystring)))
+    URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
   end
 
   def sanitize_path(*path_parts)
