@@ -34,6 +34,10 @@ class Discogs::Wrapper
     query_and_build "label/#{name}", Discogs::Label, {:releases => 1}
   end
 
+  def get_user(username)
+    query_and_build "users/#{username}", Discogs::User
+  end
+
   def search(term, options={})
     opts = { :type => :all, :page => 1 }.merge(options)
     params = { :q => term, :type => opts[:type], :page => opts[:page] }
@@ -68,7 +72,7 @@ class Discogs::Wrapper
     rescue Zlib::GzipFile::Error
         response_body = response.body
     end
-    
+
     response_body
   end
 
@@ -90,7 +94,7 @@ class Discogs::Wrapper
     parameters = { :f => "xml" }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
 
-    URI.parse(File.join(@@root_host, sanitize_path(path, querystring)))
+    URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
   end
 
   def sanitize_path(*path_parts)

@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../spec_helper"
+require 'spec_helper'
 
 describe Discogs::Wrapper do
 
@@ -25,9 +25,21 @@ describe Discogs::Wrapper do
       it "should have a name attribute" do
         @artist.name.should == "Root"
       end
+
+      it "should have an id attribute" do
+        @artist.id.should == "123"
+      end
   
       it "should have a realname attribute" do
         @artist.realname.should == "Rootan"
+      end
+
+      it "should have a profile attribute" do
+        @artist.profile.should == "Richard David James was born to Welsh parents"
+      end
+
+      it "should have a data_quality attribute" do
+        @artist.data_quality.should == "Needs Vote"
       end
 
       it "should have one or more aliases" do

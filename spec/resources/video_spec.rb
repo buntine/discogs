@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../spec_helper"
+require 'spec_helper'
 
 describe Discogs::Video do
 
@@ -30,12 +30,12 @@ describe Discogs::Video do
       @video.description.should == "The Persuader-Stockholm-Sodermalm"
     end
  
-    it "should have a uri attribute" do
-      @video.uri.should == "http://www.youtube.com/watch?v=QVdDhOnoR8k"
-    end
- 
     it "should have a title attribute" do
       @video.title.should == "The Persuader"
+    end
+    
+    it "should have a src attribute" do
+      @video.src.should == "http://www.youtube.com/watch?v=QVdDhOnoR8k"
     end
  
   end

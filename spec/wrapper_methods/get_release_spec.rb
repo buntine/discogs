@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../spec_helper"
+require 'spec_helper'
 
 describe Discogs::Wrapper do
 
@@ -87,7 +87,7 @@ describe Discogs::Wrapper do
         @release.videos.each_with_index do |video, index|
           video.duration.should == specs[index][0]
           video.embed.should == specs[index][1]
-          video.uri.should == specs[index][2]
+          video.src.should == specs[index][2]
         end
       end
 

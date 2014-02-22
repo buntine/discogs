@@ -1,8 +1,8 @@
 
 ## Discogs::Wrapper
-##   by Andrew Buntine, 2009
+##   Copyright Andrew Buntine
 ##   
-##   This library provides full access to the Discogs.com API v1.0
+##   This library provides full access to the Discogs.com API v2.0
 ##
 ##   Please file all bug reports at http://www.github.com/buntine/discogs, or
 ##   email me at info@andrewbuntine.com.

@@ -4,14 +4,17 @@ class Discogs::Artist < Discogs::Resource
 
   no_mapping
 
-  attr_accessor :name,
+  attr_accessor :id,
+                :name,
                 :realname,
                 :images,
                 :urls,
                 :namevariations,
                 :aliases,
                 :members,
-                :releases
+                :releases,
+                :profile,
+                :data_quality
 
   def main_releases
     filter_releases("Main")
