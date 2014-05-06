@@ -1,10 +1,13 @@
 # Core API wrapper class.
 
-require 'uri'
+require 'hashie'
+require 'json'
 require 'net/http'
+require 'pry'
 require 'rexml/document'
-require 'zlib'
 require 'stringio'
+require 'uri'
+require 'zlib'
 
 require File.dirname(__FILE__) + "/resource"
 
@@ -38,6 +41,10 @@ class Discogs::Wrapper
     query_and_build "users/#{username}", Discogs::User
   end
 
+  def get_user_collection(username)
+    query_and_build_json "users/#{username}/collection/folders/0/releases"
+  end
+
   def search(term, options={})
     opts = { :type => :all, :page => 1 }.merge(options)
     params = { :q => term, :type => opts[:type], :page => opts[:page] }
@@ -54,6 +61,13 @@ class Discogs::Wrapper
     data = query_api(path, params)
     resource = klass.send(:new, data)
     resource.build!
+  end
+
+  def query_and_build_json(path)
+    data = query_api(path, {:f => 'json'})
+    hash = JSON.parse data
+    obj = Hashie::Mash.new hash
+    obj
   end
 
   # Queries the API and handles the response.
@@ -81,7 +95,8 @@ class Discogs::Wrapper
     uri = build_uri(path, params)
 
     request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
-    request.add_field("Accept", "application/xml")
+    output_format = params.fetch(:f, 'xml')
+    request.add_field("Accept", "application/#{output_format}")
     request.add_field("Accept-Encoding", "gzip,deflate")
     request.add_field("User-Agent", @app_name)
 
@@ -91,15 +106,14 @@ class Discogs::Wrapper
   end
 
   def build_uri(path, params={})
-    parameters = { :f => "xml" }.merge(params)
+    output_format = params.fetch(:f, 'xml')
+    parameters = { :f => output_format }.merge(params)
     querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
-
     URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
   end
 
   def sanitize_path(*path_parts)
     clean_path = path_parts.map { |part| part.gsub(/\s/, '+') }
-
     clean_path.join
   end
 
