@@ -1,0 +1,2162 @@
+{
+  "pagination": {
+    "per_page": 50,
+    "items": 552,
+    "page": 1,
+    "urls": {
+      "last": "http:\/\/api.discogs.com\/users\/mintfloss\/collection\/folders\/0\/releases?per_page=50&page=12",
+      "next": "http:\/\/api.discogs.com\/users\/mintfloss\/collection\/folders\/0\/releases?per_page=50&page=2"
+    },
+    "pages": 12
+  },
+  "releases": [
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1873,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1873",
+            "catno": "86629-2",
+            "name": "Anti-",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "text": "Digipak",
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-626459-1164611097.jpeg",
+        "title": "Blood Money",
+        "artists": [
+          {
+            "join": "",
+            "name": "Tom Waits",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/82294",
+            "id": 82294
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/626459",
+        "year": 2002,
+        "id": 626459
+      },
+      "id": 626459
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 39967,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/39967",
+            "catno": "3BOS 1001 2",
+            "name": "3 Beads Of Sweat",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Compilation",
+              "Reissue"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-1830970-1260740741.jpeg",
+        "title": "Protein Source Of The Future... Now!",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/1830970",
+        "year": 2002,
+        "id": 1830970
+      },
+      "id": 1830970
+    },
+    {
+      "instance_id": 1,
+      "rating": 3,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 39967,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/39967",
+            "catno": "3BOS 1006.2",
+            "name": "3 Beads Of Sweat",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album",
+              "Reissue"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-433675-1260740796.jpeg",
+        "title": "Zopilote Machine",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/433675",
+        "year": 2005,
+        "id": 433675
+      },
+      "id": 433675
+    },
+    {
+      "instance_id": 1,
+      "rating": 3,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 39967,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/39967",
+            "catno": "3BOS 1007.2",
+            "name": "3 Beads Of Sweat",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album",
+              "Reissue"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-433676-1260742282.jpeg",
+        "title": "Nothing For Juice",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/433676",
+        "year": 2005,
+        "id": 433676
+      },
+      "id": 433676
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 36605,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/36605",
+            "catno": "4M 101",
+            "name": "4 Men With Beards",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album",
+              "Reissue"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-678684-1301215169.jpeg",
+        "title": "I Never Loved A Man The Way I Loved You",
+        "artists": [
+          {
+            "join": "",
+            "name": "Aretha Franklin",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/38863",
+            "id": 38863
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/678684",
+        "year": 2001,
+        "id": 678684
+      },
+      "id": 678684
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "BAD 2306 CD",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Maxi-Single"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-594583-1296329470.jpeg",
+        "title": "Palmcorder Yajna",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/594583",
+        "year": 2003,
+        "id": 594583
+      },
+      "id": 594583
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "BAD 2410 CD",
+            "name": "4AD",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Maxi-Single"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-404585-1131569863.jpeg",
+        "title": "Letter From Belgium",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/404585",
+        "year": 2004,
+        "id": 404585
+      },
+      "id": 404585
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "BAD 2608 CD AUS",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "EP"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-761130-1228634980.jpeg",
+        "title": "Babylon Springs EP",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/761130",
+        "year": 2006,
+        "id": 761130
+      },
+      "id": 761130
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2401",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-515627-1126397118.jpeg",
+        "title": "We Shall All Be Healed",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/515627",
+        "year": 2004,
+        "id": 515627
+      },
+      "id": 515627
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2401 CD",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "HDCD",
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-393889-1214861427.jpeg",
+        "title": "We Shall All Be Healed",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/393889",
+        "year": 2004,
+        "id": 393889
+      },
+      "id": 393889
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2508 CD",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-515595-1222806561.jpeg",
+        "title": "The Sunset Tree",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/515595",
+        "year": 2005,
+        "id": 515595
+      },
+      "id": 515595
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2614 CD",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-767443-1157089908.jpeg",
+        "title": "Get Lonely",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/767443",
+        "year": 2006,
+        "id": 767443
+      },
+      "id": 767443
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2801 CD",
+            "name": "4AD",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-1266494-1294959723.jpeg",
+        "title": "Heretic Pride",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/1266494",
+        "year": 2008,
+        "id": 1266494
+      },
+      "id": 1266494
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2932",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album",
+              "45 RPM"
+            ],
+            "text": "Gatefold",
+            "name": "Vinyl",
+            "qty": "2"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-1988013-1260741331.jpeg",
+        "title": "The Life Of The World To Come",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/1988013",
+        "year": 2009,
+        "id": 1988013
+      },
+      "id": 1988013
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "EAD 2506 S",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "EP",
+              "MP3"
+            ],
+            "name": "File",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-754561-1155464975.jpeg",
+        "title": "Dilaudid EP",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/754561",
+        "year": 2005,
+        "id": 754561
+      },
+      "id": 754561
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2207 CD",
+            "name": "4AD",
+            "entity_type": "1"
+          },
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "cad 2207 cd",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-72025-1151037463.jpeg",
+        "title": "Nonument",
+        "artists": [
+          {
+            "join": "",
+            "name": "Sybarite",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/2261",
+            "id": 2261
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/72025",
+        "year": 2002,
+        "id": 72025
+      },
+      "id": 72025
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "CAD 2215 CD",
+            "name": "4AD",
+            "entity_type": "1"
+          },
+          {
+            "id": 634,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/634",
+            "catno": "AD Moun 1",
+            "name": "4AD",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-393886-1214862015.jpeg",
+        "title": "Tallahassee",
+        "artists": [
+          {
+            "join": "",
+            "name": "Mountain Goats, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/95417",
+            "id": 95417
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/393886",
+        "year": 2003,
+        "id": 393886
+      },
+      "id": 393886
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 4736,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/4736",
+            "catno": "75033",
+            "name": "75 Ark",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "text": "Digipak",
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-45721-1394826653-2098.jpeg",
+        "title": "Deltron 3030",
+        "artists": [
+          {
+            "join": "",
+            "name": "Deltron 3030",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/27507",
+            "id": 27507
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/45721",
+        "year": 2000,
+        "id": 45721
+      },
+      "id": 45721
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 41871,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/41871",
+            "catno": "none",
+            "name": "A Purple 100",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-342869-1099292233.jpg",
+        "title": "The Pelt",
+        "artists": [
+          {
+            "join": "",
+            "name": "Dose One",
+            "anv": "Doseone",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/28560",
+            "id": 28560
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/342869",
+        "year": 2003,
+        "id": 342869
+      },
+      "id": 342869
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 41871,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/41871",
+            "catno": "SUB01",
+            "name": "A Purple 100",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Compilation"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-354216-1253032514.jpeg",
+        "title": "Earthsick",
+        "artists": [
+          {
+            "join": "",
+            "name": "Subtle",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/35852",
+            "id": 35852
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/354216",
+        "year": 2004,
+        "id": 354216
+      },
+      "id": 354216
+    },
+    {
+      "instance_id": 1,
+      "rating": 3,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 41871,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/41871",
+            "catno": "SUB02",
+            "name": "A Purple 100",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-483079-1377367362-1220.jpeg",
+        "title": "Ha",
+        "artists": [
+          {
+            "join": "",
+            "name": "Dose One",
+            "anv": "Doseone",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/28560",
+            "id": 28560
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/483079",
+        "year": 2005,
+        "id": 483079
+      },
+      "id": 483079
+    },
+    {
+      "instance_id": 1,
+      "rating": 3,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 5842,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/5842",
+            "catno": "AH-025",
+            "name": "After Hours",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-233123-1278757577.jpeg",
+        "title": "The Lakewood",
+        "artists": [
+          {
+            "join": "",
+            "name": "Euphone",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/156101",
+            "id": 156101
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/233123",
+        "year": 2001,
+        "id": 233123
+      },
+      "id": 233123
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 49461,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/49461",
+            "catno": "AK 378",
+            "name": "Akarma",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album",
+              "Reissue"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-2474994-1286098555.jpeg",
+        "title": "Fandangos In Space",
+        "artists": [
+          {
+            "join": "",
+            "name": "Carmen (19)",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/1184756",
+            "id": 1184756
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/2474994",
+        "year": 2005,
+        "id": 2474994
+      },
+      "id": 2474994
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1095,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1095",
+            "catno": "ALIENCD 041",
+            "name": "Alien8 Recordings",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "text": "Gatefold Sleeve",
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-480865-1361272472-2432.jpeg",
+        "title": "Who Will Cut Our Hair When We're Gone?",
+        "artists": [
+          {
+            "join": "",
+            "name": "Unicorns, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/317587",
+            "id": 317587
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/480865",
+        "year": 2003,
+        "id": 480865
+      },
+      "id": 480865
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1095,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1095",
+            "catno": "ALIENCD22",
+            "name": "Alien8 Recordings",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "2"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-350964-1168217242.jpeg",
+        "title": "Shalabi Effect",
+        "artists": [
+          {
+            "join": "",
+            "name": "Shalabi Effect",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/138827",
+            "id": 138827
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/350964",
+        "year": 2000,
+        "id": 350964
+      },
+      "id": 350964
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1095,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1095",
+            "catno": "ALIENCD32",
+            "name": "Alien8 Recordings",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-183476-1168218741.jpeg",
+        "title": "The Trial Of St-Orange",
+        "artists": [
+          {
+            "join": "",
+            "name": "Shalabi Effect",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/138827",
+            "id": 138827
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/183476",
+        "year": 2002,
+        "id": 183476
+      },
+      "id": 183476
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1095,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1095",
+            "catno": "ALIENCD42",
+            "name": "Alien8 Recordings",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-562611-1131865660.jpeg",
+        "title": "Pink Abyss",
+        "artists": [
+          {
+            "join": "",
+            "name": "Shalabi Effect",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/138827",
+            "id": 138827
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/562611",
+        "year": 2004,
+        "id": 562611
+      },
+      "id": 562611
+    },
+    {
+      "instance_id": 1,
+      "rating": 3,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1095,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1095",
+            "catno": "ALIENCD44",
+            "name": "Alien8 Recordings",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "text": "Gatefold",
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-267625-1388727260-4780.jpeg",
+        "title": "Mantra Of Love",
+        "artists": [
+          {
+            "join": "",
+            "name": "Acid Mothers Temple & The Melting Paraiso UFO",
+            "anv": "Acid Mothers Temple And The Melting Paraiso U.F.O.",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/53760",
+            "id": 53760
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/267625",
+        "year": 0,
+        "id": 267625
+      },
+      "id": 267625
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1095,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1095",
+            "catno": "ALIENLP 033",
+            "name": "Alien8 Recordings",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          },
+          {
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-545178-1131864884.jpeg",
+        "title": "Villa Claustrophobia",
+        "artists": [
+          {
+            "join": "",
+            "name": "Tanakh",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/249087",
+            "id": 249087
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/545178",
+        "year": 2002,
+        "id": 545178
+      },
+      "id": 545178
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1873,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1873",
+            "catno": "86956-2",
+            "name": "Anti-",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-1824946-1245868947.jpeg",
+        "title": "Jhelli Beam",
+        "artists": [
+          {
+            "join": "",
+            "name": "Busdriver",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/46108",
+            "id": 46108
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/1824946",
+        "year": 2009,
+        "id": 1824946
+      },
+      "id": 1824946
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1873,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1873",
+            "catno": "86966-1",
+            "name": "Anti-",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP"
+            ],
+            "name": "Vinyl",
+            "qty": "2"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-1550469-1227722733.jpeg",
+        "title": "Arm's Way",
+        "artists": [
+          {
+            "join": "",
+            "name": "Islands",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/420577",
+            "id": 420577
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/1550469",
+        "year": 2008,
+        "id": 1550469
+      },
+      "id": 1550469
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1873,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1873",
+            "catno": "87151-2",
+            "name": "Anti-",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-3185904-1319887272.jpeg",
+        "title": "Bad As Me",
+        "artists": [
+          {
+            "join": "",
+            "name": "Tom Waits",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/82294",
+            "id": 82294
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/3185904",
+        "year": 2011,
+        "id": 3185904
+      },
+      "id": 3185904
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1873,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1873",
+            "catno": "6547-2",
+            "name": "Anti-",
+            "entity_type": "1"
+          },
+          {
+            "id": 61599,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/61599",
+            "catno": "6547-2",
+            "name": "Epitaph",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "text": "Digipak",
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-358529-1228254034.jpeg",
+        "title": "Mule Variations",
+        "artists": [
+          {
+            "join": "",
+            "name": "Tom Waits",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/82294",
+            "id": 82294
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/358529",
+        "year": 1999,
+        "id": 358529
+      },
+      "id": 358529
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1873,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1873",
+            "catno": "6632-2",
+            "name": "Anti-",
+            "entity_type": "1"
+          },
+          {
+            "id": 61599,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/61599",
+            "catno": "6632-2",
+            "name": "Epitaph",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "text": "Digipak",
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-417316-1301228236.jpeg",
+        "title": "Alice",
+        "artists": [
+          {
+            "join": "",
+            "name": "Tom Waits",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/82294",
+            "id": 82294
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/417316",
+        "year": 2002,
+        "id": 417316
+      },
+      "id": 417316
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1105,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1105",
+            "catno": "ABR 0010",
+            "name": "Anticon",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Repress",
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-157949-1190983658.jpeg",
+        "title": "Them",
+        "artists": [
+          {
+            "join": "",
+            "name": "Themselves",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/37309",
+            "id": 37309
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/157949",
+        "year": 2003,
+        "id": 157949
+      },
+      "id": 157949
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1105,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1105",
+            "catno": "abr0051",
+            "name": "Anticon",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "12\"",
+              "Maxi-Single"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-482032-1190944631.jpeg",
+        "title": "Untitled Three",
+        "artists": [
+          {
+            "join": "",
+            "name": "Odd Nosdam",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/32301",
+            "id": 32301
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/482032",
+        "year": 2005,
+        "id": 482032
+      },
+      "id": 482032
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1105,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1105",
+            "catno": "abr0104",
+            "name": "Anticon",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-2938179-1318404442.jpeg",
+        "title": "Own Your Ghost",
+        "artists": [
+          {
+            "join": "",
+            "name": "13 & God",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/276028",
+            "id": 276028
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/2938179",
+        "year": 2011,
+        "id": 2938179
+      },
+      "id": 2938179
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1105,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1105",
+            "catno": "ABR0105",
+            "name": "Anticon",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album",
+              "Limited Edition"
+            ],
+            "text": "Blue",
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-2345723-1372942426-6945.jpeg",
+        "title": "Cerulean",
+        "artists": [
+          {
+            "join": "",
+            "name": "Baths",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/1819667",
+            "id": 1819667
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/2345723",
+        "year": 2010,
+        "id": 2345723
+      },
+      "id": 2345723
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 1105,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/1105",
+            "catno": "abr0050",
+            "name": "Anticon",
+            "entity_type": "1"
+          },
+          {
+            "id": 17094,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/17094",
+            "catno": "N12",
+            "name": "Alien Transistor",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-438812-1133932912.jpeg",
+        "title": "13 & God",
+        "artists": [
+          {
+            "join": "",
+            "name": "13 & God",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/276028",
+            "id": 276028
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/438812",
+        "year": 2005,
+        "id": 438812
+      },
+      "id": 438812
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 362,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/362",
+            "catno": "82876 52905 2",
+            "name": "Arista",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "2"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-233863-1104681921.jpg",
+        "title": "Speakerboxxx \/ The Love Below",
+        "artists": [
+          {
+            "join": "",
+            "name": "OutKast",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/38561",
+            "id": 38561
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/233863",
+        "year": 2003,
+        "id": 233863
+      },
+      "id": 233863
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 29035,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/29035",
+            "catno": "80119-01070-2",
+            "name": "Artist Direct BMG",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album",
+              "Enhanced"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-469666-1124855246.jpg",
+        "title": "...Burn, Piano Island, Burn",
+        "artists": [
+          {
+            "join": "",
+            "name": "Blood Brothers, The",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/253650",
+            "id": 253650
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/469666",
+        "year": 2003,
+        "id": 469666
+      },
+      "id": 469666
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 30545,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/30545",
+            "catno": "A&C 015",
+            "name": "Arts & Crafts International",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          },
+          {
+            "descriptions": [
+              "EP"
+            ],
+            "name": "CD",
+            "qty": "1"
+          },
+          {
+            "descriptions": [
+              "Limited Edition"
+            ],
+            "name": "All Media",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-532628-1200002890.jpeg",
+        "title": "Broken Social Scene",
+        "artists": [
+          {
+            "join": "",
+            "name": "Broken Social Scene",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/138844",
+            "id": 138844
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/532628",
+        "year": 2005,
+        "id": 532628
+      },
+      "id": 532628
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 36851,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/36851",
+            "catno": "AM-034",
+            "name": "Asian Man Records",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-422949-1213281129.jpeg",
+        "title": "Goddamnit",
+        "artists": [
+          {
+            "join": "",
+            "name": "Alkaline Trio",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/261351",
+            "id": 261351
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/422949",
+        "year": 1998,
+        "id": 422949
+      },
+      "id": 422949
+    },
+    {
+      "instance_id": 1,
+      "rating": 4,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 36851,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/36851",
+            "catno": "AM-055",
+            "name": "Asian Man Records",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-422942-1213281289.jpeg",
+        "title": "Maybe I'll Catch Fire",
+        "artists": [
+          {
+            "join": "",
+            "name": "Alkaline Trio",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/261351",
+            "id": 261351
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/422942",
+        "year": 1999,
+        "id": 422942
+      },
+      "id": 422942
+    },
+    {
+      "instance_id": 1,
+      "rating": 5,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 36851,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/36851",
+            "catno": "AM-058",
+            "name": "Asian Man Records",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Compilation"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-403437-1213281394.jpeg",
+        "title": "Alkaline Trio",
+        "artists": [
+          {
+            "join": "",
+            "name": "Alkaline Trio",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/261351",
+            "id": 261351
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/403437",
+        "year": 2000,
+        "id": 403437
+      },
+      "id": 403437
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 35784,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/35784",
+            "catno": "AKR014",
+            "name": "Asthmatic Kitty Records",
+            "entity_type": "1"
+          },
+          {
+            "id": 41651,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/41651",
+            "catno": "none",
+            "name": "Sounds Familyre",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album"
+            ],
+            "text": "Triple Gatefold",
+            "name": "Vinyl",
+            "qty": "2"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-649042-1303171690.jpeg",
+        "title": "Sufjan Stevens Invites You To: Come On Feel The Illinoise",
+        "artists": [
+          {
+            "join": "",
+            "name": "Sufjan Stevens",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/202598",
+            "id": 202598
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/649042",
+        "year": 2005,
+        "id": 649042
+      },
+      "id": 649042
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 188,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/188",
+            "catno": "ASW 74866",
+            "name": "Astralwerks",
+            "entity_type": ""
+          },
+          {
+            "id": 45746,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/45746",
+            "catno": "0946 3 74866 2 7",
+            "name": "EMI Music",
+            "entity_type": ""
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-815123-1165781294.gif",
+        "title": "For Hero : For Fool",
+        "artists": [
+          {
+            "join": "",
+            "name": "Subtle",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/35852",
+            "id": 35852
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/815123",
+        "year": 2006,
+        "id": 815123
+      },
+      "id": 815123
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 3820,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/3820",
+            "catno": "SD 33-286",
+            "name": "ATCO Records",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "LP",
+              "Album",
+              "Reissue"
+            ],
+            "name": "Vinyl",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-2466928-1311802052.jpeg",
+        "title": "Otis Redding Live In Europe",
+        "artists": [
+          {
+            "join": "",
+            "name": "Otis Redding",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/132136",
+            "id": 132136
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/2466928",
+        "year": 1968,
+        "id": 2466928
+      },
+      "id": 2466928
+    },
+    {
+      "instance_id": 1,
+      "rating": 0,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 3820,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/3820",
+            "catno": "7567-92148-2",
+            "name": "ATCO Records",
+            "entity_type": "1"
+          },
+          {
+            "id": 3820,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/3820",
+            "catno": "7567-92148-2 YS",
+            "name": "ATCO Records",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-380200-1227446342.jpeg",
+        "title": "Images And Words",
+        "artists": [
+          {
+            "join": "",
+            "name": "Dream Theater",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/260935",
+            "id": 260935
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/380200",
+        "year": 1992,
+        "id": 380200
+      },
+      "id": 380200
+    },
+    {
+      "instance_id": 1,
+      "rating": 3,
+      "basic_information": {
+        "labels": [
+          {
+            "id": 681,
+            "resource_url": "http:\/\/api.discogs.com\/labels\/681",
+            "catno": "82658-2",
+            "name": "Atlantic",
+            "entity_type": "1"
+          }
+        ],
+        "formats": [
+          {
+            "descriptions": [
+              "Album"
+            ],
+            "name": "CD",
+            "qty": "1"
+          }
+        ],
+        "thumb": "http:\/\/api.discogs.com\/image\/R-150-377869-1374344621-9891.jpeg",
+        "title": "Stranger Than Fiction",
+        "artists": [
+          {
+            "join": "",
+            "name": "Bad Religion",
+            "anv": "",
+            "tracks": "",
+            "role": "",
+            "resource_url": "http:\/\/api.discogs.com\/artists\/17479",
+            "id": 17479
+          }
+        ],
+        "resource_url": "http:\/\/api.discogs.com\/releases\/377869",
+        "year": 1994,
+        "id": 377869
+      },
+      "id": 377869
+    }
+  ]
+}
