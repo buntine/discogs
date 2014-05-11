@@ -26,6 +26,15 @@ describe Discogs::Wrapper do
         @user_collection.releases.length == 50
       end
 
+      it "should have a 552 releases total" do
+        @user_collection.pagination.items == 552
+      end
+
+      it "should not have a bogus attribute" do
+      	@user_collection.bogus_attribute.should be_nil
+      end
+
+
   	end
 
   end
