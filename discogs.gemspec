@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   
   s.name = "discogs-wrapper"
-  s.version = "1.1.4"
+  s.version = "1.2.0"
   s.date = "2013-08-13"
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
   s.homepage = "http://www.github.com/buntine/discogs"
@@ -16,7 +16,11 @@ Gem::Specification.new do |s|
 
   s.platform = Gem::Platform::RUBY
   
+  s.add_development_dependency "pry"
+  s.add_development_dependency "pry-nav"
   s.add_development_dependency "rspec", "= 2.12.0"
   s.add_development_dependency "simplecov", "= 0.7.1"
+  
+  s.add_runtime_dependency "hashie", "~> 2.1"
 
 end
