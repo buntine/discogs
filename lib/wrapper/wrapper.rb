@@ -29,8 +29,11 @@ class Discogs::Wrapper
     query_and_build_json "masters/#{id}"
   end
 
-  def get_artist(name)
-    query_and_build "artist/#{name}", Discogs::Artist, {:releases => 1}
+  def get_artist(id)
+    query_and_build_json "artists/#{id}"
+  end
+
+  def get_artists_releases(name)
   end
 
   def get_label(name)

@@ -14,8 +14,8 @@ def valid_master_release_json
   read_sample "valid_master_release.json"
 end
 
-def valid_artist_xml
-  read_sample "valid_artist.xml"
+def valid_artist_json
+  read_sample "valid_artist.json"
 end
 
 def valid_label_xml

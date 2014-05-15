@@ -26,7 +26,7 @@ describe Discogs::Wrapper do
     @app_name = "some_app"
     @wrapper = Discogs::Wrapper.new(@app_name)
     @release_id = "1"
-    @artist_name = "Dark"
+    @artist_id = 313929
     @label_name = "Monitor"
     @search_term = "barry"
   end
@@ -48,10 +48,10 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct artist URL to parse" do
-      mock_http_with_response "200", valid_artist_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/artist/Dark?f=xml&releases=1").and_return(@uri)
+      mock_http_with_response "200", valid_artist_json
+      URI.should_receive(:parse).with("http://api.discogs.com/artists/313929?f=json").and_return(@uri)
 
-      @wrapper.get_artist(@artist_name)
+      @wrapper.get_artist(@artist_id)
     end
 
     it "should generate the correct label URL to parse" do
@@ -82,12 +82,8 @@ describe Discogs::Wrapper do
       @wrapper.search(@search_term, :page => 2, :type => :artist)
     end
 
-    it "should sanitize the path correctly" do
-      mock_http_with_response "200", valid_artist_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/artist/A+very+long+band+name?f=xml&releases=1").and_return(@uri)
-
-      @wrapper.get_artist("A very long band name")
-    end 
+    ## TODO: Is this still need? Paths were sanitized because band names could be passed in URLs.
+    it "should sanitize the path correctly"
 
   end
 
@@ -110,12 +106,6 @@ describe Discogs::Wrapper do
   end
 
   describe "when requesting an artist" do
-
-    it "should successfully return a Discogs::Artist object" do
-      mock_http_with_response "200", valid_artist_xml
- 
-      @wrapper.get_artist(@artist_name).should be_instance_of(Discogs::Artist)
-    end
 
     it "should raise an exception if the artist does not exist" do
       mock_http_with_response "404"
