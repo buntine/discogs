@@ -45,6 +45,36 @@ class Discogs::Wrapper
     query_and_build_json "users/#{username}/collection/folders/0/releases"
   end
 
+  def get_user_wantlist(username)
+  end
+
+  def get_user_identity
+    # Auth required.
+  end
+
+  def get_user_inventory(username)
+  end
+
+  def get_user_profile(username)
+  end
+
+  def get_listing(id)
+  end
+
+  def get_order(id)
+    # Auth required.
+  end
+
+  def get_price_suggestions(id)
+    # Auth required.
+  end
+
+  def get_fee(price, currence="USD")
+  end
+
+  def get_image
+  end
+
   def search(term, options={})
     opts = { :type => :all, :page => 1 }.merge(options)
     params = { :q => term, :type => opts[:type], :page => opts[:page] }
@@ -57,6 +87,7 @@ class Discogs::Wrapper
 
  private
 
+  # TODO: Remove after all methods use JSON.
   def query_and_build(path, klass, params={})
     data = query_api(path, params)
     resource = klass.send(:new, data)
