@@ -25,7 +25,7 @@ describe Discogs::Wrapper do
   before do
     @app_name = "some_app"
     @wrapper = Discogs::Wrapper.new(@app_name)
-    @release_id = "666666"
+    @release_id = "1"
     @artist_name = "Dark"
     @label_name = "Monitor"
     @search_term = "barry"
@@ -41,8 +41,8 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct release URL to parse" do
-      mock_http_with_response "200", valid_release_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/release/666666?f=xml").and_return(@uri)
+      mock_http_with_response "200", valid_release_json
+      URI.should_receive(:parse).with("http://api.discogs.com/releases/1?f=json").and_return(@uri)
 
       @wrapper.get_release(@release_id)
     end
@@ -94,12 +94,6 @@ describe Discogs::Wrapper do
   ## NOTE: See ./spec/wrapper_methods/*.rb for indepth tests on valid API requests.
 
   describe "when requesting a release" do
-
-    it "should successfully return a Discogs::Release object" do
-      mock_http_with_response "200", valid_release_xml
- 
-      @wrapper.get_release(@release_id).should be_instance_of(Discogs::Release)
-    end
 
     it "should raise an exception if the release does not exist" do
       mock_http_with_response "404"

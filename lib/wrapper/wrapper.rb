@@ -22,7 +22,7 @@ class Discogs::Wrapper
   end
 
   def get_release(id)
-    query_and_build "release/#{id}", Discogs::Release
+    query_and_build_json "releases/#{id}"
   end
 
   def get_master_release(id)

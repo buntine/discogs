@@ -1,3 +1,46 @@
+
+require 'spec_helper'
+
+describe Discogs::Wrapper do
+
+  before do
+    @wrapper = Discogs::Wrapper.new("some_user_agent")
+    @release_id = "1"
+  end
+
+  describe ".get_release" do
+
+    before do
+      @http_request = mock(Net::HTTP)
+      @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_release_json)
+      @http_response_as_file = mock(StringIO, :read => valid_release_json)
+      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
+      @http_request.should_receive(:start).and_return(@http_response)
+      Net::HTTP.should_receive(:new).and_return(@http_request)
+
+      @release = @wrapper.get_release(@release_id)
+    end
+
+    describe "when calling simple release attributes" do
+
+      it "should have a title attribute" do
+        @release.title.should == "Stockholm"
+      end
+  
+      it "should have an ID attribute" do
+        @release.id.should == 1
+      end
+
+      it "should have a master_id attribute" do
+        @release.master_id.should == 5427
+      end
+
+    end
+
+  end
+
+end 
+=begin
 require 'spec_helper'
 
 describe Discogs::Wrapper do
@@ -140,3 +183,4 @@ describe Discogs::Wrapper do
   end
 
 end
+=end

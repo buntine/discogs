@@ -10,6 +10,10 @@ def valid_release_xml
   read_sample "valid_release.xml"
 end
 
+def valid_release_json
+  read_sample "valid_release.json"
+end
+
 def valid_master_release_xml
   read_sample "valid_master_release.xml"
 end
@@ -29,7 +33,6 @@ end
 def valid_user_collection_json
   read_sample "valid_user_collection.json"
 end
-
 
 def read_sample(filename)
   data = File.read(File.join(File.dirname(__FILE__), "samples", filename))

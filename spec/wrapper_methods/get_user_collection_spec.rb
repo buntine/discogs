@@ -34,8 +34,7 @@ describe Discogs::Wrapper do
       	@user_collection.bogus_attribute.should be_nil
       end
 
-
-  	end
+    end
 
   end
 
