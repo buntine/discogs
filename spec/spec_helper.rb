@@ -6,16 +6,12 @@ require 'rubygems'
 require 'rspec'
 require File.dirname(__FILE__) + '/../lib/discogs'
 
-def valid_release_xml
-  read_sample "valid_release.xml"
-end
-
 def valid_release_json
   read_sample "valid_release.json"
 end
 
-def valid_master_release_xml
-  read_sample "valid_master_release.xml"
+def valid_master_release_json
+  read_sample "valid_master_release.json"
 end
 
 def valid_artist_xml

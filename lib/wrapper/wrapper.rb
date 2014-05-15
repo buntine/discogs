@@ -26,7 +26,7 @@ class Discogs::Wrapper
   end
 
   def get_master_release(id)
-    query_and_build "master/#{id}", Discogs::MasterRelease
+    query_and_build_json "masters/#{id}"
   end
 
   def get_artist(name)
