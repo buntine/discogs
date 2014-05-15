@@ -44,7 +44,7 @@ class Discogs::Wrapper
   end
 
   def get_user(username)
-    query_and_build "users/#{username}", Discogs::User
+    query_and_build_json "users/#{username}"
   end
 
   def get_user_collection(username)
@@ -58,10 +58,12 @@ class Discogs::Wrapper
     # Auth required.
   end
 
-  def get_user_inventory(username)
+  def edit_user
+    # Auth required.
+    # POST request.
   end
 
-  def get_user_profile(username)
+  def get_user_inventory(username)
   end
 
   def get_listing(id)
