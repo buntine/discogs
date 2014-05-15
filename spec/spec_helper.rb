@@ -18,8 +18,8 @@ def valid_artist_json
   read_sample "valid_artist.json"
 end
 
-def valid_label_xml
-  read_sample "valid_label.xml"
+def valid_label_json
+  read_sample "valid_label.json"
 end
 
 def valid_search_xml(page=1)

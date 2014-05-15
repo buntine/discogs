@@ -27,7 +27,7 @@ describe Discogs::Wrapper do
     @wrapper = Discogs::Wrapper.new(@app_name)
     @release_id = "1"
     @artist_id = 313929
-    @label_name = "Monitor"
+    @label_id = 1000
     @search_term = "barry"
   end
 
@@ -55,10 +55,10 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct label URL to parse" do
-      mock_http_with_response "200", valid_label_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/label/Monitor?f=xml&releases=1").and_return(@uri)
+      mock_http_with_response "200", valid_label_json
+      URI.should_receive(:parse).with("http://api.discogs.com/labels/1000?f=json").and_return(@uri)
 
-      @wrapper.get_label(@label_name)
+      @wrapper.get_label(@label_id)
     end
 
     it "should generate the correct default search URL to parse" do
@@ -123,22 +123,16 @@ describe Discogs::Wrapper do
 
   describe "when requesting a label" do
 
-    it "should successfully return a Discogs::Label object" do
-      mock_http_with_response "200", valid_label_xml
- 
-      @wrapper.get_label(@label_name).should be_instance_of(Discogs::Label)
-    end
-
     it "should raise an exception if the label does not exist" do
       mock_http_with_response "404"
 
-      lambda { @wrapper.get_label(@label_name) }.should raise_error(Discogs::UnknownResource)
+      lambda { @wrapper.get_label(@label_id) }.should raise_error(Discogs::UnknownResource)
     end
 
     it "should raise an exception if the server dies a horrible death" do
       mock_http_with_response "500"
 
-      lambda { @wrapper.get_label(@label_name) }.should raise_error(Discogs::InternalServerError)
+      lambda { @wrapper.get_label(@label_id) }.should raise_error(Discogs::InternalServerError)
     end
 
   end
