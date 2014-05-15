@@ -3,7 +3,7 @@ Discogs::Wrapper
 
 ABOUT
 -----
-  A 100% Ruby wrapper of the Discogs.com API. No dependencies, no extra gems. :)
+  A 100% Ruby wrapper of the Discogs.com API.
 
   Discogs::Wrapper abstracts all the nasty boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need.
 

@@ -64,10 +64,10 @@ class Discogs::Wrapper
   end
 
   def query_and_build_json(path)
-    data = query_api(path, {:f => 'json'})
-    hash = JSON.parse data
-    obj = Hashie::Mash.new hash
-    obj
+    data = query_api(path, {:f => "json"})
+    hash = JSON.parse(data)
+
+    Hashie::Mash.new(hash)
   end
 
   # Queries the API and handles the response.
@@ -81,10 +81,10 @@ class Discogs::Wrapper
     # if the API responds without gzipping.
     response_body = nil
     begin
-        inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
-        response_body = inflated_data.read
+      inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
+      response_body = inflated_data.read
     rescue Zlib::GzipFile::Error
-        response_body = response.body
+      response_body = response.body
     end
 
     response_body
@@ -92,13 +92,13 @@ class Discogs::Wrapper
 
   # Generates a HTTP request and returns the response.
   def make_request(path, params={})
-    uri = build_uri(path, params)
+    uri           = build_uri(path, params)
+    request       = Net::HTTP::Get.new("#{uri.path}?#{uri.query}")
+    output_format = params.fetch(:f, "xml")
 
-    request = Net::HTTP::Get.new(uri.path + "?" + uri.query)
-    output_format = params.fetch(:f, 'xml')
-    request.add_field("Accept", "application/#{output_format}")
+    request.add_field("Accept",          "application/#{output_format}")
     request.add_field("Accept-Encoding", "gzip,deflate")
-    request.add_field("User-Agent", @app_name)
+    request.add_field("User-Agent",      @app_name)
 
     Net::HTTP.new(uri.host).start do |http|
       http.request(request)
@@ -106,9 +106,10 @@ class Discogs::Wrapper
   end
 
   def build_uri(path, params={})
-    output_format = params.fetch(:f, 'xml')
-    parameters = { :f => output_format }.merge(params)
-    querystring = "?" + parameters.map { |key, value| "#{key}=#{value}" }.sort.join("&")
+    output_format = params.fetch(:f, "xml")
+    parameters    = {:f => output_format}.merge(params)
+    querystring   = "?" + URI.encode_www_form(parameters.sort)
+
     URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
   end
 
@@ -117,7 +118,7 @@ class Discogs::Wrapper
     clean_path.join
   end
 
-  def raise_unknown_resource(path='')
+  def raise_unknown_resource(path="")
     raise Discogs::UnknownResource, "Unknown Discogs resource: #{path}"
   end
 
