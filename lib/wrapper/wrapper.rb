@@ -95,13 +95,6 @@ class Discogs::Wrapper
 
  private
 
-  # TODO: Remove after all methods use JSON.
-  def query_and_build(path, klass, params={})
-    data = query_api(path, params)
-    resource = klass.send(:new, data)
-    resource.build!
-  end
-
   def query_and_build_json(path)
     data = query_api(path, {:f => "json"})
     hash = JSON.parse(data)
