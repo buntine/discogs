@@ -47,20 +47,66 @@ class Discogs::Wrapper
     query_and_build_json "users/#{username}"
   end
 
+  def edit_user(username, data={})
+    # Auth required.
+    # POST request.
+  end
+
   def get_user_collection(username)
-    query_and_build_json "users/#{username}/collection/folders/0/releases"
+    get_user_folder_releases(username, 0)
+  end
+
+  def get_user_collection_fields(username)
   end
 
   def get_user_wantlist(username)
+    query_and_build_json "users/#{username}/wants"
   end
 
-  def get_user_identity
+  def get_user_identity(username)
     # Auth required.
   end
 
-  def edit_user
+  def edit_user(username, data={})
     # Auth required.
     # POST request.
+  end
+
+  def add_release_to_user_folder(username, folder_id, release_id)
+    # Auth required.
+    # POST request.
+  end
+
+  def edit_release_in_user_folder(username, folder_id, release_id, instance_id, data={})
+    # Auth required.
+    # POST request.
+  end
+
+  def delete_instance_in_user_folder(username, folder_id, release_id, instance_id)
+    # Auth required.
+    # DELETE request.
+  end
+
+  def get_user_folder_releases(username, folder_id)
+    query_and_build_json "users/#{username}/collection/folders/#{folder_id}/releases"
+  end
+
+  def get_user_folder(username, folder_id)
+    # Auth required, unless folder_id == 0
+  end
+
+  def get_user_folders(username)
+    # Auth required, except for "All" folder.
+  end
+
+  def create_user_folder(username, folder_id, data={})
+    # Auth required.
+    # POST request.
+  end
+
+  def delete_user_folder(username, folder_id)
+    # Auth required.
+    # DELETE request.
   end
 
   def get_user_inventory(username)
