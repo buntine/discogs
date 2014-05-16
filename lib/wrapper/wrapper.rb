@@ -40,12 +40,16 @@ class Discogs::Wrapper
     query_and_build_json "artists/#{id}/releases"
   end
 
+  alias_method :get_artist_releases, :get_artists_releases
+
   def get_label(id)
     query_and_build_json "labels/#{id}"
   end
 
   def get_labels_releases(id)
   end
+
+  alias_method :get_label_releases, :get_labels_releases
 
   def get_user(username)
     query_and_build_json "users/#{username}"

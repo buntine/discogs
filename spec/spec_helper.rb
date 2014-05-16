@@ -18,6 +18,10 @@ def valid_artist_json
   read_sample "valid_artist.json"
 end
 
+def valid_artist_releases_json
+  read_sample "valid_artist_releases.json"
+end
+
 def valid_label_json
   read_sample "valid_label.json"
 end

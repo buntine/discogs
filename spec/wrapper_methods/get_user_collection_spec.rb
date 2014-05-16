@@ -22,12 +22,12 @@ describe Discogs::Wrapper do
 
     describe "when calling simple collection attributes" do
 
-      it "should have a 50 releases per page" do
-        @user_collection.releases.length == 50
+      it "should have 50 releases per page" do
+        @user_collection.releases.length.should == 50
       end
 
-      it "should have a 552 releases total" do
-        @user_collection.pagination.items == 552
+      it "should have 552 releases total" do
+        @user_collection.pagination.items.should == 552
       end
 
       it "should not have a bogus attribute" do
