@@ -4,6 +4,7 @@ require 'hashie'
 require 'json'
 require 'net/http'
 require 'pry'
+require 'rexml/document' # TODO: Remove when search is re-implemented.
 require 'stringio'
 require 'uri'
 require 'zlib'
