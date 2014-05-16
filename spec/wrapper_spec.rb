@@ -63,21 +63,21 @@ describe Discogs::Wrapper do
 
     it "should generate the correct default search URL to parse" do
       mock_http_with_response "200", valid_search_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/search?f=xml&page=1&q=barry&type=all").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/search?f=json&page=1&q=barry&type=all").and_return(@uri)
 
       @wrapper.search(@search_term)
     end
 
     it "should generate the correct second-page search URL to parse" do
       mock_http_with_response "200", valid_search_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/search?f=xml&page=2&q=barry&type=all").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/search?f=json&page=2&q=barry&type=all").and_return(@uri)
 
       @wrapper.search(@search_term, :page => 2)
     end
 
     it "should generate the correct second-page artist search URL to parse" do
       mock_http_with_response "200", valid_search_xml
-      URI.should_receive(:parse).with("http://api.discogs.com/search?f=xml&page=2&q=barry&type=artist").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/search?f=json&page=2&q=barry&type=artist").and_return(@uri)
 
       @wrapper.search(@search_term, :page => 2, :type => :artist)
     end
