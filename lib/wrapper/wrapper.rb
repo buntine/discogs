@@ -4,7 +4,6 @@ require 'hashie'
 require 'json'
 require 'net/http'
 require 'pry'
-require 'rexml/document'
 require 'stringio'
 require 'uri'
 require 'zlib'
@@ -29,11 +28,15 @@ class Discogs::Wrapper
     query_and_build_json "masters/#{id}"
   end
 
+  def get_master_release_versions(id)
+  end
+
   def get_artist(id)
     query_and_build_json "artists/#{id}"
   end
 
   def get_artists_releases(id)
+    query_and_build_json "artists/#{id}/releases"
   end
 
   def get_label(id)
@@ -87,24 +90,24 @@ class Discogs::Wrapper
     # DELETE request.
   end
 
-  def get_user_folder_releases(username, folder_id)
-    query_and_build_json "users/#{username}/collection/folders/#{folder_id}/releases"
+  def get_user_folder_releases(username, id)
+    query_and_build_json "users/#{username}/collection/folders/#{id}/releases"
   end
 
-  def get_user_folder(username, folder_id)
-    # Auth required, unless folder_id == 0
+  def get_user_folder(username, id)
+    # Auth required, unless id == 0
   end
 
   def get_user_folders(username)
     # Auth required, except for "All" folder.
   end
 
-  def create_user_folder(username, folder_id, data={})
+  def create_user_folder(username, id, data={})
     # Auth required.
     # POST request.
   end
 
-  def delete_user_folder(username, folder_id)
+  def delete_user_folder(username, id)
     # Auth required.
     # DELETE request.
   end
@@ -172,7 +175,7 @@ class Discogs::Wrapper
   def make_request(path, params={})
     uri           = build_uri(path, params)
     request       = Net::HTTP::Get.new("#{uri.path}?#{uri.query}")
-    output_format = params.fetch(:f, "xml")
+    output_format = params.fetch(:f, "json")
 
     request.add_field("Accept",          "application/#{output_format}")
     request.add_field("Accept-Encoding", "gzip,deflate")
@@ -184,7 +187,7 @@ class Discogs::Wrapper
   end
 
   def build_uri(path, params={})
-    output_format = params.fetch(:f, "xml")
+    output_format = params.fetch(:f, "json")
     parameters    = {:f => output_format}.merge(params)
     querystring   = "?" + URI.encode_www_form(parameters.sort)
 
