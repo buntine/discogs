@@ -1,6 +1,13 @@
 Discogs::Wrapper
 ================
 
+NOTE
+----
+
+  We are currently working on the next release of the API. It will implement all endpoints, pagination, have oAuth support, and use JSON exclusively.
+
+  Expecting to finish mid-May, 2014.
+
 ABOUT
 -----
   A 100% Ruby wrapper of the Discogs.com API.
