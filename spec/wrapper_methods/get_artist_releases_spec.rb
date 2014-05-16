@@ -30,13 +30,17 @@ describe Discogs::Wrapper do
         @artist_releases.pagination.items.should == 37
       end
 
+      it "should have a first release with a title" do
+        @artist_releases.releases.first.title.should == "Frost And Fire"
+      end
+
+      it "should have a first release with a type" do
+        @artist_releases.releases.first.type.should == "master"
+      end
+
       it "should not have a bogus attribute" do
       	@artist_releases.bogus_attribute.should be_nil
       end
-
-    end
-
-    describe "when calling complex releases attributes" do
 
     end
 
