@@ -30,6 +30,7 @@ class Discogs::Wrapper
   end
 
   def get_master_release_versions(id)
+    query_and_build_json "masters/#{id}/versions"
   end
 
   def get_artist(id)

@@ -14,6 +14,10 @@ def valid_master_release_json
   read_sample "valid_master_release.json"
 end
 
+def valid_master_release_versions_json
+  read_sample "valid_master_release_versions.json"
+end
+
 def valid_artist_json
   read_sample "valid_artist.json"
 end
