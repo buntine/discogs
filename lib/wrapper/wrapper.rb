@@ -110,6 +110,7 @@ class Discogs::Wrapper
 
   def get_user_folder(username, id)
     # Auth required, unless id == 0
+    query_and_build_json "users/#{username}/collection/folders/#{id}"
   end
 
   def get_user_folders(username)
