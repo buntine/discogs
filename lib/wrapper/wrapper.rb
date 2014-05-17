@@ -48,6 +48,7 @@ class Discogs::Wrapper
   end
 
   def get_labels_releases(id)
+    query_and_build_json "labels/#{id}/releases"
   end
 
   alias_method :get_label_releases, :get_labels_releases

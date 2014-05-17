@@ -30,6 +30,10 @@ def valid_label_json
   read_sample "valid_label.json"
 end
 
+def valid_label_releases_json
+  read_sample "valid_label_releases.json"
+end
+
 def valid_search_xml(page=1)
   read_sample "valid_search_results_#{page}.xml"
 end
