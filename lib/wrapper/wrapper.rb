@@ -30,6 +30,7 @@ class Discogs::Wrapper
   end
 
   def get_master_release_versions(id)
+    # TODO: Pagination.
     query_and_build_json "masters/#{id}/versions"
   end
 
@@ -38,6 +39,7 @@ class Discogs::Wrapper
   end
 
   def get_artists_releases(id)
+    # TODO: Pagination.
     query_and_build_json "artists/#{id}/releases"
   end
 
@@ -48,6 +50,7 @@ class Discogs::Wrapper
   end
 
   def get_labels_releases(id)
+    # TODO: Pagination.
     query_and_build_json "labels/#{id}/releases"
   end
 
@@ -63,6 +66,7 @@ class Discogs::Wrapper
   end
 
   def get_user_collection(username)
+    # TODO: Pagination.
     get_user_folder_releases(username, 0)
   end
 
@@ -70,6 +74,7 @@ class Discogs::Wrapper
   end
 
   def get_user_wantlist(username)
+    # TODO: Pagination.
     query_and_build_json "users/#{username}/wants"
   end
 
@@ -98,6 +103,8 @@ class Discogs::Wrapper
   end
 
   def get_user_folder_releases(username, id)
+    # TODO: Pagination.
+    # TODO: Accept sort parameters.
     query_and_build_json "users/#{username}/collection/folders/#{id}/releases"
   end
 
@@ -107,6 +114,7 @@ class Discogs::Wrapper
 
   def get_user_folders(username)
     # Auth required, except for "All" folder.
+    query_and_build_json "users/#{username}/collection/folders"
   end
 
   def create_user_folder(username, id, data={})
@@ -120,6 +128,7 @@ class Discogs::Wrapper
   end
 
   def get_user_inventory(username)
+    # TODO: Pagination.
   end
 
   def get_listing(id)

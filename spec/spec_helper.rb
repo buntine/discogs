@@ -42,6 +42,10 @@ def valid_user_json
   read_sample "valid_user.json"
 end
 
+def valid_user_folders_json
+  read_sample "valid_user_folders.json"
+end
+
 def valid_user_collection_json
   read_sample "valid_user_collection.json"
 end
