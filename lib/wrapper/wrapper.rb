@@ -78,6 +78,27 @@ class Discogs::Wrapper
     query_and_build_json "users/#{username}/wants"
   end
 
+  alias_method :get_user_wants, :get_user_wantlist
+
+  def get_user_want(username, id)
+    query_and_build_json "users/#{username}/wants/#{id}"
+  end
+
+  def add_release_to_user_wantlist(username, id, data={})
+    # Auth required.
+    # POST request.
+  end
+
+  def edit_release_in_user_wantlist(username, id, data={})
+    # Auth required.
+    # POST request.
+  end
+
+  def delete_release_in_user_wantlist(username, id)
+    # Auth required.
+    # DELETE request.
+  end
+
   def get_user_identity(username)
     # Auth required.
   end
