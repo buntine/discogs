@@ -54,6 +54,10 @@ def valid_user_collection_json
   read_sample "valid_user_collection.json"
 end
 
+def valid_user_wantlist_json
+  read_sample "valid_user_wantlist.json"
+end
+
 def read_sample(filename)
   data = File.read(File.join(File.dirname(__FILE__), "samples", filename))
   data.gsub /\n/, ''
