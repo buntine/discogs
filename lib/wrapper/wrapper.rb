@@ -8,14 +8,20 @@ require 'stringio'
 require 'uri'
 require 'zlib'
 
+require File.dirname(__FILE__) + "/authentication"
+
 class Discogs::Wrapper
 
   @@root_host = "http://api.discogs.com"
 
   attr_reader :app_name
 
-  def initialize(app_name=nil)
+  def initialize(app_name)
     @app_name = app_name
+  end
+
+  def ass
+    @ass
   end
 
   def get_release(id)
