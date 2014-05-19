@@ -20,10 +20,6 @@ class Discogs::Wrapper
     @app_name = app_name
   end
 
-  def ass
-    @ass
-  end
-
   def get_release(id)
     query_and_build_json "releases/#{id}"
   end
