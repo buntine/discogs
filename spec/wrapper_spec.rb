@@ -68,8 +68,12 @@ describe Discogs::Wrapper do
       @wrapper.search(@search_term)
     end
 
-    ## TODO: Is this still need? Paths were sanitized because band names could be passed in URLs.
-    it "should sanitize the path correctly"
+    it "should sanitize the path correctly" do
+      mock_http_with_response "200", read_sample("search_results")
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&q=Two+Words").and_return(@uri)
+
+      @wrapper.search("Two Words")
+    end
 
   end
 
