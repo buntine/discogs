@@ -27,6 +27,7 @@ describe Discogs::Wrapper do
     @wrapper = Discogs::Wrapper.new(@app_name)
     @release_id = "1"
     @artist_id = 313929
+    @master_id = 5331
     @label_id = 1000
     @search_term = "barry"
   end
@@ -100,13 +101,13 @@ describe Discogs::Wrapper do
     it "should raise an exception if the artist does not exist" do
       mock_http_with_response "404"
 
-      lambda { @wrapper.get_artist(@artist_name) }.should raise_error(Discogs::UnknownResource)
+      lambda { @wrapper.get_artist(@artist_id) }.should raise_error(Discogs::UnknownResource)
     end
 
     it "should raise an exception if the server dies a horrible death" do
       mock_http_with_response "500"
 
-      lambda { @wrapper.get_artist(@artist_name) }.should raise_error(Discogs::InternalServerError)
+      lambda { @wrapper.get_artist(@artist_id) }.should raise_error(Discogs::InternalServerError)
     end
 
   end
@@ -123,6 +124,22 @@ describe Discogs::Wrapper do
       mock_http_with_response "500"
 
       lambda { @wrapper.get_label(@label_id) }.should raise_error(Discogs::InternalServerError)
+    end
+
+  end
+
+  describe "when requesting a master" do
+
+    it "should raise an exception if the master does not exist" do
+      mock_http_with_response "404"
+
+      lambda { @wrapper.get_master(@master_id) }.should raise_error(Discogs::UnknownResource)
+    end
+
+    it "should raise an exception if the server dies a horrible death" do
+      mock_http_with_response "500"
+
+      lambda { @wrapper.get_master(@master_id) }.should raise_error(Discogs::InternalServerError)
     end
 
   end

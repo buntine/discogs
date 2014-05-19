@@ -4,12 +4,9 @@ require 'hashie'
 require 'json'
 require 'net/http'
 require 'pry'
-require 'rexml/document' # TODO: Remove when search is re-implemented.
 require 'stringio'
 require 'uri'
 require 'zlib'
-
-require File.dirname(__FILE__) + "/resource"
 
 class Discogs::Wrapper
 
@@ -28,6 +25,8 @@ class Discogs::Wrapper
   def get_master_release(id)
     query_and_build_json "masters/#{id}"
   end
+
+  alias_method :get_master, :get_master_release
 
   def get_master_release_versions(id)
     # TODO: Pagination.
@@ -245,7 +244,7 @@ class Discogs::Wrapper
   end
 
   def raise_internal_server_error
-    raise Discogs::InternalServerError, "The remote server cannot complete the request"
+    raise Discogs::InternalServerError, "The API server cannot complete the request"
   end
 
 end
