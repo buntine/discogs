@@ -11,8 +11,8 @@ describe Discogs::Wrapper do
 
     before do
       @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => valid_user_json)
-      @http_response_as_file = mock(StringIO, :read => valid_user_json)
+      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("user"))
+      @http_response_as_file = mock(StringIO, :read => read_sample("user"))
       Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
       @http_request.should_receive(:start).and_return(@http_response)
       Net::HTTP.should_receive(:new).and_return(@http_request)

@@ -6,60 +6,14 @@ require 'rubygems'
 require 'rspec'
 require File.dirname(__FILE__) + '/../lib/discogs'
 
-def valid_release_json
-  read_sample "valid_release.json"
-end
-
-def valid_master_release_json
-  read_sample "valid_master_release.json"
-end
-
-def valid_master_release_versions_json
-  read_sample "valid_master_release_versions.json"
-end
-
-def valid_artist_json
-  read_sample "valid_artist.json"
-end
-
-def valid_artist_releases_json
-  read_sample "valid_artist_releases.json"
-end
-
-def valid_label_json
-  read_sample "valid_label.json"
-end
-
-def valid_label_releases_json
-  read_sample "valid_label_releases.json"
-end
-
+# TODO: Remove after searhc is re-implemented.
 def valid_search_xml(page=1)
-  read_sample "valid_search_results_#{page}.xml"
-end
-
-def valid_user_json
-  read_sample "valid_user.json"
-end
-
-def valid_user_folders_json
-  read_sample "valid_user_folders.json"
-end
-
-def valid_user_folder_json
-  read_sample "valid_user_folder.json"
-end
-
-def valid_user_collection_json
-  read_sample "valid_user_collection.json"
-end
-
-def valid_user_wantlist_json
-  read_sample "valid_user_wantlist.json"
+  data = File.read(File.join(File.dirname(__FILE__), "samples", "valid_search_results_#{page}.xml"))
+  data.gsub /\n/, ''
 end
 
 def read_sample(filename)
-  data = File.read(File.join(File.dirname(__FILE__), "samples", filename))
+  data = File.read(File.join(File.dirname(__FILE__), "samples", "valid_#{filename}.json"))
   data.gsub /\n/, ''
 end
 

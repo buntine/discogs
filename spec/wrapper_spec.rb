@@ -41,21 +41,21 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct release URL to parse" do
-      mock_http_with_response "200", valid_release_json
+      mock_http_with_response "200", read_sample("release")
       URI.should_receive(:parse).with("http://api.discogs.com/releases/1?f=json").and_return(@uri)
 
       @wrapper.get_release(@release_id)
     end
 
     it "should generate the correct artist URL to parse" do
-      mock_http_with_response "200", valid_artist_json
+      mock_http_with_response "200", read_sample("artist")
       URI.should_receive(:parse).with("http://api.discogs.com/artists/313929?f=json").and_return(@uri)
 
       @wrapper.get_artist(@artist_id)
     end
 
     it "should generate the correct label URL to parse" do
-      mock_http_with_response "200", valid_label_json
+      mock_http_with_response "200", read_sample("label")
       URI.should_receive(:parse).with("http://api.discogs.com/labels/1000?f=json").and_return(@uri)
 
       @wrapper.get_label(@label_id)
