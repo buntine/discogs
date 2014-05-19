@@ -173,19 +173,20 @@ class Discogs::Wrapper
 
   def search(term, type=nil)
     # TODO: Pagination.
-    path = "database/search?q=#{term}"
+    params = {:q => term}
 
     if type
-      path << "&type=#{type}"
+      params[:type] = type
     end
 
-    query_and_build_json path
+    query_and_build_json "database/search", params
   end
 
  private
 
-  def query_and_build_json(path)
-    data = query_api(path, {:f => "json"})
+  def query_and_build_json(path, params={})
+    parameters = {:f => "json"}.merge(params)
+    data = query_api(path, params)
     hash = JSON.parse(data)
 
     Hashie::Mash.new(hash)

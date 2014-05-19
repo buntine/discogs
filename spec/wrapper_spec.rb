@@ -63,7 +63,7 @@ describe Discogs::Wrapper do
 
     it "should generate the correct default search URL to parse" do
       mock_http_with_response "200", read_sample("search_results")
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?q=barry&f=json").and_return(@uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&q=barry").and_return(@uri)
 
       @wrapper.search(@search_term)
     end
