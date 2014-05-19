@@ -15,6 +15,7 @@ module Discogs; end
 # Custom exceptions.
 class Discogs::UnknownResource < Exception; end
 class Discogs::InternalServerError < Exception; end
+class Discogs::AuthenticationError < Exception; end
 
 # Loading sequence.
 require File.dirname(__FILE__) + "/wrapper/wrapper"

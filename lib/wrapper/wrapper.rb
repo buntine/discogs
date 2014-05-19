@@ -12,6 +12,8 @@ require File.dirname(__FILE__) + "/authentication"
 
 class Discogs::Wrapper
 
+  include Authentication
+
   @@root_host = "http://api.discogs.com"
 
   attr_reader :app_name
@@ -21,44 +23,44 @@ class Discogs::Wrapper
   end
 
   def get_release(id)
-    query_and_build_json "releases/#{id}"
+    query_and_build "releases/#{id}"
   end
 
   def get_master_release(id)
-    query_and_build_json "masters/#{id}"
+    query_and_build "masters/#{id}"
   end
 
   alias_method :get_master, :get_master_release
 
   def get_master_release_versions(id)
     # TODO: Pagination.
-    query_and_build_json "masters/#{id}/versions"
+    query_and_build "masters/#{id}/versions"
   end
 
   def get_artist(id)
-    query_and_build_json "artists/#{id}"
+    query_and_build "artists/#{id}"
   end
 
   def get_artists_releases(id)
     # TODO: Pagination.
-    query_and_build_json "artists/#{id}/releases"
+    query_and_build "artists/#{id}/releases"
   end
 
   alias_method :get_artist_releases, :get_artists_releases
 
   def get_label(id)
-    query_and_build_json "labels/#{id}"
+    query_and_build "labels/#{id}"
   end
 
   def get_labels_releases(id)
     # TODO: Pagination.
-    query_and_build_json "labels/#{id}/releases"
+    query_and_build "labels/#{id}/releases"
   end
 
   alias_method :get_label_releases, :get_labels_releases
 
   def get_user(username)
-    query_and_build_json "users/#{username}"
+    query_and_build "users/#{username}"
   end
 
   def edit_user(username, data={})
@@ -76,13 +78,13 @@ class Discogs::Wrapper
 
   def get_user_wantlist(username)
     # TODO: Pagination.
-    query_and_build_json "users/#{username}/wants"
+    query_and_build "users/#{username}/wants"
   end
 
   alias_method :get_user_wants, :get_user_wantlist
 
   def get_user_want(username, id)
-    query_and_build_json "users/#{username}/wants/#{id}"
+    query_and_build "users/#{username}/wants/#{id}"
   end
 
   def add_release_to_user_wantlist(username, id, data={})
@@ -127,17 +129,17 @@ class Discogs::Wrapper
   def get_user_folder_releases(username, id)
     # TODO: Pagination.
     # TODO: Accept sort parameters.
-    query_and_build_json "users/#{username}/collection/folders/#{id}/releases"
+    query_and_build "users/#{username}/collection/folders/#{id}/releases"
   end
 
   def get_user_folder(username, id)
     # Auth required, unless id == 0
-    query_and_build_json "users/#{username}/collection/folders/#{id}"
+    query_and_build "users/#{username}/collection/folders/#{id}"
   end
 
   def get_user_folders(username)
     # Auth required, except for "All" folder.
-    query_and_build_json "users/#{username}/collection/folders"
+    query_and_build "users/#{username}/collection/folders"
   end
 
   def create_user_folder(username, id, data={})
@@ -168,8 +170,12 @@ class Discogs::Wrapper
   def get_fee(price, currence="USD")
   end
 
-  def get_image
-    # Auth required.
+  def get_image(filename)
+    if authenticated?
+      @access_token.get("/image/#{filename}").body
+    else
+      raise_authentication_error
+    end
   end
 
   def search(term, type=nil)
@@ -180,12 +186,12 @@ class Discogs::Wrapper
       params[:type] = type
     end
 
-    query_and_build_json "database/search", params
+    query_and_build "database/search", params
   end
 
  private
 
-  def query_and_build_json(path, params={})
+  def query_and_build(path, params={})
     parameters = {:f => "json"}.merge(params)
     data = query_api(path, params)
     hash = JSON.parse(data)
@@ -248,5 +254,10 @@ class Discogs::Wrapper
   def raise_internal_server_error
     raise Discogs::InternalServerError, "The API server cannot complete the request"
   end
+
+  def raise_authentication_error(path="")
+    raise Discogs::AuthenticationError, "Authentication is required for this resource: #{path}"
+  end
+
 
 end
