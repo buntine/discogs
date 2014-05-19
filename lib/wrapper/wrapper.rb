@@ -168,16 +168,18 @@ class Discogs::Wrapper
   end
 
   def get_image
+    # Auth required.
   end
 
-  def search(term, options={})
-    opts = { :type => :all, :page => 1 }.merge(options)
-    params = { :q => term, :type => opts[:type], :page => opts[:page] }
+  def search(term, type=nil)
+    # TODO: Pagination.
+    path = "database/search?q=#{term}"
 
-    data = query_api("search", params)
-    resource = Discogs::Search.new(data)
+    if type
+      path << "&type=#{type}"
+    end
 
-    resource.build_with_resp!
+    query_and_build_json path
   end
 
  private
