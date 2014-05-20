@@ -1,9 +1,9 @@
-require "oauth"
+require 'oauth'
 
 module Authentication
 
   def get_request_token(app_key, app_secret, callback)
-    consumer      = OAuth::Consumer.new("nLPklPRYpykkjycrkunw", "fjshPFKjzHUQeFqsjyeWBnmLAnOixRgJ",
+    consumer      = OAuth::Consumer.new(app_key, app_secret,
                       :authorize_url => "http://www.discogs.com/oauth/authorize",
                       :site          => "http://api.discogs.com")
     request_token = consumer.get_request_token(:oauth_callback => callback)
@@ -13,20 +13,23 @@ module Authentication
   end
 
   def authenticate(request_token, verifier)
-    access_token = request_token.get_access_token(:oauth_verifier => verifier)
-    data         = query_and_build("oauth/identity")
-    user         = data.username
-
-    {:access_token => access_token,
-     :user         => user}
+    request_token.get_access_token(:oauth_verifier => verifier)
   end
 
   def authenticated?(username=nil)
     if username
-      @access_token and @user == username
+      @access_token and authenticated_username == username
     else
       !!@access_token
     end
+  end
+
+ private
+
+  def authenticated_username
+    data = query_and_build("oauth/identity")
+
+    data.username
   end
 
 end

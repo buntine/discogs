@@ -15,10 +15,12 @@ class Discogs::Wrapper
 
   @@root_host = "http://api.discogs.com"
 
-  attr_reader :app_name
+  attr_reader :app_name,
+  attr_accessor :access_token
 
-  def initialize(app_name)
-    @app_name = app_name
+  def initialize(app_name, access_token)
+    @app_name     = app_name
+    @access_token = access_token
   end
 
   def get_release(id)
@@ -102,7 +104,11 @@ class Discogs::Wrapper
   end
 
   def get_user_identity(username)
-    # Auth required.
+    if authenticated?
+      query_and_build "users/identity"
+    else
+      raise_authentication_error
+    end
   end
 
   def edit_user(username, data={})
