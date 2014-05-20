@@ -65,8 +65,11 @@ class Discogs::Wrapper
   end
 
   def edit_user(username, data={})
-    # Auth required.
-    # POST request.
+    if authenticated?(username)
+      query_and_build "labels/#{id}/releases", {}, :post, data
+    else
+      raise_authentication_error
+    end
   end
 
   def get_user_collection(username)
@@ -202,17 +205,17 @@ class Discogs::Wrapper
 
  private
 
-  def query_and_build(path, params={})
+  def query_and_build(path, params={}, method=:get, body=nil)
     parameters = {:f => "json"}.merge(params)
-    data = query_api(path, params)
+    data = query_api(path, params, method, body)
     hash = JSON.parse(data)
 
     Hashie::Mash.new(hash)
   end
 
   # Queries the API and handles the response.
-  def query_api(path, params={})
-    response = make_request(path, params)
+  def query_api(path, params, method, body)
+    response = make_request(path, params, method, body)
 
     raise_unknown_resource(path) if response.code == "404"
     raise_authentication_error(path) if response.code == "401"
@@ -232,7 +235,7 @@ class Discogs::Wrapper
   end
 
   # Generates a HTTP request and returns the response.
-  def make_request(path, params={})
+  def make_request(path, params, method, body)
     uri           = build_uri(path, params)
     formatted     = "#{uri.path}?#{uri.query}"
     output_format = params.fetch(:f, "json")
@@ -241,8 +244,13 @@ class Discogs::Wrapper
                      "User-Agent"      => @app_name}
 
     if authenticated?
-      @access_token.get(formatted, headers)
+      if method == :post
+        @access_token.post(formatted, body, headers)
+      else
+        @access_token.send(method, formatted, headers)
+      end
     else
+      # All non-authenticated endpoints are GET.
       request = Net::HTTP::Get.new(formatted)
 
       headers.each do |h, v|
