@@ -209,6 +209,7 @@ class Discogs::Wrapper
     response = make_request(path, params)
 
     raise_unknown_resource(path) if response.code == "404"
+    raise_authentication_error(path) if response.code == "401"
     raise_internal_server_error if response.code == "500"
 
     # Unzip the response data, or just read it in directly
@@ -226,18 +227,21 @@ class Discogs::Wrapper
 
   # Generates a HTTP request and returns the response.
   def make_request(path, params={})
-    uri       = build_uri(path, params)
-    formatted = "#{uri.path}?#{uri.query}"
+    uri           = build_uri(path, params)
+    formatted     = "#{uri.path}?#{uri.query}"
+    output_format = params.fetch(:f, "json")
+    headers       = {"Accept"          => "application/#{output_format}",
+                     "Accept-Encoding" => "gzip,deflate",
+                     "User-Agent"      => @app_name}
 
-    if @access_token
-      @access_token.get(formatted)
+    if authenticated?
+      @access_token.get(formatted, headers)
     else
-      request       = Net::HTTP::Get.new(formatted)
-      output_format = params.fetch(:f, "json")
+      request = Net::HTTP::Get.new(formatted)
 
-      request.add_field("Accept",          "application/#{output_format}")
-      request.add_field("Accept-Encoding", "gzip,deflate")
-      request.add_field("User-Agent",      @app_name)
+      headers.each do |h, v|
+        request.add_field(h, v)
+      end
 
       Net::HTTP.new(uri.host).start do |http|
         http.request(request)
