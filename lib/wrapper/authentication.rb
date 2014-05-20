@@ -27,8 +27,7 @@ module Authentication
  private
 
   def authenticated_username
-    data = query_and_build("oauth/identity")
-
+    data = get_identity
     data.username
   end
 

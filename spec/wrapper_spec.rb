@@ -80,6 +80,15 @@ describe Discogs::Wrapper do
 
   ## NOTE: See ./spec/wrapper_methods/*.rb for indepth tests on valid API requests.
 
+  describe "when requesting authentication identity" do
+
+    it "should raise an exception if the session is not authenticated" do
+      lambda { @wrapper.get_identity }.should raise_error(Discogs::AuthenticationError)
+    end
+
+  end
+
+
   describe "when requesting a release" do
 
     it "should raise an exception if the release does not exist" do

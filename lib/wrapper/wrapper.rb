@@ -103,7 +103,7 @@ class Discogs::Wrapper
     # DELETE request.
   end
 
-  def get_user_identity
+  def get_identity
     if authenticated?
       query_and_build "oauth/identity"
     else
@@ -273,6 +273,5 @@ class Discogs::Wrapper
   def raise_authentication_error(path="")
     raise Discogs::AuthenticationError, "Authentication is required for this resource: #{path}"
   end
-
 
 end
