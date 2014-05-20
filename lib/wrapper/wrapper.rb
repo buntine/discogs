@@ -15,7 +15,7 @@ class Discogs::Wrapper
 
   @@root_host = "http://api.discogs.com"
 
-  attr_reader :app_name,
+  attr_reader :app_name
   attr_accessor :access_token
 
   def initialize(app_name, access_token)
@@ -103,9 +103,9 @@ class Discogs::Wrapper
     # DELETE request.
   end
 
-  def get_user_identity(username)
+  def get_user_identity
     if authenticated?
-      query_and_build "users/identity"
+      query_and_build "oauth/identity"
     else
       raise_authentication_error
     end
@@ -226,16 +226,22 @@ class Discogs::Wrapper
 
   # Generates a HTTP request and returns the response.
   def make_request(path, params={})
-    uri           = build_uri(path, params)
-    request       = Net::HTTP::Get.new("#{uri.path}?#{uri.query}")
-    output_format = params.fetch(:f, "json")
+    uri       = build_uri(path, params)
+    formatted = "#{uri.path}?#{uri.query}"
 
-    request.add_field("Accept",          "application/#{output_format}")
-    request.add_field("Accept-Encoding", "gzip,deflate")
-    request.add_field("User-Agent",      @app_name)
+    if @access_token
+      @access_token.get(formatted)
+    else
+      request       = Net::HTTP::Get.new(formatted)
+      output_format = params.fetch(:f, "json")
 
-    Net::HTTP.new(uri.host).start do |http|
-      http.request(request)
+      request.add_field("Accept",          "application/#{output_format}")
+      request.add_field("Accept-Encoding", "gzip,deflate")
+      request.add_field("User-Agent",      @app_name)
+
+      Net::HTTP.new(uri.host).start do |http|
+        http.request(request)
+      end
     end
   end
 
