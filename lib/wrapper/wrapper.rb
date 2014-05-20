@@ -18,7 +18,7 @@ class Discogs::Wrapper
   attr_reader :app_name
   attr_accessor :access_token
 
-  def initialize(app_name, access_token)
+  def initialize(app_name, access_token=nil)
     @app_name     = app_name
     @access_token = access_token
   end
