@@ -92,8 +92,11 @@ class Discogs::Wrapper
   end
 
   def add_release_to_user_wantlist(username, id, data={})
-    # Auth required.
-    # POST request.
+    if authenticated?(username)
+      query_and_build "users/#{username}/wants/#{id}", {}, :put, data
+    else
+      raise_authentication_error
+    end
   end
 
   def edit_release_in_user_wantlist(username, id, data={})
