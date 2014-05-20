@@ -244,8 +244,8 @@ class Discogs::Wrapper
                      "User-Agent"      => @app_name}
 
     if authenticated?
-      if method == :post
-        @access_token.post(formatted, body, headers)
+      if [:post, :put].include?(method)
+        @access_token.send(method, formatted, body, headers)
       else
         @access_token.send(method, formatted, headers)
       end
