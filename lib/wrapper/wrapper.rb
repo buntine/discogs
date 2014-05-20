@@ -134,16 +134,22 @@ class Discogs::Wrapper
   def get_user_folder_releases(username, id)
     # TODO: Pagination.
     # TODO: Accept sort parameters.
-    query_and_build "users/#{username}/collection/folders/#{id}/releases"
+    if id == 0 or authenticated?(username)
+      query_and_build "users/#{username}/collection/folders/#{id}/releases"
+    else
+      raise_authentication_error
+    end
   end
 
   def get_user_folder(username, id)
-    # Auth required, unless id == 0
-    query_and_build "users/#{username}/collection/folders/#{id}"
+    if id == 0 or authenticated?(username)
+      query_and_build "users/#{username}/collection/folders/#{id}"
+    else
+      raise_authentication_error
+    end
   end
 
   def get_user_folders(username)
-    # Auth required, except for "All" folder.
     query_and_build "users/#{username}/collection/folders"
   end
 

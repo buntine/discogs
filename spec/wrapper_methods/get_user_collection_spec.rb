@@ -33,7 +33,7 @@ describe Discogs::Wrapper do
       it "should not have a bogus attribute" do
         @user_collection.bogus_attr.should be_nil
       end
-
+        
     end
 
   end

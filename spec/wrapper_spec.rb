@@ -88,7 +88,6 @@ describe Discogs::Wrapper do
 
   end
 
-
   describe "when requesting a release" do
 
     it "should raise an exception if the release does not exist" do

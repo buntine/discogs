@@ -5,7 +5,7 @@ describe Discogs::Wrapper do
   before do
     @wrapper = Discogs::Wrapper.new("some_user_agent")
     @user_name = "mintfloss"
-    @folder_id = 1
+    @folder_id = 0
   end
 
   describe ".get_user_folder" do
@@ -33,6 +33,10 @@ describe Discogs::Wrapper do
 
       it "should not have a bogus attribute" do
         @user_folder.bogus_attr.should be_nil
+      end
+
+      it "should raise error if attempting to list non-0 folder" do
+        lambda { @wrapper.get_user_folder(@user_name, 1) }.should raise_error(Discogs::AuthenticationError)
       end
 
     end
