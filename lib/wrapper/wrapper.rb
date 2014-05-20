@@ -3,7 +3,6 @@
 require 'hashie'
 require 'json'
 require 'net/http'
-require 'pry'
 require 'stringio'
 require 'uri'
 require 'zlib'

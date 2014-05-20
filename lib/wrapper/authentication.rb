@@ -7,7 +7,8 @@ module Authentication
                  :authorize_url => "http://www.discogs.com/oauth/authorize",
                  :site          => "http://api.discogs.com")
 
-    consumer.get_request_token(:oauth_callback => callback)
+    {:request_token => consumer.get_request_token(:oauth_callback => callback),
+     :authorize_url => @request_token.authorize_url(:oauth_callback => @callback_url)}
   end
 
   def authenticate(request_token, verifier)
