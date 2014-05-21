@@ -65,7 +65,7 @@ class Discogs::Wrapper
   end
 
   def edit_user(username, data={})
-    if authenticated?(username)
+    if authenticated?
       query_and_build "labels/#{id}/releases", {}, :post, data
     else
       raise_authentication_error
@@ -92,7 +92,7 @@ class Discogs::Wrapper
   end
 
   def add_release_to_user_wantlist(username, id, data={})
-    if authenticated?(username)
+    if authenticated?
       query_and_build "users/#{username}/wants/#{id}", {}, :put, data
     else
       raise_authentication_error
@@ -100,13 +100,19 @@ class Discogs::Wrapper
   end
 
   def edit_release_in_user_wantlist(username, id, data={})
-    # Auth required.
-    # POST request.
+    if authenticated?
+      query_and_build "users/#{username}/wants/#{id}", {}, :post, data
+    else
+      raise_authentication_error
+    end
   end
 
   def delete_release_in_user_wantlist(username, id)
-    # Auth required.
-    # DELETE request.
+    if authenticated?
+      query_and_build "users/#{username}/wants/#{id}", {}, :delete
+    else
+      raise_authentication_error
+    end
   end
 
   def get_identity
@@ -140,7 +146,7 @@ class Discogs::Wrapper
   def get_user_folder_releases(username, id)
     # TODO: Pagination.
     # TODO: Accept sort parameters.
-    if id == 0 or authenticated?(username)
+    if id == 0 or authenticated?
       query_and_build "users/#{username}/collection/folders/#{id}/releases"
     else
       raise_authentication_error
@@ -148,7 +154,7 @@ class Discogs::Wrapper
   end
 
   def get_user_folder(username, id)
-    if id == 0 or authenticated?(username)
+    if id == 0 or authenticated?
       query_and_build "users/#{username}/collection/folders/#{id}"
     else
       raise_authentication_error
@@ -269,9 +275,20 @@ class Discogs::Wrapper
   def build_uri(path, params={})
     output_format = params.fetch(:f, "json")
     parameters    = {:f => output_format}.merge(params)
-    querystring   = "?" + URI.encode_www_form(parameters.sort)
+    querystring   = "?" + URI.encode_www_form(prepare_hash(parameters))
 
     URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
+  end
+
+  # Stringifies keys and sorts.
+  def prepare_hash(h)
+    result = {}
+
+    h.each do |k, v|
+      result[k.to_s] = v
+    end
+
+    result.sort
   end
 
   def sanitize_path(*path_parts)
