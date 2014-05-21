@@ -115,6 +115,8 @@ class Discogs::Wrapper
     end
   end
 
+  alias_method :delete_release_from_user_wantlist, :delete_release_in_user_wantlist
+
   def get_identity
     if authenticated?
       query_and_build "oauth/identity"
