@@ -1,0 +1,102 @@
+{
+  "pagination": {
+    "per_page": 50,
+    "pages": 1,
+    "page": 1,
+    "urls": {},
+    "items": 7
+  },
+  "messages": [
+    {
+      "from": {
+        "username": "example_seller",
+        "resource_url": "http://api.discogs.com/users/example_seller"
+      },
+      "message": "Seller changed status from Invoice Sent to Payment Received\n\nThat was fast, thanks!",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T14:55:52",
+      "subject": "Discogs Order #1-1, Stockholm"
+    },
+    {
+      "from": {
+        "username": "example_buyer",
+        "resource_url": "http://api.discogs.com/users/example_buyer"
+      },
+      "message": "I've sent the payment electronically :D",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T14:50:35",
+      "subject": "Discogs Order #1-1, Stockholm"
+    },
+    {
+      "from": {
+        "username": "example_seller",
+        "resource_url": "http://api.discogs.com/users/example_seller"
+      },
+      "message": "Seller added $&nbsp;4.00 for shipping. Order total is now $&nbsp;46.00.",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T14:49:20",
+      "subject": "Order Update: Discogs Order #1-1"
+    },
+    {
+      "from": {
+        "username": "example_buyer",
+        "resource_url": "http://api.discogs.com/users/example_buyer"
+      },
+      "message": "Hi! No preferences here, standard ground is fine.",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T14:46:03",
+      "subject": "Discogs Order #1-1, Stockholm"
+    },
+    {
+      "from": {
+        "username": "example_seller",
+        "resource_url": "http://api.discogs.com/users/example_seller"
+      },
+      "message": "Seller changed status from New Order to Buyer Contacted\n\nHi there! Any shipping preferences?",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T14:44:02",
+      "subject": "Discogs Order #1-1, Stockholm"
+    },
+    {
+      "from": {
+        "username": "example_buyer",
+        "resource_url": "http://api.discogs.com/users/example_buyer"
+      },
+      "message": "You have a new order via Discogs!\n\nOrder #1-1\nBuyer: example_buyer (example_buyer@example.com)\n\n...",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T13:37:00",
+      "subject": "New Order #1-1, Stockholm"
+    },
+    {
+      "from": {
+        "username": "example_seller",
+        "resource_url": "http://api.discogs.com/users/example_seller"
+      },
+      "message": "This message is a confirmation of your purchase from example_seller via Discogs.\n\nOrder #1-1\n\n...",
+      "order": {
+        "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+        "id": "1-1"
+      },
+      "timestamp": "2011-11-17T13:37:00",
+      "subject": "Discogs Order #1-1, Stockholm"
+    }
+  ]
+}

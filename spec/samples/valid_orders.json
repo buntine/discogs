@@ -1,0 +1,68 @@
+{
+  "pagination": {
+    "per_page": 50,
+    "pages": 1,
+    "page": 1,
+    "items": 1,
+    "urls": {}
+  },
+  "orders": [
+    {
+      "status": "New Order",
+      "fee": {
+        "currency": "USD",
+        "value": 2.52
+      },
+      "created": "2011-10-21T09:25:17",
+      "items": [
+        {
+          "release": {
+            "id": 1,
+            "description": "Persuader, The - Stockholm (2x12\")"
+          },
+          "price": {
+            "currency": "USD",
+            "value": 42.0
+          },
+          "id": 41578242
+        }
+      ],
+      "shipping": {
+        "currency": "USD",
+        "value": 0.0
+      },
+      "shipping_address": "Asdf Exampleton\n234 NE Asdf St.\nAsdf Town, Oregon, 14423\nUnited States\n\nPhone: 555-555-2733\nPaypal address: asdf@example.com",
+      "additional_instructions": "please use sturdy packaging.",
+      "seller": {
+        "resource_url": "http://api.discogs.com/users/example_seller",
+        "username": "example_seller",
+        "id": 1
+      },
+      "last_activity": "2011-10-21T09:25:17",
+      "buyer": {
+        "resource_url": "http://api.discogs.com/users/example_buyer",
+        "username": "example_buyer",
+        "id": 2
+      },
+      "total": {
+        "currency": "USD",
+        "value": 42.0
+      },
+      "id": "1-1"
+      "resource_url": "http://api.discogs.com/marketplace/orders/1-1",
+      "messages_url": "http://api.discogs.com/marketplace/orders/1-1/messages",
+      "uri": "http://www.discogs.com/sell/order/1-1",
+      "next_status": [
+        "New Order",
+        "Buyer Contacted",
+        "Invoice Sent",
+        "Payment Pending",
+        "Payment Received",
+        "Shipped",
+        "Cancelled (Non-Paying Buyer)",
+        "Cancelled (Item Unavailable)",
+        "Cancelled (Per Buyer's Request)"
+      ]
+    }
+  ]
+}

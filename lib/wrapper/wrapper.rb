@@ -190,13 +190,15 @@ class Discogs::Wrapper
   end
 
   def create_listing(data={})
-    # POST request.
-    # Auth required.
+    authenticated? do
+      query_and_build "marketplace/listings", {}, :post, data
+    end
   end
 
-  def edit_listing(data={})
-    # POST request.
-    # Auth required.
+  def edit_listing(id, data={})
+    authenticated? do
+      query_and_build "marketplace/listings/#{id}", {}, :post, data
+    end
   end
 
   def delete_listing(id)
@@ -207,6 +209,28 @@ class Discogs::Wrapper
 
   def get_order(id)
     # Auth required.
+  end
+
+  def edit_order(id)
+    # Auth required.
+    # POST request.
+  end
+
+  def list_orders
+    # Auth required.
+    # TODO: Pagination.
+    # TODO: Accept status parameters.
+    # TODO: Accept sort parameters.
+  end
+
+  def list_order_messages(id)
+   # Auth required.
+   # TODO: Pagination.
+  end
+
+  def create_order_message(id, data={})
+   # Auth required.
+   # POST request.
   end
 
   def get_price_suggestions(id)
