@@ -16,11 +16,17 @@ module Authentication
     request_token.get_access_token(:oauth_verifier => verifier)
   end
 
-  def authenticated?(username=nil)
-    if username
+  def authenticated?(username=nil, &block)
+    auth = if username
       @access_token and authenticated_username == username
     else
       !!@access_token
+    end
+
+    if block_given?
+      auth ? yield : raise_authentication_error
+    else
+      auth
     end
   end
 

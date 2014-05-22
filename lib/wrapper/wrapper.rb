@@ -65,10 +65,8 @@ class Discogs::Wrapper
   end
 
   def edit_user(username, data={})
-    if authenticated?
+    authenticated? do
       query_and_build "labels/#{id}/releases", {}, :post, data
-    else
-      raise_authentication_error
     end
   end
 
@@ -92,44 +90,34 @@ class Discogs::Wrapper
   end
 
   def add_release_to_user_wantlist(username, id, data={})
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}/wants/#{id}", {}, :put, data
-    else
-      raise_authentication_error
     end
   end
 
   def edit_release_in_user_wantlist(username, id, data={})
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}/wants/#{id}", {}, :post, data
-    else
-      raise_authentication_error
     end
   end
 
   def delete_release_in_user_wantlist(username, id)
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}/wants/#{id}", {}, :delete
-    else
-      raise_authentication_error
     end
   end
 
   alias_method :delete_release_from_user_wantlist, :delete_release_in_user_wantlist
 
   def get_identity
-    if authenticated?
+    authenticated? do
       query_and_build "oauth/identity"
-    else
-      raise_authentication_error
     end
   end
 
   def edit_user(username, data={})
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}", {}, :post, data
-    else
-      raise_authentication_error
     end
   end
 
@@ -171,28 +159,22 @@ class Discogs::Wrapper
   end
 
   def create_user_folder(username, data={})
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}/collection/folders", {}, :post, data
-    else
-      raise_authentication_error
     end
   end
 
   alias_method :add_user_folder, :create_user_folder
 
   def edit_user_folder(username, id, data={})
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}/collection/folders#{id}", {}, :post, data
-    else
-      raise_authentication_error
     end
   end
 
   def delete_user_folder(username, id)
-    if authenticated?
+    authenticated? do
       query_and_build "users/#{username}/collection/folders#{id}", {}, :delete
-    else
-      raise_authentication_error
     end
   end
 
@@ -218,10 +200,8 @@ class Discogs::Wrapper
   end
 
   def get_image(filename)
-    if authenticated?
+    authenticated? do
       @access_token.get("/image/#{filename}").body
-    else
-      raise_authentication_error
     end
   end
 
