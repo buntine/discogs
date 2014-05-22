@@ -186,6 +186,23 @@ class Discogs::Wrapper
   end
 
   def get_listing(id)
+    query_and_build "marketplace/listings/#{id}"
+  end
+
+  def create_listing(data={})
+    # POST request.
+    # Auth required.
+  end
+
+  def edit_listing(data={})
+    # POST request.
+    # Auth required.
+  end
+
+  def delete_listing(id)
+    authenticated? do
+      query_and_build "marketplace/listings/#{id}", {}, :delete
+    end
   end
 
   def get_order(id)
