@@ -1,0 +1,41 @@
+{
+  "id": 1,
+  "rating": 0,
+  "notes": "This is a note",
+  "resource_url": "http://api.discogs.com/users/example/wants/1",
+  "basic_information": {
+    "id": 1,
+    "resource_url": "http://api.discogs.com/releases/1",
+    "thumb": "http://api.discogs.com/image/R-150-1-1193812031.jpeg",
+    "title": "Stockholm",
+    "year": 1999,
+    "formats": [
+      {
+        "qty": "2",
+        "descriptions": [ "12\"" ],
+        "name": "Vinyl"
+      }
+    ],
+    "labels": [
+      {
+        "name": "Svek",
+        "entity_type": "1",
+        "catno": "SK032",
+        "resource_url": "http://api.discogs.com/labels/5",
+        "id": 5,
+        "entity_type_name": "Label"
+      }
+    ],
+    "artists": [
+      {
+        "join": "",
+        "name": "Persuader, The",
+        "anv": "",
+        "tracks": "",
+        "role": "",
+        "resource_url": "http://api.discogs.com/artists/1",
+        "id": 1
+      }
+    ]
+  }
+}
