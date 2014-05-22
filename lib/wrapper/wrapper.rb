@@ -170,18 +170,37 @@ class Discogs::Wrapper
     query_and_build "users/#{username}/collection/folders"
   end
 
-  def create_user_folder(username, id, data={})
-    # Auth required.
-    # POST request.
+  def create_user_folder(username, data={})
+    if authenticated?
+      query_and_build "users/#{username}/collection/folders", {}, :post, data
+    else
+      raise_authentication_error
+    end
+  end
+
+  alias_method :add_user_folder, :create_user_folder
+
+  def edit_user_folder(username, id, data={})
+    if authenticated?
+      query_and_build "users/#{username}/collection/folders#{id}", {}, :post, data
+    else
+      raise_authentication_error
+    end
   end
 
   def delete_user_folder(username, id)
-    # Auth required.
-    # DELETE request.
+    if authenticated?
+      query_and_build "users/#{username}/collection/folders#{id}", {}, :delete
+    else
+      raise_authentication_error
+    end
   end
 
   def get_user_inventory(username)
+    # TODO: Accept status parameter.
+    # TODO: Accept sort parameters.
     # TODO: Pagination.
+    query_and_build "users/#{username}/inventory"
   end
 
   def get_listing(id)

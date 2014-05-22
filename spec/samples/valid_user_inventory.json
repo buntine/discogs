@@ -1,0 +1,41 @@
+{
+  "pagination": {
+    "per_page": 50,
+    "pages": 1,
+    "page": 1,
+    "items": 1,
+    "urls": {}
+  },
+  "listings": [
+    {
+      "id": 41578240,
+      "status": "For Sale",
+      "resource_url": "http://api.discogs.com/marketplace/listings/41578240",
+      "posted": "2011-10-19T10:40:26",
+      "ships_from": "United States",
+      "comments": "Like used!",
+      "condition": "Poor (P)",
+      "sleeve_condition": "Poor (P)",
+      "audio": true,
+      "allow_offers": true,
+      "weight": 239.0,
+      "format_quantity": 2,
+      "external_id": "shelf 32a, #5",
+      "seller": {
+        "username": "test",
+        "id": 1
+      },
+      "price": {
+        "currency": "USD",
+        "value": 23.0
+      },
+      "release": {
+        "id": 810756,
+        "resource_url": "http://api.discogs.com/releases/810756",
+        "description": "AC/DC - Back In Black (LP, Album)",
+        "catalog_number": "ATL 50735",
+        "year": 1980
+      }
+    }
+  ]
+}
