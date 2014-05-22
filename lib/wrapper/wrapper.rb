@@ -126,8 +126,11 @@ class Discogs::Wrapper
   end
 
   def edit_user(username, data={})
-    # Auth required.
-    # POST request.
+    if authenticated?
+      query_and_build "users/#{username}", {}, :post, data
+    else
+      raise_authentication_error
+    end
   end
 
   def add_release_to_user_folder(username, folder_id, release_id)

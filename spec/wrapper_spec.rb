@@ -88,6 +88,22 @@ describe Discogs::Wrapper do
 
   end
 
+  describe "when editing a user" do
+
+    it "should raise an exception if the session is not authenticated" do
+      lambda { @wrapper.edit_user("abuntine") }.should raise_error(Discogs::AuthenticationError)
+    end
+
+  end
+
+  describe "when removing a release from a wantlist" do
+
+    it "should raise an exception if the session is not authenticated" do
+      lambda { @wrapper.delete_release_from_user_wantlist("abuntine", 12341234) }.should raise_error(Discogs::AuthenticationError)
+    end
+
+  end
+
   describe "when requesting a release" do
 
     it "should raise an exception if the release does not exist" do
