@@ -146,9 +146,10 @@ class Discogs::Wrapper
 
   alias_method :delete_release_in_user_folder, :delete_instance_in_user_folder
 
-  def edit_field_on_instance_in_user_folder(username, folder_id, release_id, instance_id, field_id)
-    # Auth required.
-    # POST request.
+  def edit_field_on_instance_in_user_folder(username, folder_id, release_id, instance_id, field_id, data={})
+    authenticated? do
+      query_and_build "/users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}/instances/#{instance_id}/fields/#{field_id}", {}, :post, data
+    end
   end
 
   def get_user_folder_releases(username, id)
@@ -223,19 +224,25 @@ class Discogs::Wrapper
   end
 
   def get_order(id)
-    # Auth required.
+    authenticated? do
+      query_and_build "marketplace/orders/#{id}"
+    end
   end
 
-  def edit_order(id)
-    # Auth required.
-    # POST request.
+  def edit_order(id, data={})
+    authenticated? do
+      query_and_build "marketplace/orders/#{id}", {}, :post, data
+    end
   end
 
   def list_orders
-    # Auth required.
     # TODO: Pagination.
     # TODO: Accept status parameters.
     # TODO: Accept sort parameters.
+
+    authenticated? do
+      query_and_build "marketplace/orders"
+    end
   end
 
   def list_order_messages(id)
