@@ -259,10 +259,13 @@ class Discogs::Wrapper
   end
 
   def get_price_suggestions(id)
-    # Auth required.
+    authenticated? do
+      query_and_build "marketplace/price_suggestions/#{id}"
+    end
   end
 
   def get_fee(price, currence="USD")
+    query_and_build "marketplace/fee/#{price}/#{currency}"
   end
 
   def get_image(filename)
