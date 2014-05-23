@@ -122,18 +122,29 @@ class Discogs::Wrapper
   end
 
   def add_release_to_user_folder(username, folder_id, release_id)
-    # Auth required.
-    # POST request.
+    authenticated? do
+      query_and_build "users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}", {}, :post
+    end
   end
 
-  def edit_release_in_user_folder(username, folder_id, release_id, instance_id, data={})
-    # Auth required.
-    # POST request.
+  alias_method :add_instance_to_user_folder, :add_release_to_user_folder
+
+  def edit_release_in_user_folder(username, folder_id, release_id, instance_id=1, data={})
+    authenticated? do
+      query_and_build "/users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}/instances/#{instance_id}"
+    end
   end
+
+  alias_method :edit_instance_in_user_folder, :edit_release_in_user_folder
 
   def delete_instance_in_user_folder(username, folder_id, release_id, instance_id)
     # Auth required.
     # DELETE request.
+  end
+
+  def edit_field_on_instance_in_user_folder(username, folder_id, release_id, instance_id, field_id)
+    # Auth required.
+    # POST request.
   end
 
   def get_user_folder_releases(username, id)
