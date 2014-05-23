@@ -76,6 +76,7 @@ class Discogs::Wrapper
   end
 
   def get_user_collection_fields(username)
+    query_and_build "users/#{username}/collection/fields"
   end
 
   def get_user_wantlist(username)
@@ -138,9 +139,12 @@ class Discogs::Wrapper
   alias_method :edit_instance_in_user_folder, :edit_release_in_user_folder
 
   def delete_instance_in_user_folder(username, folder_id, release_id, instance_id)
-    # Auth required.
-    # DELETE request.
+    authenticated? do
+      query_and_build "/users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}/instances/#{instance_id}", {},  :delete
+    end
   end
+
+  alias_method :delete_release_in_user_folder, :delete_instance_in_user_folder
 
   def edit_field_on_instance_in_user_folder(username, folder_id, release_id, instance_id, field_id)
     # Auth required.

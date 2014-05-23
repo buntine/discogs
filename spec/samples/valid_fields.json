@@ -1,0 +1,48 @@
+{
+  "fields": [
+    {
+      "id": 1,
+      "name": "Media Condition",
+      "position": 1,
+      "public": true,
+      "type": "dropdown",
+      "options": [
+        "Mint (M)",
+        "Near Mint (NM or M-)",
+        "Very Good Plus (VG+)",
+        "Very Good (VG)",
+        "Good Plus (G+)",
+        "Good (G)",
+        "Fair (F)",
+        "Poor (P)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Sleeve Condition",
+      "position": 2,
+      "public": false,
+      "type": "dropdown",
+      "options": [
+        "Generic",
+        "No Cover",
+        "Mint (M)",
+        "Near Mint (NM or M-)",
+        "Very Good Plus (VG+)",
+        "Very Good (VG)",
+        "Good Plus (G+)",
+        "Good (G)",
+        "Fair (F)",
+        "Poor (P)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Notes",
+      "position": 3,
+      "public": true,
+      "type": "textarea",
+      "lines": 3
+    }
+  ]
+}
