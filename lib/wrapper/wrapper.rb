@@ -246,13 +246,16 @@ class Discogs::Wrapper
   end
 
   def list_order_messages(id)
-   # Auth required.
    # TODO: Pagination.
+   authenticated? do
+     query_and_build "marketplace/orders#{id}/messages"
+   end
   end
 
   def create_order_message(id, data={})
-   # Auth required.
-   # POST request.
+    authenticated? do
+      query_and_build "marketplace/orders/#{id}/messages", {}, :post, data
+    end
   end
 
   def get_price_suggestions(id)
