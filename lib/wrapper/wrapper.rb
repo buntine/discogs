@@ -239,7 +239,6 @@ class Discogs::Wrapper
     # TODO: Pagination.
     # TODO: Accept status parameters.
     # TODO: Accept sort parameters.
-
     authenticated? do
       query_and_build "marketplace/orders"
     end
@@ -251,6 +250,8 @@ class Discogs::Wrapper
      query_and_build "marketplace/orders#{id}/messages"
    end
   end
+
+  alias_method :get_order_messages, :list_order_messages
 
   def create_order_message(id, data={})
     authenticated? do
