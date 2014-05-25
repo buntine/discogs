@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>Discogs::Wrapper</h1>
+
+<h2>NOTE</h2>
+
+<p>We are currently working on the next release of the API. It will implement all endpoints, pagination, have oAuth support, and use JSON exclusively.</p>
+
+<p>Expecting to finish late-May, 2014.</p>
+
+<h2>ABOUT</h2>
+
+<p>A 100% Ruby wrapper of the Discogs.com API.</p>
+
+<p>Discogs::Wrapper abstracts all the nasty boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need.</p>
+
+<p>The master branch aims to give full support for version 2.0 of the API. If you need support for everything in version 1.0, see the api-v1 branch.</p>
+
+<p>Specifically:</p>
+
+<ul>
+<li>Artists</li>
+<li>Releases</li>
+<li>MasterReleases</li>
+<li>Labels</li>
+<li>Searching (all of the above)</li>
+</ul>
+
+<p>Please, <a href="http://github.com/buntine/discogs/wiki">see the Wiki</a> for helpful documentation.</p>
+
+<p>The Discogs API is <a href="http://www.discogs.com/help/api">documented here</a>.</p>
+
+<h2>INSTALLATION</h2>
+
+<p>You can install the library via Rubygems:</p>
+
+<pre class="code ruby"><code class="ruby">$ sudo gem install discogs-wrapper
+</code></pre>
+
+<h2>USAGE</h2>
+
+<p>To use this library, you must supply the name of your application. For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>discogs</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_wrapper'>wrapper</span> <span class='op'>=</span> <span class='const'>Discogs</span><span class='op'>::</span><span class='const'>Wrapper</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>My awesome web app</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Accessing information is easy:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_artist'>artist</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapper'>wrapper</span><span class='period'>.</span><span class='id identifier rubyid_get_artist'>get_artist</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Master&#39;s Hammer</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_release'>release</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapper'>wrapper</span><span class='period'>.</span><span class='id identifier rubyid_get_release'>get_release</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>611973</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># Supply an ID.
+</span><span class='id identifier rubyid_label'>label</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapper'>wrapper</span><span class='period'>.</span><span class='id identifier rubyid_get_label'>get_label</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Monitor Records</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_search'>search</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapper'>wrapper</span><span class='period'>.</span><span class='id identifier rubyid_search'>search</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Necrovore</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_artist'>artist</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>                         <span class='comment'># =&gt; &quot;Master&#39;s Hammer&quot;
+</span><span class='id identifier rubyid_artist'>artist</span><span class='period'>.</span><span class='id identifier rubyid_releases'>releases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>            <span class='comment'># =&gt; &quot;Finished&quot;
+</span><span class='id identifier rubyid_artist'>artist</span><span class='period'>.</span><span class='id identifier rubyid_releases'>releases</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span>             <span class='comment'># =&gt; &quot;1989&quot;
+</span><span class='id identifier rubyid_artist'>artist</span><span class='period'>.</span><span class='id identifier rubyid_releases'>releases</span><span class='lbracket'>[</span><span class='int'>4</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_extraartists'>extraartists</span>     <span class='comment'># =&gt; [ &quot;Arakain&quot;, &quot;Debustrol&quot; ]
+</span>
+<span class='id identifier rubyid_release'>release</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>                       <span class='comment'># =&gt; &quot;Ritual&quot;
+</span><span class='id identifier rubyid_release'>release</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>              <span class='comment'># =&gt; &quot;Osmose Productions&quot;
+</span><span class='id identifier rubyid_release'>release</span><span class='period'>.</span><span class='id identifier rubyid_formats'>formats</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_descriptions'>descriptions</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>  <span class='comment'># =&gt; &quot;LP&quot;
+</span><span class='id identifier rubyid_release'>release</span><span class='period'>.</span><span class='id identifier rubyid_styles'>styles</span>                      <span class='comment'># =&gt; [ &quot;Black Metal&quot;, &quot;Death Metal&quot; ]
+</span><span class='id identifier rubyid_release'>release</span><span class='period'>.</span><span class='id identifier rubyid_tracklist'>tracklist</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>          <span class='comment'># =&gt; &quot;Pad modly&quot;
+</span>
+<span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_images'>images</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span>               <span class='comment'># =&gt; &quot;220&quot;
+</span><span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_releases'>releases</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>               <span class='comment'># =&gt; 22
+</span><span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_releases'>releases</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artist'>artist</span>            <span class='comment'># =&gt; &quot;Root&quot;
+</span><span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_releases'>releases</span><span class='lbracket'>[</span><span class='int'>7</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_catno'>catno</span>             <span class='comment'># =&gt; &quot;MON007&quot;
+</span>
+<span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_total_results'>total_results</span>                <span class='comment'># =&gt; 124
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_total_pages'>total_pages</span>                  <span class='comment'># =&gt; 7
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_current_page'>current_page</span>                 <span class='comment'># =&gt; 1
+</span>
+<span class='comment'># Exact results
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_exact'>exact</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>                <span class='comment'># =&gt; &quot;artist&quot;
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_exact'>exact</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>               <span class='comment'># =&gt; &quot;Necrovore&quot;
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_exact'>exact</span><span class='lparen'>(</span><span class='symbol'>:label</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>       <span class='comment'># =&gt; &quot;Necrovores Records&quot;
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_closest'>closest</span><span class='lparen'>(</span><span class='symbol'>:artist</span><span class='rparen'>)</span>             <span class='comment'># =&gt; &lt;Discogs::Search::Result:0x324ad3e2&gt;
+</span>
+<span class='comment'># All results
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_results'>results</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>             <span class='comment'># =&gt; &quot;Necrovore - Demo &#39;87&quot;
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_results'>results</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_summary'>summary</span>           <span class='comment'># =&gt; &quot;First and only demo tape&quot;
+</span><span class='id identifier rubyid_search'>search</span><span class='period'>.</span><span class='id identifier rubyid_results'>results</span><span class='lparen'>(</span><span class='symbol'>:release</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>         <span class='comment'># =&gt; &lt;Discogs::Search::Result:0x343de34a&gt;
+</span></code></pre>
+
+<h2>LICENSE</h2>
+
+<p>See the LICENCE file. Copyright (c) Andrew Buntine</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Sun May 25 16:22:52 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-2.1.1).
+</div>
+
+  </body>
+</html>

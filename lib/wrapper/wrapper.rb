@@ -23,44 +23,86 @@ class Discogs::Wrapper
     @access_token = access_token
   end
 
+  # Retrieves a release by ID.
+  # @param id [Integer] release id
+  # @return [Object] the release with provided id
   def get_release(id)
     query_and_build "releases/#{id}"
   end
 
+  # Retrieves a master release by ID.
+  # @param id [Integer] master release id
+  # @return [Object] the master release with provided id
   def get_master_release(id)
     query_and_build "masters/#{id}"
   end
 
   alias_method :get_master, :get_master_release
 
+  # Retrieves a list of all Releases that are versions of this master. Accepts Pagination parameters.
+  # @param id [Integer] master release id
+  # @param pagination [Object] pagination parameters
+  # @return [Object] the master release with release id, along with versions
   def get_master_release_versions(id, pagination={})
     query_and_build "masters/#{id}/versions", pagination
   end
 
+  # Retrieves an artist by ID.
+  # @param id [Integer] artist id
+  # @return [Object] the artist with provided id
   def get_artist(id)
     query_and_build "artists/#{id}"
   end
 
+  # Returns a list of Releases and Masters associated with the artist. Accepts Pagination parameters.
+  # @param id [Integer] artist id
+  # @param pagination [Object] pagination parameters
+  # @return [Object] the releases for artist with provided id
   def get_artists_releases(id, pagination={})
     query_and_build "artists/#{id}/releases", pagination
   end
 
   alias_method :get_artist_releases, :get_artists_releases
 
+  # Retrieves a label by ID.
+  # @param id [Integer] label id
+  # @return [Object] the label with provided id
   def get_label(id)
     query_and_build "labels/#{id}"
   end
 
+  # Returns a list of Releases associated with the label. Accepts Pagination parameters.
+  # @param id [Integer] label id
+  # @param pagination [Object] pagination parameters
+  # @return [Object] the releases for label with provided id
   def get_labels_releases(id, pagination={})
     query_and_build "labels/#{id}/releases", pagination
   end
 
   alias_method :get_label_releases, :get_labels_releases
 
+  # Retrieve a user by username.
+  #
+  # If authenticated as the requested user, the email key will be visible.
+  #
+  # If authenticated as the requested user or the user’s collection/wantlist is public,
+  # the num_collection / num_wantlist keys will be visible.
+  #
+  # @param username [String] username
+  # @return [Object] the user with provided username
   def get_user(username)
     query_and_build "users/#{username}"
   end
 
+  # Edit a user’s profile data.
+  #
+  # Authentication as the user is required.
+  # @param username [String] username
+  # @param data [Hash] data to update, with the optional keys:
+  #   * :name (String) The real name of the user.
+  #   * :home_page (String) The user's website.
+  #   * :location (String) The geographical location of the user.
+  #   * :profile (String) Biographical information about the user.
   def edit_user(username, data={})
     authenticated? do
       query_and_build "labels/#{id}/releases", {}, :post, data
