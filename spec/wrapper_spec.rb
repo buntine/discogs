@@ -30,6 +30,7 @@ describe Discogs::Wrapper do
     @master_id = 5331
     @label_id = 1000
     @search_term = "barry"
+    @username = "abuntine"
   end
 
   it "should have an user agent" do
@@ -55,11 +56,25 @@ describe Discogs::Wrapper do
       @wrapper.get_artist(@artist_id)
     end
 
+    it "should generate the correct paginated artist releases URL to parse" do
+      mock_http_with_response "200", read_sample("artist_releases")
+      URI.should_receive(:parse).with("http://api.discogs.com/artists/313929/releases?f=json&page=2&per_page=100").and_return(@uri)
+
+      @wrapper.get_artist_releases(@artist_id, :page => 2, :per_page => 100)
+    end
+ 
     it "should generate the correct label URL to parse" do
       mock_http_with_response "200", read_sample("label")
       URI.should_receive(:parse).with("http://api.discogs.com/labels/1000?f=json").and_return(@uri)
 
       @wrapper.get_label(@label_id)
+    end
+
+    it "should generate the correct paginated label releases URL to parse" do
+      mock_http_with_response "200", read_sample("label_releases")
+      URI.should_receive(:parse).with("http://api.discogs.com/labels/1000/releases?f=json&page=2&per_page=100").and_return(@uri)
+
+      @wrapper.get_label_releases(@label_id, :page => 2, :per_page => 100)
     end
 
     it "should generate the correct default search URL to parse" do
@@ -69,11 +84,46 @@ describe Discogs::Wrapper do
       @wrapper.search(@search_term)
     end
 
+    it "should generate the correct paginated search URL to parse" do
+      mock_http_with_response "200", read_sample("search_results")
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&page=2&per_page=100&q=barry").and_return(@uri)
+
+      @wrapper.search(@search_term, :page => 2, :per_page => 100)
+    end
+
+    it "should generate another correct paginated search URL to parse" do
+      mock_http_with_response "200", read_sample("search_results")
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&page=2&q=barry").and_return(@uri)
+
+      @wrapper.search(@search_term, :page => 2)
+    end
+
     it "should sanitize the path correctly" do
       mock_http_with_response "200", read_sample("search_results")
       URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&q=Two+Words").and_return(@uri)
 
       @wrapper.search("Two Words")
+    end
+
+    it "should generate the correct default user inventory URL to parse" do
+      mock_http_with_response "200", read_sample("user_inventory")
+      URI.should_receive(:parse).with("http://api.discogs.com/users/abuntine/inventory?f=json").and_return(@uri)
+
+      @wrapper.get_user_inventory(@username)
+    end
+
+    it "should generate the correct paginated user inventory URL to parse" do
+      mock_http_with_response "200", read_sample("user_inventory")
+      URI.should_receive(:parse).with("http://api.discogs.com/users/abuntine/inventory?f=json&page=2&status=For+Sale").and_return(@uri)
+
+      @wrapper.get_user_inventory(@username, :page => 2, :status => "For Sale")
+    end
+
+    it "should generate the correct sorted and paginated user inventory URL to parse" do
+      mock_http_with_response "200", read_sample("user_inventory")
+      URI.should_receive(:parse).with("http://api.discogs.com/users/abuntine/inventory?f=json&page=2&sort=price&sort_order=asc&status=For+Sale").and_return(@uri)
+
+      @wrapper.get_user_inventory(@username, :page => 2, :status => "For Sale", :sort => :price, :sort_order => :asc)
     end
 
   end

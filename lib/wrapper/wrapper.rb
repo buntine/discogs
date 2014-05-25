@@ -188,7 +188,6 @@ class Discogs::Wrapper
   end
 
   def get_user_inventory(username, params={})
-    # TODO: Accept status parameter.
     query_and_build "users/#{username}/inventory", params
   end
 
@@ -227,7 +226,6 @@ class Discogs::Wrapper
   end
 
   def list_orders(params={})
-    # TODO: Accept status parameters.
     authenticated? do
       query_and_build "marketplace/orders", params
     end
