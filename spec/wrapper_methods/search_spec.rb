@@ -18,7 +18,7 @@ describe Discogs::Wrapper do
       @http_request.should_receive(:start).and_return(@http_response)
       Net::HTTP.should_receive(:new).and_return(@http_request)
 
-      @search = @wrapper.search(@search_term, @search_type)
+      @search = @wrapper.search(@search_term, :type => @search_type)
     end
 
     describe "when handling exact results" do
