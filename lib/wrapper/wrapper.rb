@@ -33,18 +33,16 @@ class Discogs::Wrapper
 
   alias_method :get_master, :get_master_release
 
-  def get_master_release_versions(id)
-    # TODO: Pagination.
-    query_and_build "masters/#{id}/versions"
+  def get_master_release_versions(id, pagination={})
+    query_and_build "masters/#{id}/versions", pagination
   end
 
   def get_artist(id)
     query_and_build "artists/#{id}"
   end
 
-  def get_artists_releases(id)
-    # TODO: Pagination.
-    query_and_build "artists/#{id}/releases"
+  def get_artists_releases(id, pagination={})
+    query_and_build "artists/#{id}/releases", pagination
   end
 
   alias_method :get_artist_releases, :get_artists_releases
@@ -53,9 +51,8 @@ class Discogs::Wrapper
     query_and_build "labels/#{id}"
   end
 
-  def get_labels_releases(id)
-    # TODO: Pagination.
-    query_and_build "labels/#{id}/releases"
+  def get_labels_releases(id, pagination={})
+    query_and_build "labels/#{id}/releases", pagination
   end
 
   alias_method :get_label_releases, :get_labels_releases
@@ -70,8 +67,7 @@ class Discogs::Wrapper
     end
   end
 
-  def get_user_collection(username)
-    # TODO: Pagination.
+  def get_user_collection(username, pagination={})
     get_user_folder_releases(username, 0)
   end
 
@@ -79,9 +75,8 @@ class Discogs::Wrapper
     query_and_build "users/#{username}/collection/fields"
   end
 
-  def get_user_wantlist(username)
-    # TODO: Pagination.
-    query_and_build "users/#{username}/wants"
+  def get_user_wantlist(username, pagination={})
+    query_and_build "users/#{username}/wants", pagination
   end
 
   alias_method :get_user_wants, :get_user_wantlist
@@ -152,11 +147,9 @@ class Discogs::Wrapper
     end
   end
 
-  def get_user_folder_releases(username, id)
-    # TODO: Pagination.
-    # TODO: Accept sort parameters.
+  def get_user_folder_releases(username, id, params={})
     if id == 0 or authenticated?
-      query_and_build "users/#{username}/collection/folders/#{id}/releases"
+      query_and_build "users/#{username}/collection/folders/#{id}/releases", params
     else
       raise_authentication_error
     end
@@ -194,11 +187,9 @@ class Discogs::Wrapper
     end
   end
 
-  def get_user_inventory(username)
+  def get_user_inventory(username, params={})
     # TODO: Accept status parameter.
-    # TODO: Accept sort parameters.
-    # TODO: Pagination.
-    query_and_build "users/#{username}/inventory"
+    query_and_build "users/#{username}/inventory", params
   end
 
   def get_listing(id)
@@ -235,19 +226,16 @@ class Discogs::Wrapper
     end
   end
 
-  def list_orders
-    # TODO: Pagination.
+  def list_orders(params={})
     # TODO: Accept status parameters.
-    # TODO: Accept sort parameters.
     authenticated? do
-      query_and_build "marketplace/orders"
+      query_and_build "marketplace/orders", params
     end
   end
 
-  def list_order_messages(id)
-   # TODO: Pagination.
+  def list_order_messages(id, pagination={})
    authenticated? do
-     query_and_build "marketplace/orders#{id}/messages"
+     query_and_build "marketplace/orders#{id}/messages", pagination
    end
   end
 
@@ -275,15 +263,10 @@ class Discogs::Wrapper
     end
   end
 
-  def search(term, type=nil)
-    # TODO: Pagination.
-    params = {:q => term}
+  def search(term, params={})
+    parameters = {:q => term}.merge(params)
 
-    if type
-      params[:type] = type
-    end
-
-    query_and_build "database/search", params
+    query_and_build "database/search", parameters
   end
 
  private
