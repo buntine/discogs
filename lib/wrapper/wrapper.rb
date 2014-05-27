@@ -5,6 +5,7 @@ require 'json'
 require 'net/http'
 require 'stringio'
 require 'uri'
+require 'cgi'
 require 'zlib'
 
 require File.dirname(__FILE__) + "/authentication"
@@ -265,6 +266,13 @@ class Discogs::Wrapper
     parameters = {:q => term}.merge(params)
 
     query_and_build "database/search", parameters
+  end
+
+  def raw(url)
+    uri    = URI.parse(url)
+    params = CGI.parse(uri.query)
+
+    query_and_build uri.path, params
   end
 
  private

@@ -126,6 +126,13 @@ describe Discogs::Wrapper do
       @wrapper.get_user_inventory(@username, :page => 2, :status => "For Sale", :sort => :price, :sort_order => :asc)
     end
 
+    it "should generate the correct URL to parse when given raw URL" do
+      mock_http_with_response "200", read_sample("search_results")
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?page=11&per_page=50&q=Sombre+Records&type=release").and_return(@uri)
+
+      @wrapper.raw("http://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11")
+    end
+
   end
 
   ## NOTE: See ./spec/wrapper_methods/*.rb for indepth tests on valid API requests.
