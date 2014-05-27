@@ -270,7 +270,7 @@ class Discogs::Wrapper
 
   def raw(url)
     uri    = URI.parse(url)
-    params = CGI.parse(uri.query)
+    params = CGI.parse(uri.query.to_s)
 
     query_and_build uri.path, params
   end

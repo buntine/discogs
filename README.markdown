@@ -82,6 +82,14 @@ USAGE
     search.results.first.type            # => "artist"
     search.results.first.id              # => 691078
 
+  Many of the API endpoints return further URLs that will yield specific data. To cater for this, the library provides a "raw" method that accepts a valid API URL. For example:
+
+    sts_records       = wrapper.get_label(9800)
+    sts_releases      = wrapper.raw(sts_records.releases_url)
+    first_sts_release = wrapper.raw(sts_releases.releases[1].resource_url)
+
+    first_sts_release.title  # => "I'll Nostra Tempo De La Vita / Having The Time Of Your Life"
+
 AUTHENTICATION
 --------------
   Many of the API endpoints require the user to be authenticated via oAuth. The library provides support for this.
