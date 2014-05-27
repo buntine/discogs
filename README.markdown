@@ -11,7 +11,7 @@ ABOUT
 -----
   A 100% Ruby wrapper of the Discogs.com API.
 
-  Discogs::Wrapper abstracts all of the boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need.
+  Discogs::Wrapper abstracts all of the boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need. All methods return a ruby Hash wrapped in a [Hashie](https://github.com/intridea/hashie) object with the same structure as documented on the [Discogs API website](http://www.discogs.com/developers/index.html).
 
   The master branch aims to give full support for version 2.0 of the API. If you need support for everything in version 1.0, see the api-v1 branch.
 
@@ -86,7 +86,10 @@ AUTHENTICATION
   - Redirect, get access token
   - Try, succeed.
 
+PAGINATION
+----------
+  Demonstrate pagination parameters.
+
 LICENSE
 -----
-
-See the LICENCE file. Copyright (c) Andrew Buntine
+  See the LICENCE file. Copyright (c) Andrew Buntine
