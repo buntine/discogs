@@ -252,7 +252,7 @@ class Discogs::Wrapper
     end
   end
 
-  def get_fee(price, currence="USD")
+  def get_fee(price, currency="USD")
     query_and_build "marketplace/fee/#{price}/#{currency}"
   end
 
