@@ -33,7 +33,6 @@ ABOUT
   * Wantlists
   * oAuth
 
-
   The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
 
 INSTALLATION
@@ -59,23 +58,29 @@ USAGE
     artist_releases = wrapper.get_artist_releases("329937")
     release         = wrapper.get_release("1529724")
     label           = wrapper.get_label("29515")
-    search          = wrapper.search("Necrovore", :per_page => 10)
+    search          = wrapper.search("Necrovore", :per_page => 10, :type => :artist)
 
-    artist.name                         # => "Manilla Road"
-    artist.members.count                # => 7
-    artist.profile                      # => "Heavy Metal band from ..."
+    artist.name                          # => "Manilla Road"
+    artist.members.count                 # => 4
+    artist.members.first.name            # => "Mark Shelton"
+    artist.profile                       # => "Heavy Metal band from ..."
 
-    release.title                       # => "Ritual"
-    release.labels[0].name              # => "Osmose Productions"
-    release.formats[0].descriptions[0]  # => "LP"
-    release.styles                      # => [ "Black Metal", "Death Metal" ]
-    release.tracklist[1].title          # => "Pad modly"
+    artist_releases.releases.count       # => 35
+    artist_releases.releases.first.title # => "Invasion"
 
-    label.name                          # => "Monitor Records"
+    release.title                        # => "Medieval"
+    release.labels.first.name            # => "New Renaissance Records"
+    release.formats[0].descriptions[0]   # => "12\""
+    release.styles                       # => [ "Heavy Metal", "Doom Metal" ]
+    release.tracklist[1].title           # => "Death is Beauty"
 
-    search.total_results                # => 124
-    search.total_pages                  # => 7
-    search.current_page                 # => 1
+    label.name                           # => "Monitor (2)"
+    label.sublabels.count                # => 3
+
+    search.pagination.items              # => 2
+    search.results.first.title           # => "Necrovore"
+    search.results.first.type            # => "artist"
+    search.results.first.id              # => 691078
 
 AUTHENTICATION
 --------------
@@ -93,3 +98,7 @@ PAGINATION
 LICENSE
 -----
   See the LICENCE file. Copyright (c) Andrew Buntine
+
+CONTRIBUTORS
+------------
+  List all contributors.
