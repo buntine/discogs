@@ -34,6 +34,7 @@ ABOUT
   * oAuth
   * Pagination / Sorting
 
+
   The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
 
 INSTALLATION
@@ -50,7 +51,6 @@ USAGE
 -----
   To use this library, you must supply the name of your application. For example:
 
-    require 'discogs'
     wrapper = Discogs::Wrapper.new("My awesome web app")
 
   Accessing information is easy:
@@ -103,7 +103,7 @@ AUTHENTICATION
 
     # Add an action to initiate the process.
     def authenticate
-      @discogs     = Discogs::Wrapper.new("Test OAuth", session[:access_token])
+      @discogs     = Discogs::Wrapper.new("Test OAuth")
       request_data = @discogs.get_request_token("YOUR_APP_KEY", "YOUR_APP_SECRET", "http://127.0.0.1:3000/callback")
 
       session[:request_token] = request_data[:request_token]
@@ -135,7 +135,15 @@ AUTHENTICATION
 
 PAGINATION
 ----------
-  Demonstrate pagination parameters.
+  All API endpoints that accept pagination, sorting or other parameters are supported.
+ 
+  Page defaults to 1, page size defaults to 50.
+
+    wrapper.get_artist_releases(345211, :page => 2, :per_page => 10)
+
+  If other params are accepted, they can also be passed:
+
+    wrapper.get_user_inventory("username", :page => 3, :sort => "price", :sort_order => "asc")
 
 LICENSE
 -----
