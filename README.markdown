@@ -32,6 +32,7 @@ ABOUT
   * Collections
   * Wantlists
   * oAuth
+  * Pagination / Sorting
 
   The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
 
@@ -94,10 +95,43 @@ AUTHENTICATION
 --------------
   Many of the API endpoints require the user to be authenticated via oAuth. The library provides support for this.
 
-  - Try, fail
-  - oAuth dance
-  - Redirect, get access token
-  - Try, succeed.
+  I've provided [https://github.com/buntine/discogs-oauth](a simple Rails application) that demonstrates how to perform authenticated requests.
+
+  Make sure you've created an "app" in your developer settings on the Discogs website. You will need your consumer key and consumer secret.
+
+  Basically, you should preform the "oAuth dance" like so:
+
+    # Add an action to initiate the process.
+    def authenticate
+      @discogs     = Discogs::Wrapper.new("Test OAuth", session[:access_token])
+      request_data = @discogs.get_request_token("YOUR_APP_KEY", "YOUR_APP_SECRET", "http://127.0.0.1:3000/callback")
+
+      session[:request_token] = request_data[:request_token]
+
+      redirect_to request_data[:authorize_url]
+    end
+
+    # And an action that Discogs will redirect back to.
+    def callback
+      @discogs      = Discogs::Wrapper.new("Test OAuth")
+      request_token = session[:request_token]
+      verifier      = params[:oauth_verifier]
+      access_token  = @discogs.authenticate(request_token, verifier)
+
+      session[:request_token] = nil
+      session[:access_token]  = access_token
+
+      @discogs.access_token = access_token
+
+      # You can now perform authenticated requests.
+    end
+
+    # Once you have it, you can also pass your access_token into the constructor.
+    def another_action
+      @discogs = Discogs::Wrapper.new("Test OAuth", session[:access_token])
+
+      # You can now perform authenticated requests.
+    end
 
 PAGINATION
 ----------
