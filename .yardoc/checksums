@@ -1,4 +1,4 @@
 lib/discogs.rb a28f21b707ba7a6c295673871970840c5cb0fc31
 lib/discogs-wrapper.rb 44f686614ef1a2503164fdd063b4b930ecaedf1b
-lib/wrapper/wrapper.rb e3283b4cd2f1233194eb2d94d7298355b3abf81a
+lib/wrapper/wrapper.rb e7599ccf724a278803fb431a14878d9fdd5c0094
 lib/wrapper/authentication.rb d1f2c86658d32e875272f13a54b098bb1753d0ee

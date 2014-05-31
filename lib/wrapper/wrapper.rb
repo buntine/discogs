@@ -24,14 +24,16 @@ class Discogs::Wrapper
   end
 
   # Retrieves a release by ID.
-  # @param id [Integer] release id
+  # @!macro [new] release_id
+  #   @param id [Integer] release_id
   # @return [Object] the release with provided id
   def get_release(id)
     query_and_build "releases/#{id}"
   end
 
   # Retrieves a master release by ID.
-  # @param id [Integer] master release id
+  # @!macro [new] master_release_id
+  #   @param id [Integer] master release id
   # @return [Object] the master release with provided id
   def get_master_release(id)
     query_and_build "masters/#{id}"
@@ -40,23 +42,25 @@ class Discogs::Wrapper
   alias_method :get_master, :get_master_release
 
   # Retrieves a list of all Releases that are versions of this master. Accepts Pagination parameters.
-  # @param id [Integer] master release id
-  # @param pagination [Object] pagination parameters
+  # @macro master_release_id
+  # @!macro [new] uses_pagination
+  #   @param pagination [Object] pagination parameters
   # @return [Object] the master release with release id, along with versions
   def get_master_release_versions(id, pagination={})
     query_and_build "masters/#{id}/versions", pagination
   end
 
   # Retrieves an artist by ID.
-  # @param id [Integer] artist id
+  # @!macro [new] artist_id
+  #   @param id [Integer] artist id
   # @return [Object] the artist with provided id
   def get_artist(id)
     query_and_build "artists/#{id}"
   end
 
   # Returns a list of Releases and Masters associated with the artist. Accepts Pagination parameters.
-  # @param id [Integer] artist id
-  # @param pagination [Object] pagination parameters
+  # @macro artist_id
+  # @macro uses_pagination
   # @return [Object] the releases for artist with provided id
   def get_artists_releases(id, pagination={})
     query_and_build "artists/#{id}/releases", pagination
@@ -65,15 +69,16 @@ class Discogs::Wrapper
   alias_method :get_artist_releases, :get_artists_releases
 
   # Retrieves a label by ID.
-  # @param id [Integer] label id
+  # @!macro [new] label_id
+  #   @param id [Integer] label id
   # @return [Object] the label with provided id
   def get_label(id)
     query_and_build "labels/#{id}"
   end
 
   # Returns a list of Releases associated with the label. Accepts Pagination parameters.
-  # @param id [Integer] label id
-  # @param pagination [Object] pagination parameters
+  # @macro label_id
+  # @macro uses_pagination
   # @return [Object] the releases for label with provided id
   def get_labels_releases(id, pagination={})
     query_and_build "labels/#{id}/releases", pagination
@@ -88,7 +93,8 @@ class Discogs::Wrapper
   # If authenticated as the requested user or the user’s collection/wantlist is public,
   # the num_collection / num_wantlist keys will be visible.
   #
-  # @param username [String] username
+  # @!macro [new] username
+  #   @param username [String] username
   # @return [Object] the user with provided username
   def get_user(username)
     query_and_build "users/#{username}"
@@ -97,26 +103,52 @@ class Discogs::Wrapper
   # Edit a user’s profile data.
   #
   # Authentication as the user is required.
-  # @param username [String] username
-  # @param data [Hash] data to update, with the optional keys:
-  #   * :name (String) The real name of the user.
-  #   * :home_page (String) The user's website.
-  #   * :location (String) The geographical location of the user.
-  #   * :profile (String) Biographical information about the user.
+  # @macro username
+  # @param [Hash] data data to update, with the optional keys:
+  # @option data [String] :name The real name of the user.
+  # @option data [String] :home_page The user's website.
+  # @option data [String] :location The geographical location of the user.
+  # @option data [String] :profile Biographical information about the user.
   def edit_user(username, data={})
     authenticated? do
       query_and_build "labels/#{id}/releases", {}, :post, data
     end
   end
 
+  # Get a collection for a user by username
+  #
+  # Shortcut method for #get_user_folder_releases[#get_user_folder_releases-instance_method]
+  #
+  # @macro username
+  # @macro uses_pagination
+  # @return [Object] the user with provided username
   def get_user_collection(username, pagination={})
     get_user_folder_releases(username, 0)
   end
 
+  # Retrieve a list of user-defined collection notes fields. These fields are available on every release in the collection.
+  #
+  # If the collection has been made private by its owner, authentication as the collection owner is required.
+  #
+  # If you are not authenticated as the collection owner, only fields with public set to true will be visible.
+  #
+  # @macro username
+  # @return [Object] list of collection fields for the provided username
   def get_user_collection_fields(username)
     query_and_build "users/#{username}/collection/fields"
   end
 
+  # Returns the list of releases in a user’s wantlist. Accepts Pagination parameters.
+  #
+  # Basic information about each release is provided, suitable for display in a list. For detailed information, make another API call to fetch the corresponding release.
+  #
+  # If the wantlist has been made private by its owner, you must be authenticated as the owner to view it.
+  #
+  # The notes field will be visible if you are authenticated as the wantlist owner.
+  #
+  # @macro username
+  # @macro uses_pagination
+  # @return [Object] wantlist for the provided username
   def get_user_wantlist(username, pagination={})
     query_and_build "users/#{username}/wants", pagination
   end
@@ -127,18 +159,45 @@ class Discogs::Wrapper
     query_and_build "users/#{username}/wants/#{id}"
   end
 
+  # Add a release to a user’s wantlist.
+  #
+  # @note Authentication as the wantlist owner is required.
+  #
+  # @macro username
+  # @macro release_id
+  # @param [Hash] data optional parameters:
+  # @option data [String] :notes User notes to associate with this release.
+  # @option data [Integer] :rating User’s rating of this release, from 0 (unrated) to 5 (best). Defaults to 0.
+  # @return [Object] new wantlist entry
   def add_release_to_user_wantlist(username, id, data={})
     authenticated? do
       query_and_build "users/#{username}/wants/#{id}", {}, :put, data
     end
   end
 
+  # Edit the notes (or rating) on a release in a user’s wantlist.
+  #
+  # @note Authentication as the wantlist owner is required.
+  #
+  # @macro username
+  # @macro release_id
+  # @param data [Object] optional parameters:
+  # @option data [String] :notes User notes to associate with this release.
+  # @option data [Integer] :rating User’s rating of this release, from 0 (unrated) to 5 (best). Defaults to 0.
+  # @return [Object] updated wantlist entry
   def edit_release_in_user_wantlist(username, id, data={})
     authenticated? do
       query_and_build "users/#{username}/wants/#{id}", {}, :post, data
     end
   end
 
+  # Remove a release from a user's wantlist.
+  #
+  # @note Authentication as the wantlist owner is required.
+  #
+  # @macro username
+  # @macro release_id
+  # @return [Boolean]
   def delete_release_in_user_wantlist(username, id)
     authenticated? do
       query_and_build "users/#{username}/wants/#{id}", {}, :delete

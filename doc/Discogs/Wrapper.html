@@ -232,7 +232,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a release to a user’s wantlist.</p>
+</div></span>
   
 </li>
 
@@ -354,7 +356,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_release_in_user_wantlist-instance_method" title="#delete_release_in_user_wantlist (instance method)">- (Object) <strong>delete_release_in_user_wantlist</strong>(username, id) </a>
+      <a href="#delete_release_in_user_wantlist-instance_method" title="#delete_release_in_user_wantlist (instance method)">- (Boolean) <strong>delete_release_in_user_wantlist</strong>(username, id) </a>
     
 
     
@@ -370,7 +372,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Remove a release from a user&#39;s wantlist.</p>
+</div></span>
   
 </li>
 
@@ -504,7 +508,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Edit the notes (or rating) on a release in a user’s wantlist.</p>
+</div></span>
   
 </li>
 
@@ -902,7 +908,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Get a collection for a user by username.</p>
+</div></span>
   
 </li>
 
@@ -924,7 +932,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve a list of user-defined collection notes fields.</p>
+</div></span>
   
 </li>
 
@@ -1058,7 +1068,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the list of releases in a user’s wantlist.</p>
+</div></span>
   
 </li>
 
@@ -1334,14 +1346,14 @@
       <pre class="lines">
 
 
-162
-163
-164
-165
-166</pre>
+221
+222
+223
+224
+225</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_release_to_user_folder'>add_release_to_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_folder_id'>folder_id</span><span class='comma'>,</span> <span class='id identifier rubyid_release_id'>release_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1362,20 +1374,150 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Authentication as the wantlist owner is required.</p>
+</div>
+  </div>
+
+
+<p>Add a release to a user’s wantlist.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>release_id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>optional parameters:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:notes</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>User notes to associate with this release.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:rating</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>User’s rating of this release, from 0 (unrated) to 5 (best). Defaults to 0.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>new wantlist entry</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-130
-131
-132
-133
-134</pre>
+172
+173
+174
+175
+176</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 172</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_release_to_user_wantlist'>add_release_to_user_wantlist</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1402,14 +1544,14 @@
       <pre class="lines">
 
 
-240
-241
-242
-243
-244</pre>
+299
+300
+301
+302
+303</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 240</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_listing'>create_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1436,14 +1578,14 @@
       <pre class="lines">
 
 
-284
-285
-286
-287
-288</pre>
+343
+344
+345
+346
+347</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 284</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 343</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_order_message'>create_order_message</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1474,14 +1616,14 @@
       <pre class="lines">
 
 
-212
-213
-214
-215
-216</pre>
+271
+272
+273
+274
+275</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_user_folder'>create_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1512,14 +1654,14 @@
       <pre class="lines">
 
 
-178
-179
-180
-181
-182</pre>
+237
+238
+239
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 178</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 237</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_instance_in_user_folder'>delete_instance_in_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_folder_id'>folder_id</span><span class='comma'>,</span> <span class='id identifier rubyid_release_id'>release_id</span><span class='comma'>,</span> <span class='id identifier rubyid_instance_id'>instance_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1546,14 +1688,14 @@
       <pre class="lines">
 
 
-252
-253
-254
-255
-256</pre>
+311
+312
+313
+314
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 252</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 311</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_listing'>delete_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1568,7 +1710,7 @@
       <div class="method_details ">
   <h3 class="signature " id="delete_release_in_user_wantlist-instance_method">
   
-    - (<tt>Object</tt>) <strong>delete_release_in_user_wantlist</strong>(username, id) 
+    - (<tt>Boolean</tt>) <strong>delete_release_in_user_wantlist</strong>(username, id) 
   
 
   
@@ -1578,20 +1720,88 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Authentication as the wantlist owner is required.</p>
+</div>
+  </div>
+
+
+<p>Remove a release from a user&#39;s wantlist.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>release_id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-142
-143
-144
-145
-146</pre>
+201
+202
+203
+204
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 201</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_release_in_user_wantlist'>delete_release_in_user_wantlist</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1618,14 +1828,14 @@
       <pre class="lines">
 
 
-226
-227
-228
-229
-230</pre>
+285
+286
+287
+288
+289</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 226</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_user_folder'>delete_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1652,14 +1862,14 @@
       <pre class="lines">
 
 
-186
-187
-188
-189
-190</pre>
+245
+246
+247
+248
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 245</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_field_on_instance_in_user_folder'>edit_field_on_instance_in_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_folder_id'>folder_id</span><span class='comma'>,</span> <span class='id identifier rubyid_release_id'>release_id</span><span class='comma'>,</span> <span class='id identifier rubyid_instance_id'>instance_id</span><span class='comma'>,</span> <span class='id identifier rubyid_field_id'>field_id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1686,14 +1896,14 @@
       <pre class="lines">
 
 
-246
-247
-248
-249
-250</pre>
+305
+306
+307
+308
+309</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 246</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 305</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_listing'>edit_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1720,14 +1930,14 @@
       <pre class="lines">
 
 
-264
-265
-266
-267
-268</pre>
+323
+324
+325
+326
+327</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 264</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 323</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_order'>edit_order</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1758,14 +1968,14 @@
       <pre class="lines">
 
 
-170
-171
-172
-173
-174</pre>
+229
+230
+231
+232
+233</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 229</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_release_in_user_folder'>edit_release_in_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_folder_id'>folder_id</span><span class='comma'>,</span> <span class='id identifier rubyid_release_id'>release_id</span><span class='comma'>,</span> <span class='id identifier rubyid_instance_id'>instance_id</span><span class='op'>=</span><span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1786,20 +1996,150 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Authentication as the wantlist owner is required.</p>
+</div>
+  </div>
+
+
+<p>Edit the notes (or rating) on a release in a user’s wantlist.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>release_id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>optional parameters:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:notes</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>User notes to associate with this release.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:rating</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>User’s rating of this release, from 0 (unrated) to 5 (best). Defaults to 0.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>updated wantlist entry</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-136
-137
-138
-139
-140</pre>
+188
+189
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 188</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_release_in_user_wantlist'>edit_release_in_user_wantlist</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1864,20 +2204,74 @@
         &mdash;
         <div class='inline'>
 <p>data to update, with the optional keys:</p>
-<ul><li>
-<p>:name (String) The real name of the user.</p>
-</li><li>
-<p>:home_page (String) The user&#39;s website.</p>
-</li><li>
-<p>:location (String) The geographical location of the user.</p>
-</li><li>
-<p>:profile (String) Biographical information about the user.</p>
-</li></ul>
 </div>
       
     </li>
   
 </ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:name</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The real name of the user.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:home_page</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The user&#39;s website.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:location</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The geographical location of the user.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:profile</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Biographical information about the user.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
 
 
 </div><table class="source_code">
@@ -1886,14 +2280,14 @@
       <pre class="lines">
 
 
-106
-107
-108
-109
-110</pre>
+112
+113
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_user'>edit_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1920,14 +2314,14 @@
       <pre class="lines">
 
 
-220
-221
-222
-223
-224</pre>
+279
+280
+281
+282
+283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 220</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 279</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_user_folder'>edit_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -2003,12 +2397,12 @@
       <pre class="lines">
 
 
-53
-54
-55</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_artist'>get_artist</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>artists/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2105,12 +2499,12 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-61
-62
-63</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_artists_releases'>get_artists_releases</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>artists/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/releases</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span>
@@ -2135,12 +2529,12 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-296
-297
-298</pre>
+355
+356
+357</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 296</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 355</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_fee'>get_fee</span><span class='lparen'>(</span><span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='id identifier rubyid_currence'>currence</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USD</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/fee/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_price'>price</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_currency'>currency</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2165,14 +2559,14 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-150
-151
-152
-153
-154</pre>
+209
+210
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 209</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_identity'>get_identity</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -2199,14 +2593,14 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-300
-301
-302
-303
-304</pre>
+359
+360
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 300</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 359</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_image'>get_image</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -2282,12 +2676,12 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-70
-71
-72</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_label'>get_label</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>labels/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2384,12 +2778,12 @@ parameters.</p>
       <pre class="lines">
 
 
-78
-79
-80</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_labels_releases'>get_labels_releases</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>labels/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/releases</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span>
@@ -2414,12 +2808,12 @@ parameters.</p>
       <pre class="lines">
 
 
-236
-237
-238</pre>
+295
+296
+297</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 236</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 295</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_listing'>get_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2497,12 +2891,12 @@ parameters.</p>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_master_release'>get_master_release</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>masters/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2595,12 +2989,12 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_master_release_versions'>get_master_release_versions</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>masters/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/versions</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span>
@@ -2625,14 +3019,14 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-258
-259
-260
-261
-262</pre>
+317
+318
+319
+320
+321</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 258</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 317</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_order'>get_order</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -2659,14 +3053,14 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-290
-291
-292
-293
-294</pre>
+349
+350
+351
+352
+353</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 290</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 349</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_price_suggestions'>get_price_suggestions</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -2710,7 +3104,7 @@ Pagination parameters.</p>
       
         &mdash;
         <div class='inline'>
-<p>release id</p>
+<p>release_id</p>
 </div>
       
     </li>
@@ -2742,12 +3136,12 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-29
 30
-31</pre>
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_release'>get_release</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>releases/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2826,12 +3220,12 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-93
-94
-95</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user'>get_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2850,18 +3244,88 @@ public, the num_collection / num_wantlist keys will be visible.</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get a collection for a user by username</p>
+
+<p>Shortcut method for #<a
+href="#get_user_folder_releases-instance_method">get_user_folder_releases</a></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pagination</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pagination parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the user with provided username</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-112
-113
-114</pre>
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_collection'>get_user_collection</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get_user_folder_releases'>get_user_folder_releases</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
@@ -2880,18 +3344,74 @@ public, the num_collection / num_wantlist keys will be visible.</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Retrieve a list of user-defined collection notes fields. These fields are
+available on every release in the collection.</p>
+
+<p>If the collection has been made private by its owner, authentication as the
+collection owner is required.</p>
+
+<p>If you are not authenticated as the collection owner, only fields with
+public set to true will be visible.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of collection fields for the provided username</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-116
-117
-118</pre>
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_collection_fields'>get_user_collection_fields</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_content'>/collection/fields</span><span class='tstring_end'>&quot;</span></span>
@@ -2916,16 +3436,16 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-200
-201
-202
-203
-204
-205
-206</pre>
+259
+260
+261
+262
+263
+264
+265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 259</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_folder'>get_user_folder</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_authenticated?'>authenticated?</span>
@@ -2954,16 +3474,16 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-192
-193
-194
-195
-196
-197
-198</pre>
+251
+252
+253
+254
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 251</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_folder_releases'>get_user_folder_releases</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_authenticated?'>authenticated?</span>
@@ -2992,12 +3512,12 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-208
-209
-210</pre>
+267
+268
+269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 208</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 267</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_folders'>get_user_folders</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_content'>/collection/folders</span><span class='tstring_end'>&quot;</span></span>
@@ -3022,12 +3542,12 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-232
-233
-234</pre>
+291
+292
+293</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 232</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 291</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_inventory'>get_user_inventory</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_content'>/inventory</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span>
@@ -3052,12 +3572,12 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-126
-127
-128</pre>
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_want'>get_user_want</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_content'>/wants/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -3080,18 +3600,96 @@ public, the num_collection / num_wantlist keys will be visible.</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the list of releases in a user’s wantlist. Accepts Pagination
+parameters.</p>
+
+<p>Basic information about each release is provided, suitable for display in a
+list. For detailed information, make another API call to fetch the
+corresponding release.</p>
+
+<p>If the wantlist has been made private by its owner, you must be
+authenticated as the owner to view it.</p>
+
+<p>The notes field will be visible if you are authenticated as the wantlist
+owner.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pagination</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pagination parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>wantlist for the provided username</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-120
-121
-122</pre>
+152
+153
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_wantlist'>get_user_wantlist</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_content'>/wants</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span>
@@ -3120,14 +3718,14 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-276
-277
-278
-279
-280</pre>
+335
+336
+337
+338
+339</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_order_messages'>list_order_messages</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
  <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -3154,14 +3752,14 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-270
-271
-272
-273
-274</pre>
+329
+330
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_orders'>list_orders</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -3188,14 +3786,14 @@ public, the num_collection / num_wantlist keys will be visible.</p>
       <pre class="lines">
 
 
-306
-307
-308
-309
-310</pre>
+365
+366
+367
+368
+369</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 306</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 365</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search'>search</span><span class='lparen'>(</span><span class='id identifier rubyid_term'>term</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_parameters'>parameters</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:q</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_term'>term</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -3212,7 +3810,7 @@ public, the num_collection / num_wantlist keys will be visible.</p>
 </div>
 
     <div id="footer">
-  Generated on Sun May 25 16:22:52 2014 by
+  Generated on Sat May 31 11:13:29 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.1).
 </div>
