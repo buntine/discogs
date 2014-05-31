@@ -244,7 +244,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_listing-instance_method" title="#create_listing (instance method)">- (Object) <strong>create_listing</strong>(data = {}) </a>
+      <a href="#create_listing-instance_method" title="#create_listing (instance method)">- (Hash) <strong>create_listing</strong>(data = {}) </a>
     
 
     
@@ -258,7 +258,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a Marketplace listing.</p>
+</div></span>
   
 </li>
 
@@ -340,7 +342,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_listing-instance_method" title="#delete_listing (instance method)">- (Object) <strong>delete_listing</strong>(id) </a>
+      <a href="#delete_listing-instance_method" title="#delete_listing (instance method)">- (Boolean) <strong>delete_listing</strong>(listing_id) </a>
     
 
     
@@ -354,7 +356,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Permanently remove a listing from the Marketplace.</p>
+</div></span>
   
 </li>
 
@@ -436,7 +440,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#edit_listing-instance_method" title="#edit_listing (instance method)">- (Object) <strong>edit_listing</strong>(id, data = {}) </a>
+      <a href="#edit_listing-instance_method" title="#edit_listing (instance method)">- (Hash, Boolean) <strong>edit_listing</strong>(listing_id, data = {}) </a>
     
 
     
@@ -450,7 +454,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Edit the data associated with a listing.</p>
+</div></span>
   
 </li>
 
@@ -458,7 +464,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#edit_order-instance_method" title="#edit_order (instance method)">- (Object) <strong>edit_order</strong>(id, data = {}) </a>
+      <a href="#edit_order-instance_method" title="#edit_order (instance method)">- (Hash) <strong>edit_order</strong>(order_id, data = {}) </a>
     
 
     
@@ -472,7 +478,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Edit the data associated with an order.</p>
+</div></span>
   
 </li>
 
@@ -746,7 +754,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_listing-instance_method" title="#get_listing (instance method)">- (Object) <strong>get_listing</strong>(id) </a>
+      <a href="#get_listing-instance_method" title="#get_listing (instance method)">- (Hash) <strong>get_listing</strong>(listing_id) </a>
     
 
     
@@ -760,7 +768,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>View the data associated with a listing.</p>
+</div></span>
   
 </li>
 
@@ -818,7 +828,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_order-instance_method" title="#get_order (instance method)">- (Object) <strong>get_order</strong>(id) </a>
+      <a href="#get_order-instance_method" title="#get_order (instance method)">- (Hash) <strong>get_order</strong>(order_id) </a>
     
 
     
@@ -832,7 +842,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>View the data associated with an order.</p>
+</div></span>
   
 </li>
 
@@ -1030,7 +1042,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_user_inventory-instance_method" title="#get_user_inventory (instance method)">- (Object) <strong>get_user_inventory</strong>(username, params = {}) </a>
+      <a href="#get_user_inventory-instance_method" title="#get_user_inventory (instance method)">- (Hash) <strong>get_user_inventory</strong>(username, params = {}) </a>
     
 
     
@@ -1044,7 +1056,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the list of listings in a user’s inventory.</p>
+</div></span>
   
 </li>
 
@@ -1667,7 +1681,7 @@
       <div class="method_details ">
   <h3 class="signature " id="create_listing-instance_method">
   
-    - (<tt>Object</tt>) <strong>create_listing</strong>(data = {}) 
+    - (<tt>Hash</tt>) <strong>create_listing</strong>(data = {}) 
   
 
   
@@ -1684,11 +1698,254 @@
   </div>
 
 
+<p>Create a Marketplace listing.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>parameters for listing</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:release_id</span>
+          <span class="type">(<tt>Integer (Required)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The ID of the release that this listing represents.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:condition</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The physical condition of the item. Must <strong>EXACTLY</strong> match one
+of:</p>
+<ul><li>
+<p><tt>Mint (M)</tt></p>
+</li><li>
+<p><tt>Near Mint (NM or NM-)</tt></p>
+</li><li>
+<p><tt>Very Good Plus (VG</tt>)+</p>
+</li><li>
+<p><tt>Very Good (VG)</tt></p>
+</li><li>
+<p><tt>Good Plus (G</tt>)+</p>
+</li><li>
+<p><tt>Good (G)</tt></p>
+</li><li>
+<p><tt>Fair (F)</tt></p>
+</li><li>
+<p><tt>Poor (P)</tt></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sleeve_condition</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>+Not Graded+</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The physical condition of the item&#39;s sleeve, case, or container. Must
+<strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><tt>Mint (M)</tt></p>
+</li><li>
+<p><tt>Near Mint (NM or NM-)</tt></p>
+</li><li>
+<p><tt>Very Good Plus (VG</tt>)+</p>
+</li><li>
+<p><tt>Very Good (VG)</tt></p>
+</li><li>
+<p><tt>Good Plus (G</tt>)+</p>
+</li><li>
+<p><tt>Good (G)</tt></p>
+</li><li>
+<p><tt>Fair (F)</tt></p>
+</li><li>
+<p><tt>Poor (P)</tt></p>
+</li><li>
+<p><code>Generic</code></p>
+</li><li>
+<p><tt>Not Graded</tt></p>
+</li><li>
+<p><tt>No Cover</tt></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:price</span>
+          <span class="type">(<tt>Float (Required)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The price of the item (in the seller&#39;s currency).</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:comments</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Any remarks about the item that will be displayed to buyers.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:allow_buffers</span>
+          <span class="type">(<tt>Boolean (Optional)</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether or not to allow buyers to make offers on the item. Defaults to
+<code>false</code>.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>+For Sale+</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The status of the listing. Defaults to For Sale. Must
+<strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><tt>For Sale</tt> - the listing is ready to be shown on the Marketplace</p>
+</li><li>
+<p><code>Draft</code> - the listing is not ready for public display</p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:external_id</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>A freeform field that can be used for the seller’s own reference.
+Information stored here will not be displayed to anyone other than the
+seller. This field is called “Private Comments” on the Discogs website.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:weight</span>
+          <span class="type">(<tt>Float (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The weight, in grams, of this listing, for the purpose of calculating
+shipping.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:format_quantity</span>
+          <span class="type">(<tt>Integer (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The number of items this listing counts as, for the purpose of calculating
+shipping. This field is called “Counts As” on the Discogs website.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing metadata</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1696,14 +1953,14 @@
       <pre class="lines">
 
 
-418
-419
-420
-421
-422</pre>
+483
+484
+485
+486
+487</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 418</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 483</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_listing'>create_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -1747,14 +2004,14 @@
       <pre class="lines">
 
 
-490
-491
-492
-493
-494</pre>
+597
+598
+599
+600
+601</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 490</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 597</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_order_message'>create_order_message</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -2047,7 +2304,7 @@ method.</p>
       <div class="method_details ">
   <h3 class="signature " id="delete_listing-instance_method">
   
-    - (<tt>Object</tt>) <strong>delete_listing</strong>(id) 
+    - (<tt>Boolean</tt>) <strong>delete_listing</strong>(listing_id) 
   
 
   
@@ -2064,11 +2321,46 @@ method.</p>
   </div>
 
 
+<p>Permanently remove a listing from the Marketplace.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>listing_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2076,18 +2368,18 @@ method.</p>
       <pre class="lines">
 
 
-438
-439
-440
-441
-442</pre>
+510
+511
+512
+513
+514</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 438</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 510</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_listing'>delete_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_listing'>delete_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_listing_id'>listing_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:delete</span>
+    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_listing_id'>listing_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:delete</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2495,7 +2787,7 @@ match one of the values in the field’s list of options.</p>
       <div class="method_details ">
   <h3 class="signature " id="edit_listing-instance_method">
   
-    - (<tt>Object</tt>) <strong>edit_listing</strong>(id, data = {}) 
+    - (<tt>Hash</tt>, <tt>Boolean</tt>) <strong>edit_listing</strong>(listing_id, data = {}) 
   
 
   
@@ -2512,11 +2804,285 @@ match one of the values in the field’s list of options.</p>
   </div>
 
 
+<p>Edit the data associated with a listing.</p>
+
+<p>If the listing’s status is not <tt>For Sale</tt>, <code>Draft</code>, or
+<code>Expired</code>, it cannot be modified – only deleted. To re-list a
+Sold listing, a new listing must be created.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>listing_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>parameters for listing</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:release_id</span>
+          <span class="type">(<tt>Integer (Required)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The ID of the release that this listing represents.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:condition</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The physical condition of the item. Must <strong>EXACTLY</strong> match one
+of:</p>
+<ul><li>
+<p><tt>Mint (M)</tt></p>
+</li><li>
+<p><tt>Near Mint (NM or NM-)</tt></p>
+</li><li>
+<p><tt>Very Good Plus (VG</tt>)+</p>
+</li><li>
+<p><tt>Very Good (VG)</tt></p>
+</li><li>
+<p><tt>Good Plus (G</tt>)+</p>
+</li><li>
+<p><tt>Good (G)</tt></p>
+</li><li>
+<p><tt>Fair (F)</tt></p>
+</li><li>
+<p><tt>Poor (P)</tt></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sleeve_condition</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>+Not Graded+</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The physical condition of the item&#39;s sleeve, case, or container. Must
+<strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><tt>Mint (M)</tt></p>
+</li><li>
+<p><tt>Near Mint (NM or NM-)</tt></p>
+</li><li>
+<p><tt>Very Good Plus (VG</tt>)+</p>
+</li><li>
+<p><tt>Very Good (VG)</tt></p>
+</li><li>
+<p><tt>Good Plus (G</tt>)+</p>
+</li><li>
+<p><tt>Good (G)</tt></p>
+</li><li>
+<p><tt>Fair (F)</tt></p>
+</li><li>
+<p><tt>Poor (P)</tt></p>
+</li><li>
+<p><code>Generic</code></p>
+</li><li>
+<p><tt>Not Graded</tt></p>
+</li><li>
+<p><tt>No Cover</tt></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:price</span>
+          <span class="type">(<tt>Float (Required)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The price of the item (in the seller&#39;s currency).</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:comments</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Any remarks about the item that will be displayed to buyers.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:allow_buffers</span>
+          <span class="type">(<tt>Boolean (Optional)</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Whether or not to allow buyers to make offers on the item. Defaults to
+<code>false</code>.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>+For Sale+</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The status of the listing. Defaults to For Sale. Must
+<strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><tt>For Sale</tt> - the listing is ready to be shown on the Marketplace</p>
+</li><li>
+<p><code>Draft</code> - the listing is not ready for public display</p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:external_id</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>A freeform field that can be used for the seller’s own reference.
+Information stored here will not be displayed to anyone other than the
+seller. This field is called “Private Comments” on the Discogs website.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:weight</span>
+          <span class="type">(<tt>Float (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The weight, in grams, of this listing, for the purpose of calculating
+shipping.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:format_quantity</span>
+          <span class="type">(<tt>Integer (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The number of items this listing counts as, for the purpose of calculating
+shipping. This field is called “Counts As” on the Discogs website.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing metadata</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2524,18 +3090,18 @@ match one of the values in the field’s list of options.</p>
       <pre class="lines">
 
 
-428
-429
-430
-431
-432</pre>
+498
+499
+500
+501
+502</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 428</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 498</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_edit_listing'>edit_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_edit_listing'>edit_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_listing_id'>listing_id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span>
+    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_listing_id'>listing_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2546,7 +3112,7 @@ match one of the values in the field’s list of options.</p>
       <div class="method_details ">
   <h3 class="signature " id="edit_order-instance_method">
   
-    - (<tt>Object</tt>) <strong>edit_order</strong>(id, data = {}) 
+    - (<tt>Hash</tt>) <strong>edit_order</strong>(order_id, data = {}) 
   
 
   
@@ -2563,11 +3129,165 @@ match one of the values in the field’s list of options.</p>
   </div>
 
 
+<p>Edit the data associated with an order.</p>
+
+<p>The conditions under which an order is permitted to transition from one
+status to another are best summarized by a state diagram.</p>
+
+<p><img
+src="http://www.discogs.com/developers/_images/order_state_transitions.png"
+/></p>
+
+<p>Rather than implementing this logic in your application, the response
+contains a next_status key – an array of valid next statuses for this
+order, which you can display to the user in (for example) a dropdown
+control. This also renders your application more resilient to any future
+changes in the order status logic.</p>
+
+<p>Changing the order status using this resource will always message the buyer
+with:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Seller</span> <span class='id identifier rubyid_changed'>changed</span> <span class='id identifier rubyid_status'>status</span> <span class='id identifier rubyid_from'>from</span> <span class='const'>Old</span> <span class='const'>Status</span> <span class='id identifier rubyid_to'>to</span> <span class='const'>New</span> <span class='const'>Status</span></code></pre>
+
+<p>and does not provide a facility for including a custom message along with
+the change. For more fine-grained control, use the Add a new message
+resource, which allows you to simultaneously add a message and change the
+order status.</p>
+
+<p>If the order status is neither <code>cancelled</code>, <tt>Payment Received</tt>,
+nor <code>Shipped</code>, you can change the shipping. Doing so will send
+an invoice to the buyer and set the order status to Invoice Sent. (For that
+reason, you cannot set the shipping and the order status in the same
+request.)</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>order_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The new status of the order. Must <strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><tt>New Order</tt></p>
+</li><li>
+<p><tt>Buyer Contacted</tt></p>
+</li><li>
+<p><tt>Invoice Sent</tt></p>
+</li><li>
+<p><tt>Payment Pending</tt></p>
+</li><li>
+<p><tt>Payment Received</tt></p>
+</li><li>
+<p><code>Shipped</code></p>
+</li><li>
+<p><tt>Cancelled (Non-Paying Buyer)</tt></p>
+</li><li>
+<p><tt>Cancelled (Item Unavailable)</tt></p>
+</li><li>
+<p><tt>Cancelled (Per Buyer&#39;s Request)</tt></p>
+</li><li>
+<p>the order&#39;s current status</p>
+<ul><li>
+<p>Furthermore, the new status must be present in the order’s next_status
+list. For more information about order statuses, see #<a
+href="#edit_order-instance_method">edit_order</a>.</p>
+</li></ul>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:shipping</span>
+          <span class="type">(<tt>Float (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The order shipping amount.</p>
+
+<p>As a side-effect of setting this value, the buyer is invoiced and the order
+status is set to <tt>Invoice Sent</tt>. For more information, see #<a
+href="#edit_order-instance_method">edit_order</a>.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order information</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2575,18 +3295,18 @@ match one of the values in the field’s list of options.</p>
       <pre class="lines">
 
 
-458
-459
-460
-461
-462</pre>
+565
+566
+567
+568
+569</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 458</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 565</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_edit_order'>edit_order</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_edit_order'>edit_order</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span>
+    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -3460,12 +4180,12 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-506
-507
-508</pre>
+613
+614
+615</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 506</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 613</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_fee'>get_fee</span><span class='lparen'>(</span><span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='id identifier rubyid_currency'>currency</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USD</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/fee/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_price'>price</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_currency'>currency</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -3584,14 +4304,14 @@ correctly.</p>
       <pre class="lines">
 
 
-514
-515
-516
-517
-518</pre>
+621
+622
+623
+624
+625</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 514</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 621</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_image'>get_image</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -3787,27 +4507,80 @@ parameters.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_listing-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_listing</strong>(id) 
+    - (<tt>Hash</tt>) <strong>get_listing</strong>(listing_id) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>View the data associated with a listing.</p>
+
+<p>If the authorized user is the listing owner the listing will include the
+<code>weight</code>, <code>format_quantity</code>, and
+<code>external_id</code> keys.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>listing_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing with listing_id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-410
-411
-412</pre>
+441
+442
+443</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 410</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 441</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_listing'>get_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_listing'>get_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_listing_id'>listing_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/listings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_listing_id'>listing_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3998,7 +4771,7 @@ Pagination parameters.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_order-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_order</strong>(id) 
+    - (<tt>Hash</tt>) <strong>get_order</strong>(order_id) 
   
 
   
@@ -4015,11 +4788,51 @@ Pagination parameters.</p>
   </div>
 
 
+<p>View the data associated with an order.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>order_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order information</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -4027,18 +4840,18 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-448
-449
-450
-451
-452</pre>
+523
+524
+525
+526
+527</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 448</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 523</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_order'>get_order</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_order'>get_order</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -4078,14 +4891,14 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-500
-501
-502
-503
-504</pre>
+607
+608
+609
+610
+611</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 500</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 607</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_price_suggestions'>get_price_suggestions</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -4822,24 +5635,175 @@ collection owner is required.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_user_inventory-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_user_inventory</strong>(username, params = {}) 
+    - (<tt>Hash</tt>) <strong>get_user_inventory</strong>(username, params = {}) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the list of listings in a user’s inventory. Accepts Pagination
+parameters.</p>
+
+<p>Basic information about each listing and the corresponding release is
+provided, suitable for display in a list. For detailed information about
+the release, make another API call to fetch the corresponding Release.</p>
+
+<p>If you are not authenticated as the inventory owner, only items that have a
+status of For Sale will be visible.</p>
+
+<p>If you are authenticated as the inventory owner you will get additional
+<code>weight</code>, <code>format_quantity</code>, and
+<code>external_id</code> keys.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>sort/order/pagination parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>params</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Only show items with this status</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sort</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Sort items by this field. One of:</p>
+<ul><li>
+<p><code>listed</code></p>
+</li><li>
+<p><code>price</code></p>
+</li><li>
+<p><code>item</code> (i.e. the title of the release)</p>
+</li><li>
+<p><code>artist</code></p>
+</li><li>
+<p><code>label</code></p>
+</li><li>
+<p><code>catno</code></p>
+</li><li>
+<p><code>audio</code></p>
+</li><li>
+<p><code>status</code> (when authenticated as inventory owner)</p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sort_order</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Sort items in a particular order. One of:</p>
+<ul><li>
+<p><code>asc</code></p>
+</li><li>
+<p><code>desc</code></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listing in user&#39;s inventory</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-406
-407
-408</pre>
+430
+431
+432</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 406</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 430</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_inventory'>get_user_inventory</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_username'>username</span><span class='embexpr_end'>}</span><span class='tstring_content'>/inventory</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span>
@@ -5027,14 +5991,14 @@ owner.</p>
       <pre class="lines">
 
 
-478
-479
-480
-481
-482</pre>
+585
+586
+587
+588
+589</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 478</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 585</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_order_messages'>list_order_messages</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
  <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -5078,14 +6042,14 @@ owner.</p>
       <pre class="lines">
 
 
-468
-469
-470
-471
-472</pre>
+575
+576
+577
+578
+579</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 468</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 575</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_orders'>list_orders</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -5112,15 +6076,15 @@ owner.</p>
       <pre class="lines">
 
 
-526
-527
-528
-529
-530
-531</pre>
+633
+634
+635
+636
+637
+638</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 526</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 633</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span>    <span class='op'>=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -5148,14 +6112,14 @@ owner.</p>
       <pre class="lines">
 
 
-520
-521
-522
-523
-524</pre>
+627
+628
+629
+630
+631</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 520</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 627</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search'>search</span><span class='lparen'>(</span><span class='id identifier rubyid_term'>term</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_parameters'>parameters</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:q</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_term'>term</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -5172,7 +6136,7 @@ owner.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat May 31 12:41:27 2014 by
+  Generated on Sat May 31 13:25:25 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.1).
 </div>

@@ -403,61 +403,168 @@ class Discogs::Wrapper
     end
   end
 
+  # Returns the list of listings in a user’s inventory. Accepts Pagination parameters.
+  #
+  # Basic information about each listing and the corresponding release is provided, suitable for display in a list. For detailed information about the release, make another API call to fetch the corresponding Release.
+  #
+  # If you are not authenticated as the inventory owner, only items that have a status of For Sale will be visible.
+  #
+  # If you are authenticated as the inventory owner you will get additional +weight+, +format_quantity+, and +external_id+ keys.
+  #
+  # @macro username
+  # @param [Hash] params sort/order/pagination parameters
+  # @option params [String] :status Only show items with this status
+  # @option params [String] :sort Sort items by this field. One of:
+  #   * +listed+
+  #   * +price+
+  #   * +item+ (i.e. the title of the release)
+  #   * +artist+
+  #   * +label+
+  #   * +catno+
+  #   * +audio+
+  #   * +status+ (when authenticated as inventory owner)
+  # @option params [String] :sort_order Sort items in a particular order. One of:
+  #   * +asc+
+  #   * +desc+
+  # @return [Hash] listing in user's inventory
   def get_user_inventory(username, params={})
     query_and_build "users/#{username}/inventory", params
   end
 
-  def get_listing(id)
-    query_and_build "marketplace/listings/#{id}"
+  # View the data associated with a listing.
+  #
+  # If the authorized user is the listing owner the listing will include the +weight+, +format_quantity+, and +external_id+ keys.
+  #
+  # @!macro [new] listing_id
+  #   @param listing_id [Integer] listing id
+  # @return [Hash] listing with listing_id
+  def get_listing(listing_id)
+    query_and_build "marketplace/listings/#{listing_id}"
   end
 
-  #
+  # Create a Marketplace listing.
   #
   # @macro need_auth
   #
+  # @!macro [new] listing_params
+  #   @param [Hash] data parameters for listing
+  #   @option data [Integer (Required)] :release_id The ID of the release that this listing represents.
+  #   @option data [String (Optional)] :condition The physical condition of the item. Must *EXACTLY* match one of:
+  #     * +Mint (M)+
+  #     * +Near Mint (NM or NM-)+
+  #     * +Very Good Plus (VG+)+
+  #     * +Very Good (VG)+
+  #     * +Good Plus (G+)+
+  #     * +Good (G)+
+  #     * +Fair (F)+
+  #     * +Poor (P)+
+  #   @option data [String (Optional)] :sleeve_condition (+Not Graded+) The physical condition of the item's sleeve, case, or container. Must *EXACTLY* match one of:
+  #     * +Mint (M)+
+  #     * +Near Mint (NM or NM-)+
+  #     * +Very Good Plus (VG+)+
+  #     * +Very Good (VG)+
+  #     * +Good Plus (G+)+
+  #     * +Good (G)+
+  #     * +Fair (F)+
+  #     * +Poor (P)+
+  #     * +Generic+
+  #     * +Not Graded+
+  #     * +No Cover+
+  #   @option data [Float (Required)] :price The price of the item (in the seller's currency).
+  #   @option data [String (Optional)] :comments Any remarks about the item that will be displayed to buyers.
+  #   @option data [Boolean (Optional)] :allow_buffers (false) Whether or not to allow buyers to make offers on the item. Defaults to +false+.
+  #   @option data [String (Optional)] :status (+For Sale+) The status of the listing. Defaults to For Sale. Must *EXACTLY* match one of:
+  #     * +For Sale+ - the listing is ready to be shown on the Marketplace
+  #     * +Draft+ - the listing is not ready for public display
+  #   @option data [String (Optional)] :external_id  A freeform field that can be used for the seller’s own reference. Information stored here will not be displayed to anyone other than the seller. This field is called “Private Comments” on the Discogs website.
+  #   @option data [Float (Optional)] :weight The weight, in grams, of this listing, for the purpose of calculating shipping.
+  #   @option data [Integer (Optional)] :format_quantity The number of items this listing counts as, for the purpose of calculating shipping. This field is called “Counts As” on the Discogs website.
+  #   @return [Hash] listing metadata
   def create_listing(data={})
     authenticated? do
       query_and_build "marketplace/listings", {}, :post, data
     end
   end
 
+  # Edit the data associated with a listing.
   #
+  # If the listing’s status is not +For Sale+, +Draft+, or +Expired+, it cannot be modified – only deleted. To re-list a Sold listing, a new listing must be created.
   #
   # @macro need_auth
   #
-  def edit_listing(id, data={})
+  # @macro listing_id
+  # @macro listing_params
+  # @return [Boolean]
+  def edit_listing(listing_id, data={})
     authenticated? do
-      query_and_build "marketplace/listings/#{id}", {}, :post, data
+      query_and_build "marketplace/listings/#{listing_id}", {}, :post, data
     end
   end
 
-  #
+  # Permanently remove a listing from the Marketplace.
   #
   # @macro need_auth
   #
-  def delete_listing(id)
+  # @macro listing_id
+  # @return [Boolean]
+  def delete_listing(listing_id)
     authenticated? do
-      query_and_build "marketplace/listings/#{id}", {}, :delete
+      query_and_build "marketplace/listings/#{listing_id}", {}, :delete
     end
   end
 
-  #
+  # View the data associated with an order.
   #
   # @macro need_auth
   #
-  def get_order(id)
+  # @!macro [new] order_id
+  #   @param order_id [Integer] order id
+  # @return [Hash] order information
+  def get_order(order_id)
     authenticated? do
-      query_and_build "marketplace/orders/#{id}"
+      query_and_build "marketplace/orders/#{order_id}"
     end
   end
 
+  # Edit the data associated with an order.
   #
+  # The conditions under which an order is permitted to transition from one status to another are best summarized by a state diagram.
+  #
+  # http://www.discogs.com/developers/_images/order_state_transitions.png
+  #
+  # Rather than implementing this logic in your application, the response contains a next_status key – an array of valid next statuses for this order, which you can display to the user in (for example) a dropdown control. This also renders your application more resilient to any future changes in the order status logic.
+  #
+  # Changing the order status using this resource will always message the buyer with:
+  #
+  #   Seller changed status from Old Status to New Status
+  #
+  # and does not provide a facility for including a custom message along with the change. For more fine-grained control, use the Add a new message resource, which allows you to simultaneously add a message and change the order status.
+  #
+  # If the order status is neither +cancelled+, +Payment Received+, nor +Shipped+, you can change the shipping. Doing so will send an invoice to the buyer and set the order status to Invoice Sent. (For that reason, you cannot set the shipping and the order status in the same request.)
   #
   # @macro need_auth
   #
-  def edit_order(id, data={})
+  # @macro order_id
+  # @param [Hash] data order parameters
+  # @option data [String (Optional)] :status The new status of the order. Must *EXACTLY* match one of:
+  #   * +New Order+
+  #   * +Buyer Contacted+
+  #   * +Invoice Sent+
+  #   * +Payment Pending+
+  #   * +Payment Received+
+  #   * +Shipped+
+  #   * +Cancelled (Non-Paying Buyer)+
+  #   * +Cancelled (Item Unavailable)+
+  #   * +Cancelled (Per Buyer's Request)+
+  #   * the order's current status
+  #     - Furthermore, the new status must be present in the order’s next_status list. For more information about order statuses, see #edit_order[#edit_order-instance_method].
+  # @option data [Float (Optional)] :shipping The order shipping amount.
+  #
+  #   As a side-effect of setting this value, the buyer is invoiced and the order status is set to +Invoice Sent+. For more information, see #edit_order[#edit_order-instance_method].
+  # @return [Hash] order information
+  def edit_order(order_id, data={})
     authenticated? do
-      query_and_build "marketplace/orders/#{id}", {}, :post, data
+      query_and_build "marketplace/orders/#{order_id}", {}, :post, data
     end
   end
 
