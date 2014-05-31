@@ -568,56 +568,113 @@ class Discogs::Wrapper
     end
   end
 
-  #
+  # Returns a list of the authenticated user’s orders. Accepts Pagination parameters.
   #
   # @macro need_auth
   #
+  # @param [Hash] params status, sort, sort_order, and pagination parameters
+  # @option params [String (Optional)] :status The new status of the order. Must *EXACTLY* match one of:
+  #   * +All+
+  #   * +New Order+
+  #   * +Buyer Contacted+
+  #   * +Invoice Sent+
+  #   * +Payment Pending+
+  #   * +Payment Received+
+  #   * +Shipped+
+  #   * +Merged+
+  #   * +Order Changed+
+  #   * +Cancelled+
+  #   * +Cancelled (Non-Paying Buyer)+
+  #   * +Cancelled (Item Unavailable)+
+  #   * +Cancelled (Per Buyer's Request)+
+  # @option params [String (Optional)] :sort Sort items with this field. Must *EXACTLY* match one of:
+  #   * +id+
+  #   * +buyer+
+  #   * +created+
+  #   * +status+
+  #   * +last_activity+
+  # @option params [String (Optional)] :sort_order Sort items in a particular order. Must *EXACTLY* match one of:
+  #   * +asc+
+  #   * +desc+
+  # @option params [Hash (Optional)] :pagination Pagination parameters
+  # @return [Hash] list of orders meeting specified criteria
   def list_orders(params={})
     authenticated? do
       query_and_build "marketplace/orders", params
     end
   end
 
-  #
+  # Returns a list of the order’s messages with the most recent first. Accepts Pagination parameters.
   #
   # @macro need_auth
   #
-  def list_order_messages(id, pagination={})
+  # @macro order_id
+  # @macro uses_pagination
+  # @return [Hash] messages for order
+  def list_order_messages(order_id, pagination={})
    authenticated? do
-     query_and_build "marketplace/orders#{id}/messages", pagination
+     query_and_build "marketplace/orders#{order_id}/messages", pagination
    end
   end
 
   alias_method :get_order_messages, :list_order_messages
 
+  # Adds a new message to the order’s message log.
   #
-  #
-  # @macro need_auth
-  #
-  def create_order_message(id, data={})
-    authenticated? do
-      query_and_build "marketplace/orders/#{id}/messages", {}, :post, data
-    end
-  end
-
-  #
+  # When posting a new message, you can simultaneously change the order status. If you do, the message will automatically be prepended with:
+  #   Seller changed status from Old Status to New Status\n\n
+  # While message and status are each optional, one or both must be present.
   #
   # @macro need_auth
   #
-  def get_price_suggestions(id)
+  # @macro order_id
+  # @param [Hash] data new message metadata
+  # @option data [String (Optional)] :message The body of the message to send to the buyer.
+  # @option data [String (Optional)] :status The new status of the corresponding order.
+  #   * For more information about order statuses, see #edit_order[#edit_order-instance_method]
+  # @return [Hash] created message metadata
+  def create_order_message(order_id, data={})
     authenticated? do
-      query_and_build "marketplace/price_suggestions/#{id}"
+      query_and_build "marketplace/orders/#{order_id}/messages", {}, :post, data
     end
   end
 
+  # Retrieve price suggestions for the provided Release ID. If no suggestions are available, an empty object will be returned.
+  #
+  # Authentication is required, and the user needs to have filled out their seller settings. Suggested prices will be denominated in the user’s selling currency.
+  #
+  # @macro need_auth
+  #
+  # @macro release_id
+  # @return [Hash] price suggestions information
+  def get_price_suggestions(release_id)
+    authenticated? do
+      query_and_build "marketplace/price_suggestions/#{release_id}"
+    end
+  end
+
+  # Calculate the fee for the provided price and currency.
+  #
+  # @param [Float] price price of item
+  # @param [String (Optional)] currency currency to return the fee in. Must *EXACTLY* match one of:
+  #   * +USD+
+  #   * +GBP+
+  #   * +EUR+
+  #   * +CAD+
+  #   * +AUD+
+  #   * +JPY+
   def get_fee(price, currency="USD")
     query_and_build "marketplace/fee/#{price}/#{currency}"
   end
 
+  # Retrieve an image by filename.
   #
+  # It’s unlikely that you’ll ever have to construct an image URL; images keys on other resources use fully-qualified URLs, including hostname and protocol.
   #
   # @macro need_auth
   #
+  # @param [String (Required)] filename the name of the image file
+  # @return [Binary] binary image file
   def get_image(filename)
     authenticated? do
       @access_token.get("/image/#{filename}").body

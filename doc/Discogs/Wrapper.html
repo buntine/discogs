@@ -268,7 +268,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_order_message-instance_method" title="#create_order_message (instance method)">- (Object) <strong>create_order_message</strong>(id, data = {}) </a>
+      <a href="#create_order_message-instance_method" title="#create_order_message (instance method)">- (Hash) <strong>create_order_message</strong>(order_id, data = {}) </a>
     
 
     
@@ -282,7 +282,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Adds a new message to the order’s message log.</p>
+</div></span>
   
 </li>
 
@@ -650,7 +652,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Calculate the fee for the provided price and currency.</p>
+</div></span>
   
 </li>
 
@@ -682,7 +686,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_image-instance_method" title="#get_image (instance method)">- (Object) <strong>get_image</strong>(filename) </a>
+      <a href="#get_image-instance_method" title="#get_image (instance method)">- (Binary) <strong>get_image</strong>(filename) </a>
     
 
     
@@ -696,7 +700,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve an image by filename.</p>
+</div></span>
   
 </li>
 
@@ -852,7 +858,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_price_suggestions-instance_method" title="#get_price_suggestions (instance method)">- (Object) <strong>get_price_suggestions</strong>(id) </a>
+      <a href="#get_price_suggestions-instance_method" title="#get_price_suggestions (instance method)">- (Hash) <strong>get_price_suggestions</strong>(release_id) </a>
     
 
     
@@ -866,7 +872,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve price suggestions for the provided Release ID.</p>
+</div></span>
   
 </li>
 
@@ -1140,7 +1148,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_order_messages-instance_method" title="#list_order_messages (instance method)">- (Object) <strong>list_order_messages</strong>(id, pagination = {}) </a>
+      <a href="#list_order_messages-instance_method" title="#list_order_messages (instance method)">- (Hash) <strong>list_order_messages</strong>(order_id, pagination = {}) </a>
     
 
     
@@ -1156,7 +1164,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a list of the order’s messages with the most recent first.</p>
+</div></span>
   
 </li>
 
@@ -1164,7 +1174,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_orders-instance_method" title="#list_orders (instance method)">- (Object) <strong>list_orders</strong>(params = {}) </a>
+      <a href="#list_orders-instance_method" title="#list_orders (instance method)">- (Hash) <strong>list_orders</strong>(params = {}) </a>
     
 
     
@@ -1178,7 +1188,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a list of the authenticated user’s orders.</p>
+</div></span>
   
 </li>
 
@@ -1975,7 +1987,7 @@ shipping. This field is called “Counts As” on the Discogs website.</p>
       <div class="method_details ">
   <h3 class="signature " id="create_order_message-instance_method">
   
-    - (<tt>Object</tt>) <strong>create_order_message</strong>(id, data = {}) 
+    - (<tt>Hash</tt>) <strong>create_order_message</strong>(order_id, data = {}) 
   
 
   
@@ -1992,11 +2004,117 @@ shipping. This field is called “Counts As” on the Discogs website.</p>
   </div>
 
 
+<p>Adds a new message to the order’s message log.</p>
+
+<p>When posting a new message, you can simultaneously change the order status.
+If you do, the message will automatically be prepended with:</p>
+
+<pre class="code ruby"><code class="ruby">Seller changed status from Old Status to New Status\n\n</code></pre>
+
+<p>While message and status are each optional, one or both must be present.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>order_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>new message metadata</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:message</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The body of the message to send to the buyer.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The new status of the corresponding order.</p>
+<ul><li>
+<p>For more information about order statuses, see #<a
+href="#edit_order-instance_method">edit_order</a></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>created message metadata</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2004,18 +2122,18 @@ shipping. This field is called “Counts As” on the Discogs website.</p>
       <pre class="lines">
 
 
-597
-598
-599
-600
-601</pre>
+636
+637
+638
+639
+640</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 597</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 636</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_create_order_message'>create_order_message</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_create_order_message'>create_order_message</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/messages</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span>
+    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/messages</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:post</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -4174,18 +4292,80 @@ Pagination parameters.</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Calculate the fee for the provided price and currency.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>price</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>price of item</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>currency</span>
+      
+      
+        <span class='type'>(<tt>String (Optional)</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;USD&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>currency to return the fee in. Must <strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><code>USD</code></p>
+</li><li>
+<p><code>GBP</code></p>
+</li><li>
+<p><code>EUR</code></p>
+</li><li>
+<p><code>CAD</code></p>
+</li><li>
+<p><code>AUD</code></p>
+</li><li>
+<p><code>JPY</code></p>
+</li></ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-613
-614
-615</pre>
+666
+667
+668</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 613</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 666</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_fee'>get_fee</span><span class='lparen'>(</span><span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='id identifier rubyid_currency'>currency</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USD</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/fee/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_price'>price</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_currency'>currency</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -4275,7 +4455,7 @@ correctly.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_image-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_image</strong>(filename) 
+    - (<tt>Binary</tt>) <strong>get_image</strong>(filename) 
   
 
   
@@ -4292,11 +4472,55 @@ correctly.</p>
   </div>
 
 
+<p>Retrieve an image by filename.</p>
+
+<p>It’s unlikely that you’ll ever have to construct an image URL; images keys
+on other resources use fully-qualified URLs, including hostname and
+protocol.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String (Required)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the name of the image file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Binary</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>binary image file</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -4304,14 +4528,14 @@ correctly.</p>
       <pre class="lines">
 
 
-621
-622
-623
-624
-625</pre>
+678
+679
+680
+681
+682</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 621</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 678</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_image'>get_image</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -4862,7 +5086,7 @@ Pagination parameters.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_price_suggestions-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_price_suggestions</strong>(id) 
+    - (<tt>Hash</tt>) <strong>get_price_suggestions</strong>(release_id) 
   
 
   
@@ -4879,11 +5103,56 @@ Pagination parameters.</p>
   </div>
 
 
+<p>Retrieve price suggestions for the provided Release ID. If no suggestions
+are available, an empty object will be returned.</p>
+
+<p>Authentication is required, and the user needs to have filled out their
+seller settings. Suggested prices will be denominated in the user’s selling
+currency.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>release_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>release id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>price suggestions information</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -4891,18 +5160,18 @@ Pagination parameters.</p>
       <pre class="lines">
 
 
-607
-608
-609
-610
-611</pre>
+650
+651
+652
+653
+654</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 607</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 650</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_price_suggestions'>get_price_suggestions</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_price_suggestions'>get_price_suggestions</span><span class='lparen'>(</span><span class='id identifier rubyid_release_id'>release_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/price_suggestions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/price_suggestions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_release_id'>release_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -5958,7 +6227,7 @@ owner.</p>
       <div class="method_details ">
   <h3 class="signature " id="list_order_messages-instance_method">
   
-    - (<tt>Object</tt>) <strong>list_order_messages</strong>(id, pagination = {}) 
+    - (<tt>Hash</tt>) <strong>list_order_messages</strong>(order_id, pagination = {}) 
   
 
   
@@ -5979,11 +6248,70 @@ owner.</p>
   </div>
 
 
+<p>Returns a list of the order’s messages with the most recent first. Accepts
+Pagination parameters.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>order_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>order id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pagination</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pagination parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>messages for order</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -5991,18 +6319,18 @@ owner.</p>
       <pre class="lines">
 
 
-585
-586
-587
-588
-589</pre>
+614
+615
+616
+617
+618</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 585</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 614</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_order_messages'>list_order_messages</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_order_messages'>list_order_messages</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
  <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
-   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/messages</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span>
+   <span class='id identifier rubyid_query_and_build'>query_and_build</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marketplace/orders</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/messages</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_pagination'>pagination</span>
  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -6013,7 +6341,7 @@ owner.</p>
       <div class="method_details ">
   <h3 class="signature " id="list_orders-instance_method">
   
-    - (<tt>Object</tt>) <strong>list_orders</strong>(params = {}) 
+    - (<tt>Hash</tt>) <strong>list_orders</strong>(params = {}) 
   
 
   
@@ -6030,11 +6358,159 @@ owner.</p>
   </div>
 
 
+<p>Returns a list of the authenticated user’s orders. Accepts Pagination
+parameters.</p>
+
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>status, sort, sort_order, and pagination parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>params</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The new status of the order. Must <strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><code>All</code></p>
+</li><li>
+<p><tt>New Order</tt></p>
+</li><li>
+<p><tt>Buyer Contacted</tt></p>
+</li><li>
+<p><tt>Invoice Sent</tt></p>
+</li><li>
+<p><tt>Payment Pending</tt></p>
+</li><li>
+<p><tt>Payment Received</tt></p>
+</li><li>
+<p><code>Shipped</code></p>
+</li><li>
+<p><code>Merged</code></p>
+</li><li>
+<p><tt>Order Changed</tt></p>
+</li><li>
+<p><code>Cancelled</code></p>
+</li><li>
+<p><tt>Cancelled (Non-Paying Buyer)</tt></p>
+</li><li>
+<p><tt>Cancelled (Item Unavailable)</tt></p>
+</li><li>
+<p><tt>Cancelled (Per Buyer&#39;s Request)</tt></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sort</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Sort items with this field. Must <strong>EXACTLY</strong> match one of:</p>
+<ul><li>
+<p><code>id</code></p>
+</li><li>
+<p><code>buyer</code></p>
+</li><li>
+<p><code>created</code></p>
+</li><li>
+<p><code>status</code></p>
+</li><li>
+<p><code>last_activity</code></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sort_order</span>
+          <span class="type">(<tt>String (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Sort items in a particular order. Must <strong>EXACTLY</strong> match one
+of:</p>
+<ul><li>
+<p><code>asc</code></p>
+</li><li>
+<p><code>desc</code></p>
+</li></ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:pagination</span>
+          <span class="type">(<tt>Hash (Optional)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Pagination parameters</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of orders meeting specified criteria</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -6042,14 +6518,14 @@ owner.</p>
       <pre class="lines">
 
 
-575
-576
-577
-578
-579</pre>
+601
+602
+603
+604
+605</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 575</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 601</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_orders'>list_orders</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authenticated?'>authenticated?</span> <span class='kw'>do</span>
@@ -6076,15 +6552,15 @@ owner.</p>
       <pre class="lines">
 
 
-633
-634
-635
-636
-637
-638</pre>
+690
+691
+692
+693
+694
+695</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 633</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 690</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span>    <span class='op'>=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -6112,14 +6588,14 @@ owner.</p>
       <pre class="lines">
 
 
-627
-628
-629
-630
-631</pre>
+684
+685
+686
+687
+688</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 627</span>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/wrapper.rb', line 684</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search'>search</span><span class='lparen'>(</span><span class='id identifier rubyid_term'>term</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_parameters'>parameters</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:q</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_term'>term</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -6136,7 +6612,7 @@ owner.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat May 31 13:25:25 2014 by
+  Generated on Sat May 31 17:58:50 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.1).
 </div>
