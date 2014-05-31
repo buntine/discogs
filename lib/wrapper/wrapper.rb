@@ -26,17 +26,17 @@ class Discogs::Wrapper
 
   # Retrieves a release by ID.
   # @!macro [new] release_id
-  #   @param id [Integer] release_id
-  # @return [Object] the release with provided id
-  def get_release(id)
-    query_and_build "releases/#{id}"
+  #   @param release_id [Integer] release id
+  # @return [Hash] the release with provided release_id
+  def get_release(release_id)
+    query_and_build "releases/#{release_id}"
   end
 
   # Retrieves a master release by ID.
   # @!macro [new] master_release_id
-  #   @param id [Integer] master release id
-  # @return [Object] the master release with provided id
-  def get_master_release(id)
+  #   @param master_release_id [Integer] master release id
+  # @return [Hash] the master release with provided master_release_id
+  def get_master_release(master_release_id)
     query_and_build "masters/#{id}"
   end
 
@@ -45,44 +45,44 @@ class Discogs::Wrapper
   # Retrieves a list of all Releases that are versions of this master. Accepts Pagination parameters.
   # @macro master_release_id
   # @!macro [new] uses_pagination
-  #   @param pagination [Object] pagination parameters
-  # @return [Object] the master release with release id, along with versions
-  def get_master_release_versions(id, pagination={})
-    query_and_build "masters/#{id}/versions", pagination
+  #   @param pagination [Hash] pagination parameters
+  # @return [Hash] the master release with the provided master_release_id, along with versions
+  def get_master_release_versions(master_release_id, pagination={})
+    query_and_build "masters/#{master_release_id}/versions", pagination
   end
 
   # Retrieves an artist by ID.
   # @!macro [new] artist_id
-  #   @param id [Integer] artist id
-  # @return [Object] the artist with provided id
-  def get_artist(id)
-    query_and_build "artists/#{id}"
+  #   @param artist_id [Integer] artist id
+  # @return [Hash] the artist with provided artist_id
+  def get_artist(artist_id)
+    query_and_build "artists/#{artist_id}"
   end
 
   # Returns a list of Releases and Masters associated with the artist. Accepts Pagination parameters.
   # @macro artist_id
   # @macro uses_pagination
-  # @return [Object] the releases for artist with provided id
-  def get_artists_releases(id, pagination={})
-    query_and_build "artists/#{id}/releases", pagination
+  # @return [Hash] the releases for artist with provided artist_id
+  def get_artists_releases(artist_id, pagination={})
+    query_and_build "artists/#{artist_id}/releases", pagination
   end
 
   alias_method :get_artist_releases, :get_artists_releases
 
   # Retrieves a label by ID.
   # @!macro [new] label_id
-  #   @param id [Integer] label id
-  # @return [Object] the label with provided id
-  def get_label(id)
-    query_and_build "labels/#{id}"
+  #   @param label_id [Integer] label id
+  # @return [Hash] the label with provided id
+  def get_label(label_id)
+    query_and_build "labels/#{label_id}"
   end
 
   # Returns a list of Releases associated with the label. Accepts Pagination parameters.
   # @macro label_id
   # @macro uses_pagination
-  # @return [Object] the releases for label with provided id
-  def get_labels_releases(id, pagination={})
-    query_and_build "labels/#{id}/releases", pagination
+  # @return [Hash] the releases for label with provided id
+  def get_labels_releases(label_id, pagination={})
+    query_and_build "labels/#{label_id}/releases", pagination
   end
 
   alias_method :get_label_releases, :get_labels_releases
@@ -96,24 +96,9 @@ class Discogs::Wrapper
   #
   # @!macro [new] username
   #   @param username [String] username
-  # @return [Object] the user with provided username
+  # @return [Hash] the user with provided username
   def get_user(username)
     query_and_build "users/#{username}"
-  end
-
-  # Edit a user’s profile data.
-  #
-  # Authentication as the user is required.
-  # @macro username
-  # @param [Hash] data data to update, with the optional keys:
-  # @option data [String] :name The real name of the user.
-  # @option data [String] :home_page The user's website.
-  # @option data [String] :location The geographical location of the user.
-  # @option data [String] :profile Biographical information about the user.
-  def edit_user(username, data={})
-    authenticated? do
-      query_and_build "labels/#{id}/releases", {}, :post, data
-    end
   end
 
   # Get a collection for a user by username
@@ -122,7 +107,7 @@ class Discogs::Wrapper
   #
   # @macro username
   # @macro uses_pagination
-  # @return [Object] the user with provided username
+  # @return [Hash] the user with provided username
   def get_user_collection(username, pagination={})
     get_user_folder_releases(username, 0)
   end
@@ -134,7 +119,7 @@ class Discogs::Wrapper
   # If you are not authenticated as the collection owner, only fields with public set to true will be visible.
   #
   # @macro username
-  # @return [Object] list of collection fields for the provided username
+  # @return [Hash] list of collection fields for the provided username
   def get_user_collection_fields(username)
     query_and_build "users/#{username}/collection/fields"
   end
@@ -149,7 +134,7 @@ class Discogs::Wrapper
   #
   # @macro username
   # @macro uses_pagination
-  # @return [Object] wantlist for the provided username
+  # @return [Hash] wantlist for the provided username
   def get_user_wantlist(username, pagination={})
     query_and_build "users/#{username}/wants", pagination
   end
@@ -162,63 +147,93 @@ class Discogs::Wrapper
 
   # Add a release to a user’s wantlist.
   #
-  # @note Authentication as the wantlist owner is required.
+  # @!macro [new] need_auth
+  #   @note Authentication as the owner is required.
   #
   # @macro username
   # @macro release_id
   # @param [Hash] data optional parameters:
   # @option data [String] :notes User notes to associate with this release.
   # @option data [Integer] :rating User’s rating of this release, from 0 (unrated) to 5 (best). Defaults to 0.
-  # @return [Object] new wantlist entry
-  def add_release_to_user_wantlist(username, id, data={})
+  # @return [Hash] new wantlist entry
+  def add_release_to_user_wantlist(username, release_id, data={})
     authenticated? do
-      query_and_build "users/#{username}/wants/#{id}", {}, :put, data
+      query_and_build "users/#{username}/wants/#{release_id}", {}, :put, data
     end
   end
 
   # Edit the notes (or rating) on a release in a user’s wantlist.
   #
-  # @note Authentication as the wantlist owner is required.
+  # @macro need_auth
   #
   # @macro username
   # @macro release_id
-  # @param data [Object] optional parameters:
+  # @param data [Hash] optional parameters:
   # @option data [String] :notes User notes to associate with this release.
   # @option data [Integer] :rating User’s rating of this release, from 0 (unrated) to 5 (best). Defaults to 0.
-  # @return [Object] updated wantlist entry
-  def edit_release_in_user_wantlist(username, id, data={})
+  # @return [Hash] updated wantlist entry
+  def edit_release_in_user_wantlist(username, release_id, data={})
     authenticated? do
-      query_and_build "users/#{username}/wants/#{id}", {}, :post, data
+      query_and_build "users/#{username}/wants/#{release_id}", {}, :post, data
     end
   end
 
   # Remove a release from a user's wantlist.
   #
-  # @note Authentication as the wantlist owner is required.
+  # @macro need_auth
   #
   # @macro username
   # @macro release_id
   # @return [Boolean]
-  def delete_release_in_user_wantlist(username, id)
+  def delete_release_in_user_wantlist(username, release_id)
     authenticated? do
-      query_and_build "users/#{username}/wants/#{id}", {}, :delete
+      query_and_build "users/#{username}/wants/#{release_id}", {}, :delete
     end
   end
 
   alias_method :delete_release_from_user_wantlist, :delete_release_in_user_wantlist
 
+  # Retrieve basic information about the authenticated user.
+  #
+  # You can use this resource to find out who you’re authenticated as, and it also doubles as a good sanity check to ensure that you’re using OAuth correctly.
+  #
+  # For more detailed information, make another request for the user’s Profile.
+  #
+  # @macro need_auth
+  # @return [Hash] authenticated user information
   def get_identity
     authenticated? do
       query_and_build "oauth/identity"
     end
   end
 
+  # Edit a user’s profile data.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @param [Hash] data data to update, with the optional keys:
+  # @option data [String] :name The real name of the user.
+  # @option data [String] :home_page The user's website.
+  # @option data [String] :location The geographical location of the user.
+  # @option data [String] :profile Biographical information about the user.
   def edit_user(username, data={})
     authenticated? do
       query_and_build "users/#{username}", {}, :post, data
     end
   end
 
+  # Add a release to a folder in a user’s collection.
+  #
+  # @macro need_auth
+  #
+  # The folder_id must be non-zero – you can use 1 for “Uncategorized”.
+  #
+  # @macro username
+  # @!macro [new] folder_id
+  #   @param folder_id [Integer] folder id
+  # @macro release_id
+  # @return [Hash] new instance metadata
   def add_release_to_user_folder(username, folder_id, release_id)
     authenticated? do
       query_and_build "users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}", {}, :post
@@ -227,6 +242,19 @@ class Discogs::Wrapper
 
   alias_method :add_instance_to_user_folder, :add_release_to_user_folder
 
+  # Change the rating on a release and/or move the instance to another folder.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @macro folder_id
+  # @macro release_id
+  # @!macro [new] instance_id
+  #   @param instance_id [Integer] instance id
+  # @param [Hash] data optional parameters
+  # @option data [Integer] :rating User’s rating of this release, from 0 (unrated) to 5 (best).
+  # @option data [Integer] :folder_id The ID of the folder to move the release into.
+  # @return [Boolean]
   def edit_release_in_user_folder(username, folder_id, release_id, instance_id=1, data={})
     authenticated? do
       query_and_build "/users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}/instances/#{instance_id}"
@@ -235,6 +263,17 @@ class Discogs::Wrapper
 
   alias_method :edit_instance_in_user_folder, :edit_release_in_user_folder
 
+  # Remove an instance of a release from a user’s collection folder.
+  #
+  # To move the release to the “Uncategorized” folder instead, use the POST method.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @macro folder_id
+  # @macro release_id
+  # @macro instance_id
+  # @return [Boolean]
   def delete_instance_in_user_folder(username, folder_id, release_id, instance_id)
     authenticated? do
       query_and_build "/users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}/instances/#{instance_id}", {},  :delete
@@ -243,13 +282,47 @@ class Discogs::Wrapper
 
   alias_method :delete_release_in_user_folder, :delete_instance_in_user_folder
 
+  # Change the value of a notes field on a particular instance.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @macro folder_id
+  # @macro release_id
+  # @macro instance_id
+  # @!macro [new] field_id
+  #   @param field_id [Integer] field id
+  # @option data [String] :value The new value of the field. If the field’s type is dropdown, the value must match one of the values in the field’s list of options.
   def edit_field_on_instance_in_user_folder(username, folder_id, release_id, instance_id, field_id, data={})
     authenticated? do
       query_and_build "/users/#{username}/collection/folders/#{folder_id}/releases/#{release_id}/instances/#{instance_id}/fields/#{field_id}", {}, :post, data
     end
   end
 
-  def get_user_folder_releases(username, id, params={})
+  # Returns the list of releases in a folder in a user’s collection. Accepts Pagination parameters.
+  #
+  # Basic information about each release is provided, suitable for display in a list. For detailed information, make another API call to fetch the corresponding release.
+  #
+  # If folder_id is not 0, or the collection has been made private by its owner, authentication as the collection owner is required.
+  #
+  # If you are not authenticated as the collection owner, only public notes fields will be visible.
+  #
+  # @macro username
+  # @macro folder_id
+  # @param [Hash] params optional parameters
+  # @option params [String] :sort Sort items by this field. One of:
+  #   * +label+
+  #   * +artist+
+  #   * +title+
+  #   * +catno+
+  #   * +format+
+  #   * +rating+
+  #   * +added+
+  #   * +year+
+  # @option params [String] :sort_order Sort items in a particular order. One of:
+  #   * +asc+
+  #   * +desc+
+  def get_user_folder_releases(username, folder_id, params={})
     if id == 0 or authenticated?
       query_and_build "users/#{username}/collection/folders/#{id}/releases", params
     else
@@ -257,18 +330,43 @@ class Discogs::Wrapper
     end
   end
 
-  def get_user_folder(username, id)
+  # Retrieve metadata about a folder in a user’s collection.
+  #
+  # If folder_id is not 0, authentication as the collection owner is required.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @macro folder_id
+  # @return [Hash] folder with folder_id
+  def get_user_folder(username, folder_id)
     if id == 0 or authenticated?
-      query_and_build "users/#{username}/collection/folders/#{id}"
+      query_and_build "users/#{username}/collection/folders/#{folder_id}"
     else
       raise_authentication_error
     end
   end
 
+  # Retrieve a list of folders in a user’s collection.
+  #
+  # If the collection has been made private by its owner, authentication as the collection owner is required.
+  #
+  # If you are not authenticated as the collection owner, only folder ID 0 (the “All” folder) will be visible.
+  #
+  # @macro username
+  # @return [Hash] folder listing
   def get_user_folders(username)
     query_and_build "users/#{username}/collection/folders"
   end
 
+  # Create a new folder in a user’s collection.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @param [Hash] data folder parameters
+  # @option data [String] :name The name of the newly-created folder (Required).
+  # @return [Hash] new folder metadata
   def create_user_folder(username, data={})
     authenticated? do
       query_and_build "users/#{username}/collection/folders", {}, :post, data
@@ -277,15 +375,31 @@ class Discogs::Wrapper
 
   alias_method :add_user_folder, :create_user_folder
 
-  def edit_user_folder(username, id, data={})
+  # Edit a folder’s metadata. Folders 0 and 1 cannot be renamed.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @macro folder_id
+  # @param [Hash] data folder parameters
+  # @option data [String] :name The name of the folder (Required).
+  # @return [Hash] updated folder metadata
+  def edit_user_folder(username, folder_id, data={})
     authenticated? do
-      query_and_build "users/#{username}/collection/folders#{id}", {}, :post, data
+      query_and_build "users/#{username}/collection/folders#{folder_id}", {}, :post, data
     end
   end
 
-  def delete_user_folder(username, id)
+  # Delete a folder from a user’s collection. A folder must be empty before it can be deleted.
+  #
+  # @macro need_auth
+  #
+  # @macro username
+  # @macro folder_id
+  # @return [Boolean]
+  def delete_user_folder(username, folder_id)
     authenticated? do
-      query_and_build "users/#{username}/collection/folders#{id}", {}, :delete
+      query_and_build "users/#{username}/collection/folders#{folder_id}", {}, :delete
     end
   end
 
@@ -297,42 +411,70 @@ class Discogs::Wrapper
     query_and_build "marketplace/listings/#{id}"
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def create_listing(data={})
     authenticated? do
       query_and_build "marketplace/listings", {}, :post, data
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def edit_listing(id, data={})
     authenticated? do
       query_and_build "marketplace/listings/#{id}", {}, :post, data
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def delete_listing(id)
     authenticated? do
       query_and_build "marketplace/listings/#{id}", {}, :delete
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def get_order(id)
     authenticated? do
       query_and_build "marketplace/orders/#{id}"
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def edit_order(id, data={})
     authenticated? do
       query_and_build "marketplace/orders/#{id}", {}, :post, data
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def list_orders(params={})
     authenticated? do
       query_and_build "marketplace/orders", params
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def list_order_messages(id, pagination={})
    authenticated? do
      query_and_build "marketplace/orders#{id}/messages", pagination
@@ -341,12 +483,20 @@ class Discogs::Wrapper
 
   alias_method :get_order_messages, :list_order_messages
 
+  #
+  #
+  # @macro need_auth
+  #
   def create_order_message(id, data={})
     authenticated? do
       query_and_build "marketplace/orders/#{id}/messages", {}, :post, data
     end
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def get_price_suggestions(id)
     authenticated? do
       query_and_build "marketplace/price_suggestions/#{id}"
@@ -357,6 +507,10 @@ class Discogs::Wrapper
     query_and_build "marketplace/fee/#{price}/#{currency}"
   end
 
+  #
+  #
+  # @macro need_auth
+  #
   def get_image(filename)
     authenticated? do
       @access_token.get("/image/#{filename}").body
