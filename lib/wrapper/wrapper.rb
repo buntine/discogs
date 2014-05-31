@@ -5,6 +5,7 @@ require 'json'
 require 'net/http'
 require 'stringio'
 require 'uri'
+require 'cgi'
 require 'zlib'
 
 require File.dirname(__FILE__) + "/authentication"
@@ -352,7 +353,7 @@ class Discogs::Wrapper
     end
   end
 
-  def get_fee(price, currence="USD")
+  def get_fee(price, currency="USD")
     query_and_build "marketplace/fee/#{price}/#{currency}"
   end
 
@@ -366,6 +367,13 @@ class Discogs::Wrapper
     parameters = {:q => term}.merge(params)
 
     query_and_build "database/search", parameters
+  end
+
+  def raw(url)
+    uri    = URI.parse(url)
+    params = CGI.parse(uri.query.to_s)
+
+    query_and_build uri.path, params
   end
 
  private

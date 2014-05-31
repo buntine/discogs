@@ -126,6 +126,26 @@ describe Discogs::Wrapper do
       @wrapper.get_user_inventory(@username, :page => 2, :status => "For Sale", :sort => :price, :sort_order => :asc)
     end
 
+    it "should generate the correct URL to parse when given raw URL" do
+      @search_uri = mock("uri", :host => "api.discogs.com", :query => "q=Sombre+Records&per_page=50&type=release&page=11", :path => "database/search")
+
+      mock_http_with_response "200", read_sample("search_results")
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11").and_return(@search_uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&page=11&per_page=50&q=Sombre+Records&type=release").and_return(@uri)
+
+      @wrapper.raw("http://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11")
+    end
+
+    it "should generate the correct URL to parse when given raw URL with no query" do
+      @artist_uri = mock("uri", :host => "api.discogs.com", :query => "", :path => "artists/1000")
+
+      mock_http_with_response "200", read_sample("artist")
+      URI.should_receive(:parse).with("http://api.discogs.com/artists/1000").and_return(@artist_uri)
+      URI.should_receive(:parse).with("http://api.discogs.com/artists/1000?f=json").and_return(@uri)
+
+      @wrapper.raw("http://api.discogs.com/artists/1000")
+    end
+
   end
 
   ## NOTE: See ./spec/wrapper_methods/*.rb for indepth tests on valid API requests.

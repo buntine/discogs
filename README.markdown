@@ -3,7 +3,6 @@ Discogs::Wrapper
 
 NOTE
 ----
-
   We are currently working on the next release of the API. It will implement all endpoints, pagination, have oAuth support, and use JSON exclusively.
 
   Expecting to finish late-May, 2014.
@@ -12,7 +11,7 @@ ABOUT
 -----
   A 100% Ruby wrapper of the Discogs.com API.
 
-  Discogs::Wrapper abstracts all the nasty boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need.
+  Discogs::Wrapper abstracts all of the boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need. All methods return a ruby Hash wrapped in a [Hashie](https://github.com/intridea/hashie) object with the same structure as documented on the [Discogs API website](http://www.discogs.com/developers/index.html).
 
   The master branch aims to give full support for version 2.0 of the API. If you need support for everything in version 1.0, see the api-v1 branch.
 
@@ -20,66 +19,136 @@ ABOUT
 
   * Artists
   * Releases
-  * MasterReleases
+  * Master Releases
   * Labels
+  * Images
   * Searching (all of the above)
+  * Marketplace
+  * User Inventories
+  * Orders
+  * Fee Calculations
+  * Price Suggestions
+  * User Profiles
+  * Collections
+  * Wantlists
+  * oAuth
+  * Pagination / Sorting
 
-  Please, [see the Wiki](http://github.com/buntine/discogs/wiki) for helpful documentation.
 
-  The Discogs API is [documented here](http://www.discogs.com/help/api).
+  The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
 
 INSTALLATION
 ------------
   You can install the library via Rubygems:
 
-    $ sudo gem install discogs-wrapper
+    $ gem install discogs-wrapper
+
+  Or within your Gemfile:
+
+    gem "discogs-wrapper"
 
 USAGE
 -----
   To use this library, you must supply the name of your application. For example:
 
-    require 'discogs'
     wrapper = Discogs::Wrapper.new("My awesome web app")
 
   Accessing information is easy:
 
-    artist = wrapper.get_artist("Master's Hammer")
-    release = wrapper.get_release("611973") # Supply an ID.
-    label = wrapper.get_label("Monitor Records")
-    search = wrapper.search("Necrovore")
+    artist          = wrapper.get_artist("329937")
+    artist_releases = wrapper.get_artist_releases("329937")
+    release         = wrapper.get_release("1529724")
+    label           = wrapper.get_label("29515")
+    search          = wrapper.search("Necrovore", :per_page => 10, :type => :artist)
 
-    artist.name                         # => "Master's Hammer"
-    artist.releases[0].title            # => "Finished"
-    artist.releases[1].year             # => "1989"
-    artist.releases[4].extraartists     # => [ "Arakain", "Debustrol" ]
+    artist.name                          # => "Manilla Road"
+    artist.members.count                 # => 4
+    artist.members.first.name            # => "Mark Shelton"
+    artist.profile                       # => "Heavy Metal band from ..."
 
-    release.title                       # => "Ritual"
-    release.labels[0].name              # => "Osmose Productions"
-    release.formats[0].descriptions[0]  # => "LP"
-    release.styles                      # => [ "Black Metal", "Death Metal" ]
-    release.tracklist[1].title          # => "Pad modly"
+    artist_releases.releases.count       # => 35
+    artist_releases.releases.first.title # => "Invasion"
 
-    label.images[0].width               # => "220"
-    label.releases.length               # => 22
-    label.releases[3].artist            # => "Root"
-    label.releases[7].catno             # => "MON007"
+    release.title                        # => "Medieval"
+    release.labels.first.name            # => "New Renaissance Records"
+    release.formats[0].descriptions[0]   # => "12\""
+    release.styles                       # => [ "Heavy Metal", "Doom Metal" ]
+    release.tracklist[1].title           # => "Death is Beauty"
 
-    search.total_results                # => 124
-    search.total_pages                  # => 7
-    search.current_page                 # => 1
+    label.name                           # => "Monitor (2)"
+    label.sublabels.count                # => 3
 
-    # Exact results
-    search.exact[0].type                # => "artist"
-    search.exact[0].title               # => "Necrovore"
-    search.exact(:label)[0].title       # => "Necrovores Records"
-    search.closest(:artist)             # => <Discogs::Search::Result:0x324ad3e2>
+    search.pagination.items              # => 2
+    search.results.first.title           # => "Necrovore"
+    search.results.first.type            # => "artist"
+    search.results.first.id              # => 691078
 
-    # All results
-    search.results[3].title             # => "Necrovore - Demo '87"
-    search.results[3].summary           # => "First and only demo tape"
-    search.results(:release)[0]         # => <Discogs::Search::Result:0x343de34a>
+  Many of the API endpoints return further URLs that will yield specific data. To cater for this, the library provides a "raw" method that accepts a valid API URL. For example:
+
+    sts_records       = wrapper.get_label(9800)
+    sts_releases      = wrapper.raw(sts_records.releases_url)
+    first_sts_release = wrapper.raw(sts_releases.releases[1].resource_url)
+
+    first_sts_release.title  # => "I'll Nostra Tempo De La Vita / Having The Time Of Your Life"
+
+AUTHENTICATION
+--------------
+  Many of the API endpoints require the user to be authenticated via oAuth. The library provides support for this.
+
+  I've provided [https://github.com/buntine/discogs-oauth](a simple Rails application) that demonstrates how to perform authenticated requests.
+
+  Make sure you've created an "app" in your developer settings on the Discogs website. You will need your consumer key and consumer secret.
+
+  Basically, you should preform the "oAuth dance" like so:
+
+    # Add an action to initiate the process.
+    def authenticate
+      @discogs     = Discogs::Wrapper.new("Test OAuth")
+      request_data = @discogs.get_request_token("YOUR_APP_KEY", "YOUR_APP_SECRET", "http://127.0.0.1:3000/callback")
+
+      session[:request_token] = request_data[:request_token]
+
+      redirect_to request_data[:authorize_url]
+    end
+
+    # And an action that Discogs will redirect back to.
+    def callback
+      @discogs      = Discogs::Wrapper.new("Test OAuth")
+      request_token = session[:request_token]
+      verifier      = params[:oauth_verifier]
+      access_token  = @discogs.authenticate(request_token, verifier)
+
+      session[:request_token] = nil
+      session[:access_token]  = access_token
+
+      @discogs.access_token = access_token
+
+      # You can now perform authenticated requests.
+    end
+
+    # Once you have it, you can also pass your access_token into the constructor.
+    def another_action
+      @discogs = Discogs::Wrapper.new("Test OAuth", session[:access_token])
+
+      # You can now perform authenticated requests.
+    end
+
+PAGINATION
+----------
+  All API endpoints that accept pagination, sorting or other parameters are supported.
+ 
+  Page defaults to 1, page size defaults to 50.
+
+    wrapper.get_artist_releases(345211, :page => 2, :per_page => 10)
+
+  If other params are accepted, they can also be passed:
+
+    wrapper.get_user_inventory("username", :page => 3, :sort => "price", :sort_order => "asc")
 
 LICENSE
 -----
+  See the LICENCE file. Copyright (c) Andrew Buntine
 
-See the LICENCE file. Copyright (c) Andrew Buntine
+CONTRIBUTORS
+------------
+  List all contributors.
