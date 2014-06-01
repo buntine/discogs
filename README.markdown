@@ -37,6 +37,8 @@ ABOUT
 
   The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
 
+  You can see all implemented methods on [this projects RDoc page](http://rdoc.info/github/buntine/discogs/frames).
+
 INSTALLATION
 ------------
   You can install the library via Rubygems:
@@ -90,6 +92,8 @@ USAGE
     first_sts_release = wrapper.raw(sts_releases.releases[1].resource_url)
 
     first_sts_release.title  # => "I'll Nostra Tempo De La Vita / Having The Time Of Your Life"
+
+  You can see all implemented methods on [this projects RDoc page](http://rdoc.info/github/buntine/discogs/frames).
 
 AUTHENTICATION
 --------------
