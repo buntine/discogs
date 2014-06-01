@@ -141,8 +141,17 @@ class Discogs::Wrapper
 
   alias_method :get_user_wants, :get_user_wantlist
 
-  def get_user_want(username, id)
-    query_and_build "users/#{username}/wants/#{id}"
+  # Returns a specific release in a user’s wantlist by release id.
+  #
+  # If the wantlist has been made private by its owner, you must be authenticated as the owner to view it.
+  #
+  # The notes field will be visible if you are authenticated as the wantlist owner.
+  #
+  # @macro username
+  # @macro release_id
+  # @return [Hash] wantlist for the provided username
+  def get_user_want(username, release_id)
+    query_and_build "users/#{username}/wants/#{release_id}"
   end
 
   # Add a release to a user’s wantlist.
