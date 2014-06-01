@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   
   s.name = "discogs-wrapper"
-  s.version = "1.4.0"
-  s.date = "2014-05-19"
+  s.version = "2.0.0"
+  s.date = "2014-06-01"
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
   s.homepage = "http://www.github.com/buntine/discogs"
   s.email = "info@andrewbuntine.com"
   s.authors = ["Andrew Buntine", "Many more contributors"]
   
-  s.description = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
+  s.description = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2. Supports authentication, pagination, JSON."
   
   s.files = Dir.glob("{lib}/**/*") + %w(LICENSE README.markdown)
 
