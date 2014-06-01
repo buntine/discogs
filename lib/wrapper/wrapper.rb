@@ -332,7 +332,7 @@ class Discogs::Wrapper
   #   * +asc+
   #   * +desc+
   def get_user_folder_releases(username, folder_id, params={})
-    if id == 0 or authenticated?
+    if folder_id == 0 or authenticated?
       query_and_build "users/#{username}/collection/folders/#{folder_id}/releases", params
     else
       raise_authentication_error
