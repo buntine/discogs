@@ -37,7 +37,7 @@ class Discogs::Wrapper
   #   @param master_release_id [Integer] master release id
   # @return [Hash] the master release with provided master_release_id
   def get_master_release(master_release_id)
-    query_and_build "masters/#{id}"
+    query_and_build "masters/#{master_release_id}"
   end
 
   alias_method :get_master, :get_master_release
@@ -333,7 +333,7 @@ class Discogs::Wrapper
   #   * +desc+
   def get_user_folder_releases(username, folder_id, params={})
     if id == 0 or authenticated?
-      query_and_build "users/#{username}/collection/folders/#{id}/releases", params
+      query_and_build "users/#{username}/collection/folders/#{folder_id}/releases", params
     else
       raise_authentication_error
     end
