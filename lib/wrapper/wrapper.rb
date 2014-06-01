@@ -349,7 +349,7 @@ class Discogs::Wrapper
   # @macro folder_id
   # @return [Hash] folder with folder_id
   def get_user_folder(username, folder_id)
-    if id == 0 or authenticated?
+    if folder_id == 0 or authenticated?
       query_and_build "users/#{username}/collection/folders/#{folder_id}"
     else
       raise_authentication_error
