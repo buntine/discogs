@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Authentication
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!Authentication.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo;
+    
+    
+    <span class="title">Authentication</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Authentication
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Discogs/Wrapper.html" title="Discogs::Wrapper (class)">Discogs::Wrapper</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/wrapper/authentication.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#authenticate-instance_method" title="#authenticate (instance method)">- (Object) <strong>authenticate</strong>(request_token, verifier) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#authenticated%3F-instance_method" title="#authenticated? (instance method)">- (Boolean) <strong>authenticated?</strong>(username = nil, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_request_token-instance_method" title="#get_request_token (instance method)">- (Object) <strong>get_request_token</strong>(app_key, app_secret, callback) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="authenticate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>authenticate</strong>(request_token, verifier) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/authentication.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_authenticate'>authenticate</span><span class='lparen'>(</span><span class='id identifier rubyid_request_token'>request_token</span><span class='comma'>,</span> <span class='id identifier rubyid_verifier'>verifier</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request_token'>request_token</span><span class='period'>.</span><span class='id identifier rubyid_get_access_token'>get_access_token</span><span class='lparen'>(</span><span class='symbol'>:oauth_verifier</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_verifier'>verifier</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="authenticated?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>authenticated?</strong>(username = nil, &amp;block) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/authentication.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_authenticated?'>authenticated?</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_auth'>auth</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_username'>username</span>
+    <span class='ivar'>@access_token</span> <span class='kw'>and</span> <span class='id identifier rubyid_authenticated_username'>authenticated_username</span> <span class='op'>==</span> <span class='id identifier rubyid_username'>username</span>
+  <span class='kw'>else</span>
+    <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@access_token</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='id identifier rubyid_auth'>auth</span> <span class='op'>?</span> <span class='kw'>yield</span> <span class='op'>:</span> <span class='id identifier rubyid_raise_authentication_error'>raise_authentication_error</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_auth'>auth</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_request_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_request_token</strong>(app_key, app_secret, callback) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/wrapper/authentication.rb', line 5</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_request_token'>get_request_token</span><span class='lparen'>(</span><span class='id identifier rubyid_app_key'>app_key</span><span class='comma'>,</span> <span class='id identifier rubyid_app_secret'>app_secret</span><span class='comma'>,</span> <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_consumer'>consumer</span>      <span class='op'>=</span> <span class='const'>OAuth</span><span class='op'>::</span><span class='const'>Consumer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_app_key'>app_key</span><span class='comma'>,</span> <span class='id identifier rubyid_app_secret'>app_secret</span><span class='comma'>,</span>
+                    <span class='symbol'>:authorize_url</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.discogs.com/oauth/authorize</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='symbol'>:site</span>          <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://api.discogs.com</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request_token'>request_token</span> <span class='op'>=</span> <span class='id identifier rubyid_consumer'>consumer</span><span class='period'>.</span><span class='id identifier rubyid_get_request_token'>get_request_token</span><span class='lparen'>(</span><span class='symbol'>:oauth_callback</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+
+  <span class='lbrace'>{</span><span class='symbol'>:request_token</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request_token'>request_token</span><span class='comma'>,</span>
+   <span class='symbol'>:authorize_url</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request_token'>request_token</span><span class='period'>.</span><span class='id identifier rubyid_authorize_url'>authorize_url</span><span class='lparen'>(</span><span class='symbol'>:oauth_callback</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat May 31 17:58:49 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-2.1.1).
+</div>
+
+  </body>
+</html>

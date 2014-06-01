@@ -1,0 +1,4 @@
+lib/discogs.rb a28f21b707ba7a6c295673871970840c5cb0fc31
+lib/discogs-wrapper.rb 44f686614ef1a2503164fdd063b4b930ecaedf1b
+lib/wrapper/wrapper.rb b305390d00778bda7bba5e9b133d5355d30135ae
+lib/wrapper/authentication.rb d1f2c86658d32e875272f13a54b098bb1753d0ee
