@@ -769,7 +769,7 @@ class Discogs::Wrapper
     parameters    = {:f => output_format}.merge(params)
     querystring   = "?" + URI.encode_www_form(prepare_hash(parameters))
 
-    URI.parse(File.join(@@root_host, URI.encode(sanitize_path(path, URI.escape(querystring)))))
+    URI.parse(File.join(@@root_host, [URI.escape(path), querystring].join))
   end
 
   # Stringifies keys and sorts.
@@ -781,11 +781,6 @@ class Discogs::Wrapper
     end
 
     result.sort
-  end
-
-  def sanitize_path(*path_parts)
-    clean_path = path_parts.map { |part| part.gsub(/\s/, '+') }
-    clean_path.join
   end
 
   def raise_unknown_resource(path="")
