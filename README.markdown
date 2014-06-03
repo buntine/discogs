@@ -93,7 +93,7 @@ AUTHENTICATION
 --------------
   Many of the API endpoints require the user to be authenticated via oAuth. The library provides support for this.
 
-  I've provided [https://github.com/buntine/discogs-oauth](a simple Rails application) that demonstrates how to perform authenticated requests.
+  I've provided [a simple Rails application](https://github.com/buntine/discogs-oauth) that demonstrates how to perform authenticated requests.
 
   Make sure you've created an "app" in your developer settings on the Discogs website. You will need your consumer key and consumer secret.
 
