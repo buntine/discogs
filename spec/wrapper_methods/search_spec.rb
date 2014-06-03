@@ -8,6 +8,30 @@ describe Discogs::Wrapper do
     @search_type = "release"
   end
 
+  describe "when handling an advanced search" do
+
+    it "should properly encode the request URI" do
+      encoded_uri = "/database/search?f=json&q=Release+Title+artist%3AArtist+Name&type=release"
+      get = Net::HTTP::Get.new(encoded_uri)
+      Net::HTTP::Get.should_receive(:new).with(encoded_uri).and_return(get)
+
+      @wrapper.search("Release Title artist:Artist Name", :type => @search_type)
+    end
+
+  end
+
+  describe "when handling a search including whitespace" do
+
+    it "should properly encode spaces in the request URI" do
+      encoded_uri = "/database/search?f=json&q=One+Two"
+      get = Net::HTTP::Get.new(encoded_uri)
+      Net::HTTP::Get.should_receive(:new).with(encoded_uri).and_return(get)
+
+      @wrapper.search("One Two")
+    end
+
+  end
+
   describe "when asking for search result information" do
 
     before do
