@@ -25,7 +25,11 @@ module Authentication
   #   @param verifier [String] verifier token
   # @return [OAuth::AccessToken] 
   def authenticate(request_token, verifier)
-    @access_token = request_token.get_access_token(:oauth_verifier => verifier)
+    if request_token.is_a?(OAuth::RequestToken)
+      @access_token = request_token.get_access_token(:oauth_verifier => verifier)
+    else
+      raise OAuth::Error, "Invalid Request Token"
+    end
   end
 
   # Returns true if an OAuth access_token is present. If a username is given, the authenticated username must match it.
