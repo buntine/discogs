@@ -55,7 +55,7 @@ USAGE
     artist_releases = wrapper.get_artist_releases("329937")
     release         = wrapper.get_release("1529724")
     label           = wrapper.get_label("29515")
-    search          = wrapper.search("Necrovore", :per_page => 10, :type => :artist)
+    search          = wrapper.search("Necrovore", :per_page => 10, :type => :artist, :key => "xxx", :secret => "xxx") # See AUTHENTICATION section below.
 
     artist.name                          # => "Manilla Road"
     artist.members.count                 # => 4
@@ -93,7 +93,11 @@ AUTHENTICATION
 --------------
   Many of the API endpoints require the user to be authenticated via oAuth. The library provides support for this.
 
-  I've provided [a simple Rails application](https://github.com/buntine/discogs-oauth) that demonstrates how to perform authenticated requests.
+  For non user-facing apps (when you only want to authenticate as yourself), you can simply pass your applications :key and :secret options to the appropriate methods. For example:
+
+    results = wrapper.search("Nick Cave", :key => "xxx", :secret => "xxx")
+
+  For user-facing apps, I've provided [a simple Rails application](https://github.com/buntine/discogs-oauth) that demonstrates how to perform authenticated requests.
 
   Make sure you've created an "app" in your developer settings on the Discogs website. You will need your consumer key and consumer secret.
 
