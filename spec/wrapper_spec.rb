@@ -44,84 +44,84 @@ describe Discogs::Wrapper do
 
     it "should generate the correct release URL to parse" do
       mock_http_with_response "200", read_sample("release")
-      URI.should_receive(:parse).with("http://api.discogs.com/releases/1?f=json").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/releases/1?f=json").and_return(@uri)
 
       @wrapper.get_release(@release_id)
     end
 
     it "should generate the correct artist URL to parse" do
       mock_http_with_response "200", read_sample("artist")
-      URI.should_receive(:parse).with("http://api.discogs.com/artists/313929?f=json").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/artists/313929?f=json").and_return(@uri)
 
       @wrapper.get_artist(@artist_id)
     end
 
     it "should generate the correct paginated artist releases URL to parse" do
       mock_http_with_response "200", read_sample("artist_releases")
-      URI.should_receive(:parse).with("http://api.discogs.com/artists/313929/releases?f=json&page=2&per_page=100").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/artists/313929/releases?f=json&page=2&per_page=100").and_return(@uri)
 
       @wrapper.get_artist_releases(@artist_id, :page => 2, :per_page => 100)
     end
  
     it "should generate the correct label URL to parse" do
       mock_http_with_response "200", read_sample("label")
-      URI.should_receive(:parse).with("http://api.discogs.com/labels/1000?f=json").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/labels/1000?f=json").and_return(@uri)
 
       @wrapper.get_label(@label_id)
     end
 
     it "should generate the correct paginated label releases URL to parse" do
       mock_http_with_response "200", read_sample("label_releases")
-      URI.should_receive(:parse).with("http://api.discogs.com/labels/1000/releases?f=json&page=2&per_page=100").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/labels/1000/releases?f=json&page=2&per_page=100").and_return(@uri)
 
       @wrapper.get_label_releases(@label_id, :page => 2, :per_page => 100)
     end
 
     it "should generate the correct default search URL to parse" do
       mock_http_with_response "200", read_sample("search_results")
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&q=barry").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&q=barry").and_return(@uri)
 
       @wrapper.search(@search_term)
     end
 
     it "should generate the correct paginated search URL to parse" do
       mock_http_with_response "200", read_sample("search_results")
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&page=2&per_page=100&q=barry").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&page=2&per_page=100&q=barry").and_return(@uri)
 
       @wrapper.search(@search_term, :page => 2, :per_page => 100)
     end
 
     it "should generate another correct paginated search URL to parse" do
       mock_http_with_response "200", read_sample("search_results")
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&page=2&q=barry").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&page=2&q=barry").and_return(@uri)
 
       @wrapper.search(@search_term, :page => 2)
     end
 
     it "should sanitize the path correctly" do
       mock_http_with_response "200", read_sample("search_results")
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&q=Two+Words").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&q=Two+Words").and_return(@uri)
 
       @wrapper.search("Two Words")
     end
 
     it "should generate the correct default user inventory URL to parse" do
       mock_http_with_response "200", read_sample("user_inventory")
-      URI.should_receive(:parse).with("http://api.discogs.com/users/abuntine/inventory?f=json").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/users/abuntine/inventory?f=json").and_return(@uri)
 
       @wrapper.get_user_inventory(@username)
     end
 
     it "should generate the correct paginated user inventory URL to parse" do
       mock_http_with_response "200", read_sample("user_inventory")
-      URI.should_receive(:parse).with("http://api.discogs.com/users/abuntine/inventory?f=json&page=2&status=For+Sale").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/users/abuntine/inventory?f=json&page=2&status=For+Sale").and_return(@uri)
 
       @wrapper.get_user_inventory(@username, :page => 2, :status => "For Sale")
     end
 
     it "should generate the correct sorted and paginated user inventory URL to parse" do
       mock_http_with_response "200", read_sample("user_inventory")
-      URI.should_receive(:parse).with("http://api.discogs.com/users/abuntine/inventory?f=json&page=2&sort=price&sort_order=asc&status=For+Sale").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/users/abuntine/inventory?f=json&page=2&sort=price&sort_order=asc&status=For+Sale").and_return(@uri)
 
       @wrapper.get_user_inventory(@username, :page => 2, :status => "For Sale", :sort => :price, :sort_order => :asc)
     end
@@ -130,20 +130,20 @@ describe Discogs::Wrapper do
       @search_uri = mock("uri", :host => "api.discogs.com", :query => "q=Sombre+Records&per_page=50&type=release&page=11", :path => "database/search")
 
       mock_http_with_response "200", read_sample("search_results")
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11").and_return(@search_uri)
-      URI.should_receive(:parse).with("http://api.discogs.com/database/search?f=json&page=11&per_page=50&q=Sombre+Records&type=release").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11").and_return(@search_uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&page=11&per_page=50&q=Sombre+Records&type=release").and_return(@uri)
 
-      @wrapper.raw("http://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11")
+      @wrapper.raw("https://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11")
     end
 
     it "should generate the correct URL to parse when given raw URL with no query" do
       @artist_uri = mock("uri", :host => "api.discogs.com", :query => "", :path => "artists/1000")
 
       mock_http_with_response "200", read_sample("artist")
-      URI.should_receive(:parse).with("http://api.discogs.com/artists/1000").and_return(@artist_uri)
-      URI.should_receive(:parse).with("http://api.discogs.com/artists/1000?f=json").and_return(@uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/artists/1000").and_return(@artist_uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/artists/1000?f=json").and_return(@uri)
 
-      @wrapper.raw("http://api.discogs.com/artists/1000")
+      @wrapper.raw("https://api.discogs.com/artists/1000")
     end
 
   end
