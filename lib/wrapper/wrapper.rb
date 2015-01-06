@@ -758,11 +758,8 @@ class Discogs::Wrapper
         request.add_field(h, v)
       end
 
-      session             = Net::HTTP.new(uri.host)
-      session.use_ssl     = true
-      session.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      session.start do |http|
+      Net::HTTP.start(uri.host, uri.port,
+        :use_ssl => uri.scheme == 'https') do |http|
         http.request(request)
       end
     end
