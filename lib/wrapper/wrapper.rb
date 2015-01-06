@@ -14,7 +14,7 @@ class Discogs::Wrapper
 
   include Authentication
 
-  @@root_host = "http://api.discogs.com"
+  @@root_host = "https://api.discogs.com"
 
   attr_reader :app_name
   attr_accessor :access_token
@@ -758,7 +758,11 @@ class Discogs::Wrapper
         request.add_field(h, v)
       end
 
-      Net::HTTP.new(uri.host).start do |http|
+      session             = Net::HTTP.new(uri.host)
+      session.use_ssl     = true
+      session.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      session.start do |http|
         http.request(request)
       end
     end
