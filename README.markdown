@@ -95,7 +95,8 @@ AUTHENTICATION
 
   For non user-facing apps (when you only want to authenticate as yourself), you can simply pass your applications :key and :secret options to the appropriate methods. For example:
 
-    results = wrapper.search("Nick Cave", :key => "xxx", :secret => "xxx")
+    wrapper = Discogs::Wrapper.new("Test OAuth", app_key: "my_key", app_secret: "my_secret")
+    results = wrapper.search("Nick Cave")
 
   For user-facing apps, I've provided [a simple Rails application](https://github.com/buntine/discogs-oauth) that demonstrates how to perform authenticated requests.
 
@@ -130,7 +131,7 @@ AUTHENTICATION
 
     # Once you have it, you can also pass your access_token into the constructor.
     def another_action
-      @discogs = Discogs::Wrapper.new("Test OAuth", session[:access_token])
+      @discogs = Discogs::Wrapper.new("Test OAuth", access_token: session[:access_token])
 
       # You can now perform authenticated requests.
     end
