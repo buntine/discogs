@@ -17,11 +17,19 @@ class Discogs::Wrapper
   @@root_host = "https://api.discogs.com"
 
   attr_reader :app_name
-  attr_accessor :access_token
+  attr_accessor :access_token, :app_key, :app_secret
 
-  def initialize(app_name, access_token=nil)
+  def initialize(app_name, auth_opts={})
     @app_name     = app_name
-    @access_token = access_token
+
+    # Allow for backwards-compatibility with v2.0.0
+    if auth_opts.is_a?(Hash)
+      @access_token = auth_opts[:access_token]
+      @app_key      = auth_opts[:app_key]
+      @app_secret   = auth_opts[:app_secret]
+    else
+      @access_token = auth_opts
+    end
   end
 
   # Retrieves a release by ID.
@@ -686,14 +694,19 @@ class Discogs::Wrapper
   # @return [Binary] binary image file
   def get_image(filename)
     authenticated? do
-      @access_token.get("/image/#{filename}").body
+      if user_facing?
+        @access_token.get("/images/#{filename}").body
+      else
+        query_api("images/#{filename}")
+      end
     end
   end
 
   def search(term, params={})
-    parameters = {:q => term}.merge(params)
-
-    query_and_build "database/search", parameters
+    authenticated? do
+      parameters = {:q => term}.merge(params)
+      query_and_build "database/search", parameters
+    end
   end
 
   def raw(url)
@@ -714,7 +727,7 @@ class Discogs::Wrapper
   end
 
   # Queries the API and handles the response.
-  def query_api(path, params, method, body)
+  def query_api(path, params={}, method=:get, body=nil)
     response = make_request(path, params, method, body)
 
     raise_unknown_resource(path) if response.code == "404"
@@ -736,14 +749,15 @@ class Discogs::Wrapper
 
   # Generates a HTTP request and returns the response.
   def make_request(path, params, method, body)
-    uri           = build_uri(path, params)
+    full_params   = params.merge(auth_params)
+    uri           = build_uri(path, full_params)
     formatted     = "#{uri.path}?#{uri.query}"
-    output_format = params.fetch(:f, "json")
+    output_format = full_params.fetch(:f, "json")
     headers       = {"Accept"          => "application/#{output_format}",
                      "Accept-Encoding" => "gzip,deflate",
                      "User-Agent"      => @app_name}
 
-    if authenticated?
+    if authenticated? and user_facing?
       if [:post, :put].include?(method)
         headers["Content-Type"] = "application/json"
         @access_token.send(method, formatted, JSON(body), headers)

@@ -2,6 +2,31 @@ require 'oauth'
 
 module Authentication
 
+  def auth_params
+    if self_authenticating?
+      {:key => @app_key, :secret => @app_secret}
+    else
+      {}
+    end
+  end
+
+  # Indicates whether this instance is authenticated as a user-facing app.
+  # @return [Boolean]
+  def user_facing?
+    !!@access_token
+  end
+
+  # Indicates whether this instance is self-authenticated.
+  # @return [Boolean]
+  def self_authenticating?
+    !@app_key.nil? and !@app_secret.nil?
+  end
+
+  # @return [Boolean]
+  def any_authentication?
+    user_facing? or self_authenticating?
+  end
+ 
   # Retrieves an OAuth request token from the Discogs server.
   # @!macro [new] app_key
   # @!macro [new] app_secret
@@ -11,7 +36,7 @@ module Authentication
   def get_request_token(app_key, app_secret, callback)
     consumer      = OAuth::Consumer.new(app_key, app_secret,
                       :authorize_url => "http://www.discogs.com/oauth/authorize",
-                      :site          => "http://api.discogs.com")
+                      :site          => "https://api.discogs.com")
     request_token = consumer.get_request_token(:oauth_callback => callback)
 
     {:request_token => request_token,
@@ -38,9 +63,9 @@ module Authentication
   # @return [Boolean]
   def authenticated?(username=nil, &block)
     auth = if username
-      @access_token and authenticated_username == username
+      any_authentication? and authenticated_username == username
     else
-      !!@access_token
+      any_authentication?
     end
 
     if block_given?
