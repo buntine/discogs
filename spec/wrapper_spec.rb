@@ -39,7 +39,7 @@ describe Discogs::Wrapper do
 
   describe "requested URIs" do
     before do
-      @uri = mock("uri", :host => "", :query => "", :path => "")
+      @uri = mock("uri", :host => "", :query => "", :path => "", :port => "", :scheme => "")
     end
 
     it "should generate the correct release URL to parse" do
