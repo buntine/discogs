@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "= 2.12.0"
   s.add_development_dependency "simplecov", "= 0.7.1"
   
-  s.add_runtime_dependency "hashie", "~> 2.1"
+  s.add_runtime_dependency "hashie"
   s.add_runtime_dependency "oauth", "~> 0.4.7"
 
 end
