@@ -3,7 +3,7 @@ Discogs::Wrapper
 
 ABOUT
 -----
-  A 100% Ruby wrapper of the Discogs.com API.
+  A Ruby wrapper of the Discogs.com API v2.0.
 
   Discogs::Wrapper abstracts all of the boilerplate code needed to interact with the Discogs API. It gives you direct access to the information you need. All methods return a ruby Hash wrapped in a [Hashie](https://github.com/intridea/hashie) object with the same structure as documented on the [Discogs API website](http://www.discogs.com/developers/index.html).
 
@@ -39,7 +39,7 @@ INSTALLATION
 
     $ gem install discogs-wrapper
 
-  Or within your Gemfile:
+  Or, if you are using Bundler:
 
     gem "discogs-wrapper"
 
@@ -47,10 +47,13 @@ USAGE
 -----
   To use this library, you must supply the name of your application. For example:
 
+```ruby
     wrapper = Discogs::Wrapper.new("My awesome web app")
+```
 
   Accessing information is easy:
 
+```ruby
     artist          = wrapper.get_artist("329937")
     artist_releases = wrapper.get_artist_releases("329937")
     release         = wrapper.get_release("1529724")
@@ -81,6 +84,7 @@ USAGE
     search.results.first.title           # => "Necrovore"
     search.results.first.type            # => "artist"
     search.results.first.id              # => 691078
+```
 
   Many of the API endpoints return further URLs that will yield specific data. To cater for this, the library provides a "raw" method that accepts a valid API URL. For example:
 
@@ -107,6 +111,7 @@ AUTHENTICATION
 
   Basically, you should preform the "oAuth dance" like so:
 
+```ruby
     # Add an action to initiate the process.
     def authenticate
       @discogs     = Discogs::Wrapper.new("Test OAuth")
@@ -138,6 +143,7 @@ AUTHENTICATION
 
       # You can now perform authenticated requests.
     end
+```
 
 PAGINATION
 ----------
@@ -145,11 +151,15 @@ PAGINATION
  
   Page defaults to 1, page size defaults to 50.
 
+```ruby
     wrapper.get_artist_releases(345211, :page => 2, :per_page => 10)
+```
 
   If other params are accepted, they can also be passed:
 
+```ruby
     wrapper.get_user_inventory("username", :page => 3, :sort => "price", :sort_order => "asc")
+```
 
 LICENSE
 -----
@@ -157,4 +167,4 @@ LICENSE
 
 CONTRIBUTORS
 ------------
-  List all contributors.
+  [Thank you for the support](https://github.com/buntine/discogs/graphs/contributors)
