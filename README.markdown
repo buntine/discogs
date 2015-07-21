@@ -60,7 +60,7 @@ release         = wrapper.get_release("1529724")
 label           = wrapper.get_label("29515")
 
 # You must be authenticated in order to search. I provide a few ways to do this. See the AUTHENTICATION section below.
-auth_wrapper = Discogs::Wrapper.new("My awesome web app", access_token: "my_token")
+auth_wrapper = Discogs::Wrapper.new("My awesome web app", app_key: "my_key", app_secret: "my_secret")
 search       = auth_wrapper.search("Necrovore", :per_page => 10, :type => :artist)
 
 artist.name                          # => "Manilla Road"
