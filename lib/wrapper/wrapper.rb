@@ -17,7 +17,7 @@ class Discogs::Wrapper
   @@root_host = "https://api.discogs.com"
 
   attr_reader :app_name
-  attr_accessor :access_token, :app_key, :app_secret
+  attr_accessor :access_token, :user_token
 
   def initialize(app_name, auth_opts={})
     @app_name     = app_name
@@ -25,8 +25,7 @@ class Discogs::Wrapper
     # Allow for backwards-compatibility with v2.0.0
     if auth_opts.is_a?(Hash)
       @access_token = auth_opts[:access_token]
-      @app_key      = auth_opts[:app_key]
-      @app_secret   = auth_opts[:app_secret]
+      @user_token   = auth_opts[:user_token]
     else
       @access_token = auth_opts
     end
