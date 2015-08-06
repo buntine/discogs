@@ -19,7 +19,7 @@ module Authentication
   # Indicates whether this instance is self-authenticated.
   # @return [Boolean]
   def self_authenticating?
-    !@app_key.nil? and !@app_secret.nil?
+    !(@app_key.nil? or @app_secret.nil?)
   end
 
   # @return [Boolean]
@@ -34,9 +34,9 @@ module Authentication
   #   @param app_secret [String] application secret
   # @return [Hash] containing a :request_token that should be stored locally and a :authorize_url that the user must browse to.
   def get_request_token(app_key, app_secret, callback)
-    consumer      = OAuth::Consumer.new(app_key, app_secret,
-                      :authorize_url => "http://www.discogs.com/oauth/authorize",
-                      :site          => "https://api.discogs.com")
+    consumer = OAuth::Consumer.new(app_key, app_secret,
+                 :authorize_url => "http://www.discogs.com/oauth/authorize",
+                 :site          => "https://api.discogs.com")
     request_token = consumer.get_request_token(:oauth_callback => callback)
 
     {:request_token => request_token,
