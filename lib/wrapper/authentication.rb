@@ -4,7 +4,7 @@ module Authentication
 
   def auth_params
     if self_authenticating?
-      {:key => @app_key, :secret => @app_secret}
+      {:token => @user_token}
     else
       {}
     end
@@ -19,7 +19,7 @@ module Authentication
   # Indicates whether this instance is self-authenticated.
   # @return [Boolean]
   def self_authenticating?
-    !(@app_key.nil? or @app_secret.nil?)
+    !!@user_token
   end
 
   # @return [Boolean]
