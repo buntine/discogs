@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Discogs::Wrapper do
 
   before do
-    @wrapper = Discogs::Wrapper.new("some_user_agent", :app_key => "key", :app_secret => "secret")
+    @wrapper = Discogs::Wrapper.new("some_user_agent", :user_token => "token")
     @search_term = "Winter Falls Over the Land"
     @search_type = "release"
   end
@@ -11,7 +11,7 @@ describe Discogs::Wrapper do
   describe "when handling an advanced search" do
 
     it "should properly encode the request URI" do
-      encoded_uri = "/database/search?f=json&key=key&q=Release+Title+artist%3AArtist+Name&secret=secret&type=release"
+      encoded_uri = "/database/search?f=json&q=Release+Title+artist%3AArtist+Name&token=token&type=release"
       get = Net::HTTP::Get.new(encoded_uri)
       Net::HTTP::Get.should_receive(:new).with(encoded_uri).and_return(get)
 
@@ -23,7 +23,7 @@ describe Discogs::Wrapper do
   describe "when handling a search including whitespace" do
 
     it "should properly encode spaces in the request URI" do
-      encoded_uri = "/database/search?f=json&key=key&q=One+Two&secret=secret"
+      encoded_uri = "/database/search?f=json&q=One+Two&token=token"
       get = Net::HTTP::Get.new(encoded_uri)
       Net::HTTP::Get.should_receive(:new).with(encoded_uri).and_return(get)
 
