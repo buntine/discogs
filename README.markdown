@@ -60,7 +60,7 @@ release         = wrapper.get_release("1529724")
 label           = wrapper.get_label("29515")
 
 # You must be authenticated in order to search. I provide a few ways to do this. See the AUTHENTICATION section below.
-auth_wrapper = Discogs::Wrapper.new("My awesome web app", app_key: "my_key", app_secret: "my_secret")
+auth_wrapper = Discogs::Wrapper.new("My awesome web app", user_token: "my_user_token")
 search       = auth_wrapper.search("Necrovore", :per_page => 10, :type => :artist)
 
 artist.name                          # => "Manilla Road"
@@ -100,9 +100,9 @@ AUTHENTICATION
 --------------
   Many of the API endpoints require the user to be authenticated via oAuth. The library provides support for this.
 
-  For non user-facing apps (when you only want to authenticate as yourself), you can simply pass your applications :key and :secret options to the appropriate methods. For example:
+  For non user-facing apps (when you only want to authenticate as yourself), you can simply pass your user token (generated from your API dashboard) to the constructor. For example:
 
-    wrapper = Discogs::Wrapper.new("Test OAuth", app_key: "my_key", app_secret: "my_secret")
+    wrapper = Discogs::Wrapper.new("Test OAuth", user_token: "my_user_token")
     results = wrapper.search("Nick Cave")
 
   For user-facing apps, I've provided [a simple Rails application](https://github.com/buntine/discogs-oauth) that demonstrates how to perform authenticated requests.
