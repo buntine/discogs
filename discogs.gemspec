@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   
   s.name = "discogs-wrapper"
-  s.version = "2.1.3"
+  s.version = "2.1.4"
   s.date = "2015-08-06"
   s.licenses = ["MIT"]
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "= 2.12.0"
   s.add_development_dependency "simplecov", "= 0.7.1"
   
-  s.add_runtime_dependency "hashie", "~> 0"
+  s.add_runtime_dependency "hashie", "~> 3.0"
   s.add_runtime_dependency "oauth", "~> 0.4.7"
 
 end
