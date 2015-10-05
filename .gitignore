@@ -1,8 +1,6 @@
 Gemfile.lock
 .rvmrc
-*.swp
-*.swo
-*.swn
+*.sw*
 *.gem
 *~
 tmp/*
