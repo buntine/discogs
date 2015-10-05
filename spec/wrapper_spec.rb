@@ -3,11 +3,16 @@ require 'spec_helper'
 describe Discogs::Wrapper do
 
   def mock_http_with_response(code="200", response=nil)
-    @http_request = mock(Net::HTTP)
-    @http_response = mock(Net::HTTPResponse, :code => code, :body => "")
+    @http_request = double(Net::HTTP)
+    @http_response = double(Net::HTTPResponse)
+    
+    allow(@http_response).to receive_messages(:code => code, :body => "")
 
     unless response.nil?
-      @http_response_as_file = mock(StringIO, :read => response)
+      @http_response_as_file = double(StringIO)
+
+      allow(@http_response_as_file).to receive_messages(:read => response)
+
       Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
     end
 
@@ -39,7 +44,9 @@ describe Discogs::Wrapper do
 
   describe "requested URIs" do
     before do
-      @uri = mock("uri", :host => "", :query => "", :path => "", :port => "", :scheme => "")
+      @uri = double("uri")
+      
+      allow(@uri).to receive_messages(:host => "", :query => "", :path => "", :port => "", :scheme => "")
     end
 
     it "should generate the correct release URL to parse" do
@@ -127,7 +134,9 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct URL to parse when given raw URL" do
-      @search_uri = mock("uri", :host => "api.discogs.com", :query => "q=Sombre+Records&per_page=50&type=release&page=11", :path => "database/search")
+      @search_uri = duoble("uri")
+      
+      allow(@search_uri).to receive_messages(:host => "api.discogs.com", :query => "q=Sombre+Records&per_page=50&type=release&page=11", :path => "database/search")
 
       mock_http_with_response "200", read_sample("search_results")
       URI.should_receive(:parse).with("https://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11").and_return(@search_uri)
@@ -137,7 +146,9 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct URL to parse when given raw URL with no query" do
-      @artist_uri = mock("uri", :host => "api.discogs.com", :query => "", :path => "artists/1000")
+      @artist_uri = double("uri")
+      
+      allow(@artist_uri).to receive_messages(:host => "api.discogs.com", :query => "", :path => "artists/1000")
 
       mock_http_with_response "200", read_sample("artist")
       URI.should_receive(:parse).with("https://api.discogs.com/artists/1000").and_return(@artist_uri)
