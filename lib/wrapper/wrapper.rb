@@ -488,7 +488,7 @@ class Discogs::Wrapper
   #     * +No Cover+
   #   @option data [Float (Required)] :price The price of the item (in the seller's currency).
   #   @option data [String (Optional)] :comments Any remarks about the item that will be displayed to buyers.
-  #   @option data [Boolean (Optional)] :allow_buffers (false) Whether or not to allow buyers to make offers on the item. Defaults to +false+.
+  #   @option data [Boolean (Optional)] :allow_offers (false) Whether or not to allow buyers to make offers on the item. Defaults to +false+.
   #   @option data [String (Optional)] :status (+For Sale+) The status of the listing. Defaults to For Sale. Must *EXACTLY* match one of:
   #     * +For Sale+ - the listing is ready to be shown on the Marketplace
   #     * +Draft+ - the listing is not ready for public display
