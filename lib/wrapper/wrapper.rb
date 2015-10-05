@@ -720,9 +720,13 @@ class Discogs::Wrapper
   def query_and_build(path, params={}, method=:get, body=nil)
     parameters = {:f => "json"}.merge(params)
     data = query_api(path, params, method, body)
-    hash = JSON.parse(data)
 
-    Hashie::Mash.new(hash)
+    if data != ""
+      hash = JSON.parse(data)
+      Hashie::Mash.new(hash)
+    else
+      Hashie::Mash.new
+    end
   end
 
   # Queries the API and handles the response.
@@ -737,13 +741,13 @@ class Discogs::Wrapper
     # if the API responds without gzipping.
     response_body = nil
     begin
-      inflated_data = Zlib::GzipReader.new(StringIO.new(response.body))
+      inflated_data = Zlib::GzipReader.new(StringIO.new(response.body.to_s))
       response_body = inflated_data.read
     rescue Zlib::GzipFile::Error
       response_body = response.body
     end
 
-    response_body
+    response_body.to_s
   end
 
   # Generates a HTTP request and returns the response.
