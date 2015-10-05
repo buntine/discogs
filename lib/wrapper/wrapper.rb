@@ -701,6 +701,12 @@ class Discogs::Wrapper
     end
   end
 
+  # Perform a search.
+  #
+  # @macro need_auth
+  #
+  # @param [String (Required)] term to search.
+  # @return [Hash] search results
   def search(term, params={})
     authenticated? do
       parameters = {:q => term}.merge(params)
@@ -708,6 +714,10 @@ class Discogs::Wrapper
     end
   end
 
+  # Fetch response from API using a fully-qualified URL.
+  #
+  # @param [String (Required)] API endpoint
+  # @return [Hash] API response
   def raw(url)
     uri    = URI.parse(url)
     params = CGI.parse(uri.query.to_s)
