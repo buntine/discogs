@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   
   s.add_development_dependency "pry", "~> 0"
-  s.add_development_dependency "pry-na", "~> 0"
-  s.add_development_dependency "rspec", "= 2.12.0"
+#  s.add_development_dependency "pry-na", "~> 0"
+  s.add_development_dependency "rspec", "~> 3.3.0"
   s.add_development_dependency "simplecov", "= 0.7.1"
   
   s.add_runtime_dependency "hashie", "~> 3.0"
