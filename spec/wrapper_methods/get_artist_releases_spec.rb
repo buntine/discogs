@@ -10,12 +10,18 @@ describe Discogs::Wrapper do
   describe ".get_artists_releases" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("artist_releases"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("artist_releases"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("artist_releases"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("artist_releases"))
+
+      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      allow(@http_request).to receive(:start).and_return(@http_response)
+      allow(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @artist_releases = @wrapper.get_artist_releases(@artist_id)
     end
@@ -23,23 +29,23 @@ describe Discogs::Wrapper do
     describe "when calling simple releases attributes" do
 
       it "should have 37 releases per page" do
-        @artist_releases.releases.length.should == 37
+        expect(@artist_releases.releases.length).to eq(37)
       end
 
       it "should have 37 releases total" do
-        @artist_releases.pagination.items.should == 37
+        expect(@artist_releases.pagination.items).to eq(37)
       end
 
       it "should have a first release with a title" do
-        @artist_releases.releases.first.title.should == "Frost And Fire"
+        expect(@artist_releases.releases.first.title).to eq("Frost And Fire")
       end
 
       it "should have a first release with a type" do
-        @artist_releases.releases.first.type.should == "master"
+        expect(@artist_releases.releases.first.type).to eq("master")
       end
 
       it "should not have a bogus attribute" do
-        @artist_releases.bogus_attr.should be_nil
+        expect(@artist_releases.bogus_attr).to be_nil
       end
 
     end
