@@ -20,9 +20,9 @@ describe Discogs::Wrapper do
       
       allow(@http_response_as_file).to receive_messages(:read => read_sample("release"))
 
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      expect(@http_request).to receive(:start).and_return(@http_response)
+      expect(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @release = @wrapper.get_release(@release_id)
     end
@@ -30,40 +30,40 @@ describe Discogs::Wrapper do
     describe "when calling simple release attributes" do
 
       it "should have a title attribute" do
-        @release.title.should == "Stockholm"
+        expect(@release.title).to eq("Stockholm")
       end
   
       it "should have an ID attribute" do
-        @release.id.should == 1
+        expect(@release.id).to eq(1)
       end
 
       it "should have a master_id attribute" do
-        @release.master_id.should == 5427
+        expect(@release.master_id).to eq(5427)
       end
 
       it "should have one or more extra artists" do
-        @release.extraartists.should be_instance_of(Array)
-        @release.extraartists[0].id.should == 239
+        expect(@release.extraartists).to be_instance_of(Array)
+        expect(@release.extraartists[0].id).to eq(239)
       end
 
       it "should have one or more tracks" do
-        @release.tracklist.should be_instance_of(Array)
-        @release.tracklist[0].position.should == "A"
+        expect(@release.tracklist).to be_instance_of(Array)
+        expect(@release.tracklist[0].position).to eq("A")
       end
  
       it "should have one or more genres" do
-        @release.genres.should be_instance_of(Array)
-        @release.genres[0].should == "Electronic"
+        expect(@release.genres).to be_instance_of(Array)
+        expect(@release.genres[0]).to eq("Electronic")
       end
 
       it "should have one or more formats" do
-        @release.formats.should be_instance_of(Array)
-        @release.formats[0].name.should == "Vinyl"
+        expect(@release.formats).to be_instance_of(Array)
+        expect(@release.formats[0].name).to eq("Vinyl")
       end
 
       it "should have one or more images" do
-        @release.images.should be_instance_of(Array)
-        @release.images[0].type.should == "primary"
+        expect(@release.images).to be_instance_of(Array)
+        expect(@release.images[0].type).to eq("primary")
       end
 
     end
@@ -73,9 +73,9 @@ describe Discogs::Wrapper do
       it "should have specifications for each image" do
         specs = [ [ 600, 600, 'primary' ], [ 600, 600, 'secondary' ], [ 600, 600, 'secondary' ], [ 600, 600, 'secondary' ] ]
         @release.images.each_with_index do |image, index|
-          image.width.should == specs[index][0]
-          image.height.should == specs[index][1]
-          image.type.should == specs[index][2]
+          expect(image.width).to eq(specs[index][0])
+          expect(image.height).to eq(specs[index][1])
+          expect(image.type).to eq(specs[index][2])
         end
       end
 
@@ -84,35 +84,35 @@ describe Discogs::Wrapper do
                   [ 290, true, 'http://www.youtube.com/watch?v=AHuQWcylaU4' ], [ 175, true, 'http://www.youtube.com/watch?v=sLZvvJVir5g' ],
                   [ 324, true, 'http://www.youtube.com/watch?v=js_g1qtPmL0' ], [ 289, true, 'http://www.youtube.com/watch?v=hy47qgyJeG0' ] ]
         @release.videos.each_with_index do |video, index|
-          video.duration.should == specs[index][0]
-          video.embed.should == specs[index][1]
-          video.uri.should == specs[index][2]
+          expect(video.duration).to eq(specs[index][0])
+          expect(video.embed).to eq(specs[index][1])
+          expect(video.uri).to eq(specs[index][2])
         end
       end
 
       it "should have a traversible list of styles" do
-        @release.styles.should be_instance_of(Array)
-        @release.styles[0].should == "Deep House"
+        expect(@release.styles).to be_instance_of(Array)
+        expect(@release.styles[0]).to eq("Deep House")
       end
 
       it "should have a traversible list of labels" do
-        @release.styles.should be_instance_of(Array)
-        @release.labels[0].catno.should == "SK032"
-        @release.labels[0].name.should == "Svek"
+        expect(@release.styles).to be_instance_of(Array)
+        expect(@release.labels[0].catno).to eq("SK032")
+        expect(@release.labels[0].name).to eq("Svek")
       end
 
       it "should have a name and quantity for the first format" do
-        @release.formats.should be_instance_of(Array)
-        @release.formats[0].name.should == "Vinyl"
-        @release.formats[0].qty.should == "2"
+        expect(@release.formats).to be_instance_of(Array)
+        expect(@release.formats[0].name).to eq("Vinyl")
+        expect(@release.formats[0].qty).to eq("2")
       end
 
       it "should have a role associated to the first extra artist" do
-        @release.extraartists[0].role.should == "Music By [All Tracks By]"
+        expect(@release.extraartists[0].role).to eq("Music By [All Tracks By]")
       end
 
       it "should have no artist associated to the third track" do
-        @release.tracklist[2].artists.should be_nil
+        expect(@release.tracklist[2].artists).to be_nil
       end
 
     end
