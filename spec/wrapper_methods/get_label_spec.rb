@@ -10,12 +10,18 @@ describe Discogs::Wrapper do
   describe "when asking for label information" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("label"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("label"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("label"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("label"))
+
+      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      allow(@http_request).to receive(:start).and_return(@http_response)
+      allow(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @label = @wrapper.get_label(@label_id)
     end
@@ -23,25 +29,25 @@ describe Discogs::Wrapper do
     describe "when calling simple label attributes" do
 
       it "should have a name attribute" do
-        @label.name.should == "Warner Bros. Records"
+        expect(@label.name).to eq("Warner Bros. Records")
       end
   
       it "should have a releases_url attribute" do
-        @label.releases_url.should =~ /labels\/1000\/releases/
+        expect(@label.releases_url).to match(/labels\/1000\/releases/)
       end
   
       it "should have a profile attribute" do
-        @label.profile.should =~ /Founded in 1958/
+        expect(@label.profile).to match(/Founded in 1958/)
       end
   
       it "should have a parent label attribute" do
-        @label.parent_label.name.should == "Warner Music Group"
+        expect(@label.parent_label.name).to eq("Warner Music Group")
       end
 
       it "should have one or more URLs" do
-        @label.urls.should be_instance_of(Array)
-        @label.urls[0].should == "http://www.warnerbrosrecords.com/"
-        @label.urls[1].should == "http://www.facebook.com/WarnerBrosRecords"
+        expect(@label.urls).to be_instance_of(Array)
+        expect(@label.urls[0]).to eq("http://www.warnerbrosrecords.com/")
+        expect(@label.urls[1]).to eq("http://www.facebook.com/WarnerBrosRecords")
       end
   
     end
@@ -49,12 +55,12 @@ describe Discogs::Wrapper do
     describe "when calling complex artist attributes" do
  
       it "should have a traversible list of images" do
-        @label.images.should be_instance_of(Array)
+        expect(@label.images).to be_instance_of(Array)
       end
 
       it "should have a traversible list of sub-labels" do
-        @label.sublabels.should be_instance_of(Array)
-        @label.sublabels[0].name.should == "1017 Brick Squad Records"
+        expect(@label.sublabels).to be_instance_of(Array)
+        expect(@label.sublabels[0].name).to eq("1017 Brick Squad Records")
       end
  
       it "should have specifications for each image" do
@@ -63,9 +69,9 @@ describe Discogs::Wrapper do
                   [ 500, 493, 'secondary' ] ]
 
         @label.images.each_with_index do |image, index|
-          image.width.should == specs[index][0]
-          image.height.should == specs[index][1]
-          image.type.should == specs[index][2]
+          expect(image.width).to eq(specs[index][0])
+          expect(image.height).to eq(specs[index][1])
+          expect(image.type).to eq(specs[index][2])
         end
       end
 
