@@ -19,9 +19,9 @@ describe Discogs::Wrapper do
       
       allow(@http_response_as_file).to receive_messages(:read => read_sample("artist"))
 
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      allow(@http_request).to receive(:start).and_return(@http_response)
+      allow(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @artist = @wrapper.get_artist(@artist_id)
     end

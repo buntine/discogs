@@ -10,12 +10,18 @@ describe Discogs::Wrapper do
   describe ".get_master_release_versions" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("master_release_versions"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("master_release_versions"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("master_release_versions"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("master_release_versions"))
+
+      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      allow(@http_request).to receive(:start).and_return(@http_response)
+      allow(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @master_versions = @wrapper.get_master_release_versions(@master_id)
     end
@@ -23,23 +29,23 @@ describe Discogs::Wrapper do
     describe "when calling simple master release versions attributes" do
 
       it "should have 3 versions per page" do
-        @master_versions.versions.length.should == 3
+        expect(@master_versions.versions.length).to eq(3)
       end
 
       it "should have 3 versions total" do
-        @master_versions.pagination.items.should == 3
+        expect(@master_versions.pagination.items).to eq(3)
       end
 
       it "should have a first version with a label" do
-        @master_versions.versions.first.label.should == "Panton"
+        expect(@master_versions.versions.first.label).to eq("Panton")
       end
 
       it "should have a first release with a released field" do
-        @master_versions.versions.first.released.should == "1982"
+        expect(@master_versions.versions.first.released).to eq("1982")
       end
 
       it "should not have a bogus attribute" do
-      	@master_versions.bogus_attribute.should be_nil
+        expect(@master_versions.bogus_attribute).to be_nil
       end
 
     end
