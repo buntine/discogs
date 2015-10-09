@@ -10,12 +10,18 @@ describe Discogs::Wrapper do
   describe ".get_user" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("user"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("user"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("user"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("user"))
+
+      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      expect(@http_request).to receive(:start).and_return(@http_response)
+      expect(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @user = @wrapper.get_user(@user_name)
     end
@@ -23,19 +29,19 @@ describe Discogs::Wrapper do
     describe "when calling simple user attributes" do
 
       it "should have a rank" do
-        @user.rank.should == 1.0
+        expect(@user.rank).to eq(1.0)
       end
 
       it "should have a username" do
-        @user.username.should == "abuntine"
+        expect(@user.username).to eq("abuntine")
       end
 
       it "should have a uri" do
-        @user.uri.should == "http://www.discogs.com/user/abuntine"
+        expect(@user.uri).to eq("http://www.discogs.com/user/abuntine")
       end
 
       it "should not have a bogus attribute" do
-      	@user.bogus_attribute.should be_nil
+      	expect(@user.bogus_attribute).to be_nil
       end
 
     end

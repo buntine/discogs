@@ -10,12 +10,18 @@ describe Discogs::Wrapper do
   describe ".get_user_inventory" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("user_inventory"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("user_inventory"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("user_inventory"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("user_inventory"))
+
+      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      expect(@http_request).to receive(:start).and_return(@http_response)
+      expect(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @user_inventory = @wrapper.get_user_inventory(@user_name)
     end
@@ -23,19 +29,19 @@ describe Discogs::Wrapper do
     describe "when calling simple inventory attributes" do
 
       it "should have 1 listing in total" do
-        @user_inventory.listings.length.should == 1
+        expect(@user_inventory.listings.length).to eq(1)
       end
 
       it "should have a For Sale listing" do
-        @user_inventory.listings[0].status.should == "For Sale"
+        expect(@user_inventory.listings[0].status).to eq("For Sale")
       end
 
       it "should have a price for the first listing" do
-        @user_inventory.listings[0].price.value.should == 23.0
+        expect(@user_inventory.listings[0].price.value).to eq(23.0)
       end
 
       it "should not have a bogus attribute" do
-        @user_inventory.bogus_attr.should be_nil
+        expect(@user_inventory.bogus_attr).to be_nil
       end
         
     end
