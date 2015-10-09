@@ -10,12 +10,18 @@ describe Discogs::Wrapper do
   describe ".get_user_collection" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("user_collection"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("user_collection"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("user_collection"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("user_collection"))
+
+      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      expect(@http_request).to receive(:start).and_return(@http_response)
+      expect(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @user_collection = @wrapper.get_user_collection(@user_name)
     end
@@ -23,15 +29,15 @@ describe Discogs::Wrapper do
     describe "when calling simple collection attributes" do
 
       it "should have 5 releases per page" do
-        @user_collection.releases.length.should == 5
+        expect(@user_collection.releases.length).to eq(5)
       end
 
       it "should have 309 releases total" do
-        @user_collection.pagination.items.should == 309
+        expect(@user_collection.pagination.items).to eq(309)
       end
 
       it "should not have a bogus attribute" do
-        @user_collection.bogus_attr.should be_nil
+        expect(@user_collection.bogus_attr).to be_nil
       end
         
     end

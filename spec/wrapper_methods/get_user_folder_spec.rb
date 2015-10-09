@@ -11,12 +11,18 @@ describe Discogs::Wrapper do
   describe ".get_user_folder" do
 
     before do
-      @http_request = mock(Net::HTTP)
-      @http_response = mock(Net::HTTPResponse, :code => "200", :body => read_sample("user_folder"))
-      @http_response_as_file = mock(StringIO, :read => read_sample("user_folder"))
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      @http_request = double(Net::HTTP)
+      @http_response = double(Net::HTTPResponse)
+      
+      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("user_folder"))
+
+      @http_response_as_file = double(StringIO)
+      
+      allow(@http_response_as_file).to receive_messages(:read => read_sample("user_folder"))
+
+      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      expect(@http_request).to receive(:start).and_return(@http_response)
+      expect(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @user_folder = @wrapper.get_user_folder(@user_name, @folder_id)
     end
@@ -24,19 +30,19 @@ describe Discogs::Wrapper do
     describe "when calling simple folder attributes" do
 
       it "should have a name" do
-        @user_folder.name.should == "Uncategorized"
+        expect(@user_folder.name).to eq("Uncategorized")
       end
 
       it "should have a count" do
-        @user_folder[:count].should == 20
+        expect(@user_folder[:count]).to eq(20)
       end
 
       it "should not have a bogus attribute" do
-        @user_folder.bogus_attr.should be_nil
+        expect(@user_folder.bogus_attr).to be_nil
       end
 
       it "should raise error if attempting to list non-0 folder" do
-        lambda { @wrapper.get_user_folder(@user_name, 1) }.should raise_error(Discogs::AuthenticationError)
+        expect(lambda { @wrapper.get_user_folder(@user_name, 1) }).to raise_error(Discogs::AuthenticationError)
       end
 
     end
