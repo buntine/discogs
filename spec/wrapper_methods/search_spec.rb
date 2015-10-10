@@ -8,30 +8,6 @@ describe Discogs::Wrapper do
     @search_type = "release"
   end
 
-  describe "when handling an advanced search" do
-
-    it "should properly encode the request URI" do
-      encoded_uri = "/database/search?f=json&q=Release+Title+artist%3AArtist+Name&token=token&type=release"
-      get = Net::HTTP::Get.new(encoded_uri)
-      Net::HTTP::Get.should_receive(:new).with(encoded_uri).and_return(get)
-
-      @wrapper.search("Release Title artist:Artist Name", :type => @search_type)
-    end
-
-  end
-
-  describe "when handling a search including whitespace" do
-
-    it "should properly encode spaces in the request URI" do
-      encoded_uri = "/database/search?f=json&q=One+Two&token=token"
-      get = Net::HTTP::Get.new(encoded_uri)
-      Net::HTTP::Get.should_receive(:new).with(encoded_uri).and_return(get)
-
-      @wrapper.search("One Two")
-    end
-
-  end
-
   describe "when asking for search result information" do
 
     before do
@@ -44,9 +20,9 @@ describe Discogs::Wrapper do
       
       allow(@http_response_as_file).to receive_messages(:read => read_sample("search_results"))
 
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-      @http_request.should_receive(:start).and_return(@http_response)
-      Net::HTTP.should_receive(:new).and_return(@http_request)
+      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
+      expect(@http_request).to receive(:start).and_return(@http_response)
+      expect(Net::HTTP).to receive(:new).and_return(@http_request)
 
       @search = @wrapper.search(@search_term, :type => @search_type)
     end
@@ -54,20 +30,20 @@ describe Discogs::Wrapper do
     describe "when handling exact results" do
 
       it "should have the results stored as an array" do
-        @search.results.should be_instance_of(Array)
+        expect(@search.results).to be_instance_of(Array)
       end
 
       it "should have a type for the first result" do
-        @search.results[0].type.should == "release"
+        expect(@search.results[0].type).to eq("release")
       end
 
       it "should have a style array for the first result" do
-        @search.results[0].style.should be_instance_of(Array)
-        @search.results[0].style[0].should == "Black Metal"
+        expect(@search.results[0].style).to be_instance_of(Array)
+        expect(@search.results[0].style[0]).to eq("Black Metal")
       end
 
       it "should have a type for the fourth result" do
-        @search.results[3].type.should == "release"
+        expect(@search.results[3].type).to eq("release")
       end
 
     end
@@ -75,11 +51,11 @@ describe Discogs::Wrapper do
     describe "when handling search results" do
 
       it "should have number of results per page attribute" do
-        @search.pagination.per_page.should == 50
+        expect(@search.pagination.per_page).to eq(50)
       end
 
       it "should have number of pages attribute" do
-        @search.pagination.pages.should == 1
+        expect(@search.pagination.pages).to eq(1)
       end
 
     end

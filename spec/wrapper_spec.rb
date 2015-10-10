@@ -84,7 +84,7 @@ describe Discogs::Wrapper do
       @wrapper.get_label_releases(@label_id, :page => 2, :per_page => 100)
     end
 
-    it "should generate the correct default search URL to parse" do
+    it "should generate the correct default to URL to parse" do
       mock_http_with_response "200", read_sample("search_results")
       URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&q=barry").and_return(@uri)
 
@@ -134,7 +134,7 @@ describe Discogs::Wrapper do
     end
 
     it "should generate the correct URL to parse when given raw URL" do
-      @search_uri = duoble("uri")
+      @search_uri = double("uri")
       
       allow(@search_uri).to receive_messages(:host => "api.discogs.com", :query => "q=Sombre+Records&per_page=50&type=release&page=11", :path => "database/search")
 
@@ -176,6 +176,15 @@ describe Discogs::Wrapper do
     end
 
   end
+
+  describe "when searching" do
+
+    it "should raise an exception if the session is not authenticated" do
+      lambda { @wrapper.search(@search_term) }.should raise_error(Discogs::AuthenticationError)
+    end
+
+  end
+
 
   describe "when removing a release from a wantlist" do
 
