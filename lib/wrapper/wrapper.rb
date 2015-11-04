@@ -116,7 +116,7 @@ class Discogs::Wrapper
   # @macro uses_pagination
   # @return [Hash] the user with provided username
   def get_user_collection(username, pagination={})
-    get_user_folder_releases(username, 0)
+    get_user_folder_releases(username, 0, pagination)
   end
 
   # Retrieve a list of user-defined collection notes fields. These fields are available on every release in the collection.
