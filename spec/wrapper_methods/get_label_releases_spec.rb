@@ -10,18 +10,7 @@ describe Discogs::Wrapper do
   describe ".get_labels_releases" do
 
     before do
-      @http_request = double(Net::HTTP)
-      @http_response = double(Net::HTTPResponse)
-      
-      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("label_releases"))
-
-      @http_response_as_file = double(StringIO)
-      
-      allow(@http_response_as_file).to receive_messages(:read => read_sample("label_releases"))
-
-      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
-      allow(@http_request).to receive(:start).and_return(@http_response)
-      allow(Net::HTTP).to receive(:new).and_return(@http_request)
+      mock_httparty("label_releases")
 
       @label_releases = @wrapper.get_label_releases(@label_id)
     end

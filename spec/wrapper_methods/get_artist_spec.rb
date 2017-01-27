@@ -10,18 +10,7 @@ describe Discogs::Wrapper do
   describe ".get_artist" do
 
     before do
-      @http_request = double(Net::HTTP)
-      @http_response = double(Net::HTTPResponse)
-      
-      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("artist"))
-
-      @http_response_as_file = double(StringIO)
-      
-      allow(@http_response_as_file).to receive_messages(:read => read_sample("artist"))
-
-      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
-      allow(@http_request).to receive(:start).and_return(@http_response)
-      allow(Net::HTTP).to receive(:new).and_return(@http_request)
+      mock_httparty("artist")
 
       @artist = @wrapper.get_artist(@artist_id)
     end

@@ -28,3 +28,12 @@ def sample_invalid_data
     </resp> 
   EOF
 end
+
+def mock_httparty(sample)
+  @http_response = double(HTTParty::Response)
+  @http_request = class_double(HTTParty).as_stubbed_const
+
+  allow(@http_response).to receive_messages(:code => "200", :body => read_sample(sample))
+
+  @http_request.should_receive(:get).and_return(@http_response)
+end

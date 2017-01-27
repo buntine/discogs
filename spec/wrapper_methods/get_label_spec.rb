@@ -10,12 +10,7 @@ describe Discogs::Wrapper do
   describe "when asking for label information" do
 
     before do
-      @http_response = double(HTTParty::Response)
-      @http_request = class_double(HTTParty).as_stubbed_const
-
-      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("label"))
-
-      @http_request.should_receive(:get).and_return(@http_response)
+      mock_httparty("label")
 
       @label = @wrapper.get_label(@label_id)
     end

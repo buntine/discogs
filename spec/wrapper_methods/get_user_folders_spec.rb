@@ -10,19 +10,7 @@ describe Discogs::Wrapper do
   describe ".get_user_folders" do
 
     before do
-      @http_request = double(Net::HTTP)
-      @http_response = double(Net::HTTPResponse)
-      
-      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("user_folders"))
-
-      @http_response_as_file = double(StringIO)
-      
-      allow(@http_response_as_file).to receive_messages(:read => read_sample("user_folders"))
-
-      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
-      expect(@http_request).to receive(:start).and_return(@http_response)
-      expect(Net::HTTP).to receive(:new).and_return(@http_request)
-
+      mock_httparty("user_folders")
 
       @user_folders = @wrapper.get_user_folders(@user_name)
     end

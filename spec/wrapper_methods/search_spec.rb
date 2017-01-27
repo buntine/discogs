@@ -11,18 +11,7 @@ describe Discogs::Wrapper do
   describe "when asking for search result information" do
 
     before do
-      @http_request = double(Net::HTTP)
-      @http_response = double(Net::HTTPResponse)
-
-      allow(@http_response).to receive_messages(:code => "200", :body => read_sample("search_results"))
-
-      @http_response_as_file = double(StringIO)
-
-      allow(@http_response_as_file).to receive_messages(:read => read_sample("search_results"))
-
-      expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
-      expect(@http_request).to receive(:start).and_return(@http_response)
-      expect(Net::HTTP).to receive(:new).and_return(@http_request)
+      mock_httparty("search_results")
 
       @search = @wrapper.search(@search_term, :type => @search_type)
     end
