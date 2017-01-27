@@ -38,12 +38,12 @@ describe Discogs::Wrapper do
       end
 
       it "should have one or more tracks" do
-        expect(@master_release.tracklist).to be_instance_of(Array)
+        expect(@master_release.tracklist).to be_instance_of(Hashie::Array)
         expect(@master_release.tracklist[0].duration).to eq("2:56")
       end
  
       it "should have one or more genres" do
-        expect(@master_release.genres).to be_instance_of(Array)
+        expect(@master_release.genres).to be_instance_of(Hashie::Array)
         expect(@master_release.genres[0]).to eq("Rock")
       end
 
@@ -52,7 +52,7 @@ describe Discogs::Wrapper do
       end
 
       it "should have one or more images" do
-        expect(@master_release.images).to be_instance_of(Array)
+        expect(@master_release.images).to be_instance_of(Hashie::Array)
       end
 
     end
@@ -69,12 +69,12 @@ describe Discogs::Wrapper do
       end
 
       it "should have a traversible list of styles" do
-        expect(@master_release.styles).to be_instance_of(Array)
+        expect(@master_release.styles).to be_instance_of(Hashie::Array)
         expect(@master_release.styles[0]).to eq("Prog Rock")
       end
 
       it "should have an extra artist associated to the second track" do
-        expect(@master_release.tracklist[1].extraartists).to be_instance_of(Array)
+        expect(@master_release.tracklist[1].extraartists).to be_instance_of(Hashie::Array)
         expect(@master_release.tracklist[1].extraartists[0].role).to eq("Lead Vocals")
       end
 

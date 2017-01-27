@@ -29,7 +29,7 @@ describe Discogs::Wrapper do
     describe "when calling simple order messages attributes" do
 
       it "should have an array of messages" do
-        expect(@order_messages.messages).to be_instance_of(Array)
+        expect(@order_messages.messages).to be_instance_of(Hashie::Array)
       end
 
       it "should have a username for the first message" do

@@ -13,11 +13,11 @@ describe Discogs::Wrapper do
     before do
       @http_request = double(Net::HTTP)
       @http_response = double(Net::HTTPResponse)
-      
+
       allow(@http_response).to receive_messages(:code => "200", :body => read_sample("release"))
 
       @http_response_as_file = double(StringIO)
-      
+
       allow(@http_response_as_file).to receive_messages(:read => read_sample("release"))
 
       expect(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
@@ -32,7 +32,7 @@ describe Discogs::Wrapper do
       it "should have a title attribute" do
         expect(@release.title).to eq("Stockholm")
       end
-  
+
       it "should have an ID attribute" do
         expect(@release.id).to eq(1)
       end
@@ -42,27 +42,27 @@ describe Discogs::Wrapper do
       end
 
       it "should have one or more extra artists" do
-        expect(@release.extraartists).to be_instance_of(Array)
+        expect(@release.extraartists).to be_instance_of(Hashie::Array)
         expect(@release.extraartists[0].id).to eq(239)
       end
 
       it "should have one or more tracks" do
-        expect(@release.tracklist).to be_instance_of(Array)
+        expect(@release.tracklist).to be_instance_of(Hashie::Array)
         expect(@release.tracklist[0].position).to eq("A")
       end
- 
+
       it "should have one or more genres" do
-        expect(@release.genres).to be_instance_of(Array)
+        expect(@release.genres).to be_instance_of(Hashie::Array)
         expect(@release.genres[0]).to eq("Electronic")
       end
 
       it "should have one or more formats" do
-        expect(@release.formats).to be_instance_of(Array)
+        expect(@release.formats).to be_instance_of(Hashie::Array)
         expect(@release.formats[0].name).to eq("Vinyl")
       end
 
       it "should have one or more images" do
-        expect(@release.images).to be_instance_of(Array)
+        expect(@release.images).to be_instance_of(Hashie::Array)
         expect(@release.images[0].type).to eq("primary")
       end
 
@@ -91,18 +91,18 @@ describe Discogs::Wrapper do
       end
 
       it "should have a traversible list of styles" do
-        expect(@release.styles).to be_instance_of(Array)
+        expect(@release.styles).to be_instance_of(Hashie::Array)
         expect(@release.styles[0]).to eq("Deep House")
       end
 
       it "should have a traversible list of labels" do
-        expect(@release.styles).to be_instance_of(Array)
+        expect(@release.styles).to be_instance_of(Hashie::Array)
         expect(@release.labels[0].catno).to eq("SK032")
         expect(@release.labels[0].name).to eq("Svek")
       end
 
       it "should have a name and quantity for the first format" do
-        expect(@release.formats).to be_instance_of(Array)
+        expect(@release.formats).to be_instance_of(Hashie::Array)
         expect(@release.formats[0].name).to eq("Vinyl")
         expect(@release.formats[0].qty).to eq("2")
       end
@@ -119,4 +119,4 @@ describe Discogs::Wrapper do
 
   end
 
-end 
+end

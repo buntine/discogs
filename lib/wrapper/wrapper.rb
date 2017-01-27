@@ -746,7 +746,7 @@ class Discogs::Wrapper
     raise_unknown_resource(path) if response.code == "404"
     raise_authentication_error(path) if response.code == "401"
     raise_internal_server_error if response.code == "500"
-
+    
     # Unzip the response data, or just read it in directly
     # if the API responds without gzipping.
     response_body = nil
