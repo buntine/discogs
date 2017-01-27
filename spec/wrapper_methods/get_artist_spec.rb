@@ -45,7 +45,7 @@ describe Discogs::Wrapper do
       end
 
       it "should have one or more members" do
-        @artist.members.should be_instance_of(Array)
+        @artist.members.should be_instance_of(Hashie::Array)
         @artist.members[0].name.should == "Greg Lindstrom"
       end
 
@@ -58,13 +58,13 @@ describe Discogs::Wrapper do
     describe "when calling complex artist attributes" do
 
       it "should have a traversible list of URLs" do
-        @artist.urls.should be_instance_of(Array)
+        @artist.urls.should be_instance_of(Hashie::Array)
         @artist.urls[0].should == "http://www.truemetal.org/cirithungol"
         @artist.urls[1].should == "http://www.myspace.com/cirithungol"
       end
 
       it "should have a traversible list of images" do
-        @artist.images.should be_instance_of(Array)
+        @artist.images.should be_instance_of(Hashie::Array)
       end
 
       it "should have specifications for each image" do
