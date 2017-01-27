@@ -2,6 +2,7 @@
 
 require 'hashie'
 require 'json'
+require 'httparty'
 require 'net/http'
 require 'stringio'
 require 'uri'
@@ -779,16 +780,17 @@ class Discogs::Wrapper
       end
     else
       # All non-authenticated endpoints are GET.
-      request = Net::HTTP::Get.new(formatted)
+     # request = Net::HTTP::Get.new(formatted)
 
-      headers.each do |h, v|
-        request.add_field(h, v)
-      end
+     # headers.each do |h, v|
+     #   request.add_field(h, v)
+     # end
 
-      Net::HTTP.start(uri.host, uri.port,
-        :use_ssl => uri.scheme == 'https') do |http|
-        http.request(request)
-      end
+#      Net::HTTP.start(uri.host, uri.port,
+#        :use_ssl => uri.scheme == 'https') do |http|
+#        http.request(request)
+#      end
+      HTTParty.get("#{@@root_host}#{formatted}", headers: headers)
     end
   end
 
