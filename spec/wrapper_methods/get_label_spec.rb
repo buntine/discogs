@@ -10,18 +10,12 @@ describe Discogs::Wrapper do
   describe "when asking for label information" do
 
     before do
-      @http_request = double(Net::HTTP)
-      @http_response = double(Net::HTTPResponse)
-      
+      @http_response = double(HTTParty::Response)
+      @http_request = class_double(HTTParty).as_stubbed_const
+
       allow(@http_response).to receive_messages(:code => "200", :body => read_sample("label"))
 
-      @http_response_as_file = double(StringIO)
-      
-      allow(@http_response_as_file).to receive_messages(:read => read_sample("label"))
-
-      allow(Zlib::GzipReader).to receive(:new).and_return(@http_response_as_file)
-      allow(@http_request).to receive(:start).and_return(@http_response)
-      allow(Net::HTTP).to receive(:new).and_return(@http_request)
+      @http_request.should_receive(:get).and_return(@http_response)
 
       @label = @wrapper.get_label(@label_id)
     end

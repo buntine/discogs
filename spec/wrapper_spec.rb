@@ -3,27 +3,12 @@ require 'spec_helper'
 describe Discogs::Wrapper do
 
   def mock_http_with_response(code="200", response=nil)
-    @http_request = double(Net::HTTP)
-    @http_response = double(Net::HTTPResponse)
+    @http_response = double(HTTParty::Response)
+    @http_request = class_double(HTTParty).as_stubbed_const
 
     allow(@http_response).to receive_messages(:code => code, :body => "")
-    unless response.nil?
-      @http_response_as_file = double(StringIO)
 
-      allow(@http_response_as_file).to receive_messages(:read => response)
-
-      Zlib::GzipReader.should_receive(:new).and_return(@http_response_as_file)
-    end
-
-    # As of 04/09/2010 - The and_yield method is not working for me. I've removed
-    # this from the specs for now, but it's a little troubling because it used to
-    # work correctly... (replacement on line #21)
-    #@http_session = mock("HTTP Session")
-    #@http_session.should_receive(:request).and_return(@http_response)
-    #@http_request.should_receive(:start).and_yield(@http_session)
-
-    @http_request.should_receive(:start).and_return(@http_response)
-    Net::HTTP.should_receive(:new).and_return(@http_request)
+    @http_request.should_receive(:get).and_return(@http_response)
   end
 
   before do
