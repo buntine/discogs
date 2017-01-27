@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   
   s.name = "discogs-wrapper"
-  s.version = "2.1.4"
-  s.date = "2015-08-06"
+  s.version = "2.2.0"
+  s.date = "2017-01-27"
   s.licenses = ["MIT"]
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
   s.homepage = "http://www.github.com/buntine/discogs"
   s.email = "info@andrewbuntine.com"
-  s.authors = ["Andrew Buntine", "Many more contributors"]
+  s.authors = ["Andrew Buntine", "Many more contributors - see https://github.com/buntine/discogs/graphs/contributors"]
   
   s.description = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2. Supports authentication, pagination, JSON."
   
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "simplecov", "= 0.7.1"
   
   s.add_runtime_dependency "hashie", "~> 3.0"
+  s.add_runtime_dependency "httparty", "~> 0.14.0"
   s.add_runtime_dependency "oauth", "~> 0.4.7"
 
 end

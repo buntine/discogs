@@ -3,7 +3,6 @@
 require 'hashie'
 require 'json'
 require 'httparty'
-require 'net/http'
 require 'stringio'
 require 'uri'
 require 'cgi'
@@ -754,6 +753,7 @@ class Discogs::Wrapper
     begin
       inflated_data = Zlib::GzipReader.new(StringIO.new(response.body.to_s))
       response_body = inflated_data.read
+      puts "ZIPPED"
     rescue Zlib::GzipFile::Error
       response_body = response.body
     end
@@ -765,7 +765,6 @@ class Discogs::Wrapper
   def make_request(path, params, method, body)
     full_params   = params.merge(auth_params)
     uri           = build_uri(path, full_params)
-    formatted     = "#{uri.path}?#{uri.query}"
     output_format = full_params.fetch(:f, "json")
     headers       = {"Accept"          => "application/#{output_format}",
                      "Accept-Encoding" => "gzip,deflate",
@@ -779,18 +778,8 @@ class Discogs::Wrapper
         @access_token.send(method, formatted, headers)
       end
     else
-      # All non-authenticated endpoints are GET.
-     # request = Net::HTTP::Get.new(formatted)
-
-     # headers.each do |h, v|
-     #   request.add_field(h, v)
-     # end
-
-#      Net::HTTP.start(uri.host, uri.port,
-#        :use_ssl => uri.scheme == 'https') do |http|
-#        http.request(request)
-#      end
-      HTTParty.get("#{@@root_host}#{formatted}", headers: headers)
+     # All non-authenticated endpoints are GET.
+      HTTParty.get(uri, headers: headers)
     end
   end
 
