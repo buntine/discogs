@@ -97,7 +97,6 @@ describe Discogs::Wrapper do
       it "should sanitize the path correctly" do
         mock_http_with_response "200", read_sample("search_results")
         URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&q=Two+Words&token=fake_token").and_return(@uri)
-        puts @uri.inspect
         @wrapper.search("Two Words")
       end
     end

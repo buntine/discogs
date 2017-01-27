@@ -753,7 +753,6 @@ class Discogs::Wrapper
     begin
       inflated_data = Zlib::GzipReader.new(StringIO.new(response.body.to_s))
       response_body = inflated_data.read
-      puts "ZIPPED"
     rescue Zlib::GzipFile::Error
       response_body = response.body
     end
@@ -765,6 +764,7 @@ class Discogs::Wrapper
   def make_request(path, params, method, body)
     full_params   = params.merge(auth_params)
     uri           = build_uri(path, full_params)
+    formatted     = "#{uri.path}?#{uri.query}" 
     output_format = full_params.fetch(:f, "json")
     headers       = {"Accept"          => "application/#{output_format}",
                      "Accept-Encoding" => "gzip,deflate",
