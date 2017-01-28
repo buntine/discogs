@@ -4,8 +4,7 @@
 ##   
 ##   This library provides full access to the Discogs.com API v2.0
 ##
-##   Please file all bug reports at http://www.github.com/buntine/discogs, or
-##   email me at info@andrewbuntine.com.
+##   Please file all bug reports at https://www.github.com/buntine/discogs.
 ##
 ##   Enjoy!
 

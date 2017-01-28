@@ -5,8 +5,8 @@ Gem::Specification.new do |s|
   s.date = "2017-01-27"
   s.licenses = ["MIT"]
   s.summary = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2"
-  s.homepage = "http://www.github.com/buntine/discogs"
-  s.email = "info@andrewbuntine.com"
+  s.homepage = "https://www.github.com/buntine/discogs"
+  s.email = "info@bunts.io"
   s.authors = ["Andrew Buntine", "Many more contributors - see https://github.com/buntine/discogs/graphs/contributors"]
   
   s.description = "Discogs::Wrapper is a full wrapper for the http://www.discogs.com API V2. Supports authentication, pagination, JSON."
