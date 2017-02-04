@@ -35,7 +35,7 @@ module Authentication
   # @return [Hash] containing a :request_token that should be stored locally and a :authorize_url that the user must browse to.
   def get_request_token(app_key, app_secret, callback)
     consumer = OAuth::Consumer.new(app_key, app_secret,
-                 :authorize_url => "http://www.discogs.com/oauth/authorize",
+                 :authorize_url => "https://www.discogs.com/oauth/authorize",
                  :site          => "https://api.discogs.com")
     request_token = consumer.get_request_token(:oauth_callback => callback)
 
