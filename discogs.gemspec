@@ -23,6 +23,6 @@ Gem::Specification.new do |s|
   
   s.add_runtime_dependency "hashie", "~> 3.0"
   s.add_runtime_dependency "httparty", "~> 0.14"
-  s.add_runtime_dependency "oauth", "~> 0.4.7"
+  s.add_runtime_dependency "oauth", "~> 0.5.1"
 
 end
