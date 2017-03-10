@@ -101,10 +101,11 @@ SANITIZATION
   The Discogs.com API uses the name "count" in several places, which is sanitized to "total" in this gem in order to prevent overriding the `count` attribute of `Hash`.
 
   For example:
-  ```
-  release.rating.count # => Returns number of keys in "rating" Hash.
-  release.rating.total # => Returns total number of ratings as per Discogs API response.
-  ```
+
+```ruby
+release.rating.count # => Returns number of keys in "rating" Hash.
+release.rating.total # => Returns total number of ratings as per Discogs API response.
+```
 
 AUTHENTICATION
 --------------
