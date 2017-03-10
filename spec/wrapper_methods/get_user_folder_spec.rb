@@ -22,8 +22,9 @@ describe Discogs::Wrapper do
         expect(@user_folder.name).to eq("Uncategorized")
       end
 
-      it "should have a count" do
-        expect(@user_folder[:count]).to eq(20)
+      it "should have sanitized count" do
+        expect(@user_folder.total).to eq(20)
+        expect(@user_folder.count).to eq(4)
       end
 
       it "should not have a bogus attribute" do
