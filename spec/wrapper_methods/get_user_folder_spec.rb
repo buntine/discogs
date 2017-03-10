@@ -24,7 +24,11 @@ describe Discogs::Wrapper do
 
       it "should have sanitized count" do
         expect(@user_folder.total).to eq(20)
-        expect(@user_folder.count).to eq(4)
+        expect(@user_folder.count).to eq(4 + 1) # Plus one to be removed after backwards-compatibility fix has been removed.
+      end
+
+      it "should have a backwards-compatible count" do
+        expect(@user_folder[:count]).to eq(20)
       end
 
       it "should not have a bogus attribute" do

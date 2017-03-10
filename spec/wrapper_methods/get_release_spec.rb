@@ -35,8 +35,8 @@ describe Discogs::Wrapper do
       end
 
       it "should have sanitized the rating count attribute" do
-        expect(@release.community.rating.total).to eq(91)
-        expect(@release.community.rating.count).to eq(2) # Original method - count returns number of key/value pairs.
+        expect(@release.community.rating.total).to eq(91) 
+        expect(@release.community.rating.count).to eq(2 + 1) # Original method - count returns number of key/value pairs. Plus one to be removed after backwards-compatibility fix has been removed.
       end
 
       it "should have one or more extra artists" do
