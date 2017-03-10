@@ -30,6 +30,15 @@ describe Discogs::Wrapper do
         expect(@release.master_id).to eq(5427)
       end
 
+      it "should have a community/rating attribute" do
+        expect(@release.community.rating).to be_instance_of(Hashie::Mash)
+      end
+
+      it "should have sanitized the rating count attribute" do
+        expect(@release.community.rating.total).to eq(91)
+        expect(@release.community.rating.count).to eq(2) # Original method - count returns number of key/value pairs.
+      end
+
       it "should have one or more extra artists" do
         expect(@release.extraartists).to be_instance_of(Hashie::Array)
         expect(@release.extraartists[0].id).to eq(239)
