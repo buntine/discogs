@@ -733,7 +733,7 @@ class Discogs::Wrapper
 
     if data != ""
       hash = JSON.parse(data)
-      Hashie::Mash.new(hash)
+      Hashie::Mash.new(sanitize_hash(hash))
     else
       Hashie::Mash.new
     end
@@ -793,13 +793,36 @@ class Discogs::Wrapper
 
   # Stringifies keys and sorts.
   def prepare_hash(h)
-    result = {}
-
-    h.each do |k, v|
-      result[k.to_s] = v
-    end
+    result = Hash[
+      h.map do |k, v|
+        [k.to_s, v]
+      end
+    ]
 
     result.sort
+  end
+
+  # Replaces known conflicting keys with safe names in a nested hash structure.
+  def sanitize_hash(hash)
+    conflicts = {"count" => "total"}
+    result = {}
+
+    for k, v in hash
+      safe_name = conflicts[k]
+
+      if safe_name
+        result[safe_name] = v
+        k = safe_name
+      else
+        result[k] = v
+      end
+
+      if v.is_a?(Hash)
+        result[k] = sanitize_hash(result[k])
+      end
+    end
+
+    result
   end
 
   def raise_unknown_resource(path="")
