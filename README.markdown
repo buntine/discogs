@@ -28,10 +28,10 @@ ABOUT
   * oAuth
   * Pagination / Sorting
 
-
+DOCUMENTATION
+------------
+  You can read the documentation at [this projects RDoc page](http://rdoc.info/github/buntine/discogs/master/frames).
   The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
-
-  You can see all implemented methods on [this projects RDoc page](http://rdoc.info/github/buntine/discogs/master/frames).
 
 INSTALLATION
 ------------
