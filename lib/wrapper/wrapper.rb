@@ -772,7 +772,8 @@ class Discogs::Wrapper
 
     if any_authentication?
       if [:post, :put].include?(method)
-        headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = headers["Accept"]
+
         if authenticated? and user_facing?
           @access_token.send(method, formatted, JSON(body), headers)
         else
