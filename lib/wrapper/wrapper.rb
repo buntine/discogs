@@ -746,7 +746,7 @@ class Discogs::Wrapper
     raise_unknown_resource(path) if response.code == "404"
     raise_authentication_error(path) if response.code == "401"
     raise_internal_server_error if response.code == "500"
-    
+
     # Unzip the response data, or just read it in directly
     # if the API responds without gzipping.
     response_body = nil
@@ -764,21 +764,29 @@ class Discogs::Wrapper
   def make_request(path, params, method, body)
     full_params   = params.merge(auth_params)
     uri           = build_uri(path, full_params)
-    formatted     = "#{uri.path}?#{uri.query}" 
+    formatted     = "#{uri.path}?#{uri.query}"
     output_format = full_params.fetch(:f, "json")
     headers       = {"Accept"          => "application/#{output_format}",
                      "Accept-Encoding" => "gzip,deflate",
                      "User-Agent"      => @app_name}
 
-    if authenticated? and user_facing?
+    if any_authentication?
       if [:post, :put].include?(method)
         headers["Content-Type"] = "application/json"
-        @access_token.send(method, formatted, JSON(body), headers)
+        if authenticated? and user_facing?
+          @access_token.send(method, formatted, JSON(body), headers)
+        else
+          HTTParty.send(method, uri, {headers: headers, body: JSON(body)})
+        end
       else
-        @access_token.send(method, formatted, headers)
+        if authenticated? and user_facing?
+          @access_token.send(method, formatted, headers)
+        else
+          HTTParty.send(method, uri, headers: headers)
+        end
       end
     else
-     # All non-authenticated endpoints are GET.
+      # All non-authenticated endpoints are GET.
       HTTParty.get(uri, headers: headers)
     end
   end
