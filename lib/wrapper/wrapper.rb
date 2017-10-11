@@ -774,13 +774,13 @@ class Discogs::Wrapper
       if [:post, :put].include?(method)
         headers["Content-Type"] = headers["Accept"]
 
-        if authenticated? and user_facing?
+        if user_facing?
           @access_token.send(method, formatted, JSON(body), headers)
         else
           HTTParty.send(method, uri, {headers: headers, body: JSON(body)})
         end
       else
-        if authenticated? and user_facing?
+        if user_facing?
           @access_token.send(method, formatted, headers)
         else
           HTTParty.send(method, uri, headers: headers)
