@@ -1,4 +1,4 @@
-lib/discogs.rb a28f21b707ba7a6c295673871970840c5cb0fc31
+lib/discogs.rb 8877350b9518e375c3004d2d205a829c1f4aec3a
 lib/discogs-wrapper.rb 44f686614ef1a2503164fdd063b4b930ecaedf1b
-lib/wrapper/wrapper.rb d88b9286c032b6f81ea34cab68fbce002c912510
-lib/wrapper/authentication.rb cc2950309900247e43b9fcd1b9c1c6303a7a5d92
+lib/wrapper/wrapper.rb 113a961864a3a6f30097039b0b784798bcce9f26
+lib/wrapper/authentication.rb e09b59f5274b8b4e2d53e3b7fabae47feba495f3
