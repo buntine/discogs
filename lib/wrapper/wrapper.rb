@@ -629,7 +629,7 @@ class Discogs::Wrapper
   # @return [Hash] messages for order
   def list_order_messages(order_id, pagination={})
    authenticated? do
-     query_and_build "marketplace/orders#{order_id}/messages", pagination
+     query_and_build "marketplace/orders/#{order_id}/messages", pagination
    end
   end
 
