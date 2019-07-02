@@ -52,6 +52,8 @@ USAGE
   To use this library, you must supply the name of your application. For example:
 
 ```ruby
+require "discogs"
+
 wrapper = Discogs::Wrapper.new("My awesome web app")
 ```
 
