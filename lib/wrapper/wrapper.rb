@@ -813,7 +813,7 @@ class Discogs::Wrapper
 
   # Replaces known conflicting keys with safe names in a nested hash structure.
   def sanitize_hash(hash)
-    conflicts = {"count" => "total"}
+    conflicts = {"count" => "total", "type_" => "type"}
     result = {}
 
     for k, v in hash
@@ -833,6 +833,8 @@ class Discogs::Wrapper
 
       if v.is_a?(Hash)
         result[k] = sanitize_hash(result[k])
+      elsif v.is_a?(Array)
+        result[k] = v.map { |o| o.is_a?(Hash) ? sanitize_hash(o) : o }
       end
     end
 
