@@ -797,7 +797,7 @@ class Discogs::Wrapper
     parameters    = {:f => output_format}.merge(params)
     querystring   = "?" + URI.encode_www_form(prepare_hash(parameters))
 
-    URI.parse(File.join(@@root_host, [URI.escape(path), querystring].join))
+    URI.parse(File.join(@@root_host, [CGI.escape(path), querystring].join))
   end
 
   # Stringifies keys and sorts.
