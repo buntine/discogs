@@ -680,7 +680,7 @@ class Discogs::Wrapper
   #   * +AUD+
   #   * +JPY+
   def get_fee(price, currency="USD")
-    query_and_build "marketplace/fee/#{price}/#{currency}"
+    query_and_build "marketplace/fee/#{CGI.escape(price)}/#{currency}"
   end
 
   # Retrieve an image by filename.
@@ -797,7 +797,7 @@ class Discogs::Wrapper
     parameters    = {:f => output_format}.merge(params)
     querystring   = "?" + URI.encode_www_form(prepare_hash(parameters))
 
-    URI.parse(File.join(@@root_host, [CGI.escape(path), querystring].join))
+    URI.parse(File.join(@@root_host, [path, querystring].join))
   end
 
   # Stringifies keys and sorts.
