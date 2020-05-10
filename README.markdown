@@ -94,11 +94,19 @@ search.results.first.id              # => 691078
 
   Many of the API endpoints return further URLs that will yield specific data. To cater for this, the library provides a "raw" method that accepts a valid API URL. For example:
 
-    sts_records       = wrapper.get_label(9800)
-    sts_releases      = wrapper.raw(sts_records.releases_url)
-    first_sts_release = wrapper.raw(sts_releases.releases[1].resource_url)
+```ruby
+sts_records       = wrapper.get_label(9800)
+sts_releases      = wrapper.raw(sts_records.releases_url)
+first_sts_release = wrapper.raw(sts_releases.releases[1].resource_url)
 
-    first_sts_release.title  # => "I'll Nostra Tempo De La Vita / Having The Time Of Your Life"
+first_sts_release.title  # => "I'll Nostra Tempo De La Vita / Having The Time Of Your Life"
+```
+
+  You can also add optional querystring overrides to raw calls:
+
+```ruby
+sombre = wrapper.raw("https://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release", {"page" => 2})
+```
 
   You can see all implemented methods on [this projects RDoc page](http://rdoc.info/github/buntine/discogs/master/frames).
 
