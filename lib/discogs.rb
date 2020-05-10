@@ -15,6 +15,7 @@ module Discogs; end
 class Discogs::UnknownResource < StandardError; end
 class Discogs::InternalServerError < StandardError; end
 class Discogs::AuthenticationError < StandardError; end
+class Discogs::RateLimitError < StandardError; end
 
 # Loading sequence.
 require File.dirname(__FILE__) + "/wrapper/wrapper"

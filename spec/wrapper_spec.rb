@@ -146,6 +146,18 @@ describe Discogs::Wrapper do
       @wrapper.raw("https://api.discogs.com/artists/1000")
     end
 
+    it "should generate the correct URL to parse when given raw URL and additional params" do
+      @search_uri = double("uri")
+
+      allow(@search_uri).to receive_messages(:host => "api.discogs.com", :query => "q=Sombre+Records&per_page=50&type=release&page=12&new=true", :path => "database/search")
+
+      mock_http_with_response "200", read_sample("search_results")
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11").and_return(@search_uri)
+      URI.should_receive(:parse).with("https://api.discogs.com/database/search?f=json&new=true&page=12&per_page=50&q=Sombre+Records&type=release").and_return(@uri)
+
+      @wrapper.raw("https://api.discogs.com/database/search?q=Sombre+Records&per_page=50&type=release&page=11", {"page" => 12, "new" => true})
+    end
+
   end
 
   ## NOTE: See ./spec/wrapper_methods/*.rb for indepth tests on valid API requests.
@@ -245,6 +257,15 @@ describe Discogs::Wrapper do
       lambda { @wrapper.get_master(@master_id) }.should raise_error(Discogs::InternalServerError)
     end
 
+  end
+
+  describe "when exceeding rate limit" do
+
+    it "should raise an exception if the rate limit is exceeded" do
+      mock_http_with_response "429"
+
+      lambda { @wrapper.get_master(@master_id) }.should raise_error(Discogs::RateLimitError)
+    end
   end
 
 end

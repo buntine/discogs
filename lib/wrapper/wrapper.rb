@@ -718,9 +718,9 @@ class Discogs::Wrapper
   #
   # @param [String (Required)] API endpoint
   # @return [Hash] API response
-  def raw(url)
+  def raw(url, additional_params={})
     uri    = URI.parse(url)
-    params = CGI.parse(uri.query.to_s)
+    params = CGI.parse(uri.query.to_s).merge(additional_params)
 
     query_and_build uri.path, params
   end
@@ -745,6 +745,7 @@ class Discogs::Wrapper
 
     raise_unknown_resource(path) if response.code == "404"
     raise_authentication_error(path) if response.code == "401"
+    raise_rate_limit_error(path) if response.code == "429"
     raise_internal_server_error if response.code == "500"
 
     # Unzip the response data, or just read it in directly
@@ -843,6 +844,10 @@ class Discogs::Wrapper
 
   def raise_unknown_resource(path="")
     raise Discogs::UnknownResource, "Unknown Discogs resource: #{path}"
+  end
+
+  def raise_rate_limit_error(path="")
+    raise Discogs::RateLimitError, "Rate limit exceeded: #{path}"
   end
 
   def raise_internal_server_error
