@@ -31,7 +31,7 @@ ABOUT
 
 DOCUMENTATION
 ------------
-  You can read the documentation at [this projects RDoc page](http://rdoc.info/github/buntine/discogs/master/frames).
+  You can read the documentation at [this projects RDoc page](https://rdoc.info/github/buntine/discogs/master/Discogs/Wrapper)
 
   The Discogs API is [documented here](http://www.discogs.com/developers/index.html).
 
