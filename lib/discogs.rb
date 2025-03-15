@@ -18,4 +18,4 @@ class Discogs::AuthenticationError < StandardError; end
 class Discogs::RateLimitError < StandardError; end
 
 # Loading sequence.
-require File.dirname(__FILE__) + "/wrapper/wrapper"
+require File.dirname(__FILE__) + "/discogs/wrapper"

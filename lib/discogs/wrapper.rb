@@ -11,8 +11,7 @@ require 'zlib'
 require File.dirname(__FILE__) + "/authentication"
 
 class Discogs::Wrapper
-
-  include Authentication
+  include Discogs::Authentication
 
   @@root_host = "https://api.discogs.com"
 

@@ -1,6 +1,6 @@
 require 'oauth'
 
-module Authentication
+module Discogs::Authentication
 
   def auth_params
     if self_authenticating?
