@@ -742,10 +742,14 @@ class Discogs::Wrapper
   def query_api(path, params={}, method=:get, body=nil)
     response = make_request(path, params, method, body)
 
-    raise_unknown_resource(path) if response.code == "404"
-    raise_authentication_error(path) if response.code == "401"
-    raise_rate_limit_error(path) if response.code == "429"
-    raise_internal_server_error if response.code == "500"
+    raise_unknown_resource(path) if response.code == 404
+    raise_authentication_error(path) if response.code == 401
+    raise_rate_limit_error(path) if response.code == 429
+    raise_internal_server_error if response.code == 500
+    if response.code >= 300
+      puts response.inspect
+      raise_unknown_server_error(response.code)
+    end
 
     # Unzip the response data, or just read it in directly
     # if the API responds without gzipping.
@@ -851,6 +855,10 @@ class Discogs::Wrapper
 
   def raise_internal_server_error
     raise Discogs::InternalServerError, "The API server cannot complete the request"
+  end
+
+  def raise_unknown_server_error(code="")
+    raise Discogs::UnknownServerError, "Server returned unexpected response: #{code}"
   end
 
   def raise_authentication_error(path="")
