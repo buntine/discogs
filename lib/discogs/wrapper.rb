@@ -820,11 +820,6 @@ class Discogs::Wrapper
       safe_name = conflicts[k]
 
       if safe_name
-        # BC: Temporary set original key for backwards-compatibility.
-        warn "[DEPRECATED]: The key '#{k}' has been replaced with '#{safe_name}'. When accessing, please use the latter. This message will be removed in the next major release."
-        result[k] = v
-        # End BC
-
         result[safe_name] = v
         k = safe_name
       else
