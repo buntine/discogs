@@ -6,6 +6,7 @@ require 'httparty'
 require 'stringio'
 require 'uri'
 require 'cgi'
+require 'cgi/core'
 require 'zlib'
 
 require File.dirname(__FILE__) + "/authentication"
