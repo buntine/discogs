@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "~> 3.3"
   s.add_development_dependency "simplecov", "= 0.7.1"
 
+  s.add_runtime_dependency "cgi", "~> 0.5.2"
   s.add_runtime_dependency "hashie", "~> 3.0"
   s.add_runtime_dependency "httparty", "~> 0.14"
-  s.add_runtime_dependency "oauth", "~> 0.5.1"
+  s.add_runtime_dependency "oauth", "~> 1.1.0"
 end
